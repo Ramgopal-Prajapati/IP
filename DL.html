@@ -1,0 +1,2926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Learning & NLP Mastery - 150+ Interview Q&A | Ram Sir</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <style>
+        :root {
+            --primary: #FF6B6B;
+            --secondary: #4ECDC4;
+            --accent: #45B7D1;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #2ec4b6;
+            --warning: #ff9f1c;
+            --danger: #e63946;
+            --gradient: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);
+            --gradient-light: linear-gradient(135deg, #4ECDC4 0%, #FF6B6B 100%);
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.12);
+            --radius: 10px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--dark);
+            background-color: #f8fafc;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: var(--gradient);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
+            margin-bottom: 2px;
+        }
+        
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+        
+        .nav-menu a:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+        
+        .nav-menu a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            background: var(--gradient-light);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        
+        .btn-primary {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* Filter Section */
+        .filter-section {
+            background: white;
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin: 30px 0;
+        }
+        
+        .filter-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            padding: 8px 16px;
+            background: #f1f5f9;
+            border: none;
+            border-radius: 20px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            color: #555;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--gradient);
+            color: white;
+        }
+        
+        /* Questions Section */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        .questions-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+        
+        .question-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 5px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .question-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .question-card.deeplearning {
+            border-left-color: #FF6B6B;
+        }
+        
+        .question-card.neuralnetworks {
+            border-left-color: #4ECDC4;
+        }
+        
+        .question-card.cnn {
+            border-left-color: #45B7D1;
+        }
+        
+        .question-card.rnn {
+            border-left-color: #96CEB4;
+        }
+        
+        .question-card.transformers {
+            border-left-color: #FFEAA7;
+        }
+        
+        .question-card.nlp {
+            border-left-color: #DDA0DD;
+        }
+        
+        .question-card.llms {
+            border-left-color: #FFB347;
+        }
+        
+        .question-card.attention {
+            border-left-color: #B19CD9;
+        }
+        
+        .question-card.optimization {
+            border-left-color: #FF6961;
+        }
+        
+        .question-card.regularization {
+            border-left-color: #779ECB;
+        }
+        
+        .question-card.architectures {
+            border-left-color: #03C03C;
+        }
+        
+        .question-card.frameworks {
+            border-left-color: #FF6F61;
+        }
+        
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .question-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-right: 10px;
+        }
+        
+        .question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark);
+            line-height: 1.4;
+            flex: 1;
+        }
+        
+        .tech-icon {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .answer {
+            color: #555;
+            line-height: 1.6;
+            padding-top: 15px;
+            border-top: 1px dashed #eee;
+            margin-top: 15px;
+            display: none;
+        }
+        
+        .answer.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .answer pre {
+            background: #f1f5f9;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            border-left: 3px solid var(--primary);
+        }
+        
+        .answer code {
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: var(--danger);
+        }
+        
+        .toggle-answer {
+            background: var(--gradient-light);
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: var(--transition);
+        }
+        
+        .toggle-answer:hover {
+            background: var(--gradient);
+            transform: scale(1.05);
+        }
+        
+        .difficulty {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-top: 15px;
+        }
+        
+        .difficulty.easy {
+            background-color: rgba(46, 196, 182, 0.15);
+            color: var(--success);
+        }
+        
+        .difficulty.medium {
+            background-color: rgba(255, 159, 28, 0.15);
+            color: var(--warning);
+        }
+        
+        .difficulty.hard {
+            background-color: rgba(220, 53, 69, 0.15);
+            color: #dc3545;
+        }
+        
+        .category {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-left: 10px;
+            background-color: #f1f5f9;
+            color: #555;
+        }
+        
+        /* Courses Section */
+        .courses {
+            background-color: #f1f5f9;
+            padding: 60px 0;
+        }
+        
+        .courses-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .course-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .course-header {
+            background: var(--gradient);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+        
+        .course-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .course-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .course-body {
+            padding: 25px;
+        }
+        
+        .course-features {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .course-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .course-features li i {
+            color: var(--success);
+        }
+        
+        .course-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .course-price span {
+            font-size: 1rem;
+            color: #666;
+            font-weight: normal;
+        }
+        
+        .course-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .course-btn {
+            flex: 1;
+            text-align: center;
+            padding: 12px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .course-btn.enroll {
+            background: var(--gradient);
+            color: white;
+        }
+        
+        .course-btn.enroll:hover {
+            background: var(--primary);
+        }
+        
+        .course-btn.details {
+            background: #f1f5f9;
+            color: var(--primary);
+        }
+        
+        .course-btn.details:hover {
+            background: #e2e8f0;
+        }
+        
+        /* Reviews Section */
+        .reviews {
+            padding: 60px 0;
+        }
+        
+        .reviews-slider {
+            margin-top: 40px;
+        }
+        
+        .review-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin: 10px;
+            position: relative;
+        }
+        
+        .review-card::before {
+            content: "\201C";
+            font-size: 4rem;
+            color: var(--accent);
+            opacity: 0.3;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+        
+        .review-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        .reviewer {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .reviewer-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .reviewer-info h4 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .reviewer-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .review-rating {
+            color: #ffc107;
+            margin-top: 5px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: white;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .footer-col p {
+            color: #b0b0b0;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: #b0b0b0;
+        }
+        
+        .contact-info li i {
+            color: var(--accent);
+            width: 20px;
+        }
+        
+        .enquiry-form input,
+        .enquiry-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            background: #2d3748;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .enquiry-form textarea {
+            height: 120px;
+            resize: none;
+        }
+        
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            transition: var(--transition);
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+        }
+        
+        .call-btn {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            margin-top: 10px;
+            transition: var(--transition);
+        }
+        
+        .call-btn:hover {
+            background: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #2d3748;
+            color: #b0b0b0;
+            font-size: 0.9rem;
+        }
+        
+        /* Stats */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            min-width: 150px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .stat-text {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .questions-container {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--gradient);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                gap: 0;
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: var(--transition);
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-menu.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+            
+            .nav-menu li {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-menu a {
+                display: block;
+                padding: 15px;
+                border-radius: 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .stats {
+                gap: 15px;
+            }
+            
+            .stat-item {
+                min-width: 120px;
+                padding: 15px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .questions-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .course-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-brain"></i>
+                <div class="logo-text">
+                    <h1>Ram Sir</h1>
+                    <p>Deep Learning & NLP Expert</p>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#questions">DL/NLP Q&A (150+)</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#reviews">Student Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <div class="hero-emoji">
+                🧠 🤖 📚 🔥 🚀
+            </div>
+            <h2>Master Deep Learning & NLP with 150+ Interview Questions</h2>
+            <p>Comprehensive collection of DL, NLP, and LLM interview questions covering neural networks, transformers, attention mechanisms, and more. Perfect for AI engineers and researchers.</p>
+            <div class="cta-buttons">
+                <a href="#questions" class="btn btn-primary">
+                    <i class="fas fa-list"></i> Explore All Questions
+                </a>
+                <a href="#courses" class="btn btn-secondary">
+                    <i class="fas fa-graduation-cap"></i> Enroll Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="container">
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">150+</div>
+                <div class="stat-text">DL/NLP Questions</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">12+</div>
+                <div class="stat-text">Categories</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">950+</div>
+                <div class="stat-text">Students Trained</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">6+</div>
+                <div class="stat-text">Years Experience</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Questions Section -->
+    <section id="questions">
+        <div class="container">
+            <div class="section-title">
+                <h2>150+ Deep Learning & NLP Interview Questions</h2>
+                <p>Complete collection of DL/NLP questions with detailed answers. Filter by category to focus on specific topics.</p>
+            </div>
+            
+            <!-- Filter Section -->
+            <div class="filter-section">
+                <h3 class="filter-title">Filter by Category:</h3>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-category="all">All Questions</button>
+                    <button class="filter-btn" data-category="deeplearning">Deep Learning Basics</button>
+                    <button class="filter-btn" data-category="neuralnetworks">Neural Networks</button>
+                    <button class="filter-btn" data-category="cnn">CNN</button>
+                    <button class="filter-btn" data-category="rnn">RNN & LSTM</button>
+                    <button class="filter-btn" data-category="transformers">Transformers</button>
+                    <button class="filter-btn" data-category="nlp">NLP Fundamentals</button>
+                    <button class="filter-btn" data-category="llms">LLMs</button>
+                    <button class="filter-btn" data-category="attention">Attention Mechanism</button>
+                    <button class="filter-btn" data-category="optimization">Optimization</button>
+                    <button class="filter-btn" data-category="regularization">Regularization</button>
+                    <button class="filter-btn" data-category="architectures">Architectures</button>
+                    <button class="filter-btn" data-category="frameworks">Frameworks</button>
+                </div>
+            </div>
+            
+            <div class="questions-container" id="questionsContainer">
+                <!-- Questions will be loaded here via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses" id="courses">
+        <div class="container">
+            <div class="section-title">
+                <h2>Recommended DL/NLP Courses</h2>
+                <p>Master Deep Learning and NLP with our comprehensive courses designed for beginners to advanced professionals.</p>
+            </div>
+            
+            <div class="courses-container">
+                <!-- Course 1 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 class="course-title">Deep Learning Masterclass</h3>
+                        <p>Complete DL Bootcamp</p>
+                    </div>
+                    <div class="course-body">
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> 100+ Hours of Content</li>
+                            <li><i class="fas fa-check"></i> 60+ Hands-on Projects</li>
+                            <li><i class="fas fa-check"></i> Real-world AI Applications</li>
+                            <li><i class="fas fa-check"></i> Research Paper Implementation</li>
+                            <li><i class="fas fa-check"></i> Lifetime Access</li>
+                        </ul>
+                        <div class="course-price">
+                            ₹14,999 <span>₹29,999</span>
+                        </div>
+                        <div class="course-buttons">
+                            <a href="tel:9753528324" class="course-btn enroll">
+                                <i class="fas fa-phone-alt"></i> Call to Enroll
+                            </a>
+                            <a href="#contact" class="course-btn details">
+                                <i class="fas fa-info-circle"></i> Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 2 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <h3 class="course-title">NLP & LLMs Specialization</h3>
+                        <p>Transformers, BERT, GPT</p>
+                    </div>
+                    <div class="course-body">
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Advanced NLP Techniques</li>
+                            <li><i class="fas fa-check"></i> LLM Fine-tuning & Deployment</li>
+                            <li><i class="fas fa-check"></i> Transformer Architecture</li>
+                            <li><i class="fas fa-check"></i> Hugging Face Implementation</li>
+                            <li><i class="fas fa-check"></i> 1-on-1 Mentoring</li>
+                        </ul>
+                        <div class="course-price">
+                            ₹17,999 <span>₹34,999</span>
+                        </div>
+                        <div class="course-buttons">
+                            <a href="tel:9753528324" class="course-btn enroll">
+                                <i class="fas fa-phone-alt"></i> Call to Enroll
+                            </a>
+                            <a href="#contact" class="course-btn details">
+                                <i class="fas fa-info-circle"></i> Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 3 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3 class="course-title">AI Engineering</h3>
+                        <p>MLOps & Production Deployment</p>
+                    </div>
+                    <div class="course-body">
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Model Deployment & Serving</li>
+                            <li><i class="fas fa-check"></i> MLOps Best Practices</li>
+                            <li><i class="fas fa-check"></i> Cloud AI Services</li>
+                            <li><i class="fas fa-check"></i> Real Production Projects</li>
+                            <li><i class="fas fa-check"></i> Job Assistance</li>
+                        </ul>
+                        <div class="course-price">
+                            ₹19,999 <span>₹39,999</span>
+                        </div>
+                        <div class="course-buttons">
+                            <a href="tel:9753528324" class="course-btn enroll">
+                                <i class="fas fa-phone-alt"></i> Call to Enroll
+                            </a>
+                            <a href="#contact" class="course-btn details">
+                                <i class="fas fa-info-circle"></i> Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <p><strong>Mode:</strong> Both Online & Offline Classes Available</p>
+                <p><strong>Timing:</strong> Flexible batches (Morning/Evening/Weekend)</p>
+                <p><strong>Call:</strong> <a href="tel:9753528324" style="color: var(--primary); text-decoration: none; font-weight: 600;">+91 97535 28324</a> for details</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <div class="section-title">
+                <h2>Student Reviews</h2>
+                <p>See what our students have to say about our Deep Learning and NLP training programs.</p>
+            </div>
+            
+            <div class="reviews-slider owl-carousel" id="reviewsSlider">
+                <!-- Reviews will be loaded here via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Ram Sir</h3>
+                    <p>With over 6 years of experience in Deep Learning and NLP, I've helped 950+ students build successful careers in AI research and engineering.</p>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <span>+91 97535 28324</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>ramsir.dl@example.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Bangalore, India</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="contact-info">
+                        <li><a href="#home" style="color: #b0b0b0; text-decoration: none;">Home</a></li>
+                        <li><a href="#questions" style="color: #b0b0b0; text-decoration: none;">DL/NLP Q&A</a></li>
+                        <li><a href="#courses" style="color: #b0b0b0; text-decoration: none;">Courses</a></li>
+                        <li><a href="#reviews" style="color: #b0b0b0; text-decoration: none;">Student Reviews</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Enquiry Form</h3>
+                    <form class="enquiry-form" id="enquiryForm">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <input type="tel" placeholder="Your Phone" required>
+                        <textarea placeholder="Your Message"></textarea>
+                        <button type="button" class="whatsapp-btn" id="whatsappBtn">
+                            <i class="fab fa-whatsapp"></i> Send via WhatsApp
+                        </button>
+                        <button type="button" class="call-btn" id="callBtn">
+                            <i class="fas fa-phone-alt"></i> Call Now: 9753528324
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Ram Sir AI Mastery. All rights reserved. | Designed with ❤️ for aspiring AI professionals</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
+            this.innerHTML = document.getElementById('navMenu').classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('navMenu').classList.remove('active');
+                document.getElementById('mobileMenuBtn').innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Complete Deep Learning & NLP questions data (150+ questions)
+        const dlQuestions = [
+            // Deep Learning Basics
+            {
+                id: 1,
+                question: "What is Deep Learning? How is it different from traditional Machine Learning?",
+                answer: `<strong>Deep Learning:</strong> Subset of ML using neural networks with multiple layers to learn hierarchical representations<br><br>
+                        <strong>Key Differences:</strong><br>
+                        1. <strong>Feature Engineering:</strong> ML needs manual features, DL learns features automatically<br>
+                        2. <strong>Data Requirements:</strong> DL needs large datasets, ML works with smaller data<br>
+                        3. <strong>Hardware:</strong> DL requires GPUs, ML can run on CPUs<br>
+                        4. <strong>Interpretability:</strong> ML models are more interpretable<br>
+                        5. <strong>Performance:</strong> DL excels on unstructured data (images, text, audio)<br>
+                        6. <strong>Architecture:</strong> DL uses deep neural networks with many layers`,
+                difficulty: "easy",
+                icon: "fas fa-brain",
+                category: "deeplearning"
+            },
+            {
+                id: 2,
+                question: "Explain the structure of a basic Neural Network",
+                answer: `<strong>Neural Network Components:</strong><br><br>
+                        1. <strong>Input Layer:</strong> Receives input features<br>
+                           - Number of neurons = number of features<br><br>
+                        2. <strong>Hidden Layers:</strong> Perform computations<br>
+                           - Multiple layers possible<br>
+                           - Each neuron: z = w·x + b, a = σ(z)<br><br>
+                        3. <strong>Output Layer:</strong> Produces predictions<br>
+                           - Classification: Softmax activation<br>
+                           - Regression: Linear activation<br><br>
+                        4. <strong>Weights & Biases:</strong> Parameters to learn<br>
+                        5. <strong>Activation Functions:</strong> Introduce non-linearity<br>
+                        6. <strong>Loss Function:</strong> Measures error<br>
+                        7. <strong>Optimizer:</strong> Updates parameters`,
+                difficulty: "medium",
+                icon: "fas fa-network-wired",
+                category: "neuralnetworks"
+            },
+            {
+                id: 3,
+                question: "Explain Forward Propagation and Backpropagation",
+                answer: `<strong>Forward Propagation:</strong><br>
+                        1. Input passes through network<br>
+                        2. Each layer computes: z = W·a_prev + b<br>
+                        3. Apply activation: a = σ(z)<br>
+                        4. Continue to output layer<br>
+                        5. Compute loss: L = loss(y_pred, y_true)<br><br>
+                        <strong>Backpropagation (Chain Rule):</strong><br>
+                        1. Compute gradient of loss w.r.t output: ∂L/∂a<br>
+                        2. Propagate backwards through layers<br>
+                        3. For each layer:<br>
+                           - Compute gradients: ∂L/∂W, ∂L/∂b<br>
+                           - Update parameters: W = W - η·∂L/∂W<br>
+                        4. Repeat until convergence<br><br>
+                        <strong>Purpose:</strong> Efficiently compute gradients using chain rule`,
+                difficulty: "hard",
+                icon: "fas fa-exchange-alt",
+                category: "neuralnetworks"
+            },
+            
+            // Activation Functions
+            {
+                id: 4,
+                question: "Compare different Activation Functions: ReLU, Sigmoid, Tanh, Leaky ReLU",
+                answer: `<strong>1. Sigmoid:</strong><br>
+                        σ(x) = 1/(1 + e⁻ˣ)<br>
+                        Range: (0, 1)<br>
+                        Issues: Vanishing gradient, Not zero-centered<br>
+                        Use: Output layer for binary classification<br><br>
+                        <strong>2. Tanh:</strong><br>
+                        tanh(x) = (eˣ - e⁻ˣ)/(eˣ + e⁻ˣ)<br>
+                        Range: (-1, 1)<br>
+                        Zero-centered, but vanishing gradient<br>
+                        Use: Hidden layers<br><br>
+                        <strong>3. ReLU (Rectified Linear Unit):</strong><br>
+                        f(x) = max(0, x)<br>
+                        Range: [0, ∞)<br>
+                        Advantages: Computationally efficient, No vanishing gradient for x>0<br>
+                        Problem: Dying ReLU (neurons never activate)<br>
+                        Use: Default for hidden layers<br><br>
+                        <strong>4. Leaky ReLU:</strong><br>
+                        f(x) = max(αx, x) where α=0.01<br>
+                        Solves dying ReLU problem<br><br>
+                        <strong>5. Softmax:</strong><br>
+                        σ(z)ⱼ = eᶻʲ / Σeᶻᵏ<br>
+                        Use: Output layer for multi-class classification`,
+                difficulty: "medium",
+                icon: "fas fa-bolt",
+                category: "neuralnetworks"
+            },
+            
+            // CNN Questions
+            {
+                id: 5,
+                question: "Explain Convolutional Neural Networks (CNN) architecture",
+                answer: `<strong>CNN Architecture Components:</strong><br><br>
+                        1. <strong>Convolutional Layers:</strong><br>
+                           - Extract features using filters/kernels<br>
+                           - Filter slides over input (stride)<br>
+                           - Computes dot product<br>
+                           - Produces feature maps<br>
+                           - Parameters: Filter size, Stride, Padding<br><br>
+                        2. <strong>Activation Layers:</strong><br>
+                           - ReLU commonly used<br>
+                           - Introduces non-linearity<br><br>
+                        3. <strong>Pooling Layers:</strong><br>
+                           - Reduce spatial dimensions<br>
+                           - Types: Max Pooling, Average Pooling<br>
+                           - Parameters: Pool size, Stride<br><br>
+                        4. <strong>Fully Connected Layers:</strong><br>
+                           - Final classification/regression<br>
+                           - Flattened input from conv layers<br><br>
+                        5. <strong>Output Layer:</strong><br>
+                           - Softmax for classification<br>
+                           - Linear for regression`,
+                difficulty: "hard",
+                icon: "fas fa-eye",
+                category: "cnn"
+            },
+            {
+                id: 6,
+                question: "What are the different types of padding in CNN?",
+                answer: `<strong>Padding Types in CNN:</strong><br><br>
+                        1. <strong>Valid Padding (No Padding):</strong><br>
+                           - No extra pixels added<br>
+                           - Output size reduces<br>
+                           - Formula: (n - f + 1) × (n - f + 1)<br><br>
+                        2. <strong>Same Padding:</strong><br>
+                           - Pad so output size = input size<br>
+                           - Padding amount: p = (f - 1)/2<br>
+                           - Requires odd filter size<br><br>
+                        3. <strong>Full Padding:</strong><br>
+                           - Maximum padding<br>
+                           - Output size > input size<br>
+                           - Rarely used<br><br>
+                        <strong>Output Size Formula:</strong><br>
+                        n_out = ⌊(n_in + 2p - f)/s⌋ + 1<br>
+                        where: n_in=input size, p=padding, f=filter size, s=stride`,
+                difficulty: "medium",
+                icon: "fas fa-border-all",
+                category: "cnn"
+            },
+            
+            // RNN & LSTM Questions
+            {
+                id: 7,
+                question: "Explain RNN, LSTM, and GRU architectures",
+                answer: `<strong>RNN (Recurrent Neural Network):</strong><br>
+                        - For sequential data<br>
+                        - Hidden state: hₜ = σ(W·[hₜ₋₁, xₜ] + b)<br>
+                        - Problems: Vanishing/Exploding gradients<br><br>
+                        <strong>LSTM (Long Short-Term Memory):</strong><br>
+                        Solves gradient problems with gates:<br>
+                        1. <strong>Forget Gate:</strong> fₜ = σ(W_f·[hₜ₋₁, xₜ] + b_f)<br>
+                        2. <strong>Input Gate:</strong> iₜ = σ(W_i·[hₜ₋₁, xₜ] + b_i)<br>
+                        3. <strong>Candidate Cell:</strong> C̃ₜ = tanh(W_c·[hₜ₋₁, xₜ] + b_c)<br>
+                        4. <strong>Cell State Update:</strong> Cₜ = fₜ ⊙ Cₜ₋₁ + iₜ ⊙ C̃ₜ<br>
+                        5. <strong>Output Gate:</strong> oₜ = σ(W_o·[hₜ₋₁, xₜ] + b_o)<br>
+                        6. <strong>Hidden State:</strong> hₜ = oₜ ⊙ tanh(Cₜ)<br><br>
+                        <strong>GRU (Gated Recurrent Unit):</strong><br>
+                        Simplified LSTM with 2 gates:<br>
+                        1. Update Gate: zₜ = σ(W_z·[hₜ₋₁, xₜ] + b_z)<br>
+                        2. Reset Gate: rₜ = σ(W_r·[hₜ₋₁, xₜ] + b_r)<br>
+                        3. Candidate: h̃ₜ = tanh(W·[rₜ ⊙ hₜ₋₁, xₜ] + b)<br>
+                        4. Hidden: hₜ = (1 - zₜ) ⊙ hₜ₋₁ + zₜ ⊙ h̃ₜ`,
+                difficulty: "hard",
+                icon: "fas fa-history",
+                category: "rnn"
+            },
+            
+            // Transformers
+            {
+                id: 8,
+                question: "Explain Transformer Architecture in detail",
+                answer: `<strong>Transformer Architecture:</strong> Attention-based, no recurrence<br><br>
+                        <strong>Key Components:</strong><br>
+                        1. <strong>Encoder-Decoder Structure:</strong><br>
+                           - N identical encoder layers<br>
+                           - N identical decoder layers<br><br>
+                        2. <strong>Multi-Head Attention:</strong><br>
+                           - Multiple attention heads in parallel<br>
+                           - Captures different relationships<br>
+                           - Concatenated and projected<br><br>
+                        3. <strong>Self-Attention Mechanism:</strong><br>
+                           - Q, K, V from input<br>
+                           - Attention = softmax(QKᵀ/√dₖ)V<br><br>
+                        4. <strong>Positional Encoding:</strong><br>
+                           - Adds position information<br>
+                           - Sine and cosine functions<br><br>
+                        5. <strong>Feed-Forward Networks:</strong><br>
+                           - Position-wise fully connected<br>
+                           - ReLU activation<br><br>
+                        6. <strong>Residual Connections:</strong><br>
+                           - Add & Norm: LayerNorm(x + Sublayer(x))<br>
+                           - Helps with gradient flow<br><br>
+                        7. <strong>Layer Normalization:</strong><br>
+                           - Normalizes across features<br>
+                           - Stabilizes training`,
+                difficulty: "hard",
+                icon: "fas fa-exchange-alt",
+                category: "transformers"
+            },
+            {
+                id: 9,
+                question: "What is Self-Attention? Explain with formula",
+                answer: `<strong>Self-Attention:</strong> Mechanism to compute representation of sequence by attending to all positions<br><br>
+                        <strong>Steps:</strong><br>
+                        1. Create Query, Key, Value matrices from input:<br>
+                           Q = XW_q, K = XW_k, V = XW_v<br><br>
+                        2. Compute attention scores:<br>
+                           Attention(Q,K,V) = softmax(QKᵀ/√dₖ)V<br><br>
+                        <strong>Detailed Computation:</strong><br>
+                        1. Score = Q·Kᵀ (dot product similarity)<br>
+                        2. Scale: Score/√dₖ (dₖ = dimension of keys)<br>
+                        3. Apply softmax: Convert to probabilities<br>
+                        4. Weighted sum: softmax(Score/√dₖ)·V<br><br>
+                        <strong>Why √dₖ scaling?</strong><br>
+                        - Prevents softmax saturation<br>
+                        - Stabilizes gradients<br><br>
+                        <strong>Multi-Head Attention:</strong><br>
+                        - Multiple attention heads in parallel<br>
+                        - Concatenate outputs: Concat(head₁,...,headₕ)Wₒ`,
+                difficulty: "hard",
+                icon: "fas fa-bullseye",
+                category: "attention"
+            },
+            
+            // NLP Fundamentals
+            {
+                id: 10,
+                question: "Explain Word Embeddings: Word2Vec, GloVe, FastText",
+                answer: `<strong>Word Embeddings:</strong> Dense vector representations of words<br><br>
+                        <strong>1. Word2Vec (Mikolov et al., 2013):</strong><br>
+                        Two architectures:<br>
+                        - <strong>CBOW (Continuous Bag of Words):</strong><br>
+                          Predict target word from context<br>
+                          Faster training, better for frequent words<br><br>
+                        - <strong>Skip-gram:</strong><br>
+                          Predict context from target word<br>
+                          Better for rare words, handles phrases<br><br>
+                        Training: Negative sampling or hierarchical softmax<br><br>
+                        <strong>2. GloVe (Global Vectors):</strong><br>
+                        - Uses global word-word co-occurrence statistics<br>
+                        - Combines matrix factorization and local context window<br>
+                        - Objective: w_i·w_j + b_i + b_j = log(X_ij)<br><br>
+                        <strong>3. FastText (Facebook):</strong><br>
+                        - Extension of Word2Vec<br>
+                        - Uses character n-grams<br>
+                        - Handles out-of-vocabulary words<br>
+                        - Good for morphologically rich languages`,
+                difficulty: "hard",
+                icon: "fas fa-language",
+                category: "nlp"
+            },
+            {
+                id: 11,
+                question: "What is BERT? Explain its architecture and training",
+                answer: `<strong>BERT (Bidirectional Encoder Representations from Transformers):</strong><br>
+                        Google's transformer-based model for NLP<br><br>
+                        <strong>Key Innovations:</strong><br>
+                        1. <strong>Bidirectional:</strong> Reads text both left-to-right and right-to-left<br>
+                        2. <strong>Masked Language Modeling (MLM):</strong><br>
+                           - Randomly mask 15% of tokens<br>
+                           - Predict masked tokens using context from both sides<br><br>
+                        3. <strong>Next Sentence Prediction (NSP):</strong><br>
+                           - Binary classification: Is sentence B following sentence A?<br>
+                           - Helps with tasks requiring sentence relationships<br><br>
+                        <strong>Architecture:</strong><br>
+                        - Transformer encoder only (no decoder)<br>
+                        - Base: 12 layers, 768 hidden size, 12 attention heads<br>
+                        - Large: 24 layers, 1024 hidden size, 16 attention heads<br><br>
+                        <strong>Input Representation:</strong><br>
+                        [CLS] + tokens + [SEP] + tokens + [SEP]<br>
+                        Token embeddings + Segment embeddings + Position embeddings<br><br>
+                        <strong>Fine-tuning:</strong> Add task-specific layer on top`,
+                difficulty: "hard",
+                icon: "fas fa-robot",
+                category: "llms"
+            },
+            
+            // LLMs
+            {
+                id: 12,
+                question: "Explain GPT architecture and how it differs from BERT",
+                answer: `<strong>GPT (Generative Pre-trained Transformer):</strong><br>
+                        OpenAI's autoregressive language model<br><br>
+                        <strong>Key Differences from BERT:</strong><br>
+                        1. <strong>Directionality:</strong><br>
+                           - GPT: Unidirectional (left-to-right)<br>
+                           - BERT: Bidirectional<br><br>
+                        2. <strong>Architecture:</strong><br>
+                           - GPT: Transformer decoder only<br>
+                           - BERT: Transformer encoder only<br><br>
+                        3. <strong>Training Objective:</strong><br>
+                           - GPT: Next word prediction (autoregressive)<br>
+                           - BERT: Masked language modeling<br><br>
+                        4. <strong>Use Cases:</strong><br>
+                           - GPT: Text generation, completion<br>
+                           - BERT: Understanding, classification<br><br>
+                        <strong>GPT Architecture:</strong><br>
+                        - Multiple transformer decoder blocks<br>
+                        - Masked self-attention (prevents looking ahead)<br>
+                        - Position-wise feed-forward networks<br>
+                        - Layer normalization<br><br>
+                        <strong>GPT-3:</strong> 175B parameters, few-shot learning`,
+                difficulty: "hard",
+                icon: "fas fa-keyboard",
+                category: "llms"
+            },
+            
+            // Optimization
+            {
+                id: 13,
+                question: "Compare different Optimizers: SGD, Adam, RMSprop",
+                answer: `<strong>1. SGD (Stochastic Gradient Descent):</strong><br>
+                        θ = θ - η·∇J(θ)<br>
+                        - Simple, minimal memory<br>
+                        - Can get stuck in local minima<br>
+                        - Needs careful learning rate tuning<br><br>
+                        <strong>2. SGD with Momentum:</strong><br>
+                        v = γv + η∇J(θ)<br>
+                        θ = θ - v<br>
+                        - Accumulates past gradients<br>
+                        - Smoother updates<br>
+                        - Helps escape local minima<br><br>
+                        <strong>3. RMSprop:</strong><br>
+                        E[g²]ₜ = βE[g²]ₜ₋₁ + (1-β)gₜ²<br>
+                        θₜ₊₁ = θₜ - (η/√(E[g²]ₜ + ε))·gₜ<br>
+                        - Adapts learning rate per parameter<br>
+                        - Good for non-stationary objectives<br><br>
+                        <strong>4. Adam (Adaptive Moment Estimation):</strong><br>
+                        mₜ = β₁mₜ₋₁ + (1-β₁)gₜ (1st moment)<br>
+                        vₜ = β₂vₜ₋₁ + (1-β₂)gₜ² (2nd moment)<br>
+                        m̂ₜ = mₜ/(1-β₁ᵗ), v̂ₜ = vₜ/(1-β₂ᵗ)<br>
+                        θₜ₊₁ = θₜ - η·m̂ₜ/(√v̂ₜ + ε)<br>
+                        - Combines Momentum and RMSprop<br>
+                        - Default: β₁=0.9, β₂=0.999, ε=10⁻⁸<br>
+                        - Most popular optimizer`,
+                difficulty: "hard",
+                icon: "fas fa-chart-line",
+                category: "optimization"
+            },
+            
+            // Regularization
+            {
+                id: 14,
+                question: "Explain different Regularization techniques in Deep Learning",
+                answer: `<strong>Regularization Techniques:</strong> Prevent overfitting<br><br>
+                        1. <strong>L1/L2 Regularization:</strong><br>
+                           - Add penalty to loss: L + λ||w||<br>
+                           - L1: Sparse weights (feature selection)<br>
+                           - L2: Small weights<br><br>
+                        2. <strong>Dropout:</strong><br>
+                           - Randomly drop neurons during training<br>
+                           - Prevents co-adaptation<br>
+                           - Usually p=0.5 for hidden layers<br>
+                           - Scale activations by 1/(1-p) at test time<br><br>
+                        3. <strong>Batch Normalization:</strong><br>
+                           - Normalize layer inputs<br>
+                           - μ = mean(x), σ² = variance(x)<br>
+                           - x̂ = (x - μ)/√(σ² + ε)<br>
+                           - y = γx̂ + β (learnable parameters)<br>
+                           - Stabilizes training, allows higher learning rates<br><br>
+                        4. <strong>Early Stopping:</strong><br>
+                           - Stop training when validation error increases<br>
+                           - Prevents overfitting to training data<br><br>
+                        5. <strong>Data Augmentation:</strong><br>
+                           - Create modified versions of training data<br>
+                           - Images: rotation, flip, crop, color jitter<br>
+                           - Text: synonym replacement, back translation<br><br>
+                        6. <strong>Weight Decay:</strong><br>
+                           - Equivalent to L2 regularization in SGD`,
+                difficulty: "medium",
+                icon: "fas fa-shield-alt",
+                category: "regularization"
+            },
+            
+            // Architectures
+            {
+                id: 15,
+                question: "Explain ResNet architecture and why it works",
+                answer: `<strong>ResNet (Residual Network):</strong> Microsoft, 2015<br>
+                        Solved vanishing gradient in very deep networks<br><br>
+                        <strong>Key Innovation: Residual Connections</strong><br>
+                        Instead of learning H(x), learn residual F(x) = H(x) - x<br>
+                        Then H(x) = F(x) + x (identity mapping)<br><br>
+                        <strong>Residual Block:</strong><br>
+                        y = F(x, {W_i}) + x<br>
+                        where x is shortcut connection<br><br>
+                        <strong>Why it works:</strong><br>
+                        1. <strong>Eases gradient flow:</strong> Gradient can flow directly through identity mapping<br>
+                        2. <strong>Solves vanishing gradient:</strong> Even if F(x) gradients vanish, ∂y/∂x ≈ 1<br>
+                        3. <strong>Allows very deep networks:</strong> ResNet-152 (152 layers)<br>
+                        4. <strong>Prevents degradation:</strong> Deep networks perform worse than shallow ones<br><br>
+                        <strong>Architecture Variants:</strong><br>
+                        - ResNet-18, 34, 50, 101, 152<br>
+                        - Bottleneck blocks for deeper networks (1×1 conv reduce/increase dimensions)<br><br>
+                        <strong>Impact:</strong> Revolutionized computer vision, enabled 1000+ layer networks`,
+                difficulty: "hard",
+                icon: "fas fa-layer-group",
+                category: "architectures"
+            },
+            
+            // Adding more questions to reach 150+
+            {
+                id: 16,
+                question: "What is Vanishing/Exploding Gradient problem?",
+                answer: "Vanishing: Gradients become extremely small, stopping learning. Exploding: Gradients become extremely large, causing instability. Common in deep networks.",
+                difficulty: "medium",
+                icon: "fas fa-chart-line",
+                category: "deeplearning"
+            },
+            {
+                id: 17,
+                question: "Explain Gradient Clipping",
+                answer: "Technique to prevent exploding gradients by capping gradient values during backpropagation.",
+                difficulty: "medium",
+                icon: "fas fa-cut",
+                category: "optimization"
+            },
+            {
+                id: 18,
+                question: "What is Batch Size? How does it affect training?",
+                answer: "Number of samples processed before model update. Large: stable, memory intensive. Small: noisy, faster updates.",
+                difficulty: "easy",
+                icon: "fas fa-cubes",
+                category: "deeplearning"
+            },
+            {
+                id: 19,
+                question: "Explain Learning Rate Scheduling",
+                answer: "Adjust learning rate during training: Step decay, Exponential decay, Cosine annealing, 1cycle policy.",
+                difficulty: "medium",
+                icon: "fas fa-chart-line",
+                category: "optimization"
+            },
+            {
+                id: 20,
+                question: "What is Transfer Learning?",
+                answer: "Using pre-trained model on new task. Fine-tune last layers or use as feature extractor.",
+                difficulty: "medium",
+                icon: "fas fa-exchange-alt",
+                category: "deeplearning"
+            },
+            {
+                id: 21,
+                question: "Explain Autoencoders",
+                answer: "Neural network for unsupervised learning. Encoder compresses, decoder reconstructs. Used for dimensionality reduction, denoising.",
+                difficulty: "hard",
+                icon: "fas fa-compress",
+                category: "architectures"
+            },
+            {
+                id: 22,
+                question: "What are GANs?",
+                answer: "Generative Adversarial Networks: Generator creates fake data, Discriminator distinguishes real vs fake. They compete.",
+                difficulty: "hard",
+                icon: "fas fa-robot",
+                category: "architectures"
+            },
+            {
+                id: 23,
+                question: "Explain VAE",
+                answer: "Variational Autoencoder: Probabilistic version of autoencoder. Learns latent distribution.",
+                difficulty: "hard",
+                icon: "fas fa-chart-bar",
+                category: "architectures"
+            },
+            {
+                id: 24,
+                question: "What is U-Net?",
+                answer: "CNN architecture for image segmentation. Encoder-decoder with skip connections.",
+                difficulty: "hard",
+                icon: "fas fa-eye",
+                category: "architectures"
+            },
+            {
+                id: 25,
+                question: "Explain YOLO",
+                answer: "You Only Look Once: Real-time object detection. Single neural network predicts bounding boxes and class probabilities.",
+                difficulty: "hard",
+                icon: "fas fa-bullseye",
+                category: "architectures"
+            },
+            {
+                id: 26,
+                question: "What is Attention Mechanism?",
+                answer: "Allows model to focus on relevant parts of input. Weighted sum of values based on attention scores.",
+                difficulty: "hard",
+                icon: "fas fa-bullseye",
+                category: "attention"
+            },
+            {
+                id: 27,
+                question: "Explain Scaled Dot-Product Attention",
+                answer: "Attention(Q,K,V) = softmax(QKᵀ/√dₖ)V. Scaling prevents softmax saturation.",
+                difficulty: "hard",
+                icon: "fas fa-bullseye",
+                category: "attention"
+            },
+            {
+                id: 28,
+                question: "What is Multi-Head Attention?",
+                answer: "Multiple attention heads in parallel. Captures different types of relationships. Outputs concatenated.",
+                difficulty: "hard",
+                icon: "fas fa-bullseye",
+                category: "attention"
+            },
+            {
+                id: 29,
+                question: "Explain Positional Encoding in Transformers",
+                answer: "Adds position information to embeddings. Sine and cosine functions of different frequencies.",
+                difficulty: "medium",
+                icon: "fas fa-map-marker-alt",
+                category: "transformers"
+            },
+            {
+                id: 30,
+                question: "What is Layer Normalization?",
+                answer: "Normalizes across features for each sample. Stabilizes training in transformers.",
+                difficulty: "medium",
+                icon: "fas fa-chart-bar",
+                category: "regularization"
+            },
+            {
+                id: 31,
+                question: "Explain Dropout in detail",
+                answer: "Randomly set activations to zero during training. Prevents overfitting, forces redundancy.",
+                difficulty: "medium",
+                icon: "fas fa-toggle-off",
+                category: "regularization"
+            },
+            {
+                id: 32,
+                question: "What is Weight Initialization?",
+                answer: "Proper initialization crucial for training. Xavier/Glorot: for tanh/sigmoid. He: for ReLU.",
+                difficulty: "medium",
+                icon: "fas fa-play",
+                category: "deeplearning"
+            },
+            {
+                id: 33,
+                question: "Explain Batch Normalization",
+                answer: "Normalize layer inputs using batch statistics. Reduces internal covariate shift.",
+                difficulty: "hard",
+                icon: "fas fa-chart-bar",
+                category: "regularization"
+            },
+            {
+                id: 34,
+                question: "What is Group Normalization?",
+                answer: "Alternative to batch norm. Normalize across channels in groups. Works with small batch sizes.",
+                difficulty: "hard",
+                icon: "fas fa-chart-bar",
+                category: "regularization"
+            },
+            {
+                id: 35,
+                question: "Explain Instance Normalization",
+                answer: "Normalize each channel separately for each sample. Used in style transfer.",
+                difficulty: "medium",
+                icon: "fas fa-chart-bar",
+                category: "regularization"
+            },
+            {
+                id: 36,
+                question: "What is Stochastic Depth?",
+                answer: "Randomly drop layers during training. Like dropout for layers. Regularization technique.",
+                difficulty: "hard",
+                icon: "fas fa-layer-group",
+                category: "regularization"
+            },
+            {
+                id: 37,
+                question: "Explain Mixup data augmentation",
+                answer: "Create new samples by linear interpolation of pairs: x̃ = λx_i + (1-λ)x_j, ỹ = λy_i + (1-λ)y_j.",
+                difficulty: "medium",
+                icon: "fas fa-blender",
+                category: "regularization"
+            },
+            {
+                id: 38,
+                question: "What is CutMix?",
+                answer: "Cut and paste patches between images. Combines Mixup and Cutout.",
+                difficulty: "medium",
+                icon: "fas fa-cut",
+                category: "regularization"
+            },
+            {
+                id: 39,
+                question: "Explain Teacher Forcing in RNNs",
+                answer: "Use ground truth as next input during training. Faster convergence but exposure bias.",
+                difficulty: "medium",
+                icon: "fas fa-chalkboard-teacher",
+                category: "rnn"
+            },
+            {
+                id: 40,
+                question: "What is Beam Search?",
+                answer: "Decoding algorithm for sequence generation. Keeps top k candidates at each step.",
+                difficulty: "medium",
+                icon: "fas fa-search",
+                category: "nlp"
+            },
+            {
+                id: 41,
+                question: "Explain BPE (Byte Pair Encoding)",
+                answer: "Subword tokenization algorithm. Merges frequent character pairs. Used in GPT, BERT.",
+                difficulty: "medium",
+                icon: "fas fa-language",
+                category: "nlp"
+            },
+            {
+                id: 42,
+                question: "What is WordPiece tokenization?",
+                answer: "Like BPE but merges based on likelihood. Used in BERT.",
+                difficulty: "medium",
+                icon: "fas fa-language",
+                category: "nlp"
+            },
+            {
+                id: 43,
+                question: "Explain SentencePiece",
+                answer: "Language independent tokenizer. Treats text as raw Unicode. Used in T5.",
+                difficulty: "medium",
+                icon: "fas fa-language",
+                category: "nlp"
+            },
+            {
+                id: 44,
+                question: "What is TF-IDF?",
+                answer: "Term Frequency-Inverse Document Frequency. Text feature extraction. Highlights important words.",
+                difficulty: "easy",
+                icon: "fas fa-search",
+                category: "nlp"
+            },
+            {
+                id: 45,
+                question: "Explain N-gram models",
+                answer: "Probability model using sequences of N words. Markov assumption: depends only on previous N-1 words.",
+                difficulty: "medium",
+                icon: "fas fa-language",
+                category: "nlp"
+            },
+            {
+                id: 46,
+                question: "What is Perplexity?",
+                answer: "Measures how well probability model predicts sample. Lower is better. Exponent of cross-entropy.",
+                difficulty: "medium",
+                icon: "fas fa-chart-line",
+                category: "nlp"
+            },
+            {
+                id: 47,
+                question: "Explain BLEU score",
+                answer: "Bilingual Evaluation Understudy. Metric for machine translation. Precision-based n-gram overlap.",
+                difficulty: "medium",
+                icon: "fas fa-chart-bar",
+                category: "nlp"
+            },
+            {
+                id: 48,
+                question: "What is ROUGE score?",
+                answer: "Recall-Oriented Understudy for Gisting Evaluation. For text summarization. Measures recall.",
+                difficulty: "medium",
+                icon: "fas fa-chart-bar",
+                category: "nlp"
+            },
+            {
+                id: 49,
+                question: "Explain METEOR metric",
+                answer: "Metric for Evaluation of Translation with Explicit Ordering. Considers synonyms, stemming.",
+                difficulty: "hard",
+                icon: "fas fa-chart-bar",
+                category: "nlp"
+            },
+            {
+                id: 50,
+                question: "What is Named Entity Recognition?",
+                answer: "NER: Identify entities (person, location, organization) in text.",
+                difficulty: "medium",
+                icon: "fas fa-tag",
+                category: "nlp"
+            },
+            {
+                id: 51,
+                question: "Explain Part-of-Speech Tagging",
+                answer: "POS: Assign grammatical tags (noun, verb, adjective) to words.",
+                difficulty: "medium",
+                icon: "fas fa-tags",
+                category: "nlp"
+            },
+            {
+                id: 52,
+                question: "What is Dependency Parsing?",
+                answer: "Analyze grammatical structure of sentence. Create tree showing word dependencies.",
+                difficulty: "hard",
+                icon: "fas fa-project-diagram",
+                category: "nlp"
+            },
+            {
+                id: 53,
+                question: "Explain Coreference Resolution",
+                answer: "Identify all expressions that refer to same entity in text.",
+                difficulty: "hard",
+                icon: "fas fa-link",
+                category: "nlp"
+            },
+            {
+                id: 54,
+                question: "What is Sentiment Analysis?",
+                answer: "Determine sentiment (positive, negative, neutral) from text.",
+                difficulty: "easy",
+                icon: "fas fa-smile",
+                category: "nlp"
+            },
+            {
+                id: 55,
+                question: "Explain Text Summarization",
+                answer: "Create shorter version of text while preserving key information. Extractive vs Abstractive.",
+                difficulty: "medium",
+                icon: "fas fa-file-contract",
+                category: "nlp"
+            },
+            {
+                id: 56,
+                question: "What is Machine Translation?",
+                answer: "Automatically translate text between languages. Statistical vs Neural.",
+                difficulty: "medium",
+                icon: "fas fa-language",
+                category: "nlp"
+            },
+            {
+                id: 57,
+                question: "Explain Question Answering systems",
+                answer: "Answer questions based on given context. Reading comprehension task.",
+                difficulty: "medium",
+                icon: "fas fa-question-circle",
+                category: "nlp"
+            },
+            {
+                id: 58,
+                question: "What is Text Classification?",
+                answer: "Assign categories to text documents. Spam detection, topic labeling.",
+                difficulty: "easy",
+                icon: "fas fa-folder",
+                category: "nlp"
+            },
+            {
+                id: 59,
+                question: "Explain Word Sense Disambiguation",
+                answer: "Determine meaning of word based on context. Bank (financial vs river).",
+                difficulty: "hard",
+                icon: "fas fa-language",
+                category: "nlp"
+            },
+            {
+                id: 60,
+                question: "What is Semantic Role Labeling?",
+                answer: "Identify predicate-argument structure. Who did what to whom.",
+                difficulty: "hard",
+                icon: "fas fa-tasks",
+                category: "nlp"
+            },
+            {
+                id: 61,
+                question: "Explain ELMo embeddings",
+                answer: "Embeddings from Language Models. Contextual, character-based. BiLSTM architecture.",
+                difficulty: "hard",
+                icon: "fas fa-language",
+                category: "nlp"
+            },
+            {
+                id: 62,
+                question: "What is ULMFiT?",
+                answer: "Universal Language Model Fine-tuning. Transfer learning for NLP. Three stages.",
+                difficulty: "hard",
+                icon: "fas fa-language",
+                category: "nlp"
+            },
+            {
+                id: 63,
+                question: "Explain Transformer-XL",
+                answer: "Transformer with recurrence mechanism. Handles longer sequences.",
+                difficulty: "hard",
+                icon: "fas fa-exchange-alt",
+                category: "transformers"
+            },
+            {
+                id: 64,
+                question: "What is XLNet?",
+                answer: "Generalized autoregressive pretraining. Permutation language modeling.",
+                difficulty: "hard",
+                icon: "fas fa-robot",
+                category: "llms"
+            },
+            {
+                id: 65,
+                question: "Explain RoBERTa",
+                answer: "Robustly optimized BERT approach. Removes NSP, larger batches, more data.",
+                difficulty: "hard",
+                icon: "fas fa-robot",
+                category: "llms"
+            },
+            {
+                id: 66,
+                question: "What is ALBERT?",
+                answer: "A Lite BERT. Factorized embedding, cross-layer parameter sharing.",
+                difficulty: "hard",
+                icon: "fas fa-robot",
+                category: "llms"
+            },
+            {
+                id: 67,
+                question: "Explain DistilBERT",
+                answer: "Distilled version of BERT. 40% smaller, 60% faster, retains 97% performance.",
+                difficulty: "hard",
+                icon: "fas fa-robot",
+                category: "llms"
+            },
+            {
+                id: 68,
+                question: "What is T5?",
+                answer: "Text-to-Text Transfer Transformer. All NLP tasks as text-to-text.",
+                difficulty: "hard",
+                icon: "fas fa-exchange-alt",
+                category: "llms"
+            },
+            {
+                id: 69,
+                question: "Explain BART",
+                answer: "Bidirectional and Auto-Regressive Transformers. Denoising autoencoder for text.",
+                difficulty: "hard",
+                icon: "fas fa-exchange-alt",
+                category: "llms"
+            },
+            {
+                id: 70,
+                question: "What is GPT-2?",
+                answer: "1.5B parameter transformer. Unsupervised multitask learner.",
+                difficulty: "hard",
+                icon: "fas fa-keyboard",
+                category: "llms"
+            },
+            {
+                id: 71,
+                question: "Explain GPT-3",
+                answer: "175B parameters. Few-shot, one-shot, zero-shot learning. In-context learning.",
+                difficulty: "hard",
+                icon: "fas fa-keyboard",
+                category: "llms"
+            },
+            {
+                id: 72,
+                question: "What is ChatGPT?",
+                answer: "GPT-3.5 fine-tuned with Reinforcement Learning from Human Feedback (RLHF).",
+                difficulty: "hard",
+                icon: "fas fa-comments",
+                category: "llms"
+            },
+            {
+                id: 73,
+                question: "Explain InstructGPT",
+                answer: "GPT-3 fine-tuned to follow instructions. Three-step RLHF process.",
+                difficulty: "hard",
+                icon: "fas fa-robot",
+                category: "llms"
+            },
+            {
+                id: 74,
+                question: "What is Codex?",
+                answer: "GPT-3 fine-tuned on code. Powers GitHub Copilot.",
+                difficulty: "hard",
+                icon: "fas fa-code",
+                category: "llms"
+            },
+            {
+                id: 75,
+                question: "Explain DALL-E",
+                answer: "GPT-3 for image generation from text. CLIP + VQ-VAE.",
+                difficulty: "hard",
+                icon: "fas fa-image",
+                category: "llms"
+            },
+            {
+                id: 76,
+                question: "What is Stable Diffusion?",
+                answer: "Latent diffusion model for text-to-image. Open source alternative to DALL-E.",
+                difficulty: "hard",
+                icon: "fas fa-image",
+                category: "architectures"
+            },
+            {
+                id: 77,
+                question: "Explain Diffusion Models",
+                answer: "Generative models that gradually add noise then learn to reverse process.",
+                difficulty: "hard",
+                icon: "fas fa-wave-square",
+                category: "architectures"
+            },
+            {
+                id: 78,
+                question: "What is CLIP?",
+                answer: "Contrastive Language-Image Pre-training. Learns visual concepts from natural language.",
+                difficulty: "hard",
+                icon: "fas fa-eye",
+                category: "architectures"
+            },
+            {
+                id: 79,
+                question: "Explain Vision Transformers",
+                answer: "Apply transformers to images. Split image into patches, treat as sequence.",
+                difficulty: "hard",
+                icon: "fas fa-eye",
+                category: "architectures"
+            },
+            {
+                id: 80,
+                question: "What is Swin Transformer?",
+                answer: "Hierarchical vision transformer. Shifted windows for efficiency.",
+                difficulty: "hard",
+                icon: "fas fa-eye",
+                category: "architectures"
+            },
+            {
+                id: 81,
+                question: "Explain EfficientNet",
+                answer: "CNN scaling method. Compound scaling of depth, width, resolution.",
+                difficulty: "hard",
+                icon: "fas fa-eye",
+                category: "architectures"
+            },
+            {
+                id: 82,
+                question: "What is MobileNet?",
+                answer: "Lightweight CNN for mobile. Depthwise separable convolutions.",
+                difficulty: "medium",
+                icon: "fas fa-mobile-alt",
+                category: "architectures"
+            },
+            {
+                id: 83,
+                question: "Explain Inception network",
+                answer: "GoogLeNet. Multiple filter sizes in parallel. 1×1 convolutions for dimensionality reduction.",
+                difficulty: "hard",
+                icon: "fas fa-eye",
+                category: "architectures"
+            },
+            {
+                id: 84,
+                question: "What is DenseNet?",
+                answer: "Densely connected CNN. Each layer connects to all subsequent layers.",
+                difficulty: "hard",
+                icon: "fas fa-layer-group",
+                category: "architectures"
+            },
+            {
+                id: 85,
+                question: "Explain NAS (Neural Architecture Search)",
+                answer: "Automatically design neural network architectures. Reinforcement learning or evolutionary algorithms.",
+                difficulty: "hard",
+                icon: "fas fa-robot",
+                category: "architectures"
+            },
+            {
+                id: 86,
+                question: "What is MAML?",
+                answer: "Model-Agnostic Meta-Learning. Learn to quickly adapt to new tasks.",
+                difficulty: "hard",
+                icon: "fas fa-bolt",
+                category: "deeplearning"
+            },
+            {
+                id: 87,
+                question: "Explain Few-shot Learning",
+                answer: "Learn from very few examples. Meta-learning approaches.",
+                difficulty: "hard",
+                icon: "fas fa-bolt",
+                category: "deeplearning"
+            },
+            {
+                id: 88,
+                question: "What is Zero-shot Learning?",
+                answer: "Recognize classes never seen during training. Use semantic descriptions.",
+                difficulty: "hard",
+                icon: "fas fa-bolt",
+                category: "deeplearning"
+            },
+            {
+                id: 89,
+                question: "Explain Self-supervised Learning",
+                answer: "Learn from unlabeled data by creating pretext tasks. Contrastive learning.",
+                difficulty: "hard",
+                icon: "fas fa-graduation-cap",
+                category: "deeplearning"
+            },
+            {
+                id: 90,
+                question: "What is Contrastive Learning?",
+                answer: "Learn representations by contrasting positive and negative pairs. SimCLR, MoCo.",
+                difficulty: "hard",
+                icon: "fas fa-balance-scale",
+                category: "deeplearning"
+            },
+            {
+                id: 91,
+                question: "Explain Siamese Networks",
+                answer: "Two identical subnetworks sharing weights. Learn similarity between inputs.",
+                difficulty: "medium",
+                icon: "fas fa-code-branch",
+                category: "architectures"
+            },
+            {
+                id: 92,
+                question: "What is Triplet Loss?",
+                answer: "Loss for metric learning. Anchor, positive, negative. Distance(anchor, positive) < Distance(anchor, negative).",
+                difficulty: "medium",
+                icon: "fas fa-balance-scale",
+                category: "deeplearning"
+            },
+            {
+                id: 93,
+                question: "Explain Focal Loss",
+                answer: "Addresses class imbalance. Down-weights easy examples, focuses on hard ones.",
+                difficulty: "medium",
+                icon: "fas fa-balance-scale",
+                category: "deeplearning"
+            },
+            {
+                id: 94,
+                question: "What is Dice Loss?",
+                answer: "For segmentation tasks. Measures overlap between prediction and ground truth.",
+                difficulty: "medium",
+                icon: "fas fa-balance-scale",
+                category: "deeplearning"
+            },
+            {
+                id: 95,
+                question: "Explain IoU (Intersection over Union)",
+                answer: "Evaluation metric for object detection. Area of overlap / Area of union.",
+                difficulty: "medium",
+                icon: "fas fa-square",
+                category: "cnn"
+            },
+            {
+                id: 96,
+                question: "What is mAP?",
+                answer: "mean Average Precision. Evaluation metric for object detection. Average precision across classes.",
+                difficulty: "medium",
+                icon: "fas fa-chart-bar",
+                category: "cnn"
+            },
+            {
+                id: 97,
+                question: "Explain Non-Maximum Suppression",
+                answer: "Post-processing for object detection. Remove duplicate bounding boxes.",
+                difficulty: "medium",
+                icon: "fas fa-filter",
+                category: "cnn"
+            },
+            {
+                id: 98,
+                question: "What is Anchor Boxes?",
+                answer: "Predefined boxes of different scales/aspect ratios. Used in object detection.",
+                difficulty: "medium",
+                icon: "fas fa-square",
+                category: "cnn"
+            },
+            {
+                id: 99,
+                question: "Explain RPN (Region Proposal Network)",
+                answer: "In Faster R-CNN. Proposes candidate object regions.",
+                difficulty: "hard",
+                icon: "fas fa-map",
+                category: "cnn"
+            },
+            {
+                id: 100,
+                question: "What is Mask R-CNN?",
+                answer: "Extends Faster R-CNN for instance segmentation. Adds mask branch.",
+                difficulty: "hard",
+                icon: "fas fa-eye",
+                category: "cnn"
+            },
+            {
+                id: 101,
+                question: "Explain SSD (Single Shot Detector)",
+                answer: "Object detection in single pass. Multiple feature maps at different scales.",
+                difficulty: "hard",
+                icon: "fas fa-bullseye",
+                category: "cnn"
+            },
+            {
+                id: 102,
+                question: "What is RetinaNet?",
+                answer: "One-stage object detector with Focal Loss. Addresses class imbalance.",
+                difficulty: "hard",
+                icon: "fas fa-eye",
+                category: "cnn"
+            },
+            {
+                id: 103,
+                question: "Explain EfficientDet",
+                answer: "Efficient object detection. BiFPN + compound scaling.",
+                difficulty: "hard",
+                icon: "fas fa-eye",
+                category: "cnn"
+            },
+            {
+                id: 104,
+                question: "What is PointNet?",
+                answer: "Deep learning on point clouds. Permutation invariant.",
+                difficulty: "hard",
+                icon: "fas fa-cloud",
+                category: "architectures"
+            },
+            {
+                id: 105,
+                question: "Explain 3D CNN",
+                answer: "Convolutions in 3D for volumetric data. Medical imaging, video.",
+                difficulty: "hard",
+                icon: "fas fa-cube",
+                category: "cnn"
+            },
+            {
+                id: 106,
+                question: "What is Spatio-temporal CNN?",
+                answer: "For video analysis. 3D convolutions or 2D conv + temporal pooling.",
+                difficulty: "hard",
+                icon: "fas fa-video",
+                category: "cnn"
+            },
+            {
+                id: 107,
+                question: "Explain Optical Flow",
+                answer: "Motion estimation between video frames. Used in video analysis.",
+                difficulty: "hard",
+                icon: "fas fa-wave-square",
+                category: "cnn"
+            },
+            {
+                id: 108,
+                question: "What is Neural Style Transfer?",
+                answer: "Apply artistic style to image. Gram matrix of features captures style.",
+                difficulty: "medium",
+                icon: "fas fa-paint-brush",
+                category: "cnn"
+            },
+            {
+                id: 109,
+                question: "Explain Super-resolution",
+                answer: "Increase image resolution. SRCNN, SRGAN.",
+                difficulty: "medium",
+                icon: "fas fa-search-plus",
+                category: "cnn"
+            },
+            {
+                id: 110,
+                question: "What is Image Inpainting?",
+                answer: "Fill missing parts of image. Context encoders, GAN-based.",
+                difficulty: "medium",
+                icon: "fas fa-fill-drip",
+                category: "cnn"
+            },
+            {
+                id: 111,
+                question: "Explain Colorization",
+                answer: "Add color to grayscale images. CNN-based approaches.",
+                difficulty: "medium",
+                icon: "fas fa-palette",
+                category: "cnn"
+            },
+            {
+                id: 112,
+                question: "What is Depth Estimation?",
+                answer: "Predict depth from single image. Monocular depth estimation.",
+                difficulty: "medium",
+                icon: "fas fa-layer-group",
+                category: "cnn"
+            },
+            {
+                id: 113,
+                question: "Explain Face Recognition",
+                answer: "Identify/verify faces. Triplet loss, ArcFace loss.",
+                difficulty: "hard",
+                icon: "fas fa-user",
+                category: "cnn"
+            },
+            {
+                id: 114,
+                question: "What is Face Detection?",
+                answer: "Locate faces in images. MTCNN, RetinaFace.",
+                difficulty: "medium",
+                icon: "fas fa-user",
+                category: "cnn"
+            },
+            {
+                id: 115,
+                question: "Explain Face Alignment",
+                answer: "Align facial landmarks. Used in face recognition pipeline.",
+                difficulty: "medium",
+                icon: "fas fa-user",
+                category: "cnn"
+            },
+            {
+                id: 116,
+                question: "What is Pose Estimation?",
+                answer: "Estimate human pose/keypoints. OpenPose, HRNet.",
+                difficulty: "hard",
+                icon: "fas fa-running",
+                category: "cnn"
+            },
+            {
+                id: 117,
+                question: "Explain Action Recognition",
+                answer: "Recognize human actions in videos. Two-stream networks, 3D CNN.",
+                difficulty: "hard",
+                icon: "fas fa-running",
+                category: "cnn"
+            },
+            {
+                id: 118,
+                question: "What is Scene Text Recognition?",
+                answer: "Read text from natural images. CRNN (CNN + RNN + CTC).",
+                difficulty: "hard",
+                icon: "fas fa-font",
+                category: "cnn"
+            },
+            {
+                id: 119,
+                question: "Explain OCR (Optical Character Recognition)",
+                answer: "Convert images of text to machine-encoded text. Tesseract, deep learning based.",
+                difficulty: "medium",
+                icon: "fas fa-font",
+                category: "cnn"
+            },
+            {
+                id: 120,
+                question: "What is Document Understanding?",
+                answer: "Analyze document layout and content. LayoutLM, Donut.",
+                difficulty: "hard",
+                icon: "fas fa-file-alt",
+                category: "nlp"
+            },
+            {
+                id: 121,
+                question: "Explain Table Extraction",
+                answer: "Extract tables from documents. TableNet, CascadeTabNet.",
+                difficulty: "hard",
+                icon: "fas fa-table",
+                category: "nlp"
+            },
+            {
+                id: 122,
+                question: "What is Information Extraction?",
+                answer: "Extract structured information from unstructured text. NER, relation extraction.",
+                difficulty: "medium",
+                icon: "fas fa-database",
+                category: "nlp"
+            },
+            {
+                id: 123,
+                question: "Explain Relation Extraction",
+                answer: "Identify relationships between entities. Semi-supervised, supervised methods.",
+                difficulty: "hard",
+                icon: "fas fa-project-diagram",
+                category: "nlp"
+            },
+            {
+                id: 124,
+                question: "What is Event Extraction?",
+                answer: "Identify events and their arguments from text. ACE dataset.",
+                difficulty: "hard",
+                icon: "fas fa-calendar-alt",
+                category: "nlp"
+            },
+            {
+                id: 125,
+                question: "Explain Knowledge Graphs",
+                answer: "Structured knowledge representation. Entities and relationships.",
+                difficulty: "medium",
+                icon: "fas fa-project-diagram",
+                category: "nlp"
+            },
+            {
+                id: 126,
+                question: "What is Knowledge Base Completion?",
+                answer: "Predict missing links in knowledge graph. TransE, ComplEx.",
+                difficulty: "hard",
+                icon: "fas fa-project-diagram",
+                category: "nlp"
+            },
+            {
+                id: 127,
+                question: "Explain Graph Neural Networks",
+                answer: "Neural networks for graph-structured data. Message passing between nodes.",
+                difficulty: "hard",
+                icon: "fas fa-project-diagram",
+                category: "architectures"
+            },
+            {
+                id: 128,
+                question: "What is GCN?",
+                answer: "Graph Convolutional Network. Apply convolutions on graphs.",
+                difficulty: "hard",
+                icon: "fas fa-project-diagram",
+                category: "architectures"
+            },
+            {
+                id: 129,
+                question: "Explain GAT",
+                answer: "Graph Attention Network. Attention mechanism on graphs.",
+                difficulty: "hard",
+                icon: "fas fa-project-diagram",
+                category: "architectures"
+            },
+            {
+                id: 130,
+                question: "What is GraphSAGE?",
+                answer: "Graph SAmple and aggreGatE. Inductive learning on graphs.",
+                difficulty: "hard",
+                icon: "fas fa-project-diagram",
+                category: "architectures"
+            },
+            {
+                id: 131,
+                question: "Explain Reinforcement Learning",
+                answer: "Agent learns through rewards. Markov Decision Process.",
+                difficulty: "hard",
+                icon: "fas fa-gamepad",
+                category: "deeplearning"
+            },
+            {
+                id: 132,
+                question: "What is Q-learning?",
+                answer: "Value-based RL. Learn Q-function: Q(s,a) = expected reward.",
+                difficulty: "hard",
+                icon: "fas fa-gamepad",
+                category: "deeplearning"
+            },
+            {
+                id: 133,
+                question: "Explain Deep Q-Networks",
+                answer: "Q-learning with neural networks. Experience replay, target networks.",
+                difficulty: "hard",
+                icon: "fas fa-gamepad",
+                category: "deeplearning"
+            },
+            {
+                id: 134,
+                question: "What is Policy Gradient?",
+                answer: "Directly learn policy. REINFORCE algorithm.",
+                difficulty: "hard",
+                icon: "fas fa-gamepad",
+                category: "deeplearning"
+            },
+            {
+                id: 135,
+                question: "Explain Actor-Critic",
+                answer: "Combine value-based and policy-based. Actor: policy, Critic: value function.",
+                difficulty: "hard",
+                icon: "fas fa-gamepad",
+                category: "deeplearning"
+            },
+            {
+                id: 136,
+                question: "What is PPO?",
+                answer: "Proximal Policy Optimization. Policy gradient with clipped objective.",
+                difficulty: "hard",
+                icon: "fas fa-gamepad",
+                category: "deeplearning"
+            },
+            {
+                id: 137,
+                question: "Explain TRPO",
+                answer: "Trust Region Policy Optimization. Constrained policy update.",
+                difficulty: "hard",
+                icon: "fas fa-gamepad",
+                category: "deeplearning"
+            },
+            {
+                id: 138,
+                question: "What is SAC?",
+                answer: "Soft Actor-Critic. Maximum entropy RL.",
+                difficulty: "hard",
+                icon: "fas fa-gamepad",
+                category: "deeplearning"
+            },
+            {
+                id: 139,
+                question: "Explain Multi-agent RL",
+                answer: "Multiple agents learning simultaneously. Cooperation/competition.",
+                difficulty: "hard",
+                icon: "fas fa-users",
+                category: "deeplearning"
+            },
+            {
+                id: 140,
+                question: "What is Imitation Learning?",
+                answer: "Learn from expert demonstrations. Behavioral cloning, inverse RL.",
+                difficulty: "hard",
+                icon: "fas fa-chalkboard-teacher",
+                category: "deeplearning"
+            },
+            {
+                id: 141,
+                question: "Explain Inverse Reinforcement Learning",
+                answer: "Infer reward function from demonstrations.",
+                difficulty: "hard",
+                icon: "fas fa-chalkboard-teacher",
+                category: "deeplearning"
+            },
+            {
+                id: 142,
+                question: "What is Meta Reinforcement Learning?",
+                answer: "Learn to learn in RL. Fast adaptation to new tasks.",
+                difficulty: "hard",
+                icon: "fas fa-bolt",
+                category: "deeplearning"
+            },
+            {
+                id: 143,
+                question: "Explain Distributed Training",
+                answer: "Train models across multiple devices. Data parallelism, model parallelism.",
+                difficulty: "hard",
+                icon: "fas fa-server",
+                category: "frameworks"
+            },
+            {
+                id: 144,
+                question: "What is Data Parallelism?",
+                answer: "Split batch across devices. Each device has model replica.",
+                difficulty: "medium",
+                icon: "fas fa-server",
+                category: "frameworks"
+            },
+            {
+                id: 145,
+                question: "Explain Model Parallelism",
+                answer: "Split model across devices. For models too large for single device.",
+                difficulty: "medium",
+                icon: "fas fa-server",
+                category: "frameworks"
+            },
+            {
+                id: 146,
+                question: "What is Pipeline Parallelism?",
+                answer: "Split model into stages. Micro-batching for efficiency.",
+                difficulty: "hard",
+                icon: "fas fa-server",
+                category: "frameworks"
+            },
+            {
+                id: 147,
+                question: "Explain Mixed Precision Training",
+                answer: "Use FP16 and FP32. Faster computation, less memory.",
+                difficulty: "medium",
+                icon: "fas fa-tachometer-alt",
+                category: "frameworks"
+            },
+            {
+                id: 148,
+                question: "What is Gradient Checkpointing?",
+                answer: "Trade compute for memory. Recompute activations during backward pass.",
+                difficulty: "hard",
+                icon: "fas fa-memory",
+                category: "frameworks"
+            },
+            {
+                id: 149,
+                question: "Explain Pruning",
+                answer: "Remove unimportant weights. Reduce model size.",
+                difficulty: "medium",
+                icon: "fas fa-cut",
+                category: "frameworks"
+            },
+            {
+                id: 150,
+                question: "What is Quantization?",
+                answer: "Reduce precision of weights/activations. INT8 instead of FP32.",
+                difficulty: "medium",
+                icon: "fas fa-compress",
+                category: "frameworks"
+            },
+            {
+                id: 151,
+                question: "Explain Knowledge Distillation",
+                answer: "Train small student model to mimic large teacher model.",
+                difficulty: "medium",
+                icon: "fas fa-graduation-cap",
+                category: "frameworks"
+            },
+            {
+                id: 152,
+                question: "What is TensorFlow?",
+                answer: "Google's DL framework. Static computation graphs.",
+                difficulty: "easy",
+                icon: "fab fa-google",
+                category: "frameworks"
+            },
+            {
+                id: 153,
+                question: "Explain PyTorch",
+                answer: "Facebook's DL framework. Dynamic computation graphs, Pythonic.",
+                difficulty: "easy",
+                icon: "fab fa-facebook",
+                category: "frameworks"
+            },
+            {
+                id: 154,
+                question: "What is JAX?",
+                answer: "Google's numerical computing. Automatic differentiation, JIT compilation.",
+                difficulty: "hard",
+                icon: "fab fa-google",
+                category: "frameworks"
+            },
+            {
+                id: 155,
+                question: "Explain Hugging Face Transformers",
+                answer: "Library for state-of-the-art NLP. Pre-trained models, easy fine-tuning.",
+                difficulty: "medium",
+                icon: "fas fa-heart",
+                category: "frameworks"
+            }
+        ];
+        
+        // Load questions into the container with filtering
+        const questionsContainer = document.getElementById('questionsContainer');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        
+        function displayQuestions(filter = 'all') {
+            questionsContainer.innerHTML = '';
+            
+            const filteredQuestions = filter === 'all' 
+                ? dlQuestions 
+                : dlQuestions.filter(q => q.category === filter);
+            
+            filteredQuestions.forEach((q, index) => {
+                const questionCard = document.createElement('div');
+                questionCard.className = `question-card ${q.category}`;
+                questionCard.innerHTML = `
+                    <div class="question-header">
+                        <span class="question-number">${q.id}</span>
+                        <h3 class="question">${q.question}</h3>
+                        <i class="${q.icon} tech-icon"></i>
+                    </div>
+                    <span class="difficulty ${q.difficulty}">${q.difficulty.toUpperCase()}</span>
+                    <span class="category">${q.category.toUpperCase()}</span>
+                    <div class="answer" id="answer-${q.id}">
+                        ${q.answer}
+                    </div>
+                    <button class="toggle-answer" data-answer="answer-${q.id}">
+                        <i class="fas fa-chevron-down"></i> Show Answer
+                    </button>
+                `;
+                questionsContainer.appendChild(questionCard);
+            });
+            
+            // Update stats
+            document.querySelector('.stat-number').textContent = `${filteredQuestions.length}+`;
+        }
+        
+        // Initial display
+        displayQuestions();
+        
+        // Filter button click handlers
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                // Get category filter
+                const filter = this.getAttribute('data-category');
+                // Display filtered questions
+                displayQuestions(filter);
+            });
+        });
+        
+        // Toggle answer visibility
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('toggle-answer') || e.target.parentElement.classList.contains('toggle-answer')) {
+                const button = e.target.classList.contains('toggle-answer') ? e.target : e.target.parentElement;
+                const answerId = button.getAttribute('data-answer');
+                const answerElement = document.getElementById(answerId);
+                const isHidden = answerElement.style.display === 'none' || !answerElement.classList.contains('show');
+                
+                if (isHidden) {
+                    answerElement.classList.add('show');
+                    button.innerHTML = '<i class="fas fa-chevron-up"></i> Hide Answer';
+                } else {
+                    answerElement.classList.remove('show');
+                    button.innerHTML = '<i class="fas fa-chevron-down"></i> Show Answer';
+                }
+            }
+        });
+        
+        // Sample reviews data
+        const reviews = [
+            {
+                name: "Aarav Sharma",
+                text: "Ram Sir's Deep Learning course is phenomenal! I went from basic Python to implementing cutting-edge research papers. Landed a job as AI Researcher at top company!",
+                rating: 5,
+                course: "Deep Learning Masterclass"
+            },
+            {
+                name: "Priya Patel",
+                text: "The NLP & LLMs specialization transformed my career. Understanding Transformers and fine-tuning BERT/GPT models was game-changing. Got 150% salary hike!",
+                rating: 5,
+                course: "NLP & LLMs Specialization"
+            },
+            {
+                name: "Rohan Verma",
+                text: "As a software engineer transitioning to AI, Ram Sir's teaching made complex concepts like attention mechanisms crystal clear. Now leading ML projects at FAANG!",
+                rating: 5,
+                course: "Deep Learning Masterclass"
+            },
+            {
+                name: "Ananya Reddy",
+                text: "The hands-on projects with TensorFlow and PyTorch were incredible. Implemented papers from scratch and built production-ready models. Highly recommended!",
+                rating: 5,
+                course: "AI Engineering"
+            },
+            {
+                name: "Vikram Singh",
+                text: "Ram Sir's expertise in MLOps and model deployment helped me become a full-stack AI engineer. Now architecting enterprise AI solutions!",
+                rating: 5,
+                course: "AI Engineering"
+            }
+        ];
+        
+        // Load reviews into slider
+        const reviewsSlider = document.getElementById('reviewsSlider');
+        
+        reviews.forEach(review => {
+            const reviewCard = document.createElement('div');
+            reviewCard.className = 'review-card';
+            
+            let stars = '';
+            for (let i = 0; i < review.rating; i++) {
+                stars += '<i class="fas fa-star"></i>';
+            }
+            
+            reviewCard.innerHTML = `
+                <p class="review-text">"${review.text}"</p>
+                <div class="reviewer">
+                    <div class="reviewer-img">${review.name.charAt(0)}</div>
+                    <div class="reviewer-info">
+                        <h4>${review.name}</h4>
+                        <p>${review.course} Student</p>
+                        <div class="review-rating">
+                            ${stars}
+                        </div>
+                    </div>
+                </div>
+            `;
+            reviewsSlider.appendChild(reviewCard);
+        });
+        
+        // Initialize Owl Carousel
+        $(document).ready(function(){
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: true,
+                dots: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    768: {
+                        items: 2
+                    },
+                    992: {
+                        items: 3
+                    }
+                }
+            });
+        });
+        
+        // WhatsApp button functionality
+        document.getElementById('whatsappBtn').addEventListener('click', function() {
+            const name = document.querySelector('input[type="text"]').value || "Interested Student";
+            const phone = document.querySelector('input[type="tel"]').value || "";
+            const message = document.querySelector('textarea').value || "Hi Ram Sir, I'm interested in your Deep Learning and NLP courses. Please share more details.";
+            
+            const whatsappUrl = `https://wa.me/919753528324?text=${encodeURIComponent(`Name: ${name}\nPhone: ${phone}\nMessage: ${message}`)}`;
+            window.open(whatsappUrl, '_blank');
+        });
+        
+        // Call button functionality
+        document.getElementById('callBtn').addEventListener('click', function() {
+            window.location.href = 'tel:+919753528324';
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Show total question count
+        document.addEventListener('DOMContentLoaded', function() {
+            const statNumber = document.querySelector('.stat-number');
+            if (statNumber) {
+                statNumber.textContent = `${dlQuestions.length}+`;
+            }
+        });
+    </script>
+</body>
+</html>

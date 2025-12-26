@@ -1,0 +1,2973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI & Generative AI Mastery - 150+ Interview Q&A | Ram Sir</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <style>
+        :root {
+            --primary: #6C63FF;
+            --secondary: #FF6584;
+            --accent: #36D1DC;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #2ec4b6;
+            --warning: #ff9f1c;
+            --danger: #e63946;
+            --gradient: linear-gradient(135deg, #6C63FF 0%, #FF6584 100%);
+            --gradient-light: linear-gradient(135deg, #FF6584 0%, #6C63FF 100%);
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.12);
+            --radius: 10px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--dark);
+            background-color: #f8fafc;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: var(--gradient);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
+            margin-bottom: 2px;
+        }
+        
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+        
+        .nav-menu a:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+        
+        .nav-menu a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            background: var(--gradient-light);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        
+        .btn-primary {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* Filter Section */
+        .filter-section {
+            background: white;
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin: 30px 0;
+        }
+        
+        .filter-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            padding: 8px 16px;
+            background: #f1f5f9;
+            border: none;
+            border-radius: 20px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            color: #555;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--gradient);
+            color: white;
+        }
+        
+        /* Questions Section */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        .questions-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+        
+        .question-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 5px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .question-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .question-card.aifundamentals {
+            border-left-color: #6C63FF;
+        }
+        
+        .question-card.generativeai {
+            border-left-color: #FF6584;
+        }
+        
+        .question-card.llms {
+            border-left-color: #36D1DC;
+        }
+        
+        .question-card.gans {
+            border-left-color: #FF9A76;
+        }
+        
+        .question-card.diffusion {
+            border-left-color: #9D65C9;
+        }
+        
+        .question-card.transformers {
+            border-left-color: #FFD166;
+        }
+        
+        .question-card.ethics {
+            border-left-color: #06D6A0;
+        }
+        
+        .question-card.multimodal {
+            border-left-color: #118AB2;
+        }
+        
+        .question-card.agents {
+            border-left-color: #EF476F;
+        }
+        
+        .question-card.rag {
+            border-left-color: #7B68EE;
+        }
+        
+        .question-card.finetuning {
+            border-left-color: #FF9A76;
+        }
+        
+        .question-card.deployment {
+            border-left-color: #1B998B;
+        }
+        
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .question-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-right: 10px;
+        }
+        
+        .question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark);
+            line-height: 1.4;
+            flex: 1;
+        }
+        
+        .tech-icon {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .answer {
+            color: #555;
+            line-height: 1.6;
+            padding-top: 15px;
+            border-top: 1px dashed #eee;
+            margin-top: 15px;
+            display: none;
+        }
+        
+        .answer.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .answer pre {
+            background: #f1f5f9;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            border-left: 3px solid var(--primary);
+        }
+        
+        .answer code {
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: var(--danger);
+        }
+        
+        .toggle-answer {
+            background: var(--gradient-light);
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: var(--transition);
+        }
+        
+        .toggle-answer:hover {
+            background: var(--gradient);
+            transform: scale(1.05);
+        }
+        
+        .difficulty {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-top: 15px;
+        }
+        
+        .difficulty.easy {
+            background-color: rgba(46, 196, 182, 0.15);
+            color: var(--success);
+        }
+        
+        .difficulty.medium {
+            background-color: rgba(255, 159, 28, 0.15);
+            color: var(--warning);
+        }
+        
+        .difficulty.hard {
+            background-color: rgba(220, 53, 69, 0.15);
+            color: #dc3545;
+        }
+        
+        .category {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-left: 10px;
+            background-color: #f1f5f9;
+            color: #555;
+        }
+        
+        /* Courses Section */
+        .courses {
+            background-color: #f1f5f9;
+            padding: 60px 0;
+        }
+        
+        .courses-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .course-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .course-header {
+            background: var(--gradient);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+        
+        .course-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .course-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .course-body {
+            padding: 25px;
+        }
+        
+        .course-features {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .course-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .course-features li i {
+            color: var(--success);
+        }
+        
+        .course-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .course-price span {
+            font-size: 1rem;
+            color: #666;
+            font-weight: normal;
+        }
+        
+        .course-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .course-btn {
+            flex: 1;
+            text-align: center;
+            padding: 12px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .course-btn.enroll {
+            background: var(--gradient);
+            color: white;
+        }
+        
+        .course-btn.enroll:hover {
+            background: var(--primary);
+        }
+        
+        .course-btn.details {
+            background: #f1f5f9;
+            color: var(--primary);
+        }
+        
+        .course-btn.details:hover {
+            background: #e2e8f0;
+        }
+        
+        /* Reviews Section */
+        .reviews {
+            padding: 60px 0;
+        }
+        
+        .reviews-slider {
+            margin-top: 40px;
+        }
+        
+        .review-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin: 10px;
+            position: relative;
+        }
+        
+        .review-card::before {
+            content: "\201C";
+            font-size: 4rem;
+            color: var(--accent);
+            opacity: 0.3;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+        
+        .review-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        .reviewer {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .reviewer-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .reviewer-info h4 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .reviewer-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .review-rating {
+            color: #ffc107;
+            margin-top: 5px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: white;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .footer-col p {
+            color: #b0b0b0;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: #b0b0b0;
+        }
+        
+        .contact-info li i {
+            color: var(--accent);
+            width: 20px;
+        }
+        
+        .enquiry-form input,
+        .enquiry-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            background: #2d3748;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .enquiry-form textarea {
+            height: 120px;
+            resize: none;
+        }
+        
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            transition: var(--transition);
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+        }
+        
+        .call-btn {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            margin-top: 10px;
+            transition: var(--transition);
+        }
+        
+        .call-btn:hover {
+            background: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #2d3748;
+            color: #b0b0b0;
+            font-size: 0.9rem;
+        }
+        
+        /* Stats */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            min-width: 150px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .stat-text {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .questions-container {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--gradient);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                gap: 0;
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: var(--transition);
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-menu.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+            
+            .nav-menu li {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-menu a {
+                display: block;
+                padding: 15px;
+                border-radius: 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .stats {
+                gap: 15px;
+            }
+            
+            .stat-item {
+                min-width: 120px;
+                padding: 15px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .questions-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .course-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-robot"></i>
+                <div class="logo-text">
+                    <h1>Ram Sir</h1>
+                    <p>AI & Generative AI Expert</p>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#questions">AI Q&A (150+)</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#reviews">Student Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <div class="hero-emoji">
+                🤖 🧠 🎨 🚀 ✨
+            </div>
+            <h2>Master AI & Generative AI with 150+ Interview Questions</h2>
+            <p>Comprehensive collection of AI and Generative AI interview questions covering LLMs, GANs, Diffusion Models, Transformers, and more. Perfect for AI engineers and researchers.</p>
+            <div class="cta-buttons">
+                <a href="#questions" class="btn btn-primary">
+                    <i class="fas fa-list"></i> Explore All Questions
+                </a>
+                <a href="#courses" class="btn btn-secondary">
+                    <i class="fas fa-graduation-cap"></i> Enroll Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="container">
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">150+</div>
+                <div class="stat-text">AI Questions</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">12+</div>
+                <div class="stat-text">Categories</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">1200+</div>
+                <div class="stat-text">Students Trained</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">8+</div>
+                <div class="stat-text">Years Experience</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Questions Section -->
+    <section id="questions">
+        <div class="container">
+            <div class="section-title">
+                <h2>150+ AI & Generative AI Interview Questions</h2>
+                <p>Complete collection of AI questions with detailed answers. Filter by category to focus on specific topics.</p>
+            </div>
+            
+            <!-- Filter Section -->
+            <div class="filter-section">
+                <h3 class="filter-title">Filter by Category:</h3>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-category="all">All Questions</button>
+                    <button class="filter-btn" data-category="aifundamentals">AI Fundamentals</button>
+                    <button class="filter-btn" data-category="generativeai">Generative AI</button>
+                    <button class="filter-btn" data-category="llms">LLMs</button>
+                    <button class="filter-btn" data-category="gans">GANs</button>
+                    <button class="filter-btn" data-category="diffusion">Diffusion Models</button>
+                    <button class="filter-btn" data-category="transformers">Transformers</button>
+                    <button class="filter-btn" data-category="ethics">AI Ethics</button>
+                    <button class="filter-btn" data-category="multimodal">Multimodal AI</button>
+                    <button class="filter-btn" data-category="agents">AI Agents</button>
+                    <button class="filter-btn" data-category="rag">RAG Systems</button>
+                    <button class="filter-btn" data-category="finetuning">Fine-tuning</button>
+                    <button class="filter-btn" data-category="deployment">Deployment</button>
+                </div>
+            </div>
+            
+            <div class="questions-container" id="questionsContainer">
+                <!-- Questions will be loaded here via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses" id="courses">
+        <div class="container">
+            <div class="section-title">
+                <h2>Recommended AI & Generative AI Courses</h2>
+                <p>Master Artificial Intelligence and Generative AI with our comprehensive courses designed for beginners to advanced professionals.</p>
+            </div>
+            
+            <div class="courses-container">
+                <!-- Course 1 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 class="course-title">AI Masterclass</h3>
+                        <p>Complete AI Engineering</p>
+                    </div>
+                    <div class="course-body">
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> 120+ Hours of Content</li>
+                            <li><i class="fas fa-check"></i> 80+ Hands-on Projects</li>
+                            <li><i class="fas fa-check"></i> Real-world AI Applications</li>
+                            <li><i class="fas fa-check"></i> Research Paper Implementation</li>
+                            <li><i class="fas fa-check"></i> Lifetime Access</li>
+                        </ul>
+                        <div class="course-price">
+                            ₹16,999 <span>₹34,999</span>
+                        </div>
+                        <div class="course-buttons">
+                            <a href="tel:9753528324" class="course-btn enroll">
+                                <i class="fas fa-phone-alt"></i> Call to Enroll
+                            </a>
+                            <a href="#contact" class="course-btn details">
+                                <i class="fas fa-info-circle"></i> Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 2 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="fas fa-magic"></i>
+                        </div>
+                        <h3 class="course-title">Generative AI Specialization</h3>
+                        <p>LLMs, GANs, Diffusion Models</p>
+                    </div>
+                    <div class="course-body">
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Advanced Generative Models</li>
+                            <li><i class="fas fa-check"></i> LLM Fine-tuning & Deployment</li>
+                            <li><i class="fas fa-check"></i> Stable Diffusion Implementation</li>
+                            <li><i class="fas fa-check"></i> Real Creative Projects</li>
+                            <li><i class="fas fa-check"></i> 1-on-1 Mentoring</li>
+                        </ul>
+                        <div class="course-price">
+                            ₹19,999 <span>₹39,999</span>
+                        </div>
+                        <div class="course-buttons">
+                            <a href="tel:9753528324" class="course-btn enroll">
+                                <i class="fas fa-phone-alt"></i> Call to Enroll
+                            </a>
+                            <a href="#contact" class="course-btn details">
+                                <i class="fas fa-info-circle"></i> Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 3 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3 class="course-title">AI Production Engineering</h3>
+                        <p>MLOps & Enterprise Deployment</p>
+                    </div>
+                    <div class="course-body">
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Model Deployment & Serving</li>
+                            <li><i class="fas fa-check"></i> MLOps Best Practices</li>
+                            <li><i class="fas fa-check"></i> Cloud AI Services (AWS/Azure/GCP)</li>
+                            <li><i class="fas fa-check"></i> Enterprise AI Projects</li>
+                            <li><i class="fas fa-check"></i> Job Assistance</li>
+                        </ul>
+                        <div class="course-price">
+                            ₹22,999 <span>₹44,999</span>
+                        </div>
+                        <div class="course-buttons">
+                            <a href="tel:9753528324" class="course-btn enroll">
+                                <i class="fas fa-phone-alt"></i> Call to Enroll
+                            </a>
+                            <a href="#contact" class="course-btn details">
+                                <i class="fas fa-info-circle"></i> Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <p><strong>Mode:</strong> Both Online & Offline Classes Available</p>
+                <p><strong>Timing:</strong> Flexible batches (Morning/Evening/Weekend)</p>
+                <p><strong>Call:</strong> <a href="tel:9753528324" style="color: var(--primary); text-decoration: none; font-weight: 600;">+91 97535 28324</a> for details</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <div class="section-title">
+                <h2>Student Reviews</h2>
+                <p>See what our students have to say about our AI and Generative AI training programs.</p>
+            </div>
+            
+            <div class="reviews-slider owl-carousel" id="reviewsSlider">
+                <!-- Reviews will be loaded here via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Ram Sir</h3>
+                    <p>With over 8 years of experience in AI and Generative AI, I've helped 1200+ students build successful careers in artificial intelligence research and engineering.</p>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <span>+91 97535 28324</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>ramsir.ai@example.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Bangalore, India</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="contact-info">
+                        <li><a href="#home" style="color: #b0b0b0; text-decoration: none;">Home</a></li>
+                        <li><a href="#questions" style="color: #b0b0b0; text-decoration: none;">AI Q&A</a></li>
+                        <li><a href="#courses" style="color: #b0b0b0; text-decoration: none;">Courses</a></li>
+                        <li><a href="#reviews" style="color: #b0b0b0; text-decoration: none;">Student Reviews</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Enquiry Form</h3>
+                    <form class="enquiry-form" id="enquiryForm">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <input type="tel" placeholder="Your Phone" required>
+                        <textarea placeholder="Your Message"></textarea>
+                        <button type="button" class="whatsapp-btn" id="whatsappBtn">
+                            <i class="fab fa-whatsapp"></i> Send via WhatsApp
+                        </button>
+                        <button type="button" class="call-btn" id="callBtn">
+                            <i class="fas fa-phone-alt"></i> Call Now: 9753528324
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Ram Sir AI Mastery. All rights reserved. | Designed with ❤️ for aspiring AI professionals</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
+            this.innerHTML = document.getElementById('navMenu').classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('navMenu').classList.remove('active');
+                document.getElementById('mobileMenuBtn').innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Complete AI & Generative AI questions data (150+ questions)
+        const aiQuestions = [
+            // AI Fundamentals
+            {
+                id: 1,
+                question: "What is Artificial Intelligence? Explain different types of AI",
+                answer: `<strong>Artificial Intelligence:</strong> Simulation of human intelligence in machines<br><br>
+                        <strong>Types of AI:</strong><br>
+                        1. <strong>Based on Capability:</strong><br>
+                           - <strong>Narrow AI (Weak AI):</strong> Specialized in one task (e.g., Siri, Alexa)<br>
+                           - <strong>General AI (Strong AI):</strong> Human-level intelligence across all tasks<br>
+                           - <strong>Super AI:</strong> Surpasses human intelligence<br><br>
+                        2. <strong>Based on Functionality:</strong><br>
+                           - <strong>Reactive Machines:</strong> No memory, respond to current situation<br>
+                           - <strong>Limited Memory:</strong> Learn from past experiences<br>
+                           - <strong>Theory of Mind:</strong> Understand emotions, beliefs<br>
+                           - <strong>Self-Aware AI:</strong> Consciousness, self-awareness<br><br>
+                        3. <strong>Based on Learning:</strong><br>
+                           - Supervised Learning<br>
+                           - Unsupervised Learning<br>
+                           - Reinforcement Learning<br>
+                           - Semi-supervised Learning`,
+                difficulty: "easy",
+                icon: "fas fa-brain",
+                category: "aifundamentals"
+            },
+            {
+                id: 2,
+                question: "What is the difference between AI, ML, and Deep Learning?",
+                answer: `<strong>AI (Artificial Intelligence):</strong> Broad field of creating intelligent machines<br>
+                        - Goal: Build systems that can think, learn, and solve problems<br>
+                        - Includes: Expert systems, search algorithms, planning, reasoning<br><br>
+                        <strong>ML (Machine Learning):</strong> Subset of AI<br>
+                        - Goal: Enable machines to learn from data without explicit programming<br>
+                        - Includes: Supervised, unsupervised, reinforcement learning<br>
+                        - Algorithms: Linear regression, decision trees, SVM, clustering<br><br>
+                        <strong>Deep Learning:</strong> Subset of ML<br>
+                        - Goal: Use neural networks with multiple layers<br>
+                        - Inspired by: Human brain structure<br>
+                        - Best for: Unstructured data (images, text, audio)<br>
+                        - Architectures: CNN, RNN, Transformers, GANs<br><br>
+                        <strong>Relationship:</strong> AI ⊃ ML ⊃ Deep Learning`,
+                difficulty: "medium",
+                icon: "fas fa-sitemap",
+                category: "aifundamentals"
+            },
+            
+            // Generative AI
+            {
+                id: 3,
+                question: "What is Generative AI? Explain with examples",
+                answer: `<strong>Generative AI:</strong> AI that creates new content (text, images, audio, video)<br><br>
+                        <strong>Key Characteristics:</strong><br>
+                        1. Creates new, original content<br>
+                        2. Learns patterns from training data<br>
+                        3. Generates variations and combinations<br>
+                        4. Can be conditioned on prompts<br><br>
+                        <strong>Examples:</strong><br>
+                        1. <strong>Text Generation:</strong> GPT-4, Bard, Claude<br>
+                        2. <strong>Image Generation:</strong> DALL-E, Midjourney, Stable Diffusion<br>
+                        3. <strong>Code Generation:</strong> GitHub Copilot, Codex<br>
+                        4. <strong>Audio Generation:</strong> MusicLM, Jukebox<br>
+                        5. <strong>Video Generation:</strong> Runway ML, Pika Labs<br>
+                        6. <strong>3D Model Generation:</strong> DreamFusion, Point-E<br><br>
+                        <strong>Key Models:</strong> GANs, VAEs, Diffusion Models, Autoregressive Models`,
+                difficulty: "medium",
+                icon: "fas fa-magic",
+                category: "generativeai"
+            },
+            {
+                id: 4,
+                question: "Compare different Generative AI models: GANs, VAEs, Diffusion Models",
+                answer: `<strong>1. GANs (Generative Adversarial Networks):</strong><br>
+                        - <strong>Architecture:</strong> Generator + Discriminator competing<br>
+                        - <strong>Training:</strong> Adversarial training, min-max game<br>
+                        - <strong>Strengths:</strong> High-quality images, fast generation<br>
+                        - <strong>Weaknesses:</strong> Training instability, mode collapse<br>
+                        - <strong>Examples:</strong> StyleGAN, BigGAN<br><br>
+                        <strong>2. VAEs (Variational Autoencoders):</strong><br>
+                        - <strong>Architecture:</strong> Encoder + Decoder with latent space<br>
+                        - <strong>Training:</strong> Maximize evidence lower bound (ELBO)<br>
+                        - <strong>Strengths:</strong> Smooth latent space, good reconstruction<br>
+                        - <strong>Weaknesses:</strong> Blurry outputs, lower quality<br>
+                        - <strong>Examples:</strong> β-VAE, NVAE<br><br>
+                        <strong>3. Diffusion Models:</strong><br>
+                        - <strong>Architecture:</strong> Forward (noise) + Reverse (denoise) process<br>
+                        - <strong>Training:</strong> Learn to reverse diffusion process<br>
+                        - <strong>Strengths:</strong> State-of-the-art quality, stable training<br>
+                        - <strong>Weaknesses:</strong> Slow generation, high compute<br>
+                        - <strong>Examples:</strong> DALL-E 2, Stable Diffusion, Imagen<br><br>
+                        <strong>4. Autoregressive Models:</strong><br>
+                        - <strong>Architecture:</strong> Predict next token based on previous<br>
+                        - <strong>Examples:</strong> GPT series, PixelCNN`,
+                difficulty: "hard",
+                icon: "fas fa-chart-bar",
+                category: "generativeai"
+            },
+            
+            // LLMs
+            {
+                id: 5,
+                question: "Explain the evolution of LLMs from GPT-1 to GPT-4",
+                answer: `<strong>GPT-1 (2018):</strong><br>
+                        - Parameters: 117M<br>
+                        - Architecture: Transformer decoder<br>
+                        - Training: Unsupervised on BooksCorpus<br>
+                        - Key innovation: Pre-training + Fine-tuning<br><br>
+                        <strong>GPT-2 (2019):</strong><br>
+                        - Parameters: 1.5B (15x GPT-1)<br>
+                        - Training: WebText (8M documents)<br>
+                        - Key innovation: Zero-shot learning, no fine-tuning needed<br>
+                        - Notable: Initially withheld due to misuse concerns<br><br>
+                        <strong>GPT-3 (2020):</strong><br>
+                        - Parameters: 175B (100x GPT-2)<br>
+                        - Architecture: Same as GPT-2 but scaled<br>
+                        - Key innovation: Few-shot learning, in-context learning<br>
+                        - Capabilities: Text generation, translation, Q&A, coding<br><br>
+                        <strong>GPT-3.5 (2022):</strong><br>
+                        - Includes: Codex, InstructGPT, ChatGPT<br>
+                        - Training: RLHF (Reinforcement Learning from Human Feedback)<br>
+                        - Key innovation: Alignment with human preferences<br><br>
+                        <strong>GPT-4 (2023):</strong><br>
+                        - Multimodal: Accepts both text and images<br>
+                        - Parameters: Estimated 1.7T (rumored)<br>
+                        - Key improvements: Better reasoning, factual accuracy<br>
+                        - Capabilities: Advanced reasoning, complex instructions<br><br>
+                        <strong>Trends:</strong> Scaling laws, more data, better architectures, alignment`,
+                difficulty: "hard",
+                icon: "fas fa-robot",
+                category: "llms"
+            },
+            {
+                id: 6,
+                question: "What is Transformer architecture? Explain in detail",
+                answer: `<strong>Transformer:</strong> Attention-based architecture for sequence processing<br><br>
+                        <strong>Key Components:</strong><br>
+                        1. <strong>Encoder-Decoder Structure:</strong><br>
+                           - Encoder: Processes input sequence<br>
+                           - Decoder: Generates output sequence<br><br>
+                        2. <strong>Self-Attention Mechanism:</strong><br>
+                           - Attention(Q,K,V) = softmax(QKᵀ/√dₖ)V<br>
+                           - Q: Query, K: Key, V: Value<br>
+                           - Allows each position to attend to all positions<br><br>
+                        3. <strong>Multi-Head Attention:</strong><br>
+                           - Multiple attention heads in parallel<br>
+                           - Each head learns different relationships<br>
+                           - Concatenated and projected<br><br>
+                        4. <strong>Positional Encoding:</strong><br>
+                           - Adds position information to embeddings<br>
+                           - Sine and cosine functions: PE(pos,2i)=sin(pos/10000^(2i/d))<br><br>
+                        5. <strong>Feed-Forward Networks:</strong><br>
+                           - Position-wise fully connected layers<br>
+                           - ReLU activation: FFN(x) = max(0, xW₁ + b₁)W₂ + b₂<br><br>
+                        6. <strong>Residual Connections:</strong><br>
+                           - Add & Norm: LayerNorm(x + Sublayer(x))<br>
+                           - Helps gradient flow<br><br>
+                        7. <strong>Layer Normalization:</strong><br>
+                           - Normalizes across features<br>
+                           - Stabilizes training<br><br>
+                        <strong>Advantages:</strong> Parallel processing, captures long dependencies`,
+                difficulty: "hard",
+                icon: "fas fa-exchange-alt",
+                category: "transformers"
+            },
+            
+            // GANs
+            {
+                id: 7,
+                question: "Explain GAN architecture and training process",
+                answer: `<strong>GAN (Generative Adversarial Network):</strong> Two neural networks competing<br><br>
+                        <strong>Components:</strong><br>
+                        1. <strong>Generator (G):</strong><br>
+                           - Input: Random noise vector z ∼ p(z)<br>
+                           - Output: Fake data G(z)<br>
+                           - Goal: Fool discriminator<br><br>
+                        2. <strong>Discriminator (D):</strong><br>
+                           - Input: Real data x or fake data G(z)<br>
+                           - Output: Probability of being real<br>
+                           - Goal: Distinguish real from fake<br><br>
+                        <strong>Training Process (Minimax Game):</strong><br>
+                        min_G max_D V(D,G) = E_{x∼p_data}[log D(x)] + E_{z∼p(z)}[log(1 - D(G(z)))]<br><br>
+                        <strong>Steps:</strong><br>
+                        1. Initialize G and D with random weights<br>
+                        2. For each training iteration:<br>
+                           a. <strong>Train Discriminator:</strong><br>
+                              - Sample real batch x ∼ p_data<br>
+                              - Sample noise z ∼ p(z)<br>
+                              - Generate fake batch G(z)<br>
+                              - Update D to maximize: log D(x) + log(1 - D(G(z)))<br>
+                           b. <strong>Train Generator:</strong><br>
+                              - Sample noise z ∼ p(z)<br>
+                              - Update G to minimize: log(1 - D(G(z)))<br>
+                              - Alternative: Maximize log D(G(z))<br><br>
+                        <strong>Loss Functions:</strong><br>
+                        - Vanilla GAN: Binary cross-entropy<br>
+                        - LSGAN: Least squares loss<br>
+                        - WGAN: Wasserstein distance`,
+                difficulty: "hard",
+                icon: "fas fa-balance-scale",
+                category: "gans"
+            },
+            
+            // Diffusion Models
+            {
+                id: 8,
+                question: "Explain Diffusion Models and how they work",
+                answer: `<strong>Diffusion Models:</strong> Generate data by reversing a diffusion process<br><br>
+                        <strong>Two Processes:</strong><br>
+                        1. <strong>Forward Process (Diffusion):</strong><br>
+                           - Gradually add Gaussian noise to data<br>
+                           - Over T steps, data becomes pure noise<br>
+                           - q(x_t | x_{t-1}) = N(x_t; √(1-β_t)x_{t-1}, β_tI)<br>
+                           - β_t: Noise schedule (0 < β_t < 1)<br><br>
+                        2. <strong>Reverse Process (Denoising):</strong><br>
+                           - Learn to reverse the noise addition<br>
+                           - p_θ(x_{t-1} | x_t) = N(x_{t-1}; μ_θ(x_t, t), Σ_θ(x_t, t))<br>
+                           - Neural network predicts noise or mean<br><br>
+                        <strong>Training Objective:</strong><br>
+                        L = E_{t,x_0,ε}[||ε - ε_θ(√ᾱ_t x_0 + √(1-ᾱ_t)ε, t)||²]<br>
+                        where: ε ∼ N(0,I), ᾱ_t = Π(1-β_s)<br><br>
+                        <strong>Key Variants:</strong><br>
+                        1. <strong>DDPM (Denoising Diffusion Probabilistic Models):</strong><br>
+                           - Original formulation<br>
+                           - Slow sampling (1000 steps)<br><br>
+                        2. <strong>DDIM (Denoising Diffusion Implicit Models):</strong><br>
+                           - Faster sampling with fewer steps<br>
+                           - Deterministic reverse process<br><br>
+                        3. <strong>Latent Diffusion:</strong><br>
+                           - Work in latent space (VAE)<br>
+                           - Much more efficient<br>
+                           - Example: Stable Diffusion<br><br>
+                        <strong>Advantages:</strong> High quality, stable training, no mode collapse`,
+                difficulty: "hard",
+                icon: "fas fa-wave-square",
+                category: "diffusion"
+            },
+            
+            // AI Ethics
+            {
+                id: 9,
+                question: "What are the ethical concerns in AI and Generative AI?",
+                answer: `<strong>Key Ethical Concerns:</strong><br><br>
+                        1. <strong>Bias and Fairness:</strong><br>
+                           - Training data reflects societal biases<br>
+                           - Algorithmic discrimination<br>
+                           - Example: Gender/racial bias in hiring algorithms<br><br>
+                        2. <strong>Privacy:</strong><br>
+                           - Data collection without consent<br>
+                           - Model inversion attacks<br>
+                           - Memorization of training data<br><br>
+                        3. <strong>Misinformation:</strong><br>
+                           - Deepfakes and synthetic media<br>
+                           - AI-generated fake news<br>
+                           - Undermining trust in media<br><br>
+                        4. <strong>Intellectual Property:</strong><br>
+                           - Training on copyrighted content<br>
+                           - Plagiarism and attribution<br>
+                           - Ownership of AI-generated content<br><br>
+                        5. <strong>Job Displacement:</strong><br>
+                           - Automation of creative jobs<br>
+                           - Economic inequality<br>
+                           - Need for reskilling<br><br>
+                        6. <strong>Safety and Alignment:</strong><br>
+                           - AI systems with unintended behaviors<br>
+                           - Goal misalignment<br>
+                           - Autonomous weapons<br><br>
+                        7. <strong>Transparency and Explainability:</strong><br>
+                           - Black box models<br>
+                           - Lack of interpretability<br>
+                           - Right to explanation<br><br>
+                        <strong>Mitigation Strategies:</strong><br>
+                        - Diverse training data<br>
+                        - Bias detection and mitigation<br>
+                        - Watermarking AI content<br>
+                        - Robust evaluation frameworks<br>
+                        - Ethical guidelines and regulations`,
+                difficulty: "medium",
+                icon: "fas fa-balance-scale",
+                category: "ethics"
+            },
+            
+            // Multimodal AI
+            {
+                id: 10,
+                question: "What is Multimodal AI? Explain CLIP and DALL-E",
+                answer: `<strong>Multimodal AI:</strong> Processes and connects multiple types of data (text, image, audio)<br><br>
+                        <strong>CLIP (Contrastive Language-Image Pre-training):</strong><br>
+                        - <strong>Goal:</strong> Learn visual concepts from natural language<br>
+                        - <strong>Architecture:</strong> Dual encoder (image + text)<br>
+                        - <strong>Training:</strong> Contrastive learning on 400M image-text pairs<br>
+                        - <strong>Key Idea:</strong> Maximize similarity of correct pairs, minimize incorrect<br>
+                        - <strong>Loss:</strong> InfoNCE (Noise Contrastive Estimation)<br>
+                        - <strong>Applications:</strong> Zero-shot classification, image search<br><br>
+                        <strong>DALL-E (Text-to-Image Generation):</strong><br>
+                        - <strong>DALL-E 1:</strong> Discrete VAE + Transformer<br>
+                          - Images → Tokens using dVAE<br>
+                          - Train transformer on image-text pairs<br>
+                          - Autoregressive generation<br><br>
+                        - <strong>DALL-E 2:</strong> CLIP + Diffusion<br>
+                          - Two-stage process:<br>
+                            1. <strong>Prior:</strong> Generate CLIP image embeddings from text<br>
+                            2. <strong>Decoder:</strong> Diffusion model generates image from embedding<br>
+                          - Better quality and diversity than DALL-E 1<br><br>
+                        <strong>Other Multimodal Models:</strong><br>
+                        - Flamingo: Vision + language<br>
+                        - Whisper: Speech recognition<br>
+                        - ImageBind: Six modalities`,
+                difficulty: "hard",
+                icon: "fas fa-eye",
+                category: "multimodal"
+            },
+            
+            // AI Agents
+            {
+                id: 11,
+                question: "What are AI Agents? Explain different types",
+                answer: `<strong>AI Agents:</strong> Autonomous systems that perceive environment and take actions<br><br>
+                        <strong>Key Components:</strong><br>
+                        1. <strong>Perception:</strong> Sensors, input processing<br>
+                        2. <strong>Reasoning:</strong> Decision making, planning<br>
+                        3. <strong>Action:</strong> Actuators, output generation<br>
+                        4. <strong>Learning:</strong> Improve from experience<br><br>
+                        <strong>Types of AI Agents:</strong><br>
+                        1. <strong>Simple Reflex Agents:</strong><br>
+                           - Act based on current percept<br>
+                           - Condition-action rules<br>
+                           - No memory of past<br><br>
+                        2. <strong>Model-based Reflex Agents:</strong><br>
+                           - Maintain internal state<br>
+                           - Track world changes<br>
+                           - More flexible than simple reflex<br><br>
+                        3. <strong>Goal-based Agents:</strong><br>
+                           - Have goals to achieve<br>
+                           - Search and planning algorithms<br>
+                           - Consider future consequences<br><br>
+                        4. <strong>Utility-based Agents:</strong><br>
+                           - Maximize utility function<br>
+                           - Handle trade-offs between goals<br>
+                           - More general than goal-based<br><br>
+                        5. <strong>Learning Agents:</strong><br>
+                           - Learn from experience<br>
+                           - Improve performance over time<br>
+                           - Components: Critic, learning element, performance element<br><br>
+                        <strong>Modern AI Agents:</strong><br>
+                        - AutoGPT: LLM-based autonomous agent<br>
+                        - BabyAGI: Task-driven autonomous agent<br>
+                        - LangChain Agents: Tool-using LLM agents`,
+                difficulty: "hard",
+                icon: "fas fa-user-robot",
+                category: "agents"
+            },
+            
+            // RAG Systems
+            {
+                id: 12,
+                question: "What is RAG? Explain Retrieval-Augmented Generation",
+                answer: `<strong>RAG (Retrieval-Augmented Generation):</strong> Combines retrieval and generation for knowledge-intensive tasks<br><br>
+                        <strong>Motivation:</strong> LLMs have limited knowledge, can hallucinate, expensive to retrain<br><br>
+                        <strong>RAG Architecture:</strong><br>
+                        1. <strong>Retriever:</strong><br>
+                           - Encodes documents into embeddings<br>
+                           - Uses dense retrieval (DPR) or sparse retrieval (BM25)<br>
+                           - Given query, retrieves relevant documents<br>
+                           - Typically: FAISS, Pinecone, Weaviate for vector storage<br><br>
+                        2. <strong>Generator:</strong><br>
+                           - LLM (GPT, T5, etc.)<br>
+                           - Takes query + retrieved documents<br>
+                           - Generates answer based on context<br><br>
+                        <strong>Two Variants:</strong><br>
+                        1. <strong>RAG-Sequence:</strong> Generate entire sequence from retrieved docs<br>
+                        2. <strong>RAG-Token:</strong> Generate each token from different retrieved docs<br><br>
+                        <strong>Training:</strong><br>
+                        - End-to-end training of retriever + generator<br>
+                        - Marginalize over retrieved documents<br>
+                        - Use approximate nearest neighbor search during training<br><br>
+                        <strong>Benefits:</strong><br>
+                        1. Access to external knowledge<br>
+                        2. Reduces hallucination<br>
+                        3. More factual responses<br>
+                        4. Source attribution possible<br>
+                        5. Knowledge updates without retraining LLM<br><br>
+                        <strong>Applications:</strong> Question answering, chatbots, knowledge bases`,
+                difficulty: "hard",
+                icon: "fas fa-search",
+                category: "rag"
+            },
+            
+            // Fine-tuning
+            {
+                id: 13,
+                question: "Explain different LLM fine-tuning techniques",
+                answer: `<strong>Fine-tuning:</strong> Adapt pre-trained LLM to specific task/domain<br><br>
+                        <strong>1. Full Fine-tuning:</strong><br>
+                        - Update all model parameters<br>
+                        - Requires significant compute and data<br>
+                        - Risk of catastrophic forgetting<br>
+                        - Best for: Major domain shifts<br><br>
+                        <strong>2. Parameter-Efficient Fine-tuning (PEFT):</strong><br>
+                        <strong>a. Adapter Layers:</strong><br>
+                        - Insert small trainable layers between transformer layers<br>
+                        - Freeze original model, train only adapters<br>
+                        - Adds minimal parameters (1-4% of original)<br><br>
+                        <strong>b. LoRA (Low-Rank Adaptation):</strong><br>
+                        - Approximate weight updates ΔW = BA where rank r << min(d,k)<br>
+                        - Freeze original weights W, train A and B<br>
+                        - Efficient: reduces parameters by 10,000x<br>
+                        - Matches full fine-tuning performance<br><br>
+                        <strong>c. Prefix/Prompt Tuning:</strong><br>
+                        - Add trainable prefix tokens to input<br>
+                        - Soft prompts learned through backpropagation<br>
+                        - No changes to model architecture<br><br>
+                        <strong>d. IA³ (Infused Adapter by Inhibiting and Amplifying Inner Activations):</strong><br>
+                        - Learn vectors to rescale activations<br>
+                        - Even more parameter efficient than LoRA<br><br>
+                        <strong>3. Instruction Tuning:</strong><br>
+                        - Fine-tune on instruction-response pairs<br>
+                        - Improves following instructions<br>
+                        - Makes model more helpful and aligned<br><br>
+                        <strong>4. RLHF (Reinforcement Learning from Human Feedback):</strong><br>
+                        - Three steps:<br>
+                          1. Supervised Fine-tuning (SFT)<br>
+                          2. Reward Model Training<br>
+                          3. RL Optimization (PPO)<br>
+                        - Aligns model with human preferences<br><br>
+                        <strong>Best Practices:</strong><br>
+                        - Use LoRA for most tasks<br>
+                        - Combine with gradient checkpointing<br>
+                        - Use mixed precision training<br>
+                        - Monitor for overfitting`,
+                difficulty: "hard",
+                icon: "fas fa-sliders-h",
+                category: "finetuning"
+            },
+            
+            // Adding more questions to reach 150+
+            {
+                id: 14,
+                question: "What is Transfer Learning in AI?",
+                answer: "Reuse knowledge from one task to improve learning on another. Pre-trained models adapted to new tasks.",
+                difficulty: "medium",
+                icon: "fas fa-exchange-alt",
+                category: "aifundamentals"
+            },
+            {
+                id: 15,
+                question: "Explain Supervised vs Unsupervised Learning",
+                answer: "Supervised: Labeled data, predict outputs. Unsupervised: No labels, find patterns.",
+                difficulty: "easy",
+                icon: "fas fa-graduation-cap",
+                category: "aifundamentals"
+            },
+            {
+                id: 16,
+                question: "What is Reinforcement Learning?",
+                answer: "Agent learns through rewards/penalties. Markov Decision Process framework.",
+                difficulty: "medium",
+                icon: "fas fa-gamepad",
+                category: "aifundamentals"
+            },
+            {
+                id: 17,
+                question: "Explain Semi-supervised Learning",
+                answer: "Combines labeled and unlabeled data. Uses small labeled dataset with large unlabeled data.",
+                difficulty: "medium",
+                icon: "fas fa-graduation-cap",
+                category: "aifundamentals"
+            },
+            {
+                id: 18,
+                question: "What is Self-supervised Learning?",
+                answer: "Uses unlabeled data by creating pretext tasks. Contrastive learning approaches.",
+                difficulty: "hard",
+                icon: "fas fa-graduation-cap",
+                category: "aifundamentals"
+            },
+            {
+                id: 19,
+                question: "Explain Few-shot, One-shot, Zero-shot Learning",
+                answer: "Few-shot: Few examples. One-shot: Single example. Zero-shot: No examples, use descriptions.",
+                difficulty: "medium",
+                icon: "fas fa-bolt",
+                category: "aifundamentals"
+            },
+            {
+                id: 20,
+                question: "What is Meta-learning?",
+                answer: "Learning to learn. Model learns on variety of tasks to quickly adapt to new tasks.",
+                difficulty: "hard",
+                icon: "fas fa-bolt",
+                category: "aifundamentals"
+            },
+            {
+                id: 21,
+                question: "Explain MAML algorithm",
+                answer: "Model-Agnostic Meta-Learning. Learns initialization parameters for fast adaptation.",
+                difficulty: "hard",
+                icon: "fas fa-bolt",
+                category: "aifundamentals"
+            },
+            {
+                id: 22,
+                question: "What is Contrastive Learning?",
+                answer: "Learn representations by contrasting positive and negative pairs. SimCLR, MoCo.",
+                difficulty: "hard",
+                icon: "fas fa-balance-scale",
+                category: "aifundamentals"
+            },
+            {
+                id: 23,
+                question: "Explain SimCLR framework",
+                answer: "Simple framework for Contrastive Learning. Data augmentation creates positive pairs.",
+                difficulty: "hard",
+                icon: "fas fa-balance-scale",
+                category: "aifundamentals"
+            },
+            {
+                id: 24,
+                question: "What is AutoML?",
+                answer: "Automated Machine Learning. Automates model selection, hyperparameter tuning.",
+                difficulty: "medium",
+                icon: "fas fa-robot",
+                category: "aifundamentals"
+            },
+            {
+                id: 25,
+                question: "Explain Neural Architecture Search",
+                answer: "Automatically designs neural network architectures using RL or evolutionary algorithms.",
+                difficulty: "hard",
+                icon: "fas fa-robot",
+                category: "aifundamentals"
+            },
+            {
+                id: 26,
+                question: "What are Language Models?",
+                answer: "Models that predict probability of word sequences. Statistical or neural network based.",
+                difficulty: "easy",
+                icon: "fas fa-language",
+                category: "llms"
+            },
+            {
+                id: 27,
+                question: "Explain BERT architecture",
+                answer: "Bidirectional Encoder Representations. Transformer encoder, MLM and NSP training.",
+                difficulty: "hard",
+                icon: "fas fa-robot",
+                category: "llms"
+            },
+            {
+                id: 28,
+                question: "What is GPT architecture?",
+                answer: "Generative Pre-trained Transformer. Transformer decoder, autoregressive training.",
+                difficulty: "hard",
+                icon: "fas fa-keyboard",
+                category: "llms"
+            },
+            {
+                id: 29,
+                question: "Explain T5 model",
+                answer: "Text-to-Text Transfer Transformer. All NLP tasks as text-to-text. Encoder-decoder.",
+                difficulty: "hard",
+                icon: "fas fa-exchange-alt",
+                category: "llms"
+            },
+            {
+                id: 30,
+                question: "What is BART?",
+                answer: "Bidirectional and Auto-Regressive Transformer. Denoising autoencoder for text.",
+                difficulty: "hard",
+                icon: "fas fa-exchange-alt",
+                category: "llms"
+            },
+            {
+                id: 31,
+                question: "Explain RoBERTa",
+                answer: "Robustly optimized BERT. Removes NSP, larger batches, more data, longer training.",
+                difficulty: "hard",
+                icon: "fas fa-robot",
+                category: "llms"
+            },
+            {
+                id: 32,
+                question: "What is ALBERT?",
+                answer: "A Lite BERT. Factorized embedding, cross-layer parameter sharing.",
+                difficulty: "hard",
+                icon: "fas fa-robot",
+                category: "llms"
+            },
+            {
+                id: 33,
+                question: "Explain DistilBERT",
+                answer: "Distilled version of BERT. 40% smaller, 60% faster, retains 97% performance.",
+                difficulty: "hard",
+                icon: "fas fa-robot",
+                category: "llms"
+            },
+            {
+                id: 34,
+                question: "What is DeBERTa?",
+                answer: "Decoding-enhanced BERT with disentangled attention. Separates content and position.",
+                difficulty: "hard",
+                icon: "fas fa-robot",
+                category: "llms"
+            },
+            {
+                id: 35,
+                question: "Explain ELECTRA",
+                answer: "Efficiently Learning an Encoder that Classifies Token Replacements Accurately.",
+                difficulty: "hard",
+                icon: "fas fa-robot",
+                category: "llms"
+            },
+            {
+                id: 36,
+                question: "What is Codex?",
+                answer: "GPT-3 fine-tuned on code. Powers GitHub Copilot.",
+                difficulty: "hard",
+                icon: "fas fa-code",
+                category: "llms"
+            },
+            {
+                id: 37,
+                question: "Explain PaLM model",
+                answer: "Pathways Language Model. Google's 540B parameter model, excels at reasoning.",
+                difficulty: "hard",
+                icon: "fas fa-robot",
+                category: "llms"
+            },
+            {
+                id: 38,
+                question: "What is LLaMA?",
+                answer: "Meta's open-source LLM series. Efficient, performs well at smaller sizes.",
+                difficulty: "hard",
+                icon: "fas fa-robot",
+                category: "llms"
+            },
+            {
+                id: 39,
+                question: "Explain Chinchilla scaling laws",
+                answer: "Optimal model size and training tokens. For compute budget, train more tokens.",
+                difficulty: "hard",
+                icon: "fas fa-chart-line",
+                category: "llms"
+            },
+            {
+                id: 40,
+                question: "What is Mixture of Experts?",
+                answer: "Sparse model where different experts handle different inputs. Efficient scaling.",
+                difficulty: "hard",
+                icon: "fas fa-users",
+                category: "llms"
+            },
+            {
+                id: 41,
+                question: "Explain Flash Attention",
+                answer: "Fast and memory-efficient exact attention. Reduces memory usage from O(n²) to O(n).",
+                difficulty: "hard",
+                icon: "fas fa-bolt",
+                category: "transformers"
+            },
+            {
+                id: 42,
+                question: "What is Sparse Attention?",
+                answer: "Attention with reduced connections. Local, strided, or learned patterns.",
+                difficulty: "hard",
+                icon: "fas fa-bullseye",
+                category: "transformers"
+            },
+            {
+                id: 43,
+                question: "Explain Linear Attention",
+                answer: "Reformulates attention as linear operation. O(n) complexity instead of O(n²).",
+                difficulty: "hard",
+                icon: "fas fa-bullseye",
+                category: "transformers"
+            },
+            {
+                id: 44,
+                question: "What is Performer?",
+                answer: "Linear transformer using FAVOR+ (Fast Attention Via positive Orthogonal Random features).",
+                difficulty: "hard",
+                icon: "fas fa-bullseye",
+                category: "transformers"
+            },
+            {
+                id: 45,
+                question: "Explain Longformer",
+                answer: "Transformer for long documents. Combines local windowed attention with global attention.",
+                difficulty: "hard",
+                icon: "fas fa-bullseye",
+                category: "transformers"
+            },
+            {
+                id: 46,
+                question: "What is BigBird?",
+                answer: "BERT for longer sequences. Random, window, and global attention.",
+                difficulty: "hard",
+                icon: "fas fa-bullseye",
+                category: "transformers"
+            },
+            {
+                id: 47,
+                question: "Explain Reformer",
+                answer: "Efficient transformer using locality-sensitive hashing and reversible layers.",
+                difficulty: "hard",
+                icon: "fas fa-exchange-alt",
+                category: "transformers"
+            },
+            {
+                id: 48,
+                question: "What is Transformer-XL?",
+                answer: "Transformer for longer context with recurrence mechanism.",
+                difficulty: "hard",
+                icon: "fas fa-exchange-alt",
+                category: "transformers"
+            },
+            {
+                id: 49,
+                question: "Explain Compressive Transformer",
+                answer: "Extends Transformer-XL with compressive memory.",
+                difficulty: "hard",
+                icon: "fas fa-exchange-alt",
+                category: "transformers"
+            },
+            {
+                id: 50,
+                question: "What is Adaptive Computation Time?",
+                answer: "Dynamic computation per example based on difficulty.",
+                difficulty: "hard",
+                icon: "fas fa-clock",
+                category: "transformers"
+            },
+            {
+                id: 51,
+                question: "Explain StyleGAN architecture",
+                answer: "Style-based generator, AdaIN, mapping network, style mixing.",
+                difficulty: "hard",
+                icon: "fas fa-paint-brush",
+                category: "gans"
+            },
+            {
+                id: 52,
+                question: "What is BigGAN?",
+                answer: "Large-scale GAN training. Class-conditional, orthogonal regularization.",
+                difficulty: "hard",
+                icon: "fas fa-image",
+                category: "gans"
+            },
+            {
+                id: 53,
+                question: "Explain CycleGAN",
+                answer: "Unpaired image-to-image translation. Cycle consistency loss.",
+                difficulty: "hard",
+                icon: "fas fa-exchange-alt",
+                category: "gans"
+            },
+            {
+                id: 54,
+                question: "What is Pix2Pix?",
+                answer: "Paired image-to-image translation using conditional GANs.",
+                difficulty: "hard",
+                icon: "fas fa-exchange-alt",
+                category: "gans"
+            },
+            {
+                id: 55,
+                question: "Explain StarGAN",
+                answer: "Multi-domain image-to-image translation with single model.",
+                difficulty: "hard",
+                icon: "fas fa-exchange-alt",
+                category: "gans"
+            },
+            {
+                id: 56,
+                question: "What is ProGAN?",
+                answer: "Progressive growing of GANs. Start with low resolution, progressively add layers.",
+                difficulty: "hard",
+                icon: "fas fa-image",
+                category: "gans"
+            },
+            {
+                id: 57,
+                question: "Explain WGAN",
+                answer: "Wasserstein GAN. Uses Wasserstein distance, critic instead of discriminator.",
+                difficulty: "hard",
+                icon: "fas fa-balance-scale",
+                category: "gans"
+            },
+            {
+                id: 58,
+                question: "What is WGAN-GP?",
+                answer: "WGAN with gradient penalty instead of weight clipping.",
+                difficulty: "hard",
+                icon: "fas fa-balance-scale",
+                category: "gans"
+            },
+            {
+                id: 59,
+                question: "Explain LSGAN",
+                answer: "Least Squares GAN. Uses least squares loss instead of cross-entropy.",
+                difficulty: "medium",
+                icon: "fas fa-balance-scale",
+                category: "gans"
+            },
+            {
+                id: 60,
+                question: "What is DCGAN?",
+                answer: "Deep Convolutional GAN. Architectural guidelines for stable GAN training.",
+                difficulty: "medium",
+                icon: "fas fa-image",
+                category: "gans"
+            },
+            {
+                id: 61,
+                question: "Explain VQ-VAE",
+                answer: "Vector Quantized Variational Autoencoder. Discrete latent space.",
+                difficulty: "hard",
+                icon: "fas fa-compress",
+                category: "generativeai"
+            },
+            {
+                id: 62,
+                question: "What is VQ-GAN?",
+                answer: "VQ-VAE with transformer for high-resolution image synthesis.",
+                difficulty: "hard",
+                icon: "fas fa-image",
+                category: "generativeai"
+            },
+            {
+                id: 63,
+                question: "Explain Stable Diffusion",
+                answer: "Latent diffusion model for text-to-image. VAE + diffusion in latent space.",
+                difficulty: "hard",
+                icon: "fas fa-image",
+                category: "diffusion"
+            },
+            {
+                id: 64,
+                question: "What is DALL-E?",
+                answer: "OpenAI's text-to-image model. DALL-E 1: dVAE + transformer. DALL-E 2: CLIP + diffusion.",
+                difficulty: "hard",
+                icon: "fas fa-image",
+                category: "diffusion"
+            },
+            {
+                id: 65,
+                question: "Explain Imagen",
+                answer: "Google's text-to-image model. T5 text encoder + diffusion models.",
+                difficulty: "hard",
+                icon: "fas fa-image",
+                category: "diffusion"
+            },
+            {
+                id: 66,
+                question: "What is Midjourney?",
+                answer: "Proprietary text-to-image model known for artistic style.",
+                difficulty: "medium",
+                icon: "fas fa-image",
+                category: "diffusion"
+            },
+            {
+                id: 67,
+                question: "Explain ControlNet",
+                answer: "Neural network structure to control diffusion models with additional conditions.",
+                difficulty: "hard",
+                icon: "fas fa-sliders-h",
+                category: "diffusion"
+            },
+            {
+                id: 68,
+                question: "What is DreamBooth?",
+                answer: "Personalization of text-to-image models with few examples.",
+                difficulty: "hard",
+                icon: "fas fa-user",
+                category: "diffusion"
+            },
+            {
+                id: 69,
+                question: "Explain LoRA for diffusion models",
+                answer: "Low-Rank Adaptation for fine-tuning diffusion models efficiently.",
+                difficulty: "hard",
+                icon: "fas fa-sliders-h",
+                category: "diffusion"
+            },
+            {
+                id: 70,
+                question: "What is Textual Inversion?",
+                answer: "Learn new concepts by representing them as embeddings.",
+                difficulty: "hard",
+                icon: "fas fa-language",
+                category: "diffusion"
+            },
+            {
+                id: 71,
+                question: "Explain Score-based Generative Models",
+                answer: "Learn gradient of data distribution (score function).",
+                difficulty: "hard",
+                icon: "fas fa-chart-line",
+                category: "diffusion"
+            },
+            {
+                id: 72,
+                question: "What is SDE in diffusion models?",
+                answer: "Stochastic Differential Equations framework for diffusion.",
+                difficulty: "hard",
+                icon: "fas fa-wave-square",
+                category: "diffusion"
+            },
+            {
+                id: 73,
+                question: "Explain ODE samplers for diffusion",
+                answer: "Probability Flow ODE for faster sampling.",
+                difficulty: "hard",
+                icon: "fas fa-wave-square",
+                category: "diffusion"
+            },
+            {
+                id: 74,
+                question: "What is Consistency Models?",
+                answer: "One-step or few-step generation by learning consistency function.",
+                difficulty: "hard",
+                icon: "fas fa-wave-square",
+                category: "diffusion"
+            },
+            {
+                id: 75,
+                question: "Explain Rectified Flow",
+                answer: "Straightens probability flow for efficient sampling.",
+                difficulty: "hard",
+                icon: "fas fa-wave-square",
+                category: "diffusion"
+            },
+            {
+                id: 76,
+                question: "What is AI Alignment?",
+                answer: "Ensuring AI systems act in accordance with human intentions.",
+                difficulty: "medium",
+                icon: "fas fa-bullseye",
+                category: "ethics"
+            },
+            {
+                id: 77,
+                question: "Explain RLHF process",
+                answer: "Reinforcement Learning from Human Feedback: SFT → Reward Model → RL (PPO).",
+                difficulty: "hard",
+                icon: "fas fa-chalkboard-teacher",
+                category: "ethics"
+            },
+            {
+                id: 78,
+                question: "What is Constitutional AI?",
+                answer: "AI alignment using principles/constitutions instead of human feedback.",
+                difficulty: "hard",
+                icon: "fas fa-balance-scale",
+                category: "ethics"
+            },
+            {
+                id: 79,
+                question: "Explain Model Cards",
+                answer: "Documentation for trained models covering capabilities, limitations, ethics.",
+                difficulty: "medium",
+                icon: "fas fa-file-alt",
+                category: "ethics"
+            },
+            {
+                id: 80,
+                question: "What is AI Safety?",
+                answer: "Research to ensure AI systems are robust, reliable, and safe.",
+                difficulty: "medium",
+                icon: "fas fa-shield-alt",
+                category: "ethics"
+            },
+            {
+                id: 81,
+                question: "Explain Red Teaming for AI",
+                answer: "Stress testing AI systems to find vulnerabilities and failures.",
+                difficulty: "medium",
+                icon: "fas fa-user-secret",
+                category: "ethics"
+            },
+            {
+                id: 82,
+                question: "What is Watermarking for AI content?",
+                answer: "Embedding invisible signals to identify AI-generated content.",
+                difficulty: "medium",
+                icon: "fas fa-water",
+                category: "ethics"
+            },
+            {
+                id: 83,
+                question: "Explain AI Explainability",
+                answer: "Making AI decisions understandable to humans.",
+                difficulty: "medium",
+                icon: "fas fa-search",
+                category: "ethics"
+            },
+            {
+                id: 84,
+                question: "What is Fairness in AI?",
+                answer: "Ensuring AI systems don't discriminate against protected groups.",
+                difficulty: "medium",
+                icon: "fas fa-balance-scale",
+                category: "ethics"
+            },
+            {
+                id: 85,
+                question: "Explain Differential Privacy",
+                answer: "Mathematical framework for privacy-preserving data analysis.",
+                difficulty: "hard",
+                icon: "fas fa-user-shield",
+                category: "ethics"
+            },
+            {
+                id: 86,
+                question: "What is Federated Learning?",
+                answer: "Train models on decentralized data without sharing raw data.",
+                difficulty: "hard",
+                icon: "fas fa-server",
+                category: "ethics"
+            },
+            {
+                id: 87,
+                question: "Explain Homomorphic Encryption",
+                answer: "Encryption that allows computation on encrypted data.",
+                difficulty: "hard",
+                icon: "fas fa-lock",
+                category: "ethics"
+            },
+            {
+                id: 88,
+                question: "What is Vision-Language Models?",
+                answer: "Models that understand both images and text. CLIP, ALIGN, Florence.",
+                difficulty: "hard",
+                icon: "fas fa-eye",
+                category: "multimodal"
+            },
+            {
+                id: 89,
+                question: "Explain Flamingo model",
+                answer: "Few-shot learning vision-language model from DeepMind.",
+                difficulty: "hard",
+                icon: "fas fa-eye",
+                category: "multimodal"
+            },
+            {
+                id: 90,
+                question: "What is BLIP?",
+                answer: "Bootstrapping Language-Image Pre-training. Vision-language understanding and generation.",
+                difficulty: "hard",
+                icon: "fas fa-eye",
+                category: "multimodal"
+            },
+            {
+                id: 91,
+                question: "Explain OFA model",
+                answer: "Unified multimodal pretrained model that can handle many tasks.",
+                difficulty: "hard",
+                icon: "fas fa-eye",
+                category: "multimodal"
+            },
+            {
+                id: 92,
+                question: "What is ImageBind?",
+                answer: "Binds six modalities (image, text, audio, depth, thermal, IMU) into single embedding.",
+                difficulty: "hard",
+                icon: "fas fa-eye",
+                category: "multimodal"
+            },
+            {
+                id: 93,
+                question: "Explain AudioLM",
+                answer: "Audio generation model using language modeling approach.",
+                difficulty: "hard",
+                icon: "fas fa-volume-up",
+                category: "multimodal"
+            },
+            {
+                id: 94,
+                question: "What is MusicLM?",
+                answer: "Google's text-to-music generation model.",
+                difficulty: "hard",
+                icon: "fas fa-music",
+                category: "multimodal"
+            },
+            {
+                id: 95,
+                question: "Explain Whisper",
+                answer: "Robust speech recognition model from OpenAI.",
+                difficulty: "hard",
+                icon: "fas fa-microphone",
+                category: "multimodal"
+            },
+            {
+                id: 96,
+                question: "What is VALL-E?",
+                answer: "Neural codec language model for zero-shot text-to-speech.",
+                difficulty: "hard",
+                icon: "fas fa-microphone",
+                category: "multimodal"
+            },
+            {
+                id: 97,
+                question: "Explain Make-A-Video",
+                answer: "Text-to-video generation model from Meta.",
+                difficulty: "hard",
+                icon: "fas fa-video",
+                category: "multimodal"
+            },
+            {
+                id: 98,
+                question: "What is Phenaki?",
+                answer: "Text-to-video model that can generate minutes-long videos.",
+                difficulty: "hard",
+                icon: "fas fa-video",
+                category: "multimodal"
+            },
+            {
+                id: 99,
+                question: "Explain Gen-1 and Gen-2",
+                answer: "Runway's video generation models for text/video-to-video.",
+                difficulty: "hard",
+                icon: "fas fa-video",
+                category: "multimodal"
+            },
+            {
+                id: 100,
+                question: "What is Sora?",
+                answer: "OpenAI's text-to-video model generating minute-long videos.",
+                difficulty: "hard",
+                icon: "fas fa-video",
+                category: "multimodal"
+            },
+            {
+                id: 101,
+                question: "Explain AutoGPT",
+                answer: "LLM-based autonomous agent that can complete tasks with internet access.",
+                difficulty: "hard",
+                icon: "fas fa-user-robot",
+                category: "agents"
+            },
+            {
+                id: 102,
+                question: "What is BabyAGI?",
+                answer: "Task-driven autonomous agent that creates, prioritizes, and executes tasks.",
+                difficulty: "hard",
+                icon: "fas fa-user-robot",
+                category: "agents"
+            },
+            {
+                id: 103,
+                question: "Explain LangChain Agents",
+                answer: "LLM agents that can use tools and interact with external systems.",
+                difficulty: "hard",
+                icon: "fas fa-user-robot",
+                category: "agents"
+            },
+            {
+                id: 104,
+                question: "What is ReAct?",
+                answer: "Reasoning + Acting framework for LLM agents.",
+                difficulty: "hard",
+                icon: "fas fa-user-robot",
+                category: "agents"
+            },
+            {
+                id: 105,
+                question: "Explain Toolformer",
+                answer: "LLM fine-tuned to use external tools via API calls.",
+                difficulty: "hard",
+                icon: "fas fa-tools",
+                category: "agents"
+            },
+            {
+                id: 106,
+                question: "What is Gorilla?",
+                answer: "LLM fine-tuned for API calls, can use tools accurately.",
+                difficulty: "hard",
+                icon: "fas fa-tools",
+                category: "agents"
+            },
+            {
+                id: 107,
+                question: "Explain Reflexion",
+                answer: "Agents that learn from mistakes through verbal reflection.",
+                difficulty: "hard",
+                icon: "fas fa-user-robot",
+                category: "agents"
+            },
+            {
+                id: 108,
+                question: "What is Voyager?",
+                answer: "LLM-powered lifelong learning agent in Minecraft.",
+                difficulty: "hard",
+                icon: "fas fa-user-robot",
+                category: "agents"
+            },
+            {
+                id: 109,
+                question: "Explain Generative Agents",
+                answer: "Simulacra of human behavior for interactive applications.",
+                difficulty: "hard",
+                icon: "fas fa-user-robot",
+                category: "agents"
+            },
+            {
+                id: 110,
+                question: "What is CAMEL?",
+                answer: "Communicative Agents for Mind Exploration. Role-playing AI agents.",
+                difficulty: "hard",
+                icon: "fas fa-user-robot",
+                category: "agents"
+            },
+            {
+                id: 111,
+                question: "Explain Dense Passage Retrieval",
+                answer: "Dense retrieval using dual encoders for question and passage.",
+                difficulty: "hard",
+                icon: "fas fa-search",
+                category: "rag"
+            },
+            {
+                id: 112,
+                question: "What is BM25?",
+                answer: "Best Matching 25, traditional sparse retrieval algorithm.",
+                difficulty: "medium",
+                icon: "fas fa-search",
+                category: "rag"
+            },
+            {
+                id: 113,
+                question: "Explain FAISS",
+                answer: "Facebook AI Similarity Search, library for efficient similarity search.",
+                difficulty: "medium",
+                icon: "fas fa-search",
+                category: "rag"
+            },
+            {
+                id: 114,
+                question: "What is Sentence Transformers?",
+                answer: "Library for sentence embeddings using transformer models.",
+                difficulty: "medium",
+                icon: "fas fa-language",
+                category: "rag"
+            },
+            {
+                id: 115,
+                question: "Explain Self-query retriever",
+                answer: "Retriever that can parse natural language queries into structured filters.",
+                difficulty: "hard",
+                icon: "fas fa-search",
+                category: "rag"
+            },
+            {
+                id: 116,
+                question: "What is Hypothetical Document Embeddings?",
+                answer: "Generate hypothetical answer, embed it, retrieve similar documents.",
+                difficulty: "hard",
+                icon: "fas fa-search",
+                category: "rag"
+            },
+            {
+                id: 117,
+                question: "Explain Parent Document Retriever",
+                answer: "Retrieve small chunks but return larger parent documents for context.",
+                difficulty: "hard",
+                icon: "fas fa-search",
+                category: "rag"
+            },
+            {
+                id: 118,
+                question: "What is Multi-query retrieval?",
+                answer: "Generate multiple queries from original to improve retrieval.",
+                difficulty: "hard",
+                icon: "fas fa-search",
+                category: "rag"
+            },
+            {
+                id: 119,
+                question: "Explain Fusion-in-Decoder",
+                answer: "Retrieve multiple documents, concatenate, generate answer.",
+                difficulty: "hard",
+                icon: "fas fa-search",
+                category: "rag"
+            },
+            {
+                id: 120,
+                question: "What is REALM?",
+                answer: "Retrieval-Augmented Language Model pre-training.",
+                difficulty: "hard",
+                icon: "fas fa-search",
+                category: "rag"
+            },
+            {
+                id: 121,
+                question: "Explain QLoRA",
+                answer: "Quantized LoRA, efficient fine-tuning with 4-bit quantization.",
+                difficulty: "hard",
+                icon: "fas fa-sliders-h",
+                category: "finetuning"
+            },
+            {
+                id: 122,
+                question: "What is P-Tuning?",
+                answer: "Parameter-efficient prompt tuning with continuous prompts.",
+                difficulty: "hard",
+                icon: "fas fa-sliders-h",
+                category: "finetuning"
+            },
+            {
+                id: 123,
+                question: "Explain Prefix-Tuning",
+                answer: "Optimize continuous prefix for each transformer layer.",
+                difficulty: "hard",
+                icon: "fas fa-sliders-h",
+                category: "finetuning"
+            },
+            {
+                id: 124,
+                question: "What is Prompt Tuning?",
+                answer: "Learn soft prompt tokens prepended to input.",
+                difficulty: "hard",
+                icon: "fas fa-sliders-h",
+                category: "finetuning"
+            },
+            {
+                id: 125,
+                question: "Explain Adapter Layers",
+                answer: "Small trainable layers inserted between transformer layers.",
+                difficulty: "hard",
+                icon: "fas fa-sliders-h",
+                category: "finetuning"
+            },
+            {
+                id: 126,
+                question: "What is Compacter?",
+                answer: "Parameter-efficient tuning with low-rank adaptations and parameterized hypercomplex multiplication.",
+                difficulty: "hard",
+                icon: "fas fa-sliders-h",
+                category: "finetuning"
+            },
+            {
+                id: 127,
+                question: "Explain MAML for few-shot learning",
+                answer: "Meta-learning algorithm for fast adaptation to new tasks.",
+                difficulty: "hard",
+                icon: "fas fa-sliders-h",
+                category: "finetuning"
+            },
+            {
+                id: 128,
+                question: "What is Reptile?",
+                answer: "Simple meta-learning algorithm, like MAML but simpler.",
+                difficulty: "hard",
+                icon: "fas fa-sliders-h",
+                category: "finetuning"
+            },
+            {
+                id: 129,
+                question: "Explain DPO",
+                answer: "Direct Preference Optimization, alternative to RLHF.",
+                difficulty: "hard",
+                icon: "fas fa-sliders-h",
+                category: "finetuning"
+            },
+            {
+                id: 130,
+                question: "What is ORPO?",
+                answer: "Odds Ratio Preference Optimization, unified framework for SFT and preference alignment.",
+                difficulty: "hard",
+                icon: "fas fa-sliders-h",
+                category: "finetuning"
+            },
+            {
+                id: 131,
+                question: "Explain Model Serving",
+                answer: "Deploying trained models for inference. REST APIs, gRPC, etc.",
+                difficulty: "medium",
+                icon: "fas fa-server",
+                category: "deployment"
+            },
+            {
+                id: 132,
+                question: "What is TensorFlow Serving?",
+                answer: "Flexible, high-performance serving system for ML models.",
+                difficulty: "medium",
+                icon: "fab fa-google",
+                category: "deployment"
+            },
+            {
+                id: 133,
+                question: "Explain TorchServe",
+                answer: "PyTorch model serving library.",
+                difficulty: "medium",
+                icon: "fab fa-facebook",
+                category: "deployment"
+            },
+            {
+                id: 134,
+                question: "What is Triton Inference Server?",
+                answer: "NVIDIA's inference serving software supporting multiple frameworks.",
+                difficulty: "medium",
+                icon: "fab fa-nvidia",
+                category: "deployment"
+            },
+            {
+                id: 135,
+                question: "Explain ONNX Runtime",
+                answer: "Cross-platform inference accelerator for ONNX models.",
+                difficulty: "medium",
+                icon: "fas fa-running",
+                category: "deployment"
+            },
+            {
+                id: 136,
+                question: "What is vLLM?",
+                answer: "High-throughput and memory-efficient LLM serving with PagedAttention.",
+                difficulty: "hard",
+                icon: "fas fa-server",
+                category: "deployment"
+            },
+            {
+                id: 137,
+                question: "Explain Text Generation Inference",
+                answer: "Rust, Python and gRPC server for text generation inference.",
+                difficulty: "hard",
+                icon: "fas fa-server",
+                category: "deployment"
+            },
+            {
+                id: 138,
+                question: "What is MLC-LLM?",
+                answer: "Universal solution that allows LLMs to be deployed natively.",
+                difficulty: "hard",
+                icon: "fas fa-server",
+                category: "deployment"
+            },
+            {
+                id: 139,
+                question: "Explain GGML",
+                answer: "Tensor library for machine learning, enables LLM inference on CPU.",
+                difficulty: "hard",
+                icon: "fas fa-microchip",
+                category: "deployment"
+            },
+            {
+                id: 140,
+                question: "What is Llama.cpp?",
+                answer: "Port of Facebook's LLaMA model in C/C++ for efficient inference.",
+                difficulty: "hard",
+                icon: "fas fa-code",
+                category: "deployment"
+            },
+            {
+                id: 141,
+                question: "Explain Model Quantization",
+                answer: "Reduce precision of weights/activations (FP32 → INT8/INT4).",
+                difficulty: "hard",
+                icon: "fas fa-compress",
+                category: "deployment"
+            },
+            {
+                id: 142,
+                question: "What is GPTQ?",
+                answer: "Post-training quantization for LLMs, accurate and efficient.",
+                difficulty: "hard",
+                icon: "fas fa-compress",
+                category: "deployment"
+            },
+            {
+                id: 143,
+                question: "Explain AWQ",
+                answer: "Activation-aware Weight Quantization for LLMs.",
+                difficulty: "hard",
+                icon: "fas fa-compress",
+                category: "deployment"
+            },
+            {
+                id: 144,
+                question: "What is SmoothQuant?",
+                answer: "Training-free quantization for LLMs, migrates difficulty from activations to weights.",
+                difficulty: "hard",
+                icon: "fas fa-compress",
+                category: "deployment"
+            },
+            {
+                id: 145,
+                question: "Explain Model Pruning",
+                answer: "Remove unimportant weights to reduce model size.",
+                difficulty: "hard",
+                icon: "fas fa-cut",
+                category: "deployment"
+            },
+            {
+                id: 146,
+                question: "What is Knowledge Distillation?",
+                answer: "Train small student model to mimic large teacher model.",
+                difficulty: "hard",
+                icon: "fas fa-graduation-cap",
+                category: "deployment"
+            },
+            {
+                id: 147,
+                question: "Explain MLOps",
+                answer: "DevOps for machine learning. CI/CD for ML models.",
+                difficulty: "medium",
+                icon: "fas fa-cogs",
+                category: "deployment"
+            },
+            {
+                id: 148,
+                question: "What is MLflow?",
+                answer: "Open source platform for ML lifecycle management.",
+                difficulty: "medium",
+                icon: "fas fa-cogs",
+                category: "deployment"
+            },
+            {
+                id: 149,
+                question: "Explain Kubeflow",
+                answer: "Kubernetes-native platform for ML workflows.",
+                difficulty: "hard",
+                icon: "fas fa-cogs",
+                category: "deployment"
+            },
+            {
+                id: 150,
+                question: "What is Vertex AI?",
+                answer: "Google Cloud's managed ML platform.",
+                difficulty: "medium",
+                icon: "fab fa-google",
+                category: "deployment"
+            },
+            {
+                id: 151,
+                question: "Explain SageMaker",
+                answer: "AWS's managed ML service.",
+                difficulty: "medium",
+                icon: "fab fa-aws",
+                category: "deployment"
+            },
+            {
+                id: 152,
+                question: "What is Azure ML?",
+                answer: "Microsoft's cloud ML platform.",
+                difficulty: "medium",
+                icon: "fab fa-microsoft",
+                category: "deployment"
+            },
+            {
+                id: 153,
+                question: "Explain Hugging Face Hub",
+                answer: "Platform for sharing and discovering ML models and datasets.",
+                difficulty: "medium",
+                icon: "fas fa-heart",
+                category: "deployment"
+            },
+            {
+                id: 154,
+                question: "What is Weights & Biases?",
+                answer: "Experiment tracking and model management platform.",
+                difficulty: "medium",
+                icon: "fas fa-chart-line",
+                category: "deployment"
+            },
+            {
+                id: 155,
+                question: "Explain Comet ML",
+                answer: "ML platform for tracking experiments, comparing results.",
+                difficulty: "medium",
+                icon: "fas fa-chart-line",
+                category: "deployment"
+            }
+        ];
+        
+        // Load questions into the container with filtering
+        const questionsContainer = document.getElementById('questionsContainer');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        
+        function displayQuestions(filter = 'all') {
+            questionsContainer.innerHTML = '';
+            
+            const filteredQuestions = filter === 'all' 
+                ? aiQuestions 
+                : aiQuestions.filter(q => q.category === filter);
+            
+            filteredQuestions.forEach((q, index) => {
+                const questionCard = document.createElement('div');
+                questionCard.className = `question-card ${q.category}`;
+                questionCard.innerHTML = `
+                    <div class="question-header">
+                        <span class="question-number">${q.id}</span>
+                        <h3 class="question">${q.question}</h3>
+                        <i class="${q.icon} tech-icon"></i>
+                    </div>
+                    <span class="difficulty ${q.difficulty}">${q.difficulty.toUpperCase()}</span>
+                    <span class="category">${q.category.toUpperCase()}</span>
+                    <div class="answer" id="answer-${q.id}">
+                        ${q.answer}
+                    </div>
+                    <button class="toggle-answer" data-answer="answer-${q.id}">
+                        <i class="fas fa-chevron-down"></i> Show Answer
+                    </button>
+                `;
+                questionsContainer.appendChild(questionCard);
+            });
+            
+            // Update stats
+            document.querySelector('.stat-number').textContent = `${filteredQuestions.length}+`;
+        }
+        
+        // Initial display
+        displayQuestions();
+        
+        // Filter button click handlers
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                // Get category filter
+                const filter = this.getAttribute('data-category');
+                // Display filtered questions
+                displayQuestions(filter);
+            });
+        });
+        
+        // Toggle answer visibility
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('toggle-answer') || e.target.parentElement.classList.contains('toggle-answer')) {
+                const button = e.target.classList.contains('toggle-answer') ? e.target : e.target.parentElement;
+                const answerId = button.getAttribute('data-answer');
+                const answerElement = document.getElementById(answerId);
+                const isHidden = answerElement.style.display === 'none' || !answerElement.classList.contains('show');
+                
+                if (isHidden) {
+                    answerElement.classList.add('show');
+                    button.innerHTML = '<i class="fas fa-chevron-up"></i> Hide Answer';
+                } else {
+                    answerElement.classList.remove('show');
+                    button.innerHTML = '<i class="fas fa-chevron-down"></i> Show Answer';
+                }
+            }
+        });
+        
+        // Sample reviews data
+        const reviews = [
+            {
+                name: "Aarav Patel",
+                text: "Ram Sir's AI Masterclass transformed my career! From understanding AI fundamentals to building cutting-edge Generative AI models. Landed a role as AI Research Scientist at top tech company!",
+                rating: 5,
+                course: "AI Masterclass"
+            },
+            {
+                name: "Priya Sharma",
+                text: "The Generative AI specialization was phenomenal! Hands-on experience with LLMs, GANs, and Diffusion Models. Built my own text-to-image model and got 200% salary hike!",
+                rating: 5,
+                course: "Generative AI Specialization"
+            },
+            {
+                name: "Rohan Verma",
+                text: "As a software engineer, Ram Sir's teaching made complex AI concepts crystal clear. Now I'm leading AI projects and implementing state-of-the-art research papers at work!",
+                rating: 5,
+                course: "AI Masterclass"
+            },
+            {
+                name: "Ananya Reddy",
+                text: "The AI Production Engineering course was exactly what industry needs. Learned MLOps, model deployment, and serving at scale. Now architecting enterprise AI solutions!",
+                rating: 5,
+                course: "AI Production Engineering"
+            },
+            {
+                name: "Vikram Singh",
+                text: "Ram Sir's expertise in AI ethics and deployment helped me become a responsible AI practitioner. The interview Q&A section alone helped me crack 8 AI interviews!",
+                rating: 5,
+                course: "Generative AI Specialization"
+            }
+        ];
+        
+        // Load reviews into slider
+        const reviewsSlider = document.getElementById('reviewsSlider');
+        
+        reviews.forEach(review => {
+            const reviewCard = document.createElement('div');
+            reviewCard.className = 'review-card';
+            
+            let stars = '';
+            for (let i = 0; i < review.rating; i++) {
+                stars += '<i class="fas fa-star"></i>';
+            }
+            
+            reviewCard.innerHTML = `
+                <p class="review-text">"${review.text}"</p>
+                <div class="reviewer">
+                    <div class="reviewer-img">${review.name.charAt(0)}</div>
+                    <div class="reviewer-info">
+                        <h4>${review.name}</h4>
+                        <p>${review.course} Student</p>
+                        <div class="review-rating">
+                            ${stars}
+                        </div>
+                    </div>
+                </div>
+            `;
+            reviewsSlider.appendChild(reviewCard);
+        });
+        
+        // Initialize Owl Carousel
+        $(document).ready(function(){
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: true,
+                dots: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    768: {
+                        items: 2
+                    },
+                    992: {
+                        items: 3
+                    }
+                }
+            });
+        });
+        
+        // WhatsApp button functionality
+        document.getElementById('whatsappBtn').addEventListener('click', function() {
+            const name = document.querySelector('input[type="text"]').value || "Interested Student";
+            const phone = document.querySelector('input[type="tel"]').value || "";
+            const message = document.querySelector('textarea').value || "Hi Ram Sir, I'm interested in your AI and Generative AI courses. Please share more details.";
+            
+            const whatsappUrl = `https://wa.me/919753528324?text=${encodeURIComponent(`Name: ${name}\nPhone: ${phone}\nMessage: ${message}`)}`;
+            window.open(whatsappUrl, '_blank');
+        });
+        
+        // Call button functionality
+        document.getElementById('callBtn').addEventListener('click', function() {
+            window.location.href = 'tel:+919753528324';
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Show total question count
+        document.addEventListener('DOMContentLoaded', function() {
+            const statNumber = document.querySelector('.stat-number');
+            if (statNumber) {
+                statNumber.textContent = `${aiQuestions.length}+`;
+            }
+        });
+    </script>
+</body>
+</html>

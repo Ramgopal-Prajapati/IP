@@ -1,0 +1,2363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power BI Mastery - 120+ Interview Q&A | Ram Sir</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <style>
+        :root {
+            --primary: #f2c811;
+            --secondary: #1b3a6f;
+            --accent: #00b8a9;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #2ec4b6;
+            --warning: #ff9f1c;
+            --danger: #e63946;
+            --gradient: linear-gradient(135deg, #f2c811 0%, #1b3a6f 100%);
+            --gradient-light: linear-gradient(135deg, #f2c811 0%, #00b8a9 100%);
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.12);
+            --radius: 10px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--dark);
+            background-color: #f8fafc;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: var(--gradient);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
+            margin-bottom: 2px;
+        }
+        
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+        
+        .nav-menu a:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+        
+        .nav-menu a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            background: var(--gradient-light);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        
+        .btn-primary {
+            background-color: white;
+            color: var(--secondary);
+        }
+        
+        .btn-primary:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* Filter Section */
+        .filter-section {
+            background: white;
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin: 30px 0;
+        }
+        
+        .filter-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            padding: 8px 16px;
+            background: #f1f5f9;
+            border: none;
+            border-radius: 20px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            color: #555;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--gradient);
+            color: white;
+        }
+        
+        /* Questions Section */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        .questions-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+        
+        .question-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 5px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .question-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .question-card.dax {
+            border-left-color: #f2c811;
+        }
+        
+        .question-card.powerquery {
+            border-left-color: #00b8a9;
+        }
+        
+        .question-card.datamodeling {
+            border-left-color: #1b3a6f;
+        }
+        
+        .question-card.visualization {
+            border-left-color: #e63946;
+        }
+        
+        .question-card.powerbi-service {
+            border-left-color: #7209b7;
+        }
+        
+        .question-card.m {
+            border-left-color: #f72585;
+        }
+        
+        .question-card.transformations {
+            border-left-color: #38b000;
+        }
+        
+        .question-card.advanced {
+            border-left-color: #ff5400;
+        }
+        
+        .question-card.reporting {
+            border-left-color: #4361ee;
+        }
+        
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .question-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-right: 10px;
+        }
+        
+        .question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark);
+            line-height: 1.4;
+            flex: 1;
+        }
+        
+        .tech-icon {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .answer {
+            color: #555;
+            line-height: 1.6;
+            padding-top: 15px;
+            border-top: 1px dashed #eee;
+            margin-top: 15px;
+            display: none;
+        }
+        
+        .answer.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .answer pre {
+            background: #f1f5f9;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            border-left: 3px solid var(--primary);
+        }
+        
+        .answer code {
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: var(--danger);
+        }
+        
+        .toggle-answer {
+            background: var(--gradient-light);
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: var(--transition);
+        }
+        
+        .toggle-answer:hover {
+            background: var(--gradient);
+            transform: scale(1.05);
+        }
+        
+        .difficulty {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-top: 15px;
+        }
+        
+        .difficulty.easy {
+            background-color: rgba(46, 196, 182, 0.15);
+            color: var(--success);
+        }
+        
+        .difficulty.medium {
+            background-color: rgba(255, 159, 28, 0.15);
+            color: var(--warning);
+        }
+        
+        .difficulty.hard {
+            background-color: rgba(220, 53, 69, 0.15);
+            color: #dc3545;
+        }
+        
+        .category {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-left: 10px;
+            background-color: #f1f5f9;
+            color: #555;
+        }
+        
+        /* Courses Section */
+        .courses {
+            background-color: #f1f5f9;
+            padding: 60px 0;
+        }
+        
+        .courses-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .course-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .course-header {
+            background: var(--gradient);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+        
+        .course-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .course-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .course-body {
+            padding: 25px;
+        }
+        
+        .course-features {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .course-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .course-features li i {
+            color: var(--success);
+        }
+        
+        .course-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .course-price span {
+            font-size: 1rem;
+            color: #666;
+            font-weight: normal;
+        }
+        
+        .course-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .course-btn {
+            flex: 1;
+            text-align: center;
+            padding: 12px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .course-btn.enroll {
+            background: var(--gradient);
+            color: white;
+        }
+        
+        .course-btn.enroll:hover {
+            background: var(--secondary);
+        }
+        
+        .course-btn.details {
+            background: #f1f5f9;
+            color: var(--primary);
+        }
+        
+        .course-btn.details:hover {
+            background: #e2e8f0;
+        }
+        
+        /* Reviews Section */
+        .reviews {
+            padding: 60px 0;
+        }
+        
+        .reviews-slider {
+            margin-top: 40px;
+        }
+        
+        .review-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin: 10px;
+            position: relative;
+        }
+        
+        .review-card::before {
+            content: "\201C";
+            font-size: 4rem;
+            color: var(--accent);
+            opacity: 0.3;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+        
+        .review-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        .reviewer {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .reviewer-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .reviewer-info h4 {
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+        
+        .reviewer-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .review-rating {
+            color: #ffc107;
+            margin-top: 5px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: white;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .footer-col p {
+            color: #b0b0b0;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: #b0b0b0;
+        }
+        
+        .contact-info li i {
+            color: var(--accent);
+            width: 20px;
+        }
+        
+        .enquiry-form input,
+        .enquiry-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            background: #2d3748;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .enquiry-form textarea {
+            height: 120px;
+            resize: none;
+        }
+        
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            transition: var(--transition);
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+        }
+        
+        .call-btn {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            margin-top: 10px;
+            transition: var(--transition);
+        }
+        
+        .call-btn:hover {
+            background: var(--secondary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #2d3748;
+            color: #b0b0b0;
+            font-size: 0.9rem;
+        }
+        
+        /* Stats */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            min-width: 150px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .stat-text {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .questions-container {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--gradient);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                gap: 0;
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: var(--transition);
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-menu.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+            
+            .nav-menu li {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-menu a {
+                display: block;
+                padding: 15px;
+                border-radius: 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .stats {
+                gap: 15px;
+            }
+            
+            .stat-item {
+                min-width: 120px;
+                padding: 15px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .questions-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .course-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-chart-bar"></i>
+                <div class="logo-text">
+                    <h1>Ram Sir</h1>
+                    <p>Power BI & Data Visualization Expert</p>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#questions">Power BI Q&A (120+)</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#reviews">Student Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <div class="hero-emoji">
+                📊 📈 🔍 🎯
+            </div>
+            <h2>Master Power BI with 120+ Interview Questions</h2>
+            <p>Comprehensive collection of Power BI interview questions covering DAX, Power Query, Data Modeling, Visualization, and more. Perfect for beginners to advanced professionals.</p>
+            <div class="cta-buttons">
+                <a href="#questions" class="btn btn-primary">
+                    <i class="fas fa-list"></i> Explore All Questions
+                </a>
+                <a href="#courses" class="btn btn-secondary">
+                    <i class="fas fa-graduation-cap"></i> Enroll Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="container">
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">120+</div>
+                <div class="stat-text">Power BI Questions</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">8+</div>
+                <div class="stat-text">Categories</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">800+</div>
+                <div class="stat-text">Students Trained</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">10+</div>
+                <div class="stat-text">Years Experience</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Questions Section -->
+    <section id="questions">
+        <div class="container">
+            <div class="section-title">
+                <h2>120+ Power BI Interview Questions</h2>
+                <p>Complete collection of Power BI questions with detailed answers. Filter by category to focus on specific topics.</p>
+            </div>
+            
+            <!-- Filter Section -->
+            <div class="filter-section">
+                <h3 class="filter-title">Filter by Category:</h3>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-category="all">All Questions</button>
+                    <button class="filter-btn" data-category="dax">DAX</button>
+                    <button class="filter-btn" data-category="powerquery">Power Query</button>
+                    <button class="filter-btn" data-category="datamodeling">Data Modeling</button>
+                    <button class="filter-btn" data-category="visualization">Visualization</button>
+                    <button class="filter-btn" data-category="powerbi-service">Power BI Service</button>
+                    <button class="filter-btn" data-category="m">M Language</button>
+                    <button class="filter-btn" data-category="transformations">Transformations</button>
+                    <button class="filter-btn" data-category="advanced">Advanced Topics</button>
+                </div>
+            </div>
+            
+            <div class="questions-container" id="questionsContainer">
+                <!-- Questions will be loaded here via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses" id="courses">
+        <div class="container">
+            <div class="section-title">
+                <h2>Recommended Power BI Courses</h2>
+                <p>Master Power BI with our comprehensive courses designed for beginners to advanced professionals.</p>
+            </div>
+            
+            <div class="courses-container">
+                <!-- Course 1 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="course-title">Power BI Masterclass</h3>
+                        <p>Complete Power BI Bootcamp</p>
+                    </div>
+                    <div class="course-body">
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> 50+ Hours of Content</li>
+                            <li><i class="fas fa-check"></i> 80+ Practical Exercises</li>
+                            <li><i class="fas fa-check"></i> Real-world Dashboard Projects</li>
+                            <li><i class="fas fa-check"></i> Microsoft PL-300 Certification</li>
+                            <li><i class="fas fa-check"></i> Lifetime Access</li>
+                        </ul>
+                        <div class="course-price">
+                            ₹5,999 <span>₹11,999</span>
+                        </div>
+                        <div class="course-buttons">
+                            <a href="tel:9753528324" class="course-btn enroll">
+                                <i class="fas fa-phone-alt"></i> Call to Enroll
+                            </a>
+                            <a href="#contact" class="course-btn details">
+                                <i class="fas fa-info-circle"></i> Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 2 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h3 class="course-title">Advanced DAX</h3>
+                        <p>For Data Modeling Experts</p>
+                    </div>
+                    <div class="course-body">
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Advanced DAX Patterns</li>
+                            <li><i class="fas fa-check"></i> Time Intelligence Functions</li>
+                            <li><i class="fas fa-check"></i> Row & Filter Context</li>
+                            <li><i class="fas fa-check"></i> Performance Optimization</li>
+                            <li><i class="fas fa-check"></i> 1-on-1 Mentoring</li>
+                        </ul>
+                        <div class="course-price">
+                            ₹7,999 <span>₹14,999</span>
+                        </div>
+                        <div class="course-buttons">
+                            <a href="tel:9753528324" class="course-btn enroll">
+                                <i class="fas fa-phone-alt"></i> Call to Enroll
+                            </a>
+                            <a href="#contact" class="course-btn details">
+                                <i class="fas fa-info-circle"></i> Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 3 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3 class="course-title">Power BI + SQL</h3>
+                        <p>Data Analysis Combo</p>
+                    </div>
+                    <div class="course-body">
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Power BI + SQL Integration</li>
+                            <li><i class="fas fa-check"></i> Advanced Data Modeling</li>
+                            <li><i class="fas fa-check"></i> DirectQuery & Live Connection</li>
+                            <li><i class="fas fa-check"></i> Real Business Intelligence Projects</li>
+                            <li><i class="fas fa-check"></i> Job Assistance</li>
+                        </ul>
+                        <div class="course-price">
+                            ₹9,999 <span>₹18,999</span>
+                        </div>
+                        <div class="course-buttons">
+                            <a href="tel:9753528324" class="course-btn enroll">
+                                <i class="fas fa-phone-alt"></i> Call to Enroll
+                            </a>
+                            <a href="#contact" class="course-btn details">
+                                <i class="fas fa-info-circle"></i> Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <p><strong>Mode:</strong> Both Online & Offline Classes Available</p>
+                <p><strong>Timing:</strong> Flexible batches (Morning/Evening/Weekend)</p>
+                <p><strong>Call:</strong> <a href="tel:9753528324" style="color: var(--primary); text-decoration: none; font-weight: 600;">+91 97535 28324</a> for details</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <div class="section-title">
+                <h2>Student Reviews</h2>
+                <p>See what our students have to say about our Power BI training programs.</p>
+            </div>
+            
+            <div class="reviews-slider owl-carousel" id="reviewsSlider">
+                <!-- Reviews will be loaded here via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Ram Sir</h3>
+                    <p>With over 10 years of experience in Business Intelligence and Power BI training, I've helped 800+ students build successful careers in data analytics.</p>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <span>+91 97535 28324</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>ramsir.powerbi@example.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Delhi, India</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="contact-info">
+                        <li><a href="#home" style="color: #b0b0b0; text-decoration: none;">Home</a></li>
+                        <li><a href="#questions" style="color: #b0b0b0; text-decoration: none;">Power BI Q&A</a></li>
+                        <li><a href="#courses" style="color: #b0b0b0; text-decoration: none;">Courses</a></li>
+                        <li><a href="#reviews" style="color: #b0b0b0; text-decoration: none;">Student Reviews</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Enquiry Form</h3>
+                    <form class="enquiry-form" id="enquiryForm">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <input type="tel" placeholder="Your Phone" required>
+                        <textarea placeholder="Your Message"></textarea>
+                        <button type="button" class="whatsapp-btn" id="whatsappBtn">
+                            <i class="fab fa-whatsapp"></i> Send via WhatsApp
+                        </button>
+                        <button type="button" class="call-btn" id="callBtn">
+                            <i class="fas fa-phone-alt"></i> Call Now: 9753528324
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Ram Sir Power BI Mastery. All rights reserved. | Designed with ❤️ for aspiring Power BI professionals</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
+            this.innerHTML = document.getElementById('navMenu').classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('navMenu').classList.remove('active');
+                document.getElementById('mobileMenuBtn').innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Complete Power BI questions data (120+ questions)
+        const powerBIQuestions = [
+            // DAX Questions
+            {
+                id: 1,
+                question: "What is DAX and why is it important in Power BI?",
+                answer: "DAX (Data Analysis Expressions) is a formula language used in Power BI, Analysis Services, and Power Pivot for data modeling and analysis. It's important because:<br><br>1. Creates calculated columns and measures<br>2. Implements business logic<br>3. Performs time intelligence calculations<br>4. Creates dynamic aggregations<br><br><pre>Total Sales = SUM(Sales[Amount])</pre>",
+                difficulty: "easy",
+                icon: "fas fa-calculator",
+                category: "dax"
+            },
+            {
+                id: 2,
+                question: "What is the difference between calculated columns and measures?",
+                answer: "<strong>Calculated Columns:</strong><br>- Created during data refresh<br>- Stored in memory<br>- Used in rows, columns, filters<br>- Syntax: Column = expression<br><br><strong>Measures:</strong><br>- Calculated at query time<br>- Not stored<br>- Used in values area<br>- Syntax: Measure = CALCULATE(expression)<br><br><pre>Sales Tax = Sales[Amount] * 0.18  -- Calculated Column\nTotal Sales = SUM(Sales[Amount])  -- Measure</pre>",
+                difficulty: "medium",
+                icon: "fas fa-columns",
+                category: "dax"
+            },
+            {
+                id: 3,
+                question: "What are aggregator functions in DAX?",
+                answer: "Aggregator functions perform calculations on multiple rows:<br><br><pre>SUM(column) -- Sum of values\nAVERAGE(column) -- Average of values\nMIN(column) -- Minimum value\nMAX(column) -- Maximum value\nCOUNT(column) -- Count of non-blank values\nCOUNTROWS(table) -- Count of rows in table\nDISTINCTCOUNT(column) -- Count of distinct values</pre>",
+                difficulty: "easy",
+                icon: "fas fa-chart-bar",
+                category: "dax"
+            },
+            {
+                id: 4,
+                question: "What is CALCULATE function and how does it work?",
+                answer: "CALCULATE is the most important DAX function. It evaluates expression in a modified filter context:<br><br><pre>Total Sales US = \nCALCULATE(\n    SUM(Sales[Amount]),\n    Sales[Country] = \"USA\"\n)</pre><br>CALCULATE changes the filter context for the expression evaluation.",
+                difficulty: "hard",
+                icon: "fas fa-filter",
+                category: "dax"
+            },
+            {
+                id: 5,
+                question: "What are iterator functions in DAX?",
+                answer: "Iterator functions iterate over rows and perform row-by-row calculations:<br><br><pre>SUMX(Sales, Sales[Quantity] * Sales[Price])\nAVERAGEX(Sales, Sales[Amount])\nMAXX(Sales, Sales[Amount])\nMINX(Sales, Sales[Amount])\nCOUNTX(Sales, Sales[CustomerID])</pre>",
+                difficulty: "medium",
+                icon: "fas fa-redo",
+                category: "dax"
+            },
+            
+            // Power Query Questions
+            {
+                id: 6,
+                question: "What is Power Query and what is it used for?",
+                answer: "Power Query is a data transformation and preparation engine in Power BI used for:<br><br>1. Connecting to various data sources<br>2. Cleaning and transforming data<br>3. Merging and appending queries<br>4. Creating custom columns<br>5. Data shaping and restructuring<br><br>It uses M language for transformations.",
+                difficulty: "easy",
+                icon: "fas fa-database",
+                category: "powerquery"
+            },
+            {
+                id: 7,
+                question: "What are the different types of data transformations in Power Query?",
+                answer: "Common Power Query transformations:<br><br>1. <strong>Column Operations:</strong> Remove, rename, split, merge<br>2. <strong>Row Operations:</strong> Filter, sort, remove duplicates<br>3. <strong>Data Type Conversion:</strong> Change column types<br>4. <strong>Text Transformations:</strong> Uppercase, lowercase, trim<br>5. <strong>Number Transformations:</strong> Round, absolute value<br>6. <strong>Date Transformations:</strong> Extract year, month, day",
+                difficulty: "medium",
+                icon: "fas fa-exchange-alt",
+                category: "powerquery"
+            },
+            {
+                id: 8,
+                question: "What is the difference between Merge and Append in Power Query?",
+                answer: "<strong>Merge:</strong> Combines tables horizontally (like SQL JOIN)<br><strong>Append:</strong> Combines tables vertically (like SQL UNION)<br><br><pre>-- Merge: Combine based on common columns\n-- Append: Stack tables with same structure</pre>",
+                difficulty: "medium",
+                icon: "fas fa-object-group",
+                category: "powerquery"
+            },
+            {
+                id: 9,
+                question: "What are query folding in Power Query?",
+                answer: "Query folding is the ability of Power Query to push transformations back to the data source. This improves performance by letting the source database do the work instead of Power BI.",
+                difficulty: "hard",
+                icon: "fas fa-sync",
+                category: "powerquery"
+            },
+            
+            // Data Modeling Questions
+            {
+                id: 10,
+                question: "What is a star schema in Power BI?",
+                answer: "Star schema is a data modeling approach with:<br><br>1. <strong>Fact Tables:</strong> Contain measures/numbers (e.g., Sales)<br>2. <strong>Dimension Tables:</strong> Contain descriptive attributes (e.g., Products, Customers)<br>3. Relationships between fact and dimension tables<br><br>Fact tables connect to multiple dimension tables.",
+                difficulty: "medium",
+                icon: "fas fa-star",
+                category: "datamodeling"
+            },
+            {
+                id: 11,
+                question: "What is a snowflake schema?",
+                answer: "Snowflake schema is a normalized version of star schema where dimension tables are further normalized into multiple related tables.",
+                difficulty: "hard",
+                icon: "fas fa-snowflake",
+                category: "datamodeling"
+            },
+            {
+                id: 12,
+                question: "What are relationship types in Power BI?",
+                answer: "Relationship types:<br><br>1. <strong>One-to-Many (1:*):</strong> Most common<br>2. <strong>Many-to-One (*:1):</strong> Reverse of 1:*<br>3. <strong>One-to-One (1:1):</strong> Rare<br>4. <strong>Many-to-Many (*:*):</strong> Requires bridge table",
+                difficulty: "medium",
+                icon: "fas fa-project-diagram",
+                category: "datamodeling"
+            },
+            {
+                id: 13,
+                question: "What is bidirectional filtering?",
+                answer: "Bidirectional filtering allows filters to flow in both directions between tables. Use with caution as it can create ambiguous relationships and performance issues.",
+                difficulty: "hard",
+                icon: "fas fa-arrows-alt-h",
+                category: "datamodeling"
+            },
+            
+            // Visualization Questions
+            {
+                id: 14,
+                question: "What are different types of visualizations in Power BI?",
+                answer: "Common visualizations:<br><br>1. <strong>Bar/Column Charts:</strong> Comparison<br>2. <strong>Line Charts:</strong> Trends over time<br>3. <strong>Pie/Doughnut Charts:</strong> Proportions<br>4. <strong>Scatter Charts:</strong> Relationships<br>5. <strong>Maps:</strong> Geographical data<br>6. <strong>Tables/Matrix:</strong> Detailed data<br>7. <strong>Cards/KPI:</strong> Key metrics<br>8. <strong>Gauges:</strong> Progress towards goals",
+                difficulty: "easy",
+                icon: "fas fa-chart-pie",
+                category: "visualization"
+            },
+            {
+                id: 15,
+                question: "What is a Power BI dashboard?",
+                answer: "Dashboard is a single page canvas with multiple visualizations from one or more reports. It provides high-level view of key metrics and KPIs.",
+                difficulty: "easy",
+                icon: "fas fa-tachometer-alt",
+                category: "visualization"
+            },
+            {
+                id: 16,
+                question: "What are bookmarks in Power BI?",
+                answer: "Bookmarks capture the current state of a report page including filters, slicers, and visual interactions. Useful for creating guided narratives.",
+                difficulty: "medium",
+                icon: "fas fa-bookmark",
+                category: "visualization"
+            },
+            
+            // Power BI Service Questions
+            {
+                id: 17,
+                question: "What is Power BI Service?",
+                answer: "Power BI Service is the cloud-based platform for sharing, collaborating, and distributing Power BI content. Features include:<br><br>1. Workspaces<br>2. Data refresh scheduling<br>3. Sharing and collaboration<br>4. Mobile access<br>5. Row-level security",
+                difficulty: "easy",
+                icon: "fas fa-cloud",
+                category: "powerbi-service"
+            },
+            {
+                id: 18,
+                question: "What are Power BI workspaces?",
+                answer: "Workspaces are containers for dashboards, reports, and datasets in Power BI Service. Types:<br><br>1. <strong>My Workspace:</strong> Personal workspace<br>2. <strong>Shared Workspaces:</strong> For team collaboration<br>3. <strong>Premium Workspaces:</strong> Advanced features",
+                difficulty: "medium",
+                icon: "fas fa-users",
+                category: "powerbi-service"
+            },
+            
+            // M Language Questions
+            {
+                id: 19,
+                question: "What is M language?",
+                answer: "M is the data transformation language used in Power Query. It's functional and case-sensitive.<br><br><pre>let\n    Source = Excel.Workbook(...),\n    Filtered = Table.SelectRows(Source, each [Amount] > 0)\nin\n    Filtered</pre>",
+                difficulty: "hard",
+                icon: "fas fa-code",
+                category: "m"
+            },
+            
+            // Transformations Questions
+            {
+                id: 20,
+                question: "What is data profiling in Power Query?",
+                answer: "Data profiling shows column quality, distribution, and profile to help identify data issues like null values, errors, or outliers.",
+                difficulty: "medium",
+                icon: "fas fa-search",
+                category: "transformations"
+            },
+            
+            // Adding more questions to reach 120+
+            {
+                id: 21,
+                question: "What is the difference between COUNT and COUNTROWS?",
+                answer: "COUNT counts non-blank values in a column, COUNTROWS counts rows in a table.",
+                difficulty: "easy",
+                icon: "fas fa-hashtag",
+                category: "dax"
+            },
+            {
+                id: 22,
+                question: "What is ALL function in DAX?",
+                answer: "ALL returns all rows in a table ignoring filters.<br><br><pre>Total Sales All = CALCULATE(SUM(Sales[Amount]), ALL(Sales))</pre>",
+                difficulty: "hard",
+                icon: "fas fa-globe",
+                category: "dax"
+            },
+            {
+                id: 23,
+                question: "What is FILTER function in DAX?",
+                answer: "FILTER returns a table filtered by condition.<br><br><pre>High Sales = CALCULATE(SUM(Sales[Amount]), FILTER(Sales, Sales[Amount] > 1000))</pre>",
+                difficulty: "medium",
+                icon: "fas fa-filter",
+                category: "dax"
+            },
+            {
+                id: 24,
+                question: "What is RELATED function?",
+                answer: "RELATED fetches related value from another table.<br><br><pre>Product Category = RELATED(Product[Category])</pre>",
+                difficulty: "medium",
+                icon: "fas fa-link",
+                category: "dax"
+            },
+            {
+                id: 25,
+                question: "What is RELATEDTABLE function?",
+                answer: "RELATEDTABLE returns related table rows.<br><br><pre>Customer Orders = COUNTROWS(RELATEDTABLE(Orders))</pre>",
+                difficulty: "hard",
+                icon: "fas fa-table",
+                category: "dax"
+            },
+            {
+                id: 26,
+                question: "What are time intelligence functions?",
+                answer: "Functions for time-based calculations:<br><br><pre>TOTALYTD, TOTALQTD, TOTALMTD\nSAMEPERIODLASTYEAR\nDATESYTD, DATESQTD, DATESMTD\nPREVIOUSMONTH, NEXTMONTH</pre>",
+                difficulty: "hard",
+                icon: "fas fa-clock",
+                category: "dax"
+            },
+            {
+                id: 27,
+                question: "What is YEARFRAC function?",
+                answer: "YEARFRAC calculates fraction of year between two dates.",
+                difficulty: "medium",
+                icon: "fas fa-calendar",
+                category: "dax"
+            },
+            {
+                id: 28,
+                question: "What is SWITCH function?",
+                answer: "SWITCH provides multiple condition checks.<br><br><pre>Category Group = SWITCH(\n    TRUE(),\n    [Category] = \"Electronics\", \"Tech\",\n    [Category] = \"Clothing\", \"Apparel\",\n    \"Other\"\n)</pre>",
+                difficulty: "medium",
+                icon: "fas fa-exchange-alt",
+                category: "dax"
+            },
+            {
+                id: 29,
+                question: "What is IFERROR function?",
+                answer: "IFERROR handles errors in expressions.<br><br><pre>Safe Divide = IFERROR([Numerator]/[Denominator], 0)</pre>",
+                difficulty: "easy",
+                icon: "fas fa-exclamation-triangle",
+                category: "dax"
+            },
+            {
+                id: 30,
+                question: "What is BLANK function?",
+                answer: "BLANK returns a blank value.",
+                difficulty: "easy",
+                icon: "fas fa-ban",
+                category: "dax"
+            },
+            {
+                id: 31,
+                question: "What is ISBLANK function?",
+                answer: "ISBLANK checks if value is blank.",
+                difficulty: "easy",
+                icon: "fas fa-question-circle",
+                category: "dax"
+            },
+            {
+                id: 32,
+                question: "What is FORMAT function?",
+                answer: "FORMAT formats numbers/dates as text.<br><br><pre>Formatted Date = FORMAT([Date], \"YYYY-MM-DD\")</pre>",
+                difficulty: "easy",
+                icon: "fas fa-font",
+                category: "dax"
+            },
+            {
+                id: 33,
+                question: "What is CONCATENATEX function?",
+                answer: "CONCATENATEX concatenates values from rows.<br><br><pre>Customer List = CONCATENATEX(Customers, [Name], \", \")</pre>",
+                difficulty: "hard",
+                icon: "fas fa-concierge-bell",
+                category: "dax"
+            },
+            {
+                id: 34,
+                question: "What is RANKX function?",
+                answer: "RANKX ranks values in a table.<br><br><pre>Sales Rank = RANKX(ALL(Customers), [Total Sales])</pre>",
+                difficulty: "hard",
+                icon: "fas fa-trophy",
+                category: "dax"
+            },
+            {
+                id: 35,
+                question: "What is TOPN function?",
+                answer: "TOPN returns top N rows.<br><br><pre>Top 10 Customers = TOPN(10, Customers, [Total Sales])</pre>",
+                difficulty: "medium",
+                icon: "fas fa-sort-amount-up",
+                category: "dax"
+            },
+            {
+                id: 36,
+                question: "What is SUMMARIZE function?",
+                answer: "SUMMARIZE creates summary table.<br><br><pre>Summary = SUMMARIZE(Sales, Sales[Category], \"Total\", SUM(Sales[Amount]))</pre>",
+                difficulty: "hard",
+                icon: "fas fa-table",
+                category: "dax"
+            },
+            {
+                id: 37,
+                question: "What is ADDCOLUMNS function?",
+                answer: "ADDCOLUMNS adds calculated columns to table.<br><br><pre>Enhanced = ADDCOLUMNS(Customers, \"Lifetime Value\", [Total Sales] * 0.3)</pre>",
+                difficulty: "hard",
+                icon: "fas fa-plus-circle",
+                category: "dax"
+            },
+            {
+                id: 38,
+                question: "What is GROUPBY function?",
+                answer: "GROUPBY groups table by columns.",
+                difficulty: "hard",
+                icon: "fas fa-object-group",
+                category: "dax"
+            },
+            {
+                id: 39,
+                question: "What is TREATAS function?",
+                answer: "TREATAS applies result of table expression as filter.",
+                difficulty: "hard",
+                icon: "fas fa-hand-paper",
+                category: "dax"
+            },
+            {
+                id: 40,
+                question: "What is USERELATIONSHIP function?",
+                answer: "USERELATIONSHIP uses inactive relationship.<br><br><pre>Sales Previous = CALCULATE(SUM(Sales[Amount]), USERELATIONSHIP(Sales[Date], Calendar[PreviousDate]))</pre>",
+                difficulty: "hard",
+                icon: "fas fa-project-diagram",
+                category: "dax"
+            },
+            {
+                id: 41,
+                question: "What is CROSSFILTER function?",
+                answer: "CROSSFILTER changes filter direction.",
+                difficulty: "hard",
+                icon: "fas fa-random",
+                category: "dax"
+            },
+            {
+                id: 42,
+                question: "What is SELECTEDVALUE function?",
+                answer: "SELECTEDVALUE returns value when single selection.<br><br><pre>Selected Category = SELECTEDVALUE(Product[Category])</pre>",
+                difficulty: "medium",
+                icon: "fas fa-check-circle",
+                category: "dax"
+            },
+            {
+                id: 43,
+                question: "What is HASONEVALUE function?",
+                answer: "HASONEVALUE checks if single distinct value.",
+                difficulty: "medium",
+                icon: "fas fa-check",
+                category: "dax"
+            },
+            {
+                id: 44,
+                question: "What is ISFILTERED function?",
+                answer: "ISFILTERED checks if column filtered.",
+                difficulty: "medium",
+                icon: "fas fa-filter",
+                category: "dax"
+            },
+            {
+                id: 45,
+                question: "What is ISCROSSFILTERED function?",
+                answer: "ISCROSSFILTERED checks if column cross-filtered.",
+                difficulty: "hard",
+                icon: "fas fa-filter",
+                category: "dax"
+            },
+            {
+                id: 46,
+                question: "What is VALUES function?",
+                answer: "VALUES returns distinct values of column.<br><br><pre>Distinct Categories = COUNTROWS(VALUES(Product[Category]))</pre>",
+                difficulty: "medium",
+                icon: "fas fa-list",
+                category: "dax"
+            },
+            {
+                id: 47,
+                question: "What is DISTINCT function?",
+                answer: "DISTINCT returns distinct values (similar to VALUES).",
+                difficulty: "medium",
+                icon: "fas fa-unique",
+                category: "dax"
+            },
+            {
+                id: 48,
+                question: "What is UNION function?",
+                answer: "UNION combines tables.",
+                difficulty: "medium",
+                icon: "fas fa-plus",
+                category: "dax"
+            },
+            {
+                id: 49,
+                question: "What is INTERSECT function?",
+                answer: "INTERSECT returns common rows.",
+                difficulty: "medium",
+                icon: "fas fa-times",
+                category: "dax"
+            },
+            {
+                id: 50,
+                question: "What is EXCEPT function?",
+                answer: "EXCEPT returns rows in first not in second.",
+                difficulty: "medium",
+                icon: "fas fa-minus",
+                category: "dax"
+            },
+            {
+                id: 51,
+                question: "What is NATURALINNERJOIN function?",
+                answer: "NATURALINNERJOIN performs inner join.",
+                difficulty: "hard",
+                icon: "fas fa-handshake",
+                category: "dax"
+            },
+            {
+                id: 52,
+                question: "What is NATURALLEFTOUTERJOIN function?",
+                answer: "NATURALLEFTOUTERJOIN performs left join.",
+                difficulty: "hard",
+                icon: "fas fa-arrow-left",
+                category: "dax"
+            },
+            {
+                id: 53,
+                question: "What is table constructor in DAX?",
+                answer: "Table constructor creates inline table.<br><br><pre>Months = {\"Jan\", \"Feb\", \"Mar\"}</pre>",
+                difficulty: "medium",
+                icon: "fas fa-table",
+                category: "dax"
+            },
+            {
+                id: 54,
+                question: "What are row context and filter context?",
+                answer: "<strong>Row Context:</strong> Current row in iteration<br><strong>Filter Context:</strong> Filters applied to calculation",
+                difficulty: "hard",
+                icon: "fas fa-layer-group",
+                category: "dax"
+            },
+            {
+                id: 55,
+                question: "What is context transition?",
+                answer: "Context transition converts row context to filter context (happens in CALCULATE).",
+                difficulty: "hard",
+                icon: "fas fa-exchange-alt",
+                category: "dax"
+            },
+            {
+                id: 56,
+                question: "What is EARLIER function?",
+                answer: "EARLIER refers to previous row context (used in nested iterations).<br><br><pre>Rank = COUNTROWS(FILTER(Employees, Employees[Salary] > EARLIER(Employees[Salary]))) + 1</pre>",
+                difficulty: "hard",
+                icon: "fas fa-history",
+                category: "dax"
+            },
+            {
+                id: 57,
+                question: "What is DATATABLE function?",
+                answer: "DATATABLE creates static table.<br><br><pre>StaticTable = DATATABLE(\"Month\", STRING, \"Target\", INTEGER, {{\"Jan\", 100}, {\"Feb\", 120}})</pre>",
+                difficulty: "hard",
+                icon: "fas fa-database",
+                category: "dax"
+            },
+            {
+                id: 58,
+                question: "What is GENERATESERIES function?",
+                answer: "GENERATESERIES generates number series.<br><br><pre>Numbers = GENERATESERIES(1, 10, 1)</pre>",
+                difficulty: "medium",
+                icon: "fas fa-list-ol",
+                category: "dax"
+            },
+            {
+                id: 59,
+                question: "What is CALENDAR function?",
+                answer: "CALENDAR creates date table.<br><br><pre>Dates = CALENDAR(DATE(2020,1,1), DATE(2020,12,31))</pre>",
+                difficulty: "medium",
+                icon: "fas fa-calendar",
+                category: "dax"
+            },
+            {
+                id: 60,
+                question: "What is CALENDARAUTO function?",
+                answer: "CALENDARAUTO creates date table based on data.",
+                difficulty: "medium",
+                icon: "fas fa-calendar-alt",
+                category: "dax"
+            },
+            {
+                id: 61,
+                question: "What are quick measures in Power BI?",
+                answer: "Pre-built DAX calculations created through UI.",
+                difficulty: "easy",
+                icon: "fas fa-bolt",
+                category: "dax"
+            },
+            {
+                id: 62,
+                question: "What is Power BI Desktop?",
+                answer: "Desktop application for creating reports and data models.",
+                difficulty: "easy",
+                icon: "fas fa-desktop",
+                category: "visualization"
+            },
+            {
+                id: 63,
+                question: "What is Power BI Mobile?",
+                answer: "Mobile app for viewing reports on phones/tablets.",
+                difficulty: "easy",
+                icon: "fas fa-mobile-alt",
+                category: "powerbi-service"
+            },
+            {
+                id: 64,
+                question: "What is Power BI Report Server?",
+                answer: "On-premises version for organizations not using cloud.",
+                difficulty: "medium",
+                icon: "fas fa-server",
+                category: "powerbi-service"
+            },
+            {
+                id: 65,
+                question: "What is Power BI Embedded?",
+                answer: "API for embedding Power BI in custom applications.",
+                difficulty: "hard",
+                icon: "fas fa-code",
+                category: "advanced"
+            },
+            {
+                id: 66,
+                question: "What is Power BI Premium?",
+                answer: "Premium capacity with advanced features and larger datasets.",
+                difficulty: "medium",
+                icon: "fas fa-crown",
+                category: "powerbi-service"
+            },
+            {
+                id: 67,
+                question: "What is Power BI Pro vs Premium?",
+                answer: "Pro: Individual license, Premium: Organizational capacity.",
+                difficulty: "medium",
+                icon: "fas fa-users",
+                category: "powerbi-service"
+            },
+            {
+                id: 68,
+                question: "What is DirectQuery?",
+                answer: "Live connection to data source (no import).",
+                difficulty: "medium",
+                icon: "fas fa-plug",
+                category: "datamodeling"
+            },
+            {
+                id: 69,
+                question: "What is Import vs DirectQuery?",
+                answer: "Import: Data copied to Power BI, DirectQuery: Live connection.",
+                difficulty: "medium",
+                icon: "fas fa-download",
+                category: "datamodeling"
+            },
+            {
+                id: 70,
+                question: "What is Live Connection?",
+                answer: "Direct connection to Analysis Services tabular model.",
+                difficulty: "hard",
+                icon: "fas fa-broadcast-tower",
+                category: "datamodeling"
+            },
+            {
+                id: 71,
+                question: "What is dual storage mode?",
+                answer: "Table stored partially in import and partially in DirectQuery.",
+                difficulty: "hard",
+                icon: "fas fa-hdd",
+                category: "datamodeling"
+            },
+            {
+                id: 72,
+                question: "What is aggregation tables?",
+                answer: "Pre-aggregated tables for better performance.",
+                difficulty: "hard",
+                icon: "fas fa-table",
+                category: "datamodeling"
+            },
+            {
+                id: 73,
+                question: "What is incremental refresh?",
+                answer: "Refreshes only new/changed data (Premium feature).",
+                difficulty: "hard",
+                icon: "fas fa-sync",
+                category: "powerbi-service"
+            },
+            {
+                id: 74,
+                question: "What is composite models?",
+                answer: "Combine import and DirectQuery tables in single model.",
+                difficulty: "hard",
+                icon: "fas fa-cubes",
+                category: "datamodeling"
+            },
+            {
+                id: 75,
+                question: "What are calculated tables?",
+                answer: "Tables created using DAX expressions.",
+                difficulty: "medium",
+                icon: "fas fa-table",
+                category: "dax"
+            },
+            {
+                id: 76,
+                question: "What is Power Query Editor?",
+                answer: "Interface for data transformation in Power BI.",
+                difficulty: "easy",
+                icon: "fas fa-edit",
+                category: "powerquery"
+            },
+            {
+                id: 77,
+                question: "What is data view in Power BI?",
+                answer: "View to see imported data tables.",
+                difficulty: "easy",
+                icon: "fas fa-eye",
+                category: "visualization"
+            },
+            {
+                id: 78,
+                question: "What is model view in Power BI?",
+                answer: "View to see and manage data model relationships.",
+                difficulty: "easy",
+                icon: "fas fa-project-diagram",
+                category: "datamodeling"
+            },
+            {
+                id: 79,
+                question: "What is report view in Power BI?",
+                answer: "View to create and design visualizations.",
+                difficulty: "easy",
+                icon: "fas fa-chart-bar",
+                category: "visualization"
+            },
+            {
+                id: 80,
+                question: "What are themes in Power BI?",
+                answer: "Pre-defined color and formatting templates.",
+                difficulty: "easy",
+                icon: "fas fa-palette",
+                category: "visualization"
+            },
+            {
+                id: 81,
+                question: "What are custom visuals?",
+                answer: "Third-party or custom-built visualizations.",
+                difficulty: "medium",
+                icon: "fas fa-eye",
+                category: "visualization"
+            },
+            {
+                id: 82,
+                question: "What is R visuals integration?",
+                answer: "Integration with R programming language for advanced analytics.",
+                difficulty: "hard",
+                icon: "fas fa-chart-line",
+                category: "advanced"
+            },
+            {
+                id: 83,
+                question: "What is Python visuals integration?",
+                answer: "Integration with Python for advanced analytics.",
+                difficulty: "hard",
+                icon: "fas fa-code",
+                category: "advanced"
+            },
+            {
+                id: 84,
+                question: "What is AI visuals in Power BI?",
+                answer: "Built-in AI-powered visualizations.",
+                difficulty: "medium",
+                icon: "fas fa-robot",
+                category: "visualization"
+            },
+            {
+                id: 85,
+                question: "What is Q&A in Power BI?",
+                answer: "Natural language query feature.",
+                difficulty: "medium",
+                icon: "fas fa-question-circle",
+                category: "visualization"
+            },
+            {
+                id: 86,
+                question: "What is Quick Insights?",
+                answer: "Automated pattern detection in data.",
+                difficulty: "medium",
+                icon: "fas fa-lightbulb",
+                category: "visualization"
+            },
+            {
+                id: 87,
+                question: "What is decomposition tree visual?",
+                answer: "AI visual for exploring data across multiple dimensions.",
+                difficulty: "medium",
+                icon: "fas fa-tree",
+                category: "visualization"
+            },
+            {
+                id: 88,
+                question: "What is key influencers visual?",
+                answer: "AI visual identifying factors driving metrics.",
+                difficulty: "medium",
+                icon: "fas fa-chart-line",
+                category: "visualization"
+            },
+            {
+                id: 89,
+                question: "What is slicers in Power BI?",
+                answer: "Interactive filters for reports.",
+                difficulty: "easy",
+                icon: "fas fa-sliders-h",
+                category: "visualization"
+            },
+            {
+                id: 90,
+                question: "What are drill-through pages?",
+                answer: "Pages for detailed view of specific data points.",
+                difficulty: "medium",
+                icon: "fas fa-search-plus",
+                category: "visualization"
+            },
+            {
+                id: 91,
+                question: "What is tooltips in Power BI?",
+                answer: "Hover-over information for data points.",
+                difficulty: "easy",
+                icon: "fas fa-info-circle",
+                category: "visualization"
+            },
+            {
+                id: 92,
+                question: "What is conditional formatting?",
+                answer: "Formatting based on data values.",
+                difficulty: "medium",
+                icon: "fas fa-paint-brush",
+                category: "visualization"
+            },
+            {
+                id: 93,
+                question: "What is data categories?",
+                answer: "Classification of columns for proper visualization.",
+                difficulty: "medium",
+                icon: "fas fa-tags",
+                category: "datamodeling"
+            },
+            {
+                id: 94,
+                question: "What is row-level security (RLS)?",
+                answer: "Security restricting data access at row level.",
+                difficulty: "hard",
+                icon: "fas fa-shield-alt",
+                category: "advanced"
+            },
+            {
+                id: 95,
+                question: "What is object-level security?",
+                answer: "Security restricting access to specific tables/columns.",
+                difficulty: "hard",
+                icon: "fas fa-lock",
+                category: "advanced"
+            },
+            {
+                id: 96,
+                question: "What is dynamic security?",
+                answer: "RLS based on user attributes or roles.",
+                difficulty: "hard",
+                icon: "fas fa-user-shield",
+                category: "advanced"
+            },
+            {
+                id: 97,
+                question: "What is performance analyzer in Power BI?",
+                answer: "Tool to measure report performance.",
+                difficulty: "medium",
+                icon: "fas fa-tachometer-alt",
+                category: "advanced"
+            },
+            {
+                id: 98,
+                question: "What is DAX Studio?",
+                answer: "Third-party tool for advanced DAX development.",
+                difficulty: "hard",
+                icon: "fas fa-code",
+                category: "advanced"
+            },
+            {
+                id: 99,
+                question: "What is Tabular Editor?",
+                answer: "Third-party tool for advanced data modeling.",
+                difficulty: "hard",
+                icon: "fas fa-edit",
+                category: "advanced"
+            },
+            {
+                id: 100,
+                question: "What is ALM Toolkit?",
+                answer: "Tool for application lifecycle management in Power BI.",
+                difficulty: "hard",
+                icon: "fas fa-tools",
+                category: "advanced"
+            },
+            {
+                id: 101,
+                question: "What is deployment pipelines?",
+                answer: "Feature for managing dev/test/prod environments.",
+                difficulty: "hard",
+                icon: "fas fa-stream",
+                category: "powerbi-service"
+            },
+            {
+                id: 102,
+                question: "What is dataflows?",
+                answer: "Cloud-based ETL service in Power BI.",
+                difficulty: "hard",
+                icon: "fas fa-water",
+                category: "powerbi-service"
+            },
+            {
+                id: 103,
+                question: "What is Datamarts?",
+                answer: "Fully managed database in Power BI.",
+                difficulty: "hard",
+                icon: "fas fa-database",
+                category: "powerbi-service"
+            },
+            {
+                id: 104,
+                question: "What is XMLA endpoints?",
+                answer: "Protocol for programmatic access to Power BI datasets.",
+                difficulty: "hard",
+                icon: "fas fa-plug",
+                category: "advanced"
+            },
+            {
+                id: 105,
+                question: "What is Power BI REST API?",
+                answer: "API for automating Power BI tasks.",
+                difficulty: "hard",
+                icon: "fas fa-code",
+                category: "advanced"
+            },
+            {
+                id: 106,
+                question: "What is Power BI template (.pbit) files?",
+                answer: "Files containing report structure without data.",
+                difficulty: "medium",
+                icon: "fas fa-file",
+                category: "powerbi-service"
+            },
+            {
+                id: 107,
+                question: "What is Power BI Desktop file (.pbix)?",
+                answer: "Complete Power BI file with data and reports.",
+                difficulty: "easy",
+                icon: "fas fa-file",
+                category: "visualization"
+            },
+            {
+                id: 108,
+                question: "What is Best Practice Analyzer?",
+                answer: "Tool for optimizing Power BI models.",
+                difficulty: "hard",
+                icon: "fas fa-search",
+                category: "advanced"
+            },
+            {
+                id: 109,
+                question: "What is VertiPaq engine?",
+                answer: "In-memory columnar database engine in Power BI.",
+                difficulty: "hard",
+                icon: "fas fa-cogs",
+                category: "advanced"
+            },
+            {
+                id: 110,
+                question: "What is columnar storage?",
+                answer: "Storage by columns instead of rows (VertiPaq).",
+                difficulty: "hard",
+                icon: "fas fa-columns",
+                category: "advanced"
+            },
+            {
+                id: 111,
+                question: "What is dictionary encoding?",
+                answer: "Compression technique in VertiPaq.",
+                difficulty: "hard",
+                icon: "fas fa-compress",
+                category: "advanced"
+            },
+            {
+                id: 112,
+                question: "What is run-length encoding?",
+                answer: "Compression technique in VertiPaq.",
+                difficulty: "hard",
+                icon: "fas fa-code",
+                category: "advanced"
+            },
+            {
+                id: 113,
+                question: "What is cardinality in Power BI?",
+                answer: "Number of distinct values in column.",
+                difficulty: "medium",
+                icon: "fas fa-hashtag",
+                category: "datamodeling"
+            },
+            {
+                id: 114,
+                question: "What is granularity in data modeling?",
+                answer: "Level of detail in fact table.",
+                difficulty: "medium",
+                icon: "fas fa-ruler",
+                category: "datamodeling"
+            },
+            {
+                id: 115,
+                question: "What is surrogate keys?",
+                answer: "Artificial keys for dimension tables.",
+                difficulty: "medium",
+                icon: "fas fa-key",
+                category: "datamodeling"
+            },
+            {
+                id: 116,
+                question: "What is slowly changing dimensions?",
+                answer: "Dimensions that change over time.",
+                difficulty: "hard",
+                icon: "fas fa-history",
+                category: "datamodeling"
+            },
+            {
+                id: 117,
+                question: "What is role-playing dimensions?",
+                answer: "Single dimension used in multiple roles.",
+                difficulty: "hard",
+                icon: "fas fa-theater-masks",
+                category: "datamodeling"
+            },
+            {
+                id: 118,
+                question: "What is junk dimensions?",
+                answer: "Dimension combining multiple low-cardinality attributes.",
+                difficulty: "hard",
+                icon: "fas fa-cube",
+                category: "datamodeling"
+            },
+            {
+                id: 119,
+                question: "What is bridge tables?",
+                answer: "Tables for many-to-many relationships.",
+                difficulty: "hard",
+                icon: "fas fa-bridge",
+                category: "datamodeling"
+            },
+            {
+                id: 120,
+                question: "What is DAX query view?",
+                answer: "New feature for writing and testing DAX queries.",
+                difficulty: "medium",
+                icon: "fas fa-terminal",
+                category: "dax"
+            }
+        ];
+        
+        // Load questions into the container with filtering
+        const questionsContainer = document.getElementById('questionsContainer');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        
+        function displayQuestions(filter = 'all') {
+            questionsContainer.innerHTML = '';
+            
+            const filteredQuestions = filter === 'all' 
+                ? powerBIQuestions 
+                : powerBIQuestions.filter(q => q.category === filter);
+            
+            filteredQuestions.forEach((q, index) => {
+                const questionCard = document.createElement('div');
+                questionCard.className = `question-card ${q.category}`;
+                questionCard.innerHTML = `
+                    <div class="question-header">
+                        <span class="question-number">${q.id}</span>
+                        <h3 class="question">${q.question}</h3>
+                        <i class="${q.icon} tech-icon"></i>
+                    </div>
+                    <span class="difficulty ${q.difficulty}">${q.difficulty.toUpperCase()}</span>
+                    <span class="category">${q.category.toUpperCase()}</span>
+                    <div class="answer" id="answer-${q.id}">
+                        ${q.answer}
+                    </div>
+                    <button class="toggle-answer" data-answer="answer-${q.id}">
+                        <i class="fas fa-chevron-down"></i> Show Answer
+                    </button>
+                `;
+                questionsContainer.appendChild(questionCard);
+            });
+            
+            // Update stats
+            document.querySelector('.stat-number').textContent = `${filteredQuestions.length}+`;
+        }
+        
+        // Initial display
+        displayQuestions();
+        
+        // Filter button click handlers
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                // Get category filter
+                const filter = this.getAttribute('data-category');
+                // Display filtered questions
+                displayQuestions(filter);
+            });
+        });
+        
+        // Toggle answer visibility
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('toggle-answer') || e.target.parentElement.classList.contains('toggle-answer')) {
+                const button = e.target.classList.contains('toggle-answer') ? e.target : e.target.parentElement;
+                const answerId = button.getAttribute('data-answer');
+                const answerElement = document.getElementById(answerId);
+                const isHidden = answerElement.style.display === 'none' || !answerElement.classList.contains('show');
+                
+                if (isHidden) {
+                    answerElement.classList.add('show');
+                    button.innerHTML = '<i class="fas fa-chevron-up"></i> Hide Answer';
+                } else {
+                    answerElement.classList.remove('show');
+                    button.innerHTML = '<i class="fas fa-chevron-down"></i> Show Answer';
+                }
+            }
+        });
+        
+        // Sample reviews data
+        const reviews = [
+            {
+                name: "Priya Sharma",
+                text: "Ram Sir's Power BI Masterclass transformed my career. I went from basic Power BI knowledge to becoming a certified Power BI developer in 3 months! The DAX explanations were incredibly clear.",
+                rating: 5,
+                course: "Power BI Masterclass"
+            },
+            {
+                name: "Rahul Verma",
+                text: "The interview questions section alone is worth it! I practiced all 120+ questions and could answer every Power BI question in my Microsoft interview. Got the offer with 50% salary hike!",
+                rating: 5,
+                course: "Advanced DAX"
+            },
+            {
+                name: "Anjali Patel",
+                text: "As a beginner, I was intimidated by Power BI. But Ram Sir's teaching method made everything so clear. Now I'm working as a Business Intelligence Analyst. Highly recommended!",
+                rating: 5,
+                course: "Power BI Masterclass"
+            },
+            {
+                name: "Vikram Singh",
+                text: "The Power BI + SQL combo course was exactly what I needed for enterprise analytics. The real-world projects were challenging but practical. Landed a job as Senior BI Developer!",
+                rating: 5,
+                course: "Power BI + SQL"
+            },
+            {
+                name: "Sneha Reddy",
+                text: "I took the offline classes and the personal attention was amazing. Ram Sir cleared all my doubts patiently. The course materials are comprehensive and well-structured.",
+                rating: 5,
+                course: "Advanced DAX"
+            }
+        ];
+        
+        // Load reviews into slider
+        const reviewsSlider = document.getElementById('reviewsSlider');
+        
+        reviews.forEach(review => {
+            const reviewCard = document.createElement('div');
+            reviewCard.className = 'review-card';
+            
+            let stars = '';
+            for (let i = 0; i < review.rating; i++) {
+                stars += '<i class="fas fa-star"></i>';
+            }
+            
+            reviewCard.innerHTML = `
+                <p class="review-text">"${review.text}"</p>
+                <div class="reviewer">
+                    <div class="reviewer-img">${review.name.charAt(0)}</div>
+                    <div class="reviewer-info">
+                        <h4>${review.name}</h4>
+                        <p>${review.course} Student</p>
+                        <div class="review-rating">
+                            ${stars}
+                        </div>
+                    </div>
+                </div>
+            `;
+            reviewsSlider.appendChild(reviewCard);
+        });
+        
+        // Initialize Owl Carousel
+        $(document).ready(function(){
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: true,
+                dots: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    768: {
+                        items: 2
+                    },
+                    992: {
+                        items: 3
+                    }
+                }
+            });
+        });
+        
+        // WhatsApp button functionality
+        document.getElementById('whatsappBtn').addEventListener('click', function() {
+            const name = document.querySelector('input[type="text"]').value || "Interested Student";
+            const phone = document.querySelector('input[type="tel"]').value || "";
+            const message = document.querySelector('textarea').value || "Hi Ram Sir, I'm interested in your Power BI courses. Please share more details.";
+            
+            const whatsappUrl = `https://wa.me/919753528324?text=${encodeURIComponent(`Name: ${name}\nPhone: ${phone}\nMessage: ${message}`)}`;
+            window.open(whatsappUrl, '_blank');
+        });
+        
+        // Call button functionality
+        document.getElementById('callBtn').addEventListener('click', function() {
+            window.location.href = 'tel:+919753528324';
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Show total question count
+        document.addEventListener('DOMContentLoaded', function() {
+            const statNumber = document.querySelector('.stat-number');
+            if (statNumber) {
+                statNumber.textContent = `${powerBIQuestions.length}+`;
+            }
+        });
+    </script>
+</body>
+</html>

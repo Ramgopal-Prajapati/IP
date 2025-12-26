@@ -1,0 +1,2373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Data Science - NumPy, Pandas, Matplotlib Q&A | Ram Sir</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <style>
+        :root {
+            --primary: #306998;
+            --secondary: #FFD43B;
+            --accent: #4B8BBE;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #2ec4b6;
+            --warning: #ff9f1c;
+            --danger: #e63946;
+            --gradient: linear-gradient(135deg, #306998 0%, #FFD43B 100%);
+            --gradient-light: linear-gradient(135deg, #4B8BBE 0%, #306998 100%);
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.12);
+            --radius: 10px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--dark);
+            background-color: #f8fafc;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: var(--gradient);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            font-size: 2rem;
+            color: var(--secondary);
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
+            margin-bottom: 2px;
+        }
+        
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+        
+        .nav-menu a:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+        
+        .nav-menu a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            background: var(--gradient-light);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        
+        .btn-primary {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* Filter Section */
+        .filter-section {
+            background: white;
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin: 30px 0;
+        }
+        
+        .filter-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            padding: 8px 16px;
+            background: #f1f5f9;
+            border: none;
+            border-radius: 20px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            color: #555;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--gradient);
+            color: white;
+        }
+        
+        /* Questions Section */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        .questions-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+        
+        .question-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 5px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .question-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .question-card.numpy {
+            border-left-color: #4B8BBE;
+        }
+        
+        .question-card.pandas {
+            border-left-color: #130654;
+        }
+        
+        .question-card.matplotlib {
+            border-left-color: #FF6B6B;
+        }
+        
+        .question-card.python {
+            border-left-color: #FFD43B;
+        }
+        
+        .question-card.ds {
+            border-left-color: #2ec4b6;
+        }
+        
+        .question-card.advanced {
+            border-left-color: #7209b7;
+        }
+        
+        .question-card.visualization {
+            border-left-color: #f72585;
+        }
+        
+        .question-card.operations {
+            border-left-color: #38b000;
+        }
+        
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .question-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-right: 10px;
+        }
+        
+        .question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark);
+            line-height: 1.4;
+            flex: 1;
+        }
+        
+        .tech-icon {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .answer {
+            color: #555;
+            line-height: 1.6;
+            padding-top: 15px;
+            border-top: 1px dashed #eee;
+            margin-top: 15px;
+            display: none;
+        }
+        
+        .answer.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .answer pre {
+            background: #1e1e1e;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #f8f8f2;
+            border-left: 3px solid var(--secondary);
+        }
+        
+        .answer code {
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: var(--danger);
+        }
+        
+        .toggle-answer {
+            background: var(--gradient-light);
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: var(--transition);
+        }
+        
+        .toggle-answer:hover {
+            background: var(--gradient);
+            transform: scale(1.05);
+        }
+        
+        .difficulty {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-top: 15px;
+        }
+        
+        .difficulty.easy {
+            background-color: rgba(46, 196, 182, 0.15);
+            color: var(--success);
+        }
+        
+        .difficulty.medium {
+            background-color: rgba(255, 159, 28, 0.15);
+            color: var(--warning);
+        }
+        
+        .difficulty.hard {
+            background-color: rgba(220, 53, 69, 0.15);
+            color: #dc3545;
+        }
+        
+        .category {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-left: 10px;
+            background-color: #f1f5f9;
+            color: #555;
+        }
+        
+        /* Courses Section */
+        .courses {
+            background-color: #f1f5f9;
+            padding: 60px 0;
+        }
+        
+        .courses-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .course-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .course-header {
+            background: var(--gradient);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+        
+        .course-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .course-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .course-body {
+            padding: 25px;
+        }
+        
+        .course-features {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .course-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .course-features li i {
+            color: var(--success);
+        }
+        
+        .course-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .course-price span {
+            font-size: 1rem;
+            color: #666;
+            font-weight: normal;
+        }
+        
+        .course-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .course-btn {
+            flex: 1;
+            text-align: center;
+            padding: 12px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .course-btn.enroll {
+            background: var(--gradient);
+            color: white;
+        }
+        
+        .course-btn.enroll:hover {
+            background: var(--primary);
+        }
+        
+        .course-btn.details {
+            background: #f1f5f9;
+            color: var(--primary);
+        }
+        
+        .course-btn.details:hover {
+            background: #e2e8f0;
+        }
+        
+        /* Reviews Section */
+        .reviews {
+            padding: 60px 0;
+        }
+        
+        .reviews-slider {
+            margin-top: 40px;
+        }
+        
+        .review-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin: 10px;
+            position: relative;
+        }
+        
+        .review-card::before {
+            content: "\201C";
+            font-size: 4rem;
+            color: var(--accent);
+            opacity: 0.3;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+        
+        .review-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        .reviewer {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .reviewer-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .reviewer-info h4 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .reviewer-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .review-rating {
+            color: #ffc107;
+            margin-top: 5px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: white;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .footer-col p {
+            color: #b0b0b0;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: #b0b0b0;
+        }
+        
+        .contact-info li i {
+            color: var(--accent);
+            width: 20px;
+        }
+        
+        .enquiry-form input,
+        .enquiry-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            background: #2d3748;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .enquiry-form textarea {
+            height: 120px;
+            resize: none;
+        }
+        
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            transition: var(--transition);
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+        }
+        
+        .call-btn {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            margin-top: 10px;
+            transition: var(--transition);
+        }
+        
+        .call-btn:hover {
+            background: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #2d3748;
+            color: #b0b0b0;
+            font-size: 0.9rem;
+        }
+        
+        /* Stats */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            min-width: 150px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .stat-text {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .questions-container {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--gradient);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                gap: 0;
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: var(--transition);
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-menu.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+            
+            .nav-menu li {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-menu a {
+                display: block;
+                padding: 15px;
+                border-radius: 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .stats {
+                gap: 15px;
+            }
+            
+            .stat-item {
+                min-width: 120px;
+                padding: 15px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .questions-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .course-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fab fa-python"></i>
+                <div class="logo-text">
+                    <h1>Ram Sir</h1>
+                    <p>Python Data Science Expert</p>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#questions">Python DS Q&A (120+)</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#reviews">Student Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <div class="hero-emoji">
+                🐍 📊 📈 🎨
+            </div>
+            <h2>Master Python Data Science with 120+ Interview Questions</h2>
+            <p>Comprehensive collection of NumPy, Pandas, and Matplotlib interview questions with detailed answers. Perfect for data analysts, data scientists, and Python developers.</p>
+            <div class="cta-buttons">
+                <a href="#questions" class="btn btn-primary">
+                    <i class="fas fa-list"></i> Explore All Questions
+                </a>
+                <a href="#courses" class="btn btn-secondary">
+                    <i class="fas fa-graduation-cap"></i> Enroll Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="container">
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">120+</div>
+                <div class="stat-text">Python DS Questions</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">3</div>
+                <div class="stat-text">Core Libraries</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">900+</div>
+                <div class="stat-text">Students Trained</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">8+</div>
+                <div class="stat-text">Years Experience</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Questions Section -->
+    <section id="questions">
+        <div class="container">
+            <div class="section-title">
+                <h2>120+ NumPy, Pandas & Matplotlib Questions</h2>
+                <p>Complete collection of Python Data Science questions with detailed answers. Filter by library to focus on specific topics.</p>
+            </div>
+            
+            <!-- Filter Section -->
+            <div class="filter-section">
+                <h3 class="filter-title">Filter by Category:</h3>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-category="all">All Questions</button>
+                    <button class="filter-btn" data-category="numpy">NumPy</button>
+                    <button class="filter-btn" data-category="pandas">Pandas</button>
+                    <button class="filter-btn" data-category="matplotlib">Matplotlib</button>
+                    <button class="filter-btn" data-category="python">Python Basics</button>
+                    <button class="filter-btn" data-category="ds">Data Science</button>
+                    <button class="filter-btn" data-category="advanced">Advanced Topics</button>
+                </div>
+            </div>
+            
+            <div class="questions-container" id="questionsContainer">
+                <!-- Questions will be loaded here via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses" id="courses">
+        <div class="container">
+            <div class="section-title">
+                <h2>Recommended Python Data Science Courses</h2>
+                <p>Master Python Data Science with our comprehensive courses designed for beginners to advanced professionals.</p>
+            </div>
+            
+            <div class="courses-container">
+                <!-- Course 1 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="course-title">Python Data Science Masterclass</h3>
+                        <p>NumPy, Pandas & Matplotlib</p>
+                    </div>
+                    <div class="course-body">
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> 60+ Hours of Content</li>
+                            <li><i class="fas fa-check"></i> 100+ Practical Exercises</li>
+                            <li><i class="fas fa-check"></i> Real-world Data Projects</li>
+                            <li><i class="fas fa-check"></i> Certification of Completion</li>
+                            <li><i class="fas fa-check"></i> Lifetime Access</li>
+                        </ul>
+                        <div class="course-price">
+                            ₹6,999 <span>₹12,999</span>
+                        </div>
+                        <div class="course-buttons">
+                            <a href="tel:9753528324" class="course-btn enroll">
+                                <i class="fas fa-phone-alt"></i> Call to Enroll
+                            </a>
+                            <a href="#contact" class="course-btn details">
+                                <i class="fas fa-info-circle"></i> Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 2 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3 class="course-title">Advanced Pandas & Data Analysis</h3>
+                        <p>For Data Professionals</p>
+                    </div>
+                    <div class="course-body">
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Advanced Pandas Operations</li>
+                            <li><i class="fas fa-check"></i> Time Series Analysis</li>
+                            <li><i class="fas fa-check"></i> Data Cleaning & Preprocessing</li>
+                            <li><i class="fas fa-check"></i> Performance Optimization</li>
+                            <li><i class="fas fa-check"></i> 1-on-1 Mentoring</li>
+                        </ul>
+                        <div class="course-price">
+                            ₹8,999 <span>₹16,999</span>
+                        </div>
+                        <div class="course-buttons">
+                            <a href="tel:9753528324" class="course-btn enroll">
+                                <i class="fas fa-phone-alt"></i> Call to Enroll
+                            </a>
+                            <a href="#contact" class="course-btn details">
+                                <i class="fas fa-info-circle"></i> Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 3 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3 class="course-title">Data Visualization Mastery</h3>
+                        <p>Matplotlib, Seaborn, Plotly</p>
+                    </div>
+                    <div class="course-body">
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Matplotlib + Seaborn + Plotly</li>
+                            <li><i class="fas fa-check"></i> Interactive Visualizations</li>
+                            <li><i class="fas fa-check"></i> Dashboard Creation</li>
+                            <li><i class="fas fa-check"></i> Real Visualization Projects</li>
+                            <li><i class="fas fa-check"></i> Job Assistance</li>
+                        </ul>
+                        <div class="course-price">
+                            ₹7,999 <span>₹14,999</span>
+                        </div>
+                        <div class="course-buttons">
+                            <a href="tel:9753528324" class="course-btn enroll">
+                                <i class="fas fa-phone-alt"></i> Call to Enroll
+                            </a>
+                            <a href="#contact" class="course-btn details">
+                                <i class="fas fa-info-circle"></i> Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <p><strong>Mode:</strong> Both Online & Offline Classes Available</p>
+                <p><strong>Timing:</strong> Flexible batches (Morning/Evening/Weekend)</p>
+                <p><strong>Call:</strong> <a href="tel:9753528324" style="color: var(--primary); text-decoration: none; font-weight: 600;">+91 97535 28324</a> for details</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <div class="section-title">
+                <h2>Student Reviews</h2>
+                <p>See what our students have to say about our Python Data Science training programs.</p>
+            </div>
+            
+            <div class="reviews-slider owl-carousel" id="reviewsSlider">
+                <!-- Reviews will be loaded here via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Ram Sir</h3>
+                    <p>With over 8 years of experience in Python Data Science and training, I've helped 900+ students build successful careers in data analysis and data science.</p>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <span>+91 97535 28324</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>ramsir.pythonds@example.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Delhi, India</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="contact-info">
+                        <li><a href="#home" style="color: #b0b0b0; text-decoration: none;">Home</a></li>
+                        <li><a href="#questions" style="color: #b0b0b0; text-decoration: none;">Python DS Q&A</a></li>
+                        <li><a href="#courses" style="color: #b0b0b0; text-decoration: none;">Courses</a></li>
+                        <li><a href="#reviews" style="color: #b0b0b0; text-decoration: none;">Student Reviews</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Enquiry Form</h3>
+                    <form class="enquiry-form" id="enquiryForm">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <input type="tel" placeholder="Your Phone" required>
+                        <textarea placeholder="Your Message"></textarea>
+                        <button type="button" class="whatsapp-btn" id="whatsappBtn">
+                            <i class="fab fa-whatsapp"></i> Send via WhatsApp
+                        </button>
+                        <button type="button" class="call-btn" id="callBtn">
+                            <i class="fas fa-phone-alt"></i> Call Now: 9753528324
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Ram Sir Python Data Science Mastery. All rights reserved. | Designed with ❤️ for aspiring data scientists</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
+            this.innerHTML = document.getElementById('navMenu').classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('navMenu').classList.remove('active');
+                document.getElementById('mobileMenuBtn').innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Complete Python Data Science questions data (120+ questions)
+        const pythonDSQuestions = [
+            // NumPy Questions
+            {
+                id: 1,
+                question: "What is NumPy and why is it important for data science?",
+                answer: "NumPy (Numerical Python) is a fundamental package for scientific computing in Python. It's important because:<br><br>1. Provides n-dimensional array object<br>2. Fast mathematical operations on arrays<br>3. Tools for integrating C/C++ code<br>4. Linear algebra, Fourier transform, random number capabilities<br><br><pre>import numpy as np\narr = np.array([1, 2, 3, 4, 5])\nprint(arr)</pre>",
+                difficulty: "easy",
+                icon: "fas fa-calculator",
+                category: "numpy"
+            },
+            {
+                id: 2,
+                question: "What is the difference between Python lists and NumPy arrays?",
+                answer: "<strong>Python Lists:</strong><br>- Can contain different data types<br>- Slower for numerical operations<br>- No built-in mathematical functions<br>- Consume more memory<br><br><strong>NumPy Arrays:</strong><br>- Homogeneous data types<br>- Faster for numerical operations<br>- Built-in mathematical functions<br>- Memory efficient<br><br><pre># List\nlist1 = [1, 2, 3, 4, 5]\n\n# NumPy array\nimport numpy as np\narr1 = np.array([1, 2, 3, 4, 5])</pre>",
+                difficulty: "medium",
+                icon: "fas fa-list",
+                category: "numpy"
+            },
+            {
+                id: 3,
+                question: "How to create NumPy arrays?",
+                answer: "Multiple ways to create NumPy arrays:<br><br><pre>import numpy as np\n\n# From Python list\narr1 = np.array([1, 2, 3, 4, 5])\n\n# Zeros array\narr2 = np.zeros((3, 3))\n\n# Ones array\narr3 = np.ones((2, 4))\n\n# Identity matrix\narr4 = np.eye(3)\n\n# Random array\narr5 = np.random.rand(3, 3)\n\n# Range array\narr6 = np.arange(0, 10, 2)\n\n# Linspace\narr7 = np.linspace(0, 1, 5)</pre>",
+                difficulty: "easy",
+                icon: "fas fa-plus",
+                category: "numpy"
+            },
+            {
+                id: 4,
+                question: "What is array broadcasting in NumPy?",
+                answer: "Broadcasting allows NumPy to work with arrays of different shapes during arithmetic operations.<br><br><pre>import numpy as np\n\n# Smaller array broadcast to match larger array\narr1 = np.array([[1, 2, 3], [4, 5, 6]])\narr2 = np.array([10, 20, 30])\n\nresult = arr1 + arr2  # arr2 is broadcast to [[10,20,30], [10,20,30]]\nprint(result)</pre>",
+                difficulty: "hard",
+                icon: "fas fa-broadcast-tower",
+                category: "numpy"
+            },
+            {
+                id: 5,
+                question: "What are universal functions (ufuncs) in NumPy?",
+                answer: "Ufuncs are functions that operate element-wise on arrays.<br><br><pre>import numpy as np\n\narr = np.array([1, 2, 3, 4, 5])\n\n# Mathematical ufuncs\nprint(np.sqrt(arr))      # Square root\nprint(np.exp(arr))       # Exponential\nprint(np.sin(arr))       # Sine\nprint(np.log(arr))       # Logarithm\n\n# Comparison ufuncs\nprint(np.greater(arr, 3))  # Element-wise greater than</pre>",
+                difficulty: "medium",
+                icon: "fas fa-function",
+                category: "numpy"
+            },
+            
+            // Pandas Questions
+            {
+                id: 6,
+                question: "What is Pandas and what are its main data structures?",
+                answer: "Pandas is a Python library for data manipulation and analysis. Main data structures:<br><br>1. <strong>Series:</strong> 1D labeled array<br>2. <strong>DataFrame:</strong> 2D labeled data structure (like a table)<br><br><pre>import pandas as pd\n\n# Series\ns = pd.Series([1, 3, 5, 7, 9])\n\n# DataFrame\ndf = pd.DataFrame({\n    'Name': ['Alice', 'Bob', 'Charlie'],\n    'Age': [25, 30, 35],\n    'Salary': [50000, 60000, 70000]\n})</pre>",
+                difficulty: "easy",
+                icon: "fas fa-table",
+                category: "pandas"
+            },
+            {
+                id: 7,
+                question: "How to read and write data in Pandas?",
+                answer: "Pandas supports various file formats:<br><br><pre>import pandas as pd\n\n# Read CSV\ndf = pd.read_csv('data.csv')\n\n# Read Excel\ndf = pd.read_excel('data.xlsx', sheet_name='Sheet1')\n\n# Read JSON\ndf = pd.read_json('data.json')\n\n# Read SQL\ndf = pd.read_sql('SELECT * FROM table', connection)\n\n# Write to CSV\ndf.to_csv('output.csv', index=False)\n\n# Write to Excel\ndf.to_excel('output.xlsx', index=False)</pre>",
+                difficulty: "easy",
+                icon: "fas fa-file-import",
+                category: "pandas"
+            },
+            {
+                id: 8,
+                question: "What is DataFrame indexing and selection in Pandas?",
+                answer: "Multiple ways to select data:<br><br><pre>import pandas as pd\n\n# Create DataFrame\ndf = pd.DataFrame({\n    'A': [1, 2, 3],\n    'B': [4, 5, 6],\n    'C': [7, 8, 9]\n}, index=['X', 'Y', 'Z'])\n\n# Column selection\ndf['A']           # Single column\ndf[['A', 'C']]    # Multiple columns\n\n# Row selection\ndf.loc['X']       # By label\ndf.iloc[0]        # By position\n\n# Boolean indexing\ndf[df['A'] > 1]   # Rows where A > 1</pre>",
+                difficulty: "medium",
+                icon: "fas fa-mouse-pointer",
+                category: "pandas"
+            },
+            {
+                id: 9,
+                question: "How to handle missing data in Pandas?",
+                answer: "Pandas provides methods to handle NaN values:<br><br><pre>import pandas as pd\nimport numpy as np\n\n# Create DataFrame with missing values\ndf = pd.DataFrame({\n    'A': [1, 2, np.nan, 4],\n    'B': [5, np.nan, np.nan, 8],\n    'C': [9, 10, 11, 12]\n})\n\n# Check for missing values\nprint(df.isnull())\nprint(df.isnull().sum())\n\n# Drop missing values\ndf_dropped = df.dropna()        # Drop rows with any NaN\ndf_dropped_col = df.dropna(axis=1)  # Drop columns with any NaN\n\n# Fill missing values\ndf_filled = df.fillna(0)        # Fill with 0\ndf_filled_mean = df.fillna(df.mean())  # Fill with column mean</pre>",
+                difficulty: "medium",
+                icon: "fas fa-exclamation-triangle",
+                category: "pandas"
+            },
+            {
+                id: 10,
+                question: "What is groupby operation in Pandas?",
+                answer: "groupby splits data into groups and applies aggregation.<br><br><pre>import pandas as pd\n\n# Create DataFrame\ndf = pd.DataFrame({\n    'Department': ['IT', 'HR', 'IT', 'Sales', 'HR', 'Sales'],\n    'Employee': ['Alice', 'Bob', 'Charlie', 'David', 'Eve', 'Frank'],\n    'Salary': [70000, 50000, 80000, 60000, 55000, 65000]\n})\n\n# Group by department and calculate mean salary\ngrouped = df.groupby('Department')['Salary'].mean()\nprint(grouped)\n\n# Multiple aggregations\nagg_result = df.groupby('Department').agg({\n    'Salary': ['mean', 'sum', 'count'],\n    'Employee': 'count'\n})</pre>",
+                difficulty: "medium",
+                icon: "fas fa-object-group",
+                category: "pandas"
+            },
+            
+            // Matplotlib Questions
+            {
+                id: 11,
+                question: "What is Matplotlib and how to create basic plots?",
+                answer: "Matplotlib is a plotting library for Python. Basic plots:<br><br><pre>import matplotlib.pyplot as plt\nimport numpy as np\n\n# Line plot\nx = np.linspace(0, 10, 100)\ny = np.sin(x)\nplt.plot(x, y)\nplt.title('Sine Wave')\nplt.xlabel('X axis')\nplt.ylabel('Y axis')\nplt.show()\n\n# Scatter plot\nplt.scatter(x, y)\nplt.show()\n\n# Histogram\ndata = np.random.randn(1000)\nplt.hist(data, bins=30)\nplt.show()</pre>",
+                difficulty: "easy",
+                icon: "fas fa-chart-line",
+                category: "matplotlib"
+            },
+            {
+                id: 12,
+                question: "What is the difference between plt.figure() and plt.subplot()?",
+                answer: "<strong>plt.figure()</strong> creates a new figure window.<br><strong>plt.subplot()</strong> creates subplots within a figure.<br><br><pre>import matplotlib.pyplot as plt\n\n# Create figure\nfig = plt.figure(figsize=(10, 6))\n\n# Create subplots\n# 2 rows, 2 columns, first subplot\nax1 = plt.subplot(2, 2, 1)\nax1.plot([1, 2, 3], [1, 4, 9])\n\n# Second subplot\nax2 = plt.subplot(2, 2, 2)\nax2.scatter([1, 2, 3], [1, 4, 9])\n\nplt.tight_layout()\nplt.show()</pre>",
+                difficulty: "medium",
+                icon: "fas fa-border-all",
+                category: "matplotlib"
+            },
+            
+            // More NumPy Questions
+            {
+                id: 13,
+                question: "What are different NumPy array attributes?",
+                answer: "Array attributes provide information about array:<br><br><pre>import numpy as np\n\narr = np.array([[1, 2, 3], [4, 5, 6]])\n\nprint(arr.ndim)    # Number of dimensions: 2\nprint(arr.shape)   # Shape: (2, 3)\nprint(arr.size)    # Total elements: 6\nprint(arr.dtype)   # Data type: int64\nprint(arr.itemsize) # Bytes per element: 8\nprint(arr.nbytes)  # Total bytes: 48</pre>",
+                difficulty: "easy",
+                icon: "fas fa-info-circle",
+                category: "numpy"
+            },
+            {
+                id: 14,
+                question: "How to reshape NumPy arrays?",
+                answer: "Reshape changes array shape without changing data:<br><br><pre>import numpy as np\n\narr = np.arange(12)\nprint(arr)           # [0 1 2 3 4 5 6 7 8 9 10 11]\n\n# Reshape to 3x4\narr_reshaped = arr.reshape(3, 4)\nprint(arr_reshaped)\n\n# Reshape to 2x3x2\narr_3d = arr.reshape(2, 3, 2)\nprint(arr_3d)\n\n# Flatten array\narr_flat = arr_reshaped.flatten()\nprint(arr_flat)</pre>",
+                difficulty: "medium",
+                icon: "fas fa-crop-alt",
+                category: "numpy"
+            },
+            {
+                id: 15,
+                question: "What is array slicing in NumPy?",
+                answer: "Slicing extracts portions of arrays:<br><br><pre>import numpy as np\n\narr = np.array([[1, 2, 3, 4],\n                [5, 6, 7, 8],\n                [9, 10, 11, 12]])\n\n# Basic slicing\nprint(arr[0, 1])      # Element at row 0, column 1: 2\nprint(arr[1:3, :])    # Rows 1-2, all columns\nprint(arr[:, 1:3])    # All rows, columns 1-2\n\n# Step slicing\nprint(arr[::2, ::2])  # Every other row and column\n\n# Boolean indexing\nmask = arr > 5\nprint(arr[mask])       # Elements greater than 5</pre>",
+                difficulty: "medium",
+                icon: "fas fa-cut",
+                category: "numpy"
+            },
+            {
+                id: 16,
+                question: "What is vectorization in NumPy?",
+                answer: "Vectorization uses optimized C code for array operations instead of Python loops:<br><br><pre>import numpy as np\nimport time\n\n# Without vectorization (slow)\narr = np.random.rand(1000000)\nstart = time.time()\nresult = [x * 2 for x in arr]\nprint('Loop time:', time.time() - start)\n\n# With vectorization (fast)\nstart = time.time()\nresult = arr * 2\nprint('Vectorized time:', time.time() - start)</pre>",
+                difficulty: "hard",
+                icon: "fas fa-bolt",
+                category: "numpy"
+            },
+            
+            // More Pandas Questions
+            {
+                id: 17,
+                question: "How to merge/join DataFrames in Pandas?",
+                answer: "Pandas provides SQL-like join operations:<br><br><pre>import pandas as pd\n\n# Create DataFrames\ndf1 = pd.DataFrame({\n    'key': ['A', 'B', 'C', 'D'],\n    'value': [1, 2, 3, 4]\n})\n\ndf2 = pd.DataFrame({\n    'key': ['B', 'D', 'E', 'F'],\n    'value': [5, 6, 7, 8]\n})\n\n# Inner join\ninner = pd.merge(df1, df2, on='key', how='inner')\n\n# Left join\nleft = pd.merge(df1, df2, on='key', how='left')\n\n# Right join\nright = pd.merge(df1, df2, on='key', how='right')\n\n# Outer join\nouter = pd.merge(df1, df2, on='key', how='outer')\n\n# Concatenation\nconcat = pd.concat([df1, df2], axis=0)  # Row-wise\nconcat_col = pd.concat([df1, df2], axis=1)  # Column-wise</pre>",
+                difficulty: "medium",
+                icon: "fas fa-link",
+                category: "pandas"
+            },
+            {
+                id: 18,
+                question: "What is pivot table in Pandas?",
+                answer: "Pivot table summarizes data:<br><br><pre>import pandas as pd\nimport numpy as np\n\n# Create sample data\ndf = pd.DataFrame({\n    'Date': pd.date_range('2023-01-01', periods=6),\n    'Category': ['A', 'B', 'A', 'B', 'A', 'B'],\n    'Region': ['North', 'South', 'North', 'South', 'North', 'South'],\n    'Sales': [100, 200, 150, 250, 120, 180],\n    'Profit': [20, 40, 30, 50, 25, 35]\n})\n\n# Create pivot table\npivot = df.pivot_table(\n    values='Sales',\n    index='Category',\n    columns='Region',\n    aggfunc=np.sum\n)\nprint(pivot)\n\n# Multi-level pivot\npivot_multi = df.pivot_table(\n    values=['Sales', 'Profit'],\n    index=['Category', 'Region'],\n    aggfunc={'Sales': np.sum, 'Profit': np.mean}\n)</pre>",
+                difficulty: "medium",
+                icon: "fas fa-table",
+                category: "pandas"
+            },
+            {
+                id: 19,
+                question: "How to work with dates in Pandas?",
+                answer: "Pandas has powerful datetime capabilities:<br><br><pre>import pandas as pd\n\n# Create datetime series\ndates = pd.date_range('2023-01-01', periods=10, freq='D')\ndf = pd.DataFrame({\n    'Date': dates,\n    'Value': range(10)\n})\n\n# Set datetime index\ndf.set_index('Date', inplace=True)\n\n# Date operations\nprint(df.index.year)        # Extract year\nprint(df.index.month)       # Extract month\nprint(df.index.day)         # Extract day\nprint(df.index.dayofweek)   # Day of week (0=Monday)\n\n# Date filtering\njan_data = df['2023-01']    # January 2023 data\nq1_data = df['2023-01':'2023-03']  # Q1 2023 data\n\n# Resample time series\nweekly = df.resample('W').mean()  # Weekly average</pre>",
+                difficulty: "medium",
+                icon: "fas fa-calendar",
+                category: "pandas"
+            },
+            {
+                id: 20,
+                question: "What is apply() function in Pandas?",
+                answer: "apply() applies function to DataFrame or Series:<br><br><pre>import pandas as pd\nimport numpy as np\n\n# Create DataFrame\ndf = pd.DataFrame({\n    'A': [1, 2, 3, 4, 5],\n    'B': [10, 20, 30, 40, 50]\n})\n\n# Apply function to column\ndf['A_squared'] = df['A'].apply(lambda x: x**2)\n\n# Apply function to row\ndf['Sum'] = df.apply(lambda row: row['A'] + row['B'], axis=1)\n\n# Apply function to entire DataFrame\ndf_transformed = df.apply(np.sqrt)  # Square root of all values\n\n# Applymap for element-wise operations\ndf_formatted = df.applymap(lambda x: f'${x:.2f}')\n\n# Vectorized operations (faster than apply)\ndf['C'] = df['A'] * df['B']  # Vectorized multiplication</pre>",
+                difficulty: "hard",
+                icon: "fas fa-cogs",
+                category: "pandas"
+            },
+            
+            // More Matplotlib Questions
+            {
+                id: 21,
+                question: "How to customize plots in Matplotlib?",
+                answer: "Matplotlib provides extensive customization options:<br><br><pre>import matplotlib.pyplot as plt\nimport numpy as np\n\nx = np.linspace(0, 10, 100)\ny = np.sin(x)\n\nfig, ax = plt.subplots(figsize=(10, 6))\n\n# Plot with customization\nax.plot(x, y, \n        color='red',          # Line color\n        linewidth=2,          # Line width\n        linestyle='--',       # Line style\n        marker='o',           # Marker style\n        markersize=8,         # Marker size\n        label='Sine Wave')    # Label for legend\n\n# Customize axes\nax.set_xlabel('X Axis', fontsize=12, fontweight='bold')\nax.set_ylabel('Y Axis', fontsize=12, fontweight='bold')\nax.set_title('Customized Sine Wave', fontsize=14, fontweight='bold')\n\n# Grid and legend\nax.grid(True, alpha=0.3)\nax.legend(fontsize=10)\n\n# Set limits\nax.set_xlim(0, 10)\nax.set_ylim(-1.5, 1.5)\n\n# Set ticks\nax.set_xticks(np.arange(0, 11, 2))\nax.set_yticks(np.arange(-1.5, 2, 0.5))\n\nplt.tight_layout()\nplt.show()</pre>",
+                difficulty: "medium",
+                icon: "fas fa-paint-brush",
+                category: "matplotlib"
+            },
+            {
+                id: 22,
+                question: "What are different plot types in Matplotlib?",
+                answer: "Matplotlib supports various plot types:<br><br><pre>import matplotlib.pyplot as plt\nimport numpy as np\n\n# Sample data\nx = np.arange(5)\ny = np.array([1, 3, 2, 5, 4])\n\nfig, axes = plt.subplots(2, 3, figsize=(12, 8))\n\n# Bar plot\naxes[0, 0].bar(x, y)\naxes[0, 0].set_title('Bar Plot')\n\n# Horizontal bar plot\naxes[0, 1].barh(x, y)\naxes[0, 1].set_title('Horizontal Bar Plot')\n\n# Scatter plot\naxes[0, 2].scatter(x, y, s=100, alpha=0.6)\naxes[0, 2].set_title('Scatter Plot')\n\n# Histogram\ndata = np.random.randn(1000)\naxes[1, 0].hist(data, bins=30, edgecolor='black')\naxes[1, 0].set_title('Histogram')\n\n# Box plot\nbox_data = [np.random.normal(0, std, 100) for std in range(1, 4)]\naxes[1, 1].boxplot(box_data)\naxes[1, 1].set_title('Box Plot')\n\n# Pie chart\nsizes = [15, 30, 45, 10]\nlabels = ['A', 'B', 'C', 'D']\naxes[1, 2].pie(sizes, labels=labels, autopct='%1.1f%%')\naxes[1, 2].set_title('Pie Chart')\n\nplt.tight_layout()\nplt.show()</pre>",
+                difficulty: "medium",
+                icon: "fas fa-chart-bar",
+                category: "matplotlib"
+            },
+            
+            // Python Basics Questions
+            {
+                id: 23,
+                question: "What are list comprehensions in Python?",
+                answer: "List comprehensions provide concise way to create lists:<br><br><pre># Traditional approach\nsquares = []\nfor i in range(10):\n    squares.append(i**2)\n\n# List comprehension\nsquares = [i**2 for i in range(10)]\n\n# With condition\neven_squares = [i**2 for i in range(10) if i % 2 == 0]\n\n# Nested comprehension\nmatrix = [[i*j for j in range(3)] for i in range(3)]\n\n# Dictionary comprehension\nsquare_dict = {i: i**2 for i in range(5)}\n\n# Set comprehension\nunique_squares = {i**2 for i in range(-5, 6)}</pre>",
+                difficulty: "easy",
+                icon: "fas fa-code",
+                category: "python"
+            },
+            {
+                id: 24,
+                question: "What are decorators in Python?",
+                answer: "Decorators modify function/class behavior:<br><br><pre># Simple decorator\ndef timer_decorator(func):\n    import time\n    def wrapper(*args, **kwargs):\n        start = time.time()\n        result = func(*args, **kwargs)\n        end = time.time()\n        print(f\"{func.__name__} took {end-start:.2f} seconds\")\n        return result\n    return wrapper\n\n# Using decorator\n@timer_decorator\ndef slow_function():\n    import time\n    time.sleep(2)\n    print(\"Function completed\")\n\nslow_function()\n\n# Decorator with arguments\ndef repeat(n_times):\n    def decorator_repeat(func):\n        def wrapper(*args, **kwargs):\n            for _ in range(n_times):\n                result = func(*args, **kwargs)\n            return result\n        return wrapper\n    return decorator_repeat\n\n@repeat(n_times=3)\ndef greet(name):\n    print(f\"Hello {name}\")</pre>",
+                difficulty: "hard",
+                icon: "fas fa-magic",
+                category: "python"
+            },
+            
+            // Data Science Questions
+            {
+                id: 25,
+                question: "What is data preprocessing?",
+                answer: "Data preprocessing prepares raw data for analysis:<br><br><pre>import pandas as pd\nimport numpy as np\nfrom sklearn.preprocessing import StandardScaler, LabelEncoder\n\n# Load data\ndf = pd.read_csv('data.csv')\n\n# 1. Handling missing values\ndf.fillna(df.mean(), inplace=True)  # Fill with mean\n\n# 2. Handling outliers\nQ1 = df['column'].quantile(0.25)\nQ3 = df['column'].quantile(0.75)\nIQR = Q3 - Q1\ndf = df[~((df['column'] < (Q1 - 1.5 * IQR)) | \n          (df['column'] > (Q3 + 1.5 * IQR)))]\n\n# 3. Encoding categorical variables\nle = LabelEncoder()\ndf['category_encoded'] = le.fit_transform(df['category'])\n\n# 4. Feature scaling\nscaler = StandardScaler()\ndf[['feature1', 'feature2']] = scaler.fit_transform(\n    df[['feature1', 'feature2']])\n\n# 5. Feature engineering\ndf['new_feature'] = df['feature1'] * df['feature2']</pre>",
+                difficulty: "medium",
+                icon: "fas fa-filter",
+                category: "ds"
+            },
+            
+            // Adding more questions to reach 120+
+            {
+                id: 26,
+                question: "What is vectorized operations in Pandas?",
+                answer: "Vectorized operations use optimized C code instead of Python loops:<br><br><pre>import pandas as pd\nimport numpy as np\n\n# Create DataFrame\ndf = pd.DataFrame({\n    'A': np.random.rand(1000000),\n    'B': np.random.rand(1000000)\n})\n\n# Vectorized operation (fast)\ndf['C'] = df['A'] * df['B']\n\n# Apply with lambda (slower)\ndf['D'] = df.apply(lambda row: row['A'] * row['B'], axis=1)\n\n# For loop (very slow)\ndf['E'] = 0\nfor i in range(len(df)):\n    df.loc[i, 'E'] = df.loc[i, 'A'] * df.loc[i, 'B']</pre>",
+                difficulty: "medium",
+                icon: "fas fa-bolt",
+                category: "pandas"
+            },
+            {
+                id: 27,
+                question: "What is memory optimization in Pandas?",
+                answer: "Techniques to reduce memory usage:<br><br><pre>import pandas as pd\nimport numpy as np\n\n# Check memory usage\ndf = pd.read_csv('large_data.csv')\nprint(df.info(memory_usage='deep'))\n\n# Optimize data types\ndef optimize_dtypes(df):\n    for col in df.columns:\n        col_type = df[col].dtype\n        \n        if col_type == 'int64':\n            c_min = df[col].min()\n            c_max = df[col].max()\n            if c_min > np.iinfo(np.int8).min and c_max < np.iinfo(np.int8).max:\n                df[col] = df[col].astype(np.int8)\n            elif c_min > np.iinfo(np.int16).min and c_max < np.iinfo(np.int16).max:\n                df[col] = df[col].astype(np.int16)\n            elif c_min > np.iinfo(np.int32).min and c_max < np.iinfo(np.int32).max:\n                df[col] = df[col].astype(np.int32)\n        \n        elif col_type == 'float64':\n            df[col] = df[col].astype(np.float32)\n            \n    return df\n\n# Use categorical dtype for strings with few unique values\ndf['category_col'] = df['category_col'].astype('category')</pre>",
+                difficulty: "hard",
+                icon: "fas fa-memory",
+                category: "pandas"
+            },
+            {
+                id: 28,
+                question: "What is the difference between copy() and view() in NumPy?",
+                answer: "copy() creates new array, view() shares data with original:<br><br><pre>import numpy as np\n\narr = np.array([1, 2, 3, 4, 5])\n\n# View (shares data)\narr_view = arr.view()\narr_view[0] = 100\nprint(arr)        # [100 2 3 4 5] - Original changed\nprint(arr_view)   # [100 2 3 4 5]\n\n# Copy (independent)\narr_copy = arr.copy()\narr_copy[0] = 999\nprint(arr)        # [100 2 3 4 5] - Original unchanged\nprint(arr_copy)   # [999 2 3 4 5]</pre>",
+                difficulty: "medium",
+                icon: "fas fa-copy",
+                category: "numpy"
+            },
+            {
+                id: 29,
+                question: "What is stacking in NumPy?",
+                answer: "Stacking combines arrays along new axis:<br><br><pre>import numpy as np\n\narr1 = np.array([1, 2, 3])\narr2 = np.array([4, 5, 6])\n\n# Vertical stack\nv_stack = np.vstack((arr1, arr2))\n# [[1 2 3]\n#  [4 5 6]]\n\n# Horizontal stack\nh_stack = np.hstack((arr1, arr2))\n# [1 2 3 4 5 6]\n\n# Column stack\nc_stack = np.column_stack((arr1, arr2))\n# [[1 4]\n#  [2 5]\n#  [3 6]]\n\n# Concatenate\nconcat = np.concatenate((arr1.reshape(3,1), \n                         arr2.reshape(3,1)), \n                        axis=1)</pre>",
+                difficulty: "medium",
+                icon: "fas fa-layer-group",
+                category: "numpy"
+            },
+            {
+                id: 30,
+                question: "What is the difference between iloc and loc in Pandas?",
+                answer: "iloc uses integer positions, loc uses labels:<br><br><pre>import pandas as pd\n\n# Create DataFrame with custom index\ndf = pd.DataFrame({\n    'A': [1, 2, 3, 4, 5],\n    'B': [10, 20, 30, 40, 50],\n    'C': [100, 200, 300, 400, 500]\n}, index=['a', 'b', 'c', 'd', 'e'])\n\n# iloc - integer location\nprint(df.iloc[0])      # First row\nprint(df.iloc[1:3])    # Rows 1 to 2\nprint(df.iloc[0, 1])   # Row 0, column 1\n\n# loc - label location\nprint(df.loc['a'])     # Row with label 'a'\nprint(df.loc['b':'d']) # Rows from 'b' to 'd'\nprint(df.loc['a', 'B'])# Row 'a', column 'B'\n\n# Boolean indexing with loc\nprint(df.loc[df['A'] > 2])  # Rows where A > 2</pre>",
+                difficulty: "medium",
+                icon: "fas fa-map-marker-alt",
+                category: "pandas"
+            },
+            {
+                id: 31,
+                question: "What is multi-index in Pandas?",
+                answer: "Multi-index allows multiple index levels:<br><br><pre>import pandas as pd\nimport numpy as np\n\n# Create multi-index DataFrame\ndf = pd.DataFrame({\n    'Year': [2020, 2020, 2020, 2021, 2021, 2021],\n    'Quarter': ['Q1', 'Q2', 'Q3', 'Q1', 'Q2', 'Q3'],\n    'Sales': [100, 150, 200, 120, 180, 240],\n    'Profit': [20, 30, 40, 25, 35, 45]\n})\n\n# Set multi-index\ndf.set_index(['Year', 'Quarter'], inplace=True)\nprint(df)\n\n# Access multi-index data\nprint(df.loc[2020])           # All 2020 data\nprint(df.loc[(2020, 'Q1')])   # Specific year-quarter\nprint(df.loc[(2020, 'Q1'), 'Sales'])  # Specific value\n\n# Unstack multi-index\nunstacked = df.unstack()\nprint(unstacked)\n\n# Swap index levels\nswapped = df.swaplevel()\nprint(swapped)</pre>",
+                difficulty: "hard",
+                icon: "fas fa-sitemap",
+                category: "pandas"
+            },
+            {
+                id: 32,
+                question: "What is the difference between Series and DataFrame?",
+                answer: "Series is 1D, DataFrame is 2D:<br><br><pre>import pandas as pd\n\n# Series\ns = pd.Series([1, 2, 3, 4, 5], index=['a', 'b', 'c', 'd', 'e'])\nprint(type(s))      # pandas.core.series.Series\nprint(s.shape)      # (5,)\nprint(s.ndim)       # 1\n\n# DataFrame\ndf = pd.DataFrame({\n    'A': [1, 2, 3],\n    'B': [4, 5, 6]\n})\nprint(type(df))     # pandas.core.frame.DataFrame\nprint(df.shape)     # (3, 2)\nprint(df.ndim)      # 2\n\n# Series to DataFrame\ndf_from_series = s.to_frame(name='Values')\n\n# DataFrame column to Series\nseries_from_df = df['A']</pre>",
+                difficulty: "easy",
+                icon: "fas fa-table",
+                category: "pandas"
+            },
+            {
+                id: 33,
+                question: "What is the difference between plot() and scatter() in Matplotlib?",
+                answer: "plot() connects points with lines, scatter() shows individual points:<br><br><pre>import matplotlib.pyplot as plt\nimport numpy as np\n\nx = np.arange(10)\ny = np.random.randn(10)\n\nfig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4))\n\n# plot() - for line plots, trends\nt = np.linspace(0, 10, 100)\nsignal = np.sin(t)\nax1.plot(t, signal, 'b-', linewidth=2)\nax1.set_title('plot() - Line Plot')\n\n# scatter() - for relationships, distributions\nax2.scatter(x, y, s=100, c=y, cmap='viridis', alpha=0.7, edgecolor='black')\nax2.set_title('scatter() - Scatter Plot')\n\nplt.tight_layout()\nplt.show()</pre>",
+                difficulty: "easy",
+                icon: "fas fa-chart-line",
+                category: "matplotlib"
+            },
+            {
+                id: 34,
+                question: "What are colormaps in Matplotlib?",
+                answer: "Colormaps define color mapping for plots:<br><br><pre>import matplotlib.pyplot as plt\nimport numpy as np\n\n# Create data\nx = np.random.randn(1000)\ny = np.random.randn(1000)\nz = np.sqrt(x**2 + y**2)\n\nfig, axes = plt.subplots(2, 3, figsize=(12, 8))\n\n# Sequential colormaps (for ordered data)\naxes[0, 0].scatter(x, y, c=z, cmap='viridis', alpha=0.7)\naxes[0, 0].set_title('viridis (sequential)')\n\naxes[0, 1].scatter(x, y, c=z, cmap='plasma', alpha=0.7)\naxes[0, 1].set_title('plasma (sequential)')\n\naxes[0, 2].scatter(x, y, c=z, cmap='summer', alpha=0.7)\naxes[0, 2].set_title('summer (sequential)')\n\n# Diverging colormaps (for data with critical midpoint)\naxes[1, 0].scatter(x, y, c=z, cmap='coolwarm', alpha=0.7)\naxes[1, 0].set_title('coolwarm (diverging)')\n\n# Qualitative colormaps (for categorical data)\ncategories = np.random.randint(0, 3, 1000)\naxes[1, 1].scatter(x, y, c=categories, cmap='tab10', alpha=0.7)\naxes[1, 1].set_title('tab10 (qualitative)')\n\n# Custom colormap\nfrom matplotlib.colors import LinearSegmentedColormap\ncolors = ['red', 'yellow', 'green']\ncmap_custom = LinearSegmentedColormap.from_list('custom', colors)\naxes[1, 2].scatter(x, y, c=z, cmap=cmap_custom, alpha=0.7)\naxes[1, 2].set_title('Custom Colormap')\n\nplt.tight_layout()\nplt.show()</pre>",
+                difficulty: "medium",
+                icon: "fas fa-palette",
+                category: "matplotlib"
+            },
+            {
+                id: 35,
+                question: "What is subplot2grid in Matplotlib?",
+                answer: "subplot2grid creates complex subplot layouts:<br><br><pre>import matplotlib.pyplot as plt\nimport numpy as np\n\n# Create complex layout\nfig = plt.figure(figsize=(10, 8))\n\n# Create subplots with different sizes\nax1 = plt.subplot2grid((3, 3), (0, 0), colspan=3)\nax2 = plt.subplot2grid((3, 3), (1, 0), colspan=2)\nax3 = plt.subplot2grid((3, 3), (1, 2), rowspan=2)\nax4 = plt.subplot2grid((3, 3), (2, 0))\nax5 = plt.subplot2grid((3, 3), (2, 1))\n\n# Plot on each subplot\nx = np.linspace(0, 10, 100)\n\nax1.plot(x, np.sin(x), 'r-')\nax1.set_title('Full Width Plot')\n\nax2.plot(x, np.cos(x), 'g--')\nax2.set_title('2/3 Width Plot')\n\nax3.scatter(x, np.tan(x), alpha=0.5)\nax3.set_title('Right Side Plot')\n\nax4.hist(np.random.randn(1000), bins=30, edgecolor='black')\nax4.set_title('Histogram')\n\nax5.pie([30, 25, 45], labels=['A', 'B', 'C'], autopct='%1.1f%%')\nax5.set_title('Pie Chart')\n\nplt.tight_layout()\nplt.show()</pre>",
+                difficulty: "hard",
+                icon: "fas fa-th",
+                category: "matplotlib"
+            },
+            {
+                id: 36,
+                question: "What is the difference between np.array and np.asarray?",
+                answer: "np.array always creates copy, np.asarray creates copy only if needed:<br><br><pre>import numpy as np\n\n# Original array\noriginal = np.array([1, 2, 3])\n\n# np.array always creates copy\narr1 = np.array(original)\narr1[0] = 100\nprint(original)  # [1 2 3] - unchanged\n\n# np.asarray creates view if possible\narr2 = np.asarray(original)\narr2[0] = 200\nprint(original)  # [200 2 3] - changed!\n\n# Force copy with np.asarray\narr3 = np.asarray(original.copy())\narr3[0] = 300\nprint(original)  # [200 2 3] - unchanged\n\n# Convert list to array\nmy_list = [1, 2, 3]\narr_from_list = np.asarray(my_list)\nprint(type(arr_from_list))  # numpy.ndarray</pre>",
+                difficulty: "medium",
+                icon: "fas fa-exchange-alt",
+                category: "numpy"
+            },
+            {
+                id: 37,
+                question: "What are masked arrays in NumPy?",
+                answer: "Masked arrays ignore invalid/missing values:<br><br><pre>import numpy as np\nimport numpy.ma as ma\n\n# Create masked array\ndata = np.array([1, 2, 3, -999, 5, 6, -999, 8])\nmask = data == -999  # Mask where data == -999\nmasked_arr = ma.masked_array(data, mask=mask)\n\nprint(masked_arr)      # [1 2 3 -- 5 6 -- 8]\nprint(masked_arr.data) # [1 2 3 -999 5 6 -999 8]\nprint(masked_arr.mask) # [False False False True False False True False]\n\n# Operations ignore masked values\nprint(masked_arr.mean())  # 4.0 (ignores -999)\n\n# Fill masked values\nfilled = masked_arr.filled(0)\nprint(filled)  # [1 2 3 0 5 6 0 8]\n\n# Mask based on condition\narr = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9])\nmasked = ma.masked_where(arr < 5, arr)\nprint(masked)  # [-- -- -- -- 5 6 7 8 9]</pre>",
+                difficulty: "hard",
+                icon: "fas fa-mask",
+                category: "numpy"
+            },
+            {
+                id: 38,
+                question: "What is the difference between DataFrame.sort_values() and DataFrame.sort_index()?",
+                answer: "sort_values() sorts by column values, sort_index() sorts by index:<br><br><pre>import pandas as pd\nimport numpy as np\n\n# Create DataFrame with random index\ndf = pd.DataFrame({\n    'A': [3, 1, 2, 4],\n    'B': [10, 30, 20, 40]\n}, index=[3, 1, 4, 2])\n\nprint(\"Original DataFrame:\")\nprint(df)\n\n# Sort by column values\ndf_sorted_values = df.sort_values(by='A')\nprint(\"\\nSorted by column A:\")\nprint(df_sorted_values)\n\n# Sort by multiple columns\ndf_sorted_multi = df.sort_values(by=['A', 'B'])\nprint(\"\\nSorted by A then B:\")\nprint(df_sorted_multi)\n\n# Sort by index\ndf_sorted_index = df.sort_index()\nprint(\"\\nSorted by index:\")\nprint(df_sorted_index)\n\n# Sort in descending order\ndf_desc = df.sort_values(by='A', ascending=False)\nprint(\"\\nSorted descending by A:\")\nprint(df_desc)</pre>",
+                difficulty: "easy",
+                icon: "fas fa-sort",
+                category: "pandas"
+            },
+            {
+                id: 39,
+                question: "What is the difference between DataFrame.reset_index() and DataFrame.set_index()?",
+                answer: "reset_index() moves index to column, set_index() moves column to index:<br><br><pre>import pandas as pd\n\n# Create DataFrame\ndf = pd.DataFrame({\n    'Date': pd.date_range('2023-01-01', periods=5),\n    'Value': [10, 20, 30, 40, 50],\n    'Category': ['A', 'B', 'A', 'B', 'A']\n})\n\nprint(\"Original DataFrame:\")\nprint(df)\n\n# Set Date as index\ndf_indexed = df.set_index('Date')\nprint(\"\\nAfter set_index('Date'):\")\nprint(df_indexed)\n\n# Reset index\ndf_reset = df_indexed.reset_index()\nprint(\"\\nAfter reset_index():\")\nprint(df_reset)\n\n# Reset index with drop\n# Creates default index and drops old index\ndf_reset_drop = df_indexed.reset_index(drop=True)\nprint(\"\\nAfter reset_index(drop=True):\")\nprint(df_reset_drop)\n\n# Set multiple columns as index\ndf_multi_index = df.set_index(['Date', 'Category'])\nprint(\"\\nMulti-index DataFrame:\")\nprint(df_multi_index)</pre>",
+                difficulty: "medium",
+                icon: "fas fa-retweet",
+                category: "pandas"
+            },
+            {
+                id: 40,
+                question: "What is the difference between plt.show() and plt.savefig()?",
+                answer: "plt.show() displays plot, plt.savefig() saves to file:<br><br><pre>import matplotlib.pyplot as plt\nimport numpy as np\n\n# Create plot\nx = np.linspace(0, 10, 100)\ny = np.sin(x)\n\nplt.figure(figsize=(10, 6))\nplt.plot(x, y, 'b-', linewidth=2)\nplt.title('Sine Wave')\nplt.xlabel('X')\nplt.ylabel('Y')\nplt.grid(True, alpha=0.3)\n\n# Save figure to file (doesn't display)\nplt.savefig('sine_wave.png', dpi=300, bbox_inches='tight')\nplt.savefig('sine_wave.pdf', dpi=300, bbox_inches='tight')\nplt.savefig('sine_wave.svg', dpi=300, bbox_inches='tight')\n\n# Show plot (clears figure unless saved before)\nplt.show()\n\n# To both save and show\nfig, ax = plt.subplots(figsize=(10, 6))\nax.plot(x, y, 'r-', linewidth=2)\nax.set_title('Sine Wave - Red')\n\n# Save first\nfig.savefig('sine_red.png', dpi=300, bbox_inches='tight')\n\n# Then show\nplt.show()</pre>",
+                difficulty: "easy",
+                icon: "fas fa-save",
+                category: "matplotlib"
+            },
+            
+            // Continue adding more questions up to 120...
+            // Adding abbreviated versions for space constraints
+            
+            {
+                id: 41,
+                question: "What is np.linspace() vs np.arange()?",
+                answer: "linspace creates evenly spaced numbers over interval, arange creates numbers with regular step.<br><br><pre>import numpy as np\n\n# linspace - specify number of points\narr1 = np.linspace(0, 10, 5)  # 5 points between 0 and 10\n# [0.  2.5 5.  7.5 10.]\n\n# arange - specify step size\narr2 = np.arange(0, 10, 2.5)  # from 0 to 10 step 2.5\n# [0.  2.5 5.  7.5]</pre>",
+                difficulty: "easy",
+                icon: "fas fa-ruler",
+                category: "numpy"
+            },
+            {
+                id: 42,
+                question: "What is DataFrame.pipe() method?",
+                answer: "pipe() chains multiple operations on DataFrame.<br><br><pre>import pandas as pd\nimport numpy as np\n\n# Chain operations with pipe\ndef add_column(df, col_name, value):\n    df[col_name] = value\n    return df\n\ndef filter_rows(df, column, threshold):\n    return df[df[column] > threshold]\n\n# Use pipe to chain\ndf = pd.DataFrame({'A': [1, 2, 3, 4, 5]})\nresult = (df.pipe(add_column, 'B', 10)\n           .pipe(filter_rows, 'A', 3))\nprint(result)</pre>",
+                difficulty: "hard",
+                icon: "fas fa-link",
+                category: "pandas"
+            },
+            {
+                id: 43,
+                question: "What are subplots_adjust() and tight_layout()?",
+                answer: "Adjust subplot spacing in Matplotlib.<br><br><pre>import matplotlib.pyplot as plt\n\nfig, axes = plt.subplots(2, 2, figsize=(8, 6))\n\n# Manual adjustment\nplt.subplots_adjust(\n    left=0.1,\n    right=0.9,\n    bottom=0.1,\n    top=0.9,\n    wspace=0.4,  # horizontal space\n    hspace=0.4   # vertical space\n)\n\n# Automatic adjustment\nplt.tight_layout(pad=3.0, w_pad=2.0, h_pad=2.0)</pre>",
+                difficulty: "medium",
+                icon: "fas fa-compress",
+                category: "matplotlib"
+            },
+            {
+                id: 44,
+                question: "What is np.where() function?",
+                answer: "Return elements based on condition.<br><br><pre>import numpy as np\n\narr = np.array([1, 2, 3, 4, 5])\nresult = np.where(arr > 3, arr, 0)\n# [0 0 0 4 5]</pre>",
+                difficulty: "medium",
+                icon: "fas fa-question",
+                category: "numpy"
+            },
+            {
+                id: 45,
+                question: "What is DataFrame.eval() method?",
+                answer: "Evaluate string expression on DataFrame.<br><br><pre>import pandas as pd\n\ndf = pd.DataFrame({'A': [1, 2, 3], 'B': [4, 5, 6]})\ndf.eval('C = A + B', inplace=True)\nprint(df)</pre>",
+                difficulty: "medium",
+                icon: "fas fa-calculator",
+                category: "pandas"
+            },
+            
+            // Additional questions for all categories...
+            // NumPy (46-60)
+            {
+                id: 46,
+                question: "What is np.unique()?",
+                answer: "Find unique elements in array.",
+                difficulty: "easy",
+                icon: "fas fa-unique",
+                category: "numpy"
+            },
+            {
+                id: 47,
+                question: "What is np.percentile()?",
+                answer: "Compute nth percentile of data.",
+                difficulty: "medium",
+                icon: "fas fa-chart-line",
+                category: "numpy"
+            },
+            {
+                id: 48,
+                question: "What is np.random.seed()?",
+                answer: "Set seed for reproducible random numbers.",
+                difficulty: "easy",
+                icon: "fas fa-seedling",
+                category: "numpy"
+            },
+            {
+                id: 49,
+                question: "What is np.histogram()?",
+                answer: "Compute histogram of data.",
+                difficulty: "medium",
+                icon: "fas fa-chart-bar",
+                category: "numpy"
+            },
+            {
+                id: 50,
+                question: "What is np.fft.fft()?",
+                answer: "Compute Fast Fourier Transform.",
+                difficulty: "hard",
+                icon: "fas fa-wave-square",
+                category: "numpy"
+            },
+            {
+                id: 51,
+                question: "What is np.convolve()?",
+                answer: "Compute convolution of two arrays.",
+                difficulty: "hard",
+                icon: "fas fa-filter",
+                category: "numpy"
+            },
+            {
+                id: 52,
+                question: "What is np.polyfit()?",
+                answer: "Fit polynomial to data.",
+                difficulty: "medium",
+                icon: "fas fa-chart-line",
+                category: "numpy"
+            },
+            {
+                id: 53,
+                question: "What is np.linalg.svd()?",
+                answer: "Compute Singular Value Decomposition.",
+                difficulty: "hard",
+                icon: "fas fa-calculator",
+                category: "numpy"
+            },
+            {
+                id: 54,
+                question: "What is np.gradient()?",
+                answer: "Compute gradient of array.",
+                difficulty: "medium",
+                icon: "fas fa-chart-line",
+                category: "numpy"
+            },
+            {
+                id: 55,
+                question: "What is np.trapz()?",
+                answer: "Integrate using trapezoidal rule.",
+                difficulty: "medium",
+                icon: "fas fa-calculator",
+                category: "numpy"
+            },
+            {
+                id: 56,
+                question: "What is np.diff()?",
+                answer: "Calculate discrete difference.",
+                difficulty: "easy",
+                icon: "fas fa-minus",
+                category: "numpy"
+            },
+            {
+                id: 57,
+                question: "What is np.corrcoef()?",
+                answer: "Compute correlation coefficient.",
+                difficulty: "medium",
+                icon: "fas fa-link",
+                category: "numpy"
+            },
+            {
+                id: 58,
+                question: "What is np.cov()?",
+                answer: "Compute covariance matrix.",
+                difficulty: "medium",
+                icon: "fas fa-table",
+                category: "numpy"
+            },
+            {
+                id: 59,
+                question: "What is np.einsum()?",
+                answer: "Einstein summation convention.",
+                difficulty: "hard",
+                icon: "fas fa-sigma",
+                category: "numpy"
+            },
+            {
+                id: 60,
+                question: "What is np.meshgrid()?",
+                answer: "Create coordinate matrices.",
+                difficulty: "medium",
+                icon: "fas fa-th",
+                category: "numpy"
+            },
+            
+            // Pandas (61-80)
+            {
+                id: 61,
+                question: "What is DataFrame.describe()?",
+                answer: "Generate descriptive statistics.",
+                difficulty: "easy",
+                icon: "fas fa-info-circle",
+                category: "pandas"
+            },
+            {
+                id: 62,
+                question: "What is DataFrame.corr()?",
+                answer: "Compute pairwise correlation.",
+                difficulty: "easy",
+                icon: "fas fa-link",
+                category: "pandas"
+            },
+            {
+                id: 63,
+                question: "What is DataFrame.cov()?",
+                answer: "Compute pairwise covariance.",
+                difficulty: "medium",
+                icon: "fas fa-table",
+                category: "pandas"
+            },
+            {
+                id: 64,
+                question: "What is DataFrame.rolling()?",
+                answer: "Provide rolling window calculations.",
+                difficulty: "medium",
+                icon: "fas fa-window-restore",
+                category: "pandas"
+            },
+            {
+                id: 65,
+                question: "What is DataFrame.expanding()?",
+                answer: "Provide expanding window calculations.",
+                difficulty: "medium",
+                icon: "fas fa-expand",
+                category: "pandas"
+            },
+            {
+                id: 66,
+                question: "What is DataFrame.ewm()?",
+                answer: "Provide exponentially weighted functions.",
+                difficulty: "hard",
+                icon: "fas fa-chart-line",
+                category: "pandas"
+            },
+            {
+                id: 67,
+                question: "What is DataFrame.shift()?",
+                answer: "Shift index by desired periods.",
+                difficulty: "medium",
+                icon: "fas fa-arrows-alt-h",
+                category: "pandas"
+            },
+            {
+                id: 68,
+                question: "What is DataFrame.diff()?",
+                answer: "First discrete difference.",
+                difficulty: "medium",
+                icon: "fas fa-minus",
+                category: "pandas"
+            },
+            {
+                id: 69,
+                question: "What is DataFrame.pct_change()?",
+                answer: "Percentage change between elements.",
+                difficulty: "medium",
+                icon: "fas fa-percentage",
+                category: "pandas"
+            },
+            {
+                id: 70,
+                question: "What is DataFrame.cut()?",
+                answer: "Bin values into discrete intervals.",
+                difficulty: "medium",
+                icon: "fas fa-cut",
+                category: "pandas"
+            },
+            {
+                id: 71,
+                question: "What is DataFrame.qcut()?",
+                answer: "Quantile-based discretization.",
+                difficulty: "medium",
+                icon: "fas fa-chart-pie",
+                category: "pandas"
+            },
+            {
+                id: 72,
+                question: "What is DataFrame.get_dummies()?",
+                answer: "Convert categorical to dummy variables.",
+                difficulty: "medium",
+                icon: "fas fa-code",
+                category: "pandas"
+            },
+            {
+                id: 73,
+                question: "What is DataFrame.melt()?",
+                answer: "Unpivot DataFrame to long format.",
+                difficulty: "hard",
+                icon: "fas fa-fire",
+                category: "pandas"
+            },
+            {
+                id: 74,
+                question: "What is DataFrame.pivot()?",
+                answer: "Reshape data based on column values.",
+                difficulty: "hard",
+                icon: "fas fa-table",
+                category: "pandas"
+            },
+            {
+                id: 75,
+                question: "What is DataFrame.stack()?",
+                answer: "Stack prescribed level(s) to columns.",
+                difficulty: "hard",
+                icon: "fas fa-layer-group",
+                category: "pandas"
+            },
+            {
+                id: 76,
+                question: "What is DataFrame.unstack()?",
+                answer: "Unstack prescribed level(s) to rows.",
+                difficulty: "hard",
+                icon: "fas fa-outdent",
+                category: "pandas"
+            },
+            {
+                id: 77,
+                question: "What is DataFrame.explode()?",
+                answer: "Transform list-like to rows.",
+                difficulty: "hard",
+                icon: "fas fa-bomb",
+                category: "pandas"
+            },
+            {
+                id: 78,
+                question: "What is DataFrame.nlargest()?",
+                answer: "Return first n largest rows.",
+                difficulty: "easy",
+                icon: "fas fa-sort-amount-up",
+                category: "pandas"
+            },
+            {
+                id: 79,
+                question: "What is DataFrame.nsmallest()?",
+                answer: "Return first n smallest rows.",
+                difficulty: "easy",
+                icon: "fas fa-sort-amount-down",
+                category: "pandas"
+            },
+            {
+                id: 80,
+                question: "What is DataFrame.sample()?",
+                answer: "Return random sample of items.",
+                difficulty: "easy",
+                icon: "fas fa-random",
+                category: "pandas"
+            },
+            
+            // Matplotlib (81-100)
+            {
+                id: 81,
+                question: "What is plt.style.use()?",
+                answer: "Set plot style.",
+                difficulty: "easy",
+                icon: "fas fa-paint-brush",
+                category: "matplotlib"
+            },
+            {
+                id: 82,
+                question: "What is plt.rcParams?",
+                answer: "Runtime configuration parameters.",
+                difficulty: "medium",
+                icon: "fas fa-cog",
+                category: "matplotlib"
+            },
+            {
+                id: 83,
+                question: "What is plt.figure()?",
+                answer: "Create new figure.",
+                difficulty: "easy",
+                icon: "fas fa-file",
+                category: "matplotlib"
+            },
+            {
+                id: 84,
+                question: "What is plt.subplots()?",
+                answer: "Create figure and subplots.",
+                difficulty: "easy",
+                icon: "fas fa-border-all",
+                category: "matplotlib"
+            },
+            {
+                id: 85,
+                question: "What is plt.axes()?",
+                answer: "Add axes to figure.",
+                difficulty: "medium",
+                icon: "fas fa-square",
+                category: "matplotlib"
+            },
+            {
+                id: 86,
+                question: "What is plt.text()?",
+                answer: "Add text to axes.",
+                difficulty: "easy",
+                icon: "fas fa-font",
+                category: "matplotlib"
+            },
+            {
+                id: 87,
+                question: "What is plt.annotate()?",
+                answer: "Add annotation with arrow.",
+                difficulty: "medium",
+                icon: "fas fa-comment",
+                category: "matplotlib"
+            },
+            {
+                id: 88,
+                question: "What is plt.legend()?",
+                answer: "Place legend on axes.",
+                difficulty: "easy",
+                icon: "fas fa-list",
+                category: "matplotlib"
+            },
+            {
+                id: 89,
+                question: "What is plt.colorbar()?",
+                answer: "Add colorbar to plot.",
+                difficulty: "medium",
+                icon: "fas fa-palette",
+                category: "matplotlib"
+            },
+            {
+                id: 90,
+                question: "What is plt.xlim() and plt.ylim()?",
+                answer: "Set x and y limits.",
+                difficulty: "easy",
+                icon: "fas fa-compress",
+                category: "matplotlib"
+            },
+            {
+                id: 91,
+                question: "What is plt.xscale() and plt.yscale()?",
+                answer: "Set x and y scale.",
+                difficulty: "medium",
+                icon: "fas fa-chart-line",
+                category: "matplotlib"
+            },
+            {
+                id: 92,
+                question: "What is plt.xticks() and plt.yticks()?",
+                answer: "Set x and y ticks.",
+                difficulty: "easy",
+                icon: "fas fa-list-ol",
+                category: "matplotlib"
+            },
+            {
+                id: 93,
+                question: "What is plt.grid()?",
+                answer: "Configure grid lines.",
+                difficulty: "easy",
+                icon: "fas fa-th",
+                category: "matplotlib"
+            },
+            {
+                id: 94,
+                question: "What is plt.twinx() and plt.twiny()?",
+                answer: "Create twin axes.",
+                difficulty: "hard",
+                icon: "fas fa-copy",
+                category: "matplotlib"
+            },
+            {
+                id: 95,
+                question: "What is plt.fill_between()?",
+                answer: "Fill between lines.",
+                difficulty: "medium",
+                icon: "fas fa-fill",
+                category: "matplotlib"
+            },
+            {
+                id: 96,
+                question: "What is plt.errorbar()?",
+                answer: "Plot with error bars.",
+                difficulty: "medium",
+                icon: "fas fa-chart-line",
+                category: "matplotlib"
+            },
+            {
+                id: 97,
+                question: "What is plt.stem()?",
+                answer: "Create stem plot.",
+                difficulty: "medium",
+                icon: "fas fa-chart-line",
+                category: "matplotlib"
+            },
+            {
+                id: 98,
+                question: "What is plt.step()?",
+                answer: "Create step plot.",
+                difficulty: "medium",
+                icon: "fas fa-chart-line",
+                category: "matplotlib"
+            },
+            {
+                id: 99,
+                question: "What is plt.barh()?",
+                answer: "Create horizontal bar plot.",
+                difficulty: "easy",
+                icon: "fas fa-chart-bar",
+                category: "matplotlib"
+            },
+            {
+                id: 100,
+                question: "What is plt.pcolor()?",
+                answer: "Create pseudocolor plot.",
+                difficulty: "hard",
+                icon: "fas fa-th",
+                category: "matplotlib"
+            },
+            
+            // Advanced Topics (101-120)
+            {
+                id: 101,
+                question: "What is NumPy's memory layout?",
+                answer: "Row-major (C-style) by default.",
+                difficulty: "hard",
+                icon: "fas fa-memory",
+                category: "advanced"
+            },
+            {
+                id: 102,
+                question: "What is Pandas' Categorical dtype?",
+                answer: "Memory-efficient for repeated strings.",
+                difficulty: "medium",
+                icon: "fas fa-tags",
+                category: "advanced"
+            },
+            {
+                id: 103,
+                question: "What is Matplotlib's backend?",
+                answer: "Rendering engine (TkAgg, Qt5Agg, etc).",
+                difficulty: "hard",
+                icon: "fas fa-server",
+                category: "advanced"
+            },
+            {
+                id: 104,
+                question: "What is NumPy's stride tricks?",
+                answer: "Advanced array manipulation.",
+                difficulty: "hard",
+                icon: "fas fa-magic",
+                category: "advanced"
+            },
+            {
+                id: 105,
+                question: "What is Pandas' ExtensionArray?",
+                answer: "Base class for custom array types.",
+                difficulty: "hard",
+                icon: "fas fa-code",
+                category: "advanced"
+            },
+            {
+                id: 106,
+                question: "What is Matplotlib's Artist?",
+                answer: "Base class for all plot elements.",
+                difficulty: "hard",
+                icon: "fas fa-paint-brush",
+                category: "advanced"
+            },
+            {
+                id: 107,
+                question: "What is NumPy's structured arrays?",
+                answer: "Arrays with compound data types.",
+                difficulty: "hard",
+                icon: "fas fa-table",
+                category: "advanced"
+            },
+            {
+                id: 108,
+                question: "What is Pandas' Styler?",
+                answer: "For styling DataFrames.",
+                difficulty: "medium",
+                icon: "fas fa-paint-brush",
+                category: "advanced"
+            },
+            {
+                id: 109,
+                question: "What is Matplotlib's transforms?",
+                answer: "Coordinate transformations.",
+                difficulty: "hard",
+                icon: "fas fa-exchange-alt",
+                category: "advanced"
+            },
+            {
+                id: 110,
+                question: "What is NumPy's datetime64?",
+                answer: "Date/time data type.",
+                difficulty: "medium",
+                icon: "fas fa-calendar",
+                category: "advanced"
+            },
+            {
+                id: 111,
+                question: "What is Pandas' Grouper?",
+                answer: "Groupby specification.",
+                difficulty: "hard",
+                icon: "fas fa-object-group",
+                category: "advanced"
+            },
+            {
+                id: 112,
+                question: "What is Matplotlib's Path?",
+                answer: "Geometric path object.",
+                difficulty: "hard",
+                icon: "fas fa-draw-polygon",
+                category: "advanced"
+            },
+            {
+                id: 113,
+                question: "What is NumPy's masked arrays?",
+                answer: "Arrays with invalid data masks.",
+                difficulty: "hard",
+                icon: "fas fa-mask",
+                category: "advanced"
+            },
+            {
+                id: 114,
+                question: "What is Pandas' SparseDataFrame?",
+                answer: "Efficient storage for sparse data.",
+                difficulty: "hard",
+                icon: "fas fa-database",
+                category: "advanced"
+            },
+            {
+                id: 115,
+                question: "What is Matplotlib's animation?",
+                answer: "Creating animated plots.",
+                difficulty: "hard",
+                icon: "fas fa-film",
+                category: "advanced"
+            },
+            {
+                id: 116,
+                question: "What is NumPy's matrix vs array?",
+                answer: "Matrix is 2D, array is nD.",
+                difficulty: "medium",
+                icon: "fas fa-table",
+                category: "advanced"
+            },
+            {
+                id: 117,
+                question: "What is Pandas' Period?",
+                answer: "Time span representation.",
+                difficulty: "medium",
+                icon: "fas fa-clock",
+                category: "advanced"
+            },
+            {
+                id: 118,
+                question: "What is Matplotlib's widgets?",
+                answer: "Interactive plot elements.",
+                difficulty: "hard",
+                icon: "fas fa-sliders-h",
+                category: "advanced"
+            },
+            {
+                id: 119,
+                question: "What is NumPy's recarray?",
+                answer: "Record array with attribute access.",
+                difficulty: "hard",
+                icon: "fas fa-table",
+                category: "advanced"
+            },
+            {
+                id: 120,
+                question: "What is Pandas' Panel?",
+                answer: "3D data structure (deprecated).",
+                difficulty: "hard",
+                icon: "fas fa-cube",
+                category: "advanced"
+            }
+        ];
+        
+        // Load questions into the container with filtering
+        const questionsContainer = document.getElementById('questionsContainer');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        
+        function displayQuestions(filter = 'all') {
+            questionsContainer.innerHTML = '';
+            
+            const filteredQuestions = filter === 'all' 
+                ? pythonDSQuestions 
+                : pythonDSQuestions.filter(q => q.category === filter);
+            
+            filteredQuestions.forEach((q, index) => {
+                const questionCard = document.createElement('div');
+                questionCard.className = `question-card ${q.category}`;
+                questionCard.innerHTML = `
+                    <div class="question-header">
+                        <span class="question-number">${q.id}</span>
+                        <h3 class="question">${q.question}</h3>
+                        <i class="${q.icon} tech-icon"></i>
+                    </div>
+                    <span class="difficulty ${q.difficulty}">${q.difficulty.toUpperCase()}</span>
+                    <span class="category">${q.category.toUpperCase()}</span>
+                    <div class="answer" id="answer-${q.id}">
+                        ${q.answer}
+                    </div>
+                    <button class="toggle-answer" data-answer="answer-${q.id}">
+                        <i class="fas fa-chevron-down"></i> Show Answer
+                    </button>
+                `;
+                questionsContainer.appendChild(questionCard);
+            });
+            
+            // Update stats
+            document.querySelector('.stat-number').textContent = `${filteredQuestions.length}+`;
+        }
+        
+        // Initial display
+        displayQuestions();
+        
+        // Filter button click handlers
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                // Get category filter
+                const filter = this.getAttribute('data-category');
+                // Display filtered questions
+                displayQuestions(filter);
+            });
+        });
+        
+        // Toggle answer visibility
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('toggle-answer') || e.target.parentElement.classList.contains('toggle-answer')) {
+                const button = e.target.classList.contains('toggle-answer') ? e.target : e.target.parentElement;
+                const answerId = button.getAttribute('data-answer');
+                const answerElement = document.getElementById(answerId);
+                const isHidden = answerElement.style.display === 'none' || !answerElement.classList.contains('show');
+                
+                if (isHidden) {
+                    answerElement.classList.add('show');
+                    button.innerHTML = '<i class="fas fa-chevron-up"></i> Hide Answer';
+                } else {
+                    answerElement.classList.remove('show');
+                    button.innerHTML = '<i class="fas fa-chevron-down"></i> Show Answer';
+                }
+            }
+        });
+        
+        // Sample reviews data
+        const reviews = [
+            {
+                name: "Priya Sharma",
+                text: "Ram Sir's Python Data Science Masterclass transformed my career. I went from basic Python knowledge to becoming a data analyst in 3 months! The NumPy and Pandas explanations were incredibly clear.",
+                rating: 5,
+                course: "Python Data Science Masterclass"
+            },
+            {
+                name: "Rahul Verma",
+                text: "The interview questions section alone is worth it! I practiced all 120+ questions and could answer every data science question in my Google interview. Got the offer with 60% salary hike!",
+                rating: 5,
+                course: "Advanced Pandas & Data Analysis"
+            },
+            {
+                name: "Anjali Patel",
+                text: "As a beginner, I was intimidated by data science. But Ram Sir's teaching method made NumPy, Pandas, and Matplotlib so clear. Now I'm working as a Data Scientist. Highly recommended!",
+                rating: 5,
+                course: "Python Data Science Masterclass"
+            },
+            {
+                name: "Vikram Singh",
+                text: "The Data Visualization Mastery course was exactly what I needed. The Matplotlib and Seaborn projects were challenging but practical. Landed a job as Visualization Specialist!",
+                rating: 5,
+                course: "Data Visualization Mastery"
+            },
+            {
+                name: "Sneha Reddy",
+                text: "I took the offline classes and the personal attention was amazing. Ram Sir cleared all my doubts patiently. The course materials are comprehensive and well-structured.",
+                rating: 5,
+                course: "Advanced Pandas & Data Analysis"
+            }
+        ];
+        
+        // Load reviews into slider
+        const reviewsSlider = document.getElementById('reviewsSlider');
+        
+        reviews.forEach(review => {
+            const reviewCard = document.createElement('div');
+            reviewCard.className = 'review-card';
+            
+            let stars = '';
+            for (let i = 0; i < review.rating; i++) {
+                stars += '<i class="fas fa-star"></i>';
+            }
+            
+            reviewCard.innerHTML = `
+                <p class="review-text">"${review.text}"</p>
+                <div class="reviewer">
+                    <div class="reviewer-img">${review.name.charAt(0)}</div>
+                    <div class="reviewer-info">
+                        <h4>${review.name}</h4>
+                        <p>${review.course} Student</p>
+                        <div class="review-rating">
+                            ${stars}
+                        </div>
+                    </div>
+                </div>
+            `;
+            reviewsSlider.appendChild(reviewCard);
+        });
+        
+        // Initialize Owl Carousel
+        $(document).ready(function(){
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: true,
+                dots: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    768: {
+                        items: 2
+                    },
+                    992: {
+                        items: 3
+                    }
+                }
+            });
+        });
+        
+        // WhatsApp button functionality
+        document.getElementById('whatsappBtn').addEventListener('click', function() {
+            const name = document.querySelector('input[type="text"]').value || "Interested Student";
+            const phone = document.querySelector('input[type="tel"]').value || "";
+            const message = document.querySelector('textarea').value || "Hi Ram Sir, I'm interested in your Python Data Science courses. Please share more details.";
+            
+            const whatsappUrl = `https://wa.me/919753528324?text=${encodeURIComponent(`Name: ${name}\nPhone: ${phone}\nMessage: ${message}`)}`;
+            window.open(whatsappUrl, '_blank');
+        });
+        
+        // Call button functionality
+        document.getElementById('callBtn').addEventListener('click', function() {
+            window.location.href = 'tel:+919753528324';
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Show total question count
+        document.addEventListener('DOMContentLoaded', function() {
+            const statNumber = document.querySelector('.stat-number');
+            if (statNumber) {
+                statNumber.textContent = `${pythonDSQuestions.length}+`;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,2375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Mastery - Top 100+ Interview Q&A | Ram Sir</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #4cc9f0;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #2ec4b6;
+            --warning: #ff9f1c;
+            --danger: #e63946;
+            --gradient: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+            --gradient-light: linear-gradient(135deg, #4cc9f0 0%, #4361ee 100%);
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.12);
+            --radius: 10px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--dark);
+            background-color: #f8fafc;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: var(--gradient);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
+            margin-bottom: 2px;
+        }
+        
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+        
+        .nav-menu a:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+        
+        .nav-menu a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            background: var(--gradient-light);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        
+        .btn-primary {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* Filter Section */
+        .filter-section {
+            background: white;
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin: 30px 0;
+        }
+        
+        .filter-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            padding: 8px 16px;
+            background: #f1f5f9;
+            border: none;
+            border-radius: 20px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            color: #555;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--gradient);
+            color: white;
+        }
+        
+        /* Questions Section */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        .questions-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+        
+        .question-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 5px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .question-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .question-card.ddl {
+            border-left-color: #4361ee;
+        }
+        
+        .question-card.dml {
+            border-left-color: #4cc9f0;
+        }
+        
+        .question-card.dql {
+            border-left-color: #2ec4b6;
+        }
+        
+        .question-card.tcl {
+            border-left-color: #ff9f1c;
+        }
+        
+        .question-card.dcl {
+            border-left-color: #e63946;
+        }
+        
+        .question-card.joins {
+            border-left-color: #7209b7;
+        }
+        
+        .question-card.subquery {
+            border-left-color: #f72585;
+        }
+        
+        .question-card.aggregation {
+            border-left-color: #38b000;
+        }
+        
+        .question-card.operators {
+            border-left-color: #ff5400;
+        }
+        
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .question-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-right: 10px;
+        }
+        
+        .question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark);
+            line-height: 1.4;
+            flex: 1;
+        }
+        
+        .tech-icon {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .answer {
+            color: #555;
+            line-height: 1.6;
+            padding-top: 15px;
+            border-top: 1px dashed #eee;
+            margin-top: 15px;
+            display: none;
+        }
+        
+        .answer.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .answer pre {
+            background: #f1f5f9;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            border-left: 3px solid var(--primary);
+        }
+        
+        .answer code {
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: var(--danger);
+        }
+        
+        .toggle-answer {
+            background: var(--gradient-light);
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: var(--transition);
+        }
+        
+        .toggle-answer:hover {
+            background: var(--gradient);
+            transform: scale(1.05);
+        }
+        
+        .difficulty {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-top: 15px;
+        }
+        
+        .difficulty.easy {
+            background-color: rgba(46, 196, 182, 0.15);
+            color: var(--success);
+        }
+        
+        .difficulty.medium {
+            background-color: rgba(255, 159, 28, 0.15);
+            color: var(--warning);
+        }
+        
+        .difficulty.hard {
+            background-color: rgba(220, 53, 69, 0.15);
+            color: #dc3545;
+        }
+        
+        .category {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-left: 10px;
+            background-color: #f1f5f9;
+            color: #555;
+        }
+        
+        /* Courses Section */
+        .courses {
+            background-color: #f1f5f9;
+            padding: 60px 0;
+        }
+        
+        .courses-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .course-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .course-header {
+            background: var(--gradient);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+        
+        .course-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .course-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .course-body {
+            padding: 25px;
+        }
+        
+        .course-features {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .course-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .course-features li i {
+            color: var(--success);
+        }
+        
+        .course-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .course-price span {
+            font-size: 1rem;
+            color: #666;
+            font-weight: normal;
+        }
+        
+        .course-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .course-btn {
+            flex: 1;
+            text-align: center;
+            padding: 12px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .course-btn.enroll {
+            background: var(--gradient);
+            color: white;
+        }
+        
+        .course-btn.enroll:hover {
+            background: var(--secondary);
+        }
+        
+        .course-btn.details {
+            background: #f1f5f9;
+            color: var(--primary);
+        }
+        
+        .course-btn.details:hover {
+            background: #e2e8f0;
+        }
+        
+        /* Reviews Section */
+        .reviews {
+            padding: 60px 0;
+        }
+        
+        .reviews-slider {
+            margin-top: 40px;
+        }
+        
+        .review-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin: 10px;
+            position: relative;
+        }
+        
+        .review-card::before {
+            content: "\201C";
+            font-size: 4rem;
+            color: var(--accent);
+            opacity: 0.3;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+        
+        .review-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        .reviewer {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .reviewer-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .reviewer-info h4 {
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+        
+        .reviewer-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .review-rating {
+            color: #ffc107;
+            margin-top: 5px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: white;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .footer-col p {
+            color: #b0b0b0;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: #b0b0b0;
+        }
+        
+        .contact-info li i {
+            color: var(--accent);
+            width: 20px;
+        }
+        
+        .enquiry-form input,
+        .enquiry-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            background: #2d3748;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .enquiry-form textarea {
+            height: 120px;
+            resize: none;
+        }
+        
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            transition: var(--transition);
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+        }
+        
+        .call-btn {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            margin-top: 10px;
+            transition: var(--transition);
+        }
+        
+        .call-btn:hover {
+            background: var(--secondary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #2d3748;
+            color: #b0b0b0;
+            font-size: 0.9rem;
+        }
+        
+        /* Stats */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            min-width: 150px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .stat-text {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .questions-container {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--gradient);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                gap: 0;
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: var(--transition);
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-menu.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+            
+            .nav-menu li {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-menu a {
+                display: block;
+                padding: 15px;
+                border-radius: 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .stats {
+                gap: 15px;
+            }
+            
+            .stat-item {
+                min-width: 120px;
+                padding: 15px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .questions-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .course-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-database"></i>
+                <div class="logo-text">
+                    <h1>Ram Sir</h1>
+                    <p>SQL & Database Expert</p>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#questions">SQL Q&A (100+)</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#reviews">Student Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <div class="hero-emoji">
+                🚀 💻 📊 🏆
+            </div>
+            <h2>Master SQL with 100+ Interview Questions</h2>
+            <p>Comprehensive collection of SQL interview questions covering DDL, DML, DQL, TCL, DCL, Joins, Subqueries, Aggregation, and more. Perfect for beginners to advanced learners.</p>
+            <div class="cta-buttons">
+                <a href="#questions" class="btn btn-primary">
+                    <i class="fas fa-list"></i> Explore All Questions
+                </a>
+                <a href="#courses" class="btn btn-secondary">
+                    <i class="fas fa-graduation-cap"></i> Enroll Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="container">
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">120+</div>
+                <div class="stat-text">SQL Questions</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">10+</div>
+                <div class="stat-text">Categories</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">1000+</div>
+                <div class="stat-text">Students Trained</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">15+</div>
+                <div class="stat-text">Years Experience</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Questions Section -->
+    <section id="questions">
+        <div class="container">
+            <div class="section-title">
+                <h2>120+ SQL Interview Questions</h2>
+                <p>Complete collection of SQL questions with detailed answers. Filter by category to focus on specific topics.</p>
+            </div>
+            
+            <!-- Filter Section -->
+            <div class="filter-section">
+                <h3 class="filter-title">Filter by Category:</h3>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-category="all">All Questions</button>
+                    <button class="filter-btn" data-category="ddl">DDL</button>
+                    <button class="filter-btn" data-category="dml">DML</button>
+                    <button class="filter-btn" data-category="dql">DQL</button>
+                    <button class="filter-btn" data-category="tcl">TCL</button>
+                    <button class="filter-btn" data-category="dcl">DCL</button>
+                    <button class="filter-btn" data-category="joins">Joins</button>
+                    <button class="filter-btn" data-category="subquery">Subqueries</button>
+                    <button class="filter-btn" data-category="aggregation">Aggregation</button>
+                    <button class="filter-btn" data-category="operators">Operators</button>
+                </div>
+            </div>
+            
+            <div class="questions-container" id="questionsContainer">
+                <!-- Questions will be loaded here via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses" id="courses">
+        <div class="container">
+            <div class="section-title">
+                <h2>Recommended Courses</h2>
+                <p>Master SQL with our comprehensive courses designed for beginners to advanced learners.</p>
+            </div>
+            
+            <div class="courses-container">
+                <!-- Course 1 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <h3 class="course-title">SQL Masterclass</h3>
+                        <p>Complete SQL Bootcamp</p>
+                    </div>
+                    <div class="course-body">
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> 60+ Hours of Content</li>
+                            <li><i class="fas fa-check"></i> 100+ Practical Exercises</li>
+                            <li><i class="fas fa-check"></i> Real-world Projects</li>
+                            <li><i class="fas fa-check"></i> Certificate of Completion</li>
+                            <li><i class="fas fa-check"></i> Lifetime Access</li>
+                        </ul>
+                        <div class="course-price">
+                            ₹4,999 <span>₹9,999</span>
+                        </div>
+                        <div class="course-buttons">
+                            <a href="tel:9753528324" class="course-btn enroll">
+                                <i class="fas fa-phone-alt"></i> Call to Enroll
+                            </a>
+                            <a href="#contact" class="course-btn details">
+                                <i class="fas fa-info-circle"></i> Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 2 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="course-title">Advanced SQL</h3>
+                        <p>For Experienced Professionals</p>
+                    </div>
+                    <div class="course-body">
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Query Optimization</li>
+                            <li><i class="fas fa-check"></i> Window Functions</li>
+                            <li><i class="fas fa-check"></i> Performance Tuning</li>
+                            <li><i class="fas fa-check"></i> Database Design</li>
+                            <li><i class="fas fa-check"></i> 1-on-1 Mentoring</li>
+                        </ul>
+                        <div class="course-price">
+                            ₹6,999 <span>₹12,999</span>
+                        </div>
+                        <div class="course-buttons">
+                            <a href="tel:9753528324" class="course-btn enroll">
+                                <i class="fas fa-phone-alt"></i> Call to Enroll
+                            </a>
+                            <a href="#contact" class="course-btn details">
+                                <i class="fas fa-info-circle"></i> Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 3 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3 class="course-title">SQL + Python</h3>
+                        <p>Data Analysis Combo</p>
+                    </div>
+                    <div class="course-body">
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> SQL + Python Integration</li>
+                            <li><i class="fas fa-check"></i> Data Visualization</li>
+                            <li><i class="fas fa-check"></i> Pandas & NumPy</li>
+                            <li><i class="fas fa-check"></i> Real Data Analysis Projects</li>
+                            <li><i class="fas fa-check"></i> Job Assistance</li>
+                        </ul>
+                        <div class="course-price">
+                            ₹8,999 <span>₹15,999</span>
+                        </div>
+                        <div class="course-buttons">
+                            <a href="tel:9753528324" class="course-btn enroll">
+                                <i class="fas fa-phone-alt"></i> Call to Enroll
+                            </a>
+                            <a href="#contact" class="course-btn details">
+                                <i class="fas fa-info-circle"></i> Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <p><strong>Mode:</strong> Both Online & Offline Classes Available</p>
+                <p><strong>Timing:</strong> Flexible batches (Morning/Evening/Weekend)</p>
+                <p><strong>Call:</strong> <a href="tel:9753528324" style="color: var(--primary); text-decoration: none; font-weight: 600;">+91 97535 28324</a> for details</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <div class="section-title">
+                <h2>Student Reviews</h2>
+                <p>See what our students have to say about our SQL training programs.</p>
+            </div>
+            
+            <div class="reviews-slider owl-carousel" id="reviewsSlider">
+                <!-- Reviews will be loaded here via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Ram Sir</h3>
+                    <p>With over 15 years of experience in database management and SQL training, I've helped 1000+ students land their dream jobs in top tech companies.</p>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <span>+91 97535 28324</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>ramsir.sql@example.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Delhi, India</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="contact-info">
+                        <li><a href="#home" style="color: #b0b0b0; text-decoration: none;">Home</a></li>
+                        <li><a href="#questions" style="color: #b0b0b0; text-decoration: none;">SQL Q&A</a></li>
+                        <li><a href="#courses" style="color: #b0b0b0; text-decoration: none;">Courses</a></li>
+                        <li><a href="#reviews" style="color: #b0b0b0; text-decoration: none;">Student Reviews</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Enquiry Form</h3>
+                    <form class="enquiry-form" id="enquiryForm">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <input type="tel" placeholder="Your Phone" required>
+                        <textarea placeholder="Your Message"></textarea>
+                        <button type="button" class="whatsapp-btn" id="whatsappBtn">
+                            <i class="fab fa-whatsapp"></i> Send via WhatsApp
+                        </button>
+                        <button type="button" class="call-btn" id="callBtn">
+                            <i class="fas fa-phone-alt"></i> Call Now: 9753528324
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Ram Sir SQL Mastery. All rights reserved. | Designed with ❤️ for aspiring SQL professionals</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
+            this.innerHTML = document.getElementById('navMenu').classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('navMenu').classList.remove('active');
+                document.getElementById('mobileMenuBtn').innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Complete SQL questions data (120+ questions)
+        const sqlQuestions = [
+            // DDL (Data Definition Language) Questions
+            {
+                id: 1,
+                question: "What is DDL and what are its main commands?",
+                answer: "DDL (Data Definition Language) is used to define and modify database structure. Main commands:<br><br><pre>CREATE TABLE employees (\n  id INT PRIMARY KEY,\n  name VARCHAR(50),\n  salary DECIMAL(10,2)\n);</pre><br><pre>ALTER TABLE employees ADD COLUMN department VARCHAR(30);</pre><br><pre>DROP TABLE employees;</pre><br><pre>TRUNCATE TABLE employees;</pre><br><pre>RENAME TABLE old_name TO new_name;</pre>",
+                difficulty: "easy",
+                icon: "fas fa-database",
+                category: "ddl"
+            },
+            {
+                id: 2,
+                question: "What is the difference between DROP and TRUNCATE?",
+                answer: "<code>DROP</code> removes the entire table structure and data, while <code>TRUNCATE</code> removes all rows but keeps the table structure.<br><br><strong>DROP:</strong> Cannot be rolled back, removes table definition<br><strong>TRUNCATE:</strong> Can be rolled back in some databases, faster than DELETE",
+                difficulty: "medium",
+                icon: "fas fa-trash-alt",
+                category: "ddl"
+            },
+            {
+                id: 3,
+                question: "What are the different data types in SQL?",
+                answer: "SQL data types include:<br>1. <strong>Numeric:</strong> INT, DECIMAL, FLOAT<br>2. <strong>String:</strong> VARCHAR, CHAR, TEXT<br>3. <strong>Date/Time:</strong> DATE, TIME, DATETIME, TIMESTAMP<br>4. <strong>Binary:</strong> BLOB, BINARY<br>5. <strong>Boolean:</strong> BOOLEAN (TRUE/FALSE)<br><br><pre>CREATE TABLE products (\n  id INT,\n  name VARCHAR(100),\n  price DECIMAL(8,2),\n  created_at TIMESTAMP\n);</pre>",
+                difficulty: "easy",
+                icon: "fas fa-list",
+                category: "ddl"
+            },
+            {
+                id: 4,
+                question: "What is a PRIMARY KEY constraint?",
+                answer: "A PRIMARY KEY uniquely identifies each record in a table. It must contain UNIQUE values and cannot contain NULL values.<br><br><pre>CREATE TABLE students (\n  student_id INT PRIMARY KEY,\n  name VARCHAR(50),\n  age INT\n);</pre><br>OR<br><pre>CREATE TABLE students (\n  student_id INT,\n  name VARCHAR(50),\n  age INT,\n  PRIMARY KEY (student_id)\n);</pre>",
+                difficulty: "easy",
+                icon: "fas fa-key",
+                category: "ddl"
+            },
+            {
+                id: 5,
+                question: "What is a FOREIGN KEY constraint?",
+                answer: "A FOREIGN KEY creates a link between two tables. It references the PRIMARY KEY of another table.<br><br><pre>CREATE TABLE orders (\n  order_id INT PRIMARY KEY,\n  customer_id INT,\n  amount DECIMAL(10,2),\n  FOREIGN KEY (customer_id) REFERENCES customers(customer_id)\n);</pre>",
+                difficulty: "medium",
+                icon: "fas fa-link",
+                category: "ddl"
+            },
+            
+            // DML (Data Manipulation Language) Questions
+            {
+                id: 6,
+                question: "What is DML and what are its commands?",
+                answer: "DML (Data Manipulation Language) is used to manipulate data in tables. Commands:<br><br><pre>INSERT INTO employees (id, name, salary) \nVALUES (1, 'John Doe', 50000);</pre><br><pre>UPDATE employees \nSET salary = 55000 \nWHERE id = 1;</pre><br><pre>DELETE FROM employees \nWHERE id = 1;</pre>",
+                difficulty: "easy",
+                icon: "fas fa-edit",
+                category: "dml"
+            },
+            {
+                id: 7,
+                question: "What is the difference between DELETE and TRUNCATE?",
+                answer: "<code>DELETE</code> removes rows one by one and can use WHERE clause. <code>TRUNCATE</code> removes all rows at once and cannot use WHERE.<br><br><strong>DELETE:</strong> Can be rolled back, slower, can have WHERE condition<br><strong>TRUNCATE:</strong> Cannot be rolled back (in some DBs), faster, no WHERE condition",
+                difficulty: "medium",
+                icon: "fas fa-broom",
+                category: "dml"
+            },
+            {
+                id: 8,
+                question: "How to insert multiple rows in a single INSERT statement?",
+                answer: "Use multiple value sets separated by commas:<br><br><pre>INSERT INTO employees (id, name, salary) \nVALUES \n(1, 'John', 50000),\n(2, 'Jane', 60000),\n(3, 'Bob', 55000);</pre>",
+                difficulty: "easy",
+                icon: "fas fa-plus-square",
+                category: "dml"
+            },
+            {
+                id: 9,
+                question: "How to update multiple columns in a single UPDATE statement?",
+                answer: "Separate column assignments with commas:<br><br><pre>UPDATE employees \nSET \n  salary = 65000,\n  department = 'IT',\n  last_updated = CURRENT_TIMESTAMP\nWHERE id = 1;</pre>",
+                difficulty: "easy",
+                icon: "fas fa-sync-alt",
+                category: "dml"
+            },
+            {
+                id: 10,
+                question: "What is UPSERT (INSERT ON DUPLICATE KEY UPDATE)?",
+                answer: "UPSERT inserts a new row or updates if the primary key already exists:<br><br><pre>INSERT INTO employees (id, name, salary) \nVALUES (1, 'John', 50000)\nON DUPLICATE KEY UPDATE \n  name = VALUES(name),\n  salary = VALUES(salary);</pre>",
+                difficulty: "hard",
+                icon: "fas fa-retweet",
+                category: "dml"
+            },
+            
+            // DQL (Data Query Language) Questions
+            {
+                id: 11,
+                question: "What is the basic SELECT statement syntax?",
+                answer: "<pre>SELECT column1, column2, ...\nFROM table_name\nWHERE condition\nGROUP BY column\nHAVING condition\nORDER BY column\nLIMIT number;</pre><br>Example:<br><pre>SELECT name, salary \nFROM employees \nWHERE department = 'IT' \nORDER BY salary DESC \nLIMIT 10;</pre>",
+                difficulty: "easy",
+                icon: "fas fa-search",
+                category: "dql"
+            },
+            {
+                id: 12,
+                question: "What is the difference between WHERE and HAVING?",
+                answer: "<code>WHERE</code> filters rows before grouping, <code>HAVING</code> filters groups after GROUP BY.<br><br><pre>SELECT department, AVG(salary) as avg_salary\nFROM employees\nWHERE hire_date > '2020-01-01'\nGROUP BY department\nHAVING AVG(salary) > 50000;</pre>",
+                difficulty: "medium",
+                icon: "fas fa-filter",
+                category: "dql"
+            },
+            {
+                id: 13,
+                question: "What are aggregate functions? Give examples.",
+                answer: "Aggregate functions perform calculations on multiple rows:<br>1. <code>COUNT()</code> - Counts rows<br>2. <code>SUM()</code> - Sums values<br>3. <code>AVG()</code> - Average of values<br>4. <code>MIN()</code> - Minimum value<br>5. <code>MAX()</code> - Maximum value<br><br><pre>SELECT \n  COUNT(*) as total_employees,\n  AVG(salary) as avg_salary,\n  MAX(salary) as max_salary\nFROM employees;</pre>",
+                difficulty: "easy",
+                icon: "fas fa-calculator",
+                category: "aggregation"
+            },
+            {
+                id: 14,
+                question: "What is GROUP BY clause?",
+                answer: "GROUP BY groups rows with same values into summary rows:<br><br><pre>SELECT department, COUNT(*) as emp_count, AVG(salary)\nFROM employees\nGROUP BY department;</pre>",
+                difficulty: "medium",
+                icon: "fas fa-layer-group",
+                category: "aggregation"
+            },
+            {
+                id: 15,
+                question: "What is ORDER BY clause?",
+                answer: "ORDER BY sorts the result set:<br><br><pre>SELECT name, salary\nFROM employees\nORDER BY salary DESC; -- descending order\n\nSELECT name, salary\nFROM employees\nORDER BY salary ASC; -- ascending order (default)</pre>",
+                difficulty: "easy",
+                icon: "fas fa-sort-amount-down",
+                category: "dql"
+            },
+            
+            // TCL (Transaction Control Language) Questions
+            {
+                id: 16,
+                question: "What is TCL and what are its commands?",
+                answer: "TCL (Transaction Control Language) manages transactions:<br><br>1. <code>COMMIT</code> - Saves changes permanently<br>2. <code>ROLLBACK</code> - Undoes changes<br>3. <code>SAVEPOINT</code> - Creates points within transaction<br><br><pre>BEGIN TRANSACTION;\nUPDATE accounts SET balance = balance - 100 WHERE id = 1;\nUPDATE accounts SET balance = balance + 100 WHERE id = 2;\nCOMMIT;</pre>",
+                difficulty: "medium",
+                icon: "fas fa-exchange-alt",
+                category: "tcl"
+            },
+            {
+                id: 17,
+                question: "What are ACID properties?",
+                answer: "ACID properties ensure reliable transactions:<br>1. <strong>Atomicity</strong> - All or nothing<br>2. <strong>Consistency</strong> - Valid state before and after<br>3. <strong>Isolation</strong> - Concurrent transactions don't interfere<br>4. <strong>Durability</strong> - Committed changes persist",
+                difficulty: "hard",
+                icon: "fas fa-shield-alt",
+                category: "tcl"
+            },
+            
+            // DCL (Data Control Language) Questions
+            {
+                id: 18,
+                question: "What is DCL and what are its commands?",
+                answer: "DCL (Data Control Language) controls access to database:<br><br><pre>GRANT SELECT, INSERT ON employees TO user1;</pre><br><pre>REVOKE INSERT ON employees FROM user1;</pre>",
+                difficulty: "medium",
+                icon: "fas fa-user-shield",
+                category: "dcl"
+            },
+            
+            // Joins Questions
+            {
+                id: 19,
+                question: "What are different types of JOINs?",
+                answer: "1. <strong>INNER JOIN</strong> - Returns matching rows<br>2. <strong>LEFT JOIN</strong> - All left table rows + matching right<br>3. <strong>RIGHT JOIN</strong> - All right table rows + matching left<br>4. <strong>FULL OUTER JOIN</strong> - All rows from both tables<br>5. <strong>CROSS JOIN</strong> - Cartesian product<br>6. <strong>SELF JOIN</strong> - Table joined with itself",
+                difficulty: "medium",
+                icon: "fas fa-project-diagram",
+                category: "joins"
+            },
+            {
+                id: 20,
+                question: "What is INNER JOIN with example?",
+                answer: "INNER JOIN returns rows with matching values in both tables:<br><br><pre>SELECT e.name, d.department_name\nFROM employees e\nINNER JOIN departments d \nON e.department_id = d.id;</pre>",
+                difficulty: "easy",
+                icon: "fas fa-handshake",
+                category: "joins"
+            },
+            {
+                id: 21,
+                question: "What is LEFT JOIN with example?",
+                answer: "LEFT JOIN returns all rows from left table and matching rows from right:<br><br><pre>SELECT e.name, d.department_name\nFROM employees e\nLEFT JOIN departments d \nON e.department_id = d.id;</pre>",
+                difficulty: "medium",
+                icon: "fas fa-arrow-left",
+                category: "joins"
+            },
+            {
+                id: 22,
+                question: "What is RIGHT JOIN with example?",
+                answer: "RIGHT JOIN returns all rows from right table and matching rows from left:<br><br><pre>SELECT e.name, d.department_name\nFROM employees e\nRIGHT JOIN departments d \nON e.department_id = d.id;</pre>",
+                difficulty: "medium",
+                icon: "fas fa-arrow-right",
+                category: "joins"
+            },
+            {
+                id: 23,
+                question: "What is SELF JOIN?",
+                answer: "SELF JOIN joins a table with itself:<br><br><pre>SELECT e1.name as employee, e2.name as manager\nFROM employees e1\nINNER JOIN employees e2\nON e1.manager_id = e2.id;</pre>",
+                difficulty: "hard",
+                icon: "fas fa-user-friends",
+                category: "joins"
+            },
+            {
+                id: 24,
+                question: "What is CROSS JOIN?",
+                answer: "CROSS JOIN returns Cartesian product (all possible combinations):<br><br><pre>SELECT e.name, d.department_name\nFROM employees e\nCROSS JOIN departments d;</pre>",
+                difficulty: "medium",
+                icon: "fas fa-times",
+                category: "joins"
+            },
+            
+            // Subqueries Questions
+            {
+                id: 25,
+                question: "What is a subquery?",
+                answer: "A subquery is a query nested inside another query:<br><br><pre>SELECT name, salary\nFROM employees\nWHERE salary > (\n  SELECT AVG(salary)\n  FROM employees\n);</pre>",
+                difficulty: "medium",
+                icon: "fas fa-code-branch",
+                category: "subquery"
+            },
+            {
+                id: 26,
+                question: "What is a correlated subquery?",
+                answer: "Correlated subquery references columns from outer query:<br><br><pre>SELECT e1.name, e1.salary\nFROM employees e1\nWHERE salary > (\n  SELECT AVG(salary)\n  FROM employees e2\n  WHERE e2.department = e1.department\n);</pre>",
+                difficulty: "hard",
+                icon: "fas fa-sitemap",
+                category: "subquery"
+            },
+            {
+                id: 27,
+                question: "What are single-row and multi-row subqueries?",
+                answer: "<strong>Single-row:</strong> Returns one row (use =, >, < operators)<br><strong>Multi-row:</strong> Returns multiple rows (use IN, ANY, ALL operators)<br><br><pre>-- Single-row\nSELECT name FROM employees \nWHERE salary = (SELECT MAX(salary) FROM employees);\n\n-- Multi-row\nSELECT name FROM employees \nWHERE department IN (SELECT name FROM departments WHERE location = 'NYC');</pre>",
+                difficulty: "medium",
+                icon: "fas fa-list-ol",
+                category: "subquery"
+            },
+            
+            // WHERE Clause Questions
+            {
+                id: 28,
+                question: "What operators can be used with WHERE clause?",
+                answer: "1. Comparison: =, <>, >, <, >=, <=<br>2. Logical: AND, OR, NOT<br>3. Range: BETWEEN<br>4. List: IN<br>5. Pattern: LIKE<br>6. NULL: IS NULL, IS NOT NULL",
+                difficulty: "easy",
+                icon: "fas fa-code",
+                category: "operators"
+            },
+            {
+                id: 29,
+                question: "What is the LIKE operator?",
+                answer: "LIKE searches for patterns:<br><br><pre>SELECT name FROM employees \nWHERE name LIKE 'J%'; -- Starts with J\n\nSELECT name FROM employees \nWHERE name LIKE '%son'; -- Ends with son\n\nSELECT name FROM employees \nWHERE name LIKE '_o%'; -- Second letter is o</pre>",
+                difficulty: "easy",
+                icon: "fas fa-search",
+                category: "operators"
+            },
+            {
+                id: 30,
+                question: "What is the BETWEEN operator?",
+                answer: "BETWEEN selects values within a range:<br><br><pre>SELECT name, salary\nFROM employees\nWHERE salary BETWEEN 30000 AND 50000;\n\n-- Equivalent to:\nSELECT name, salary\nFROM employees\nWHERE salary >= 30000 AND salary <= 50000;</pre>",
+                difficulty: "easy",
+                icon: "fas fa-sliders-h",
+                category: "operators"
+            },
+            {
+                id: 31,
+                question: "What is the IN operator?",
+                answer: "IN checks if value matches any in a list:<br><br><pre>SELECT name, department\nFROM employees\nWHERE department IN ('IT', 'HR', 'Sales');\n\n-- Equivalent to:\nSELECT name, department\nFROM employees\nWHERE department = 'IT' OR department = 'HR' OR department = 'Sales';</pre>",
+                difficulty: "easy",
+                icon: "fas fa-check-circle",
+                category: "operators"
+            },
+            {
+                id: 32,
+                question: "How to handle NULL values in WHERE clause?",
+                answer: "Use IS NULL or IS NOT NULL:<br><br><pre>SELECT name FROM employees WHERE manager_id IS NULL;\n\nSELECT name FROM employees WHERE manager_id IS NOT NULL;</pre>",
+                difficulty: "easy",
+                icon: "fas fa-ban",
+                category: "operators"
+            },
+            
+            // Aggregation Questions
+            {
+                id: 33,
+                question: "What is COUNT() and its variations?",
+                answer: "<pre>SELECT COUNT(*) FROM employees; -- All rows\nSELECT COUNT(1) FROM employees; -- All rows\nSELECT COUNT(id) FROM employees; -- Non-null id values\nSELECT COUNT(DISTINCT department) FROM employees; -- Unique departments</pre>",
+                difficulty: "easy",
+                icon: "fas fa-hashtag",
+                category: "aggregation"
+            },
+            {
+                id: 34,
+                question: "What is GROUP_CONCAT()?",
+                answer: "GROUP_CONCAT concatenates values from multiple rows:<br><br><pre>SELECT department, \n       GROUP_CONCAT(name ORDER BY name SEPARATOR ', ') as employees\nFROM employees\nGROUP BY department;</pre>",
+                difficulty: "hard",
+                icon: "fas fa-concierge-bell",
+                category: "aggregation"
+            },
+            {
+                id: 35,
+                question: "What is the difference between COUNT and SUM?",
+                answer: "<code>COUNT()</code> counts rows, <code>SUM()</code> sums numeric values:<br><br><pre>SELECT \n  COUNT(*) as employee_count, -- Counts employees\n  SUM(salary) as total_salary -- Sums all salaries\nFROM employees;</pre>",
+                difficulty: "easy",
+                icon: "fas fa-plus",
+                category: "aggregation"
+            },
+            
+            // ORDER BY Questions
+            {
+                id: 36,
+                question: "How to sort by multiple columns?",
+                answer: "Separate columns with commas:<br><br><pre>SELECT name, department, salary\nFROM employees\nORDER BY department ASC, salary DESC;</pre>",
+                difficulty: "easy",
+                icon: "fas fa-sort",
+                category: "dql"
+            },
+            
+            // LIMIT Questions
+            {
+                id: 37,
+                question: "What is LIMIT clause?",
+                answer: "LIMIT restricts number of rows returned:<br><br><pre>SELECT name, salary\nFROM employees\nORDER BY salary DESC\nLIMIT 5; -- Top 5 salaries\n\n-- With offset (skip first 10, get next 5):\nSELECT name, salary\nFROM employees\nORDER BY salary DESC\nLIMIT 5 OFFSET 10;</pre>",
+                difficulty: "easy",
+                icon: "fas fa-compress",
+                category: "dql"
+            },
+            
+            // HAVING Questions
+            {
+                id: 38,
+                question: "Can HAVING be used without GROUP BY?",
+                answer: "Yes, but it treats the entire result as a single group:<br><br><pre>SELECT AVG(salary) as avg_salary\nFROM employees\nHAVING AVG(salary) > 50000;</pre>",
+                difficulty: "medium",
+                icon: "fas fa-filter",
+                category: "aggregation"
+            },
+            
+            // Additional Questions (81 more to reach 120+)
+            {
+                id: 39,
+                question: "What is a View?",
+                answer: "A view is a virtual table based on a SELECT query:<br><br><pre>CREATE VIEW high_paid_employees AS\nSELECT name, salary\nFROM employees\nWHERE salary > 70000;\n\nSELECT * FROM high_paid_employees;</pre>",
+                difficulty: "medium",
+                icon: "fas fa-eye",
+                category: "ddl"
+            },
+            {
+                id: 40,
+                question: "What is an Index?",
+                answer: "Index improves query performance by creating a data structure:<br><br><pre>CREATE INDEX idx_name ON employees(name);\nCREATE INDEX idx_dept_salary ON employees(department, salary);</pre>",
+                difficulty: "medium",
+                icon: "fas fa-search-plus",
+                category: "ddl"
+            },
+            {
+                id: 41,
+                question: "What is a Stored Procedure?",
+                answer: "Stored procedure is a prepared SQL code that can be saved and reused:<br><br><pre>CREATE PROCEDURE GetEmployeeCount(IN dept VARCHAR(50))\nBEGIN\n  SELECT COUNT(*) FROM employees WHERE department = dept;\nEND;\n\nCALL GetEmployeeCount('IT');</pre>",
+                difficulty: "hard",
+                icon: "fas fa-cogs",
+                category: "ddl"
+            },
+            {
+                id: 42,
+                question: "What is a Trigger?",
+                answer: "Trigger automatically executes when specified event occurs:<br><br><pre>CREATE TRIGGER before_employee_update\nBEFORE UPDATE ON employees\nFOR EACH ROW\nBEGIN\n  SET NEW.updated_at = NOW();\nEND;</pre>",
+                difficulty: "hard",
+                icon: "fas fa-bolt",
+                category: "ddl"
+            },
+            {
+                id: 43,
+                question: "What is Normalization?",
+                answer: "Normalization organizes data to reduce redundancy: 1NF, 2NF, 3NF, BCNF",
+                difficulty: "hard",
+                icon: "fas fa-sitemap",
+                category: "ddl"
+            },
+            {
+                id: 44,
+                question: "What is Denormalization?",
+                answer: "Denormalization adds redundancy to improve read performance",
+                difficulty: "hard",
+                icon: "fas fa-project-diagram",
+                category: "ddl"
+            },
+            {
+                id: 45,
+                question: "What is a UNION?",
+                answer: "UNION combines results of two or more SELECT statements:<br><br><pre>SELECT name FROM employees\nUNION\nSELECT name FROM managers;</pre>",
+                difficulty: "medium",
+                icon: "fas fa-plus-circle",
+                category: "dql"
+            },
+            {
+                id: 46,
+                question: "Difference between UNION and UNION ALL?",
+                answer: "UNION removes duplicates, UNION ALL keeps all rows",
+                difficulty: "medium",
+                icon: "fas fa-object-group",
+                category: "dql"
+            },
+            {
+                id: 47,
+                question: "What is CASE statement?",
+                answer: "CASE provides if-then-else logic:<br><br><pre>SELECT name, salary,\n  CASE \n    WHEN salary > 70000 THEN 'High'\n    WHEN salary > 50000 THEN 'Medium'\n    ELSE 'Low'\n  END as salary_level\nFROM employees;</pre>",
+                difficulty: "medium",
+                icon: "fas fa-code-branch",
+                category: "dql"
+            },
+            {
+                id: 48,
+                question: "What is COALESCE function?",
+                answer: "COALESCE returns first non-null value:<br><br><pre>SELECT name, COALESCE(phone, email, 'No contact') as contact\nFROM employees;</pre>",
+                difficulty: "medium",
+                icon: "fas fa-exchange-alt",
+                category: "dql"
+            },
+            {
+                id: 49,
+                question: "What is NULLIF function?",
+                answer: "NULLIF returns NULL if two expressions are equal:<br><br><pre>SELECT NULLIF(salary, 0) as adjusted_salary FROM employees;</pre>",
+                difficulty: "hard",
+                icon: "fas fa-equals",
+                category: "dql"
+            },
+            {
+                id: 50,
+                question: "What are Window Functions?",
+                answer: "Window functions perform calculations across rows:<br><br><pre>SELECT name, salary,\n  ROW_NUMBER() OVER (ORDER BY salary DESC) as rank,\n  AVG(salary) OVER (PARTITION BY department) as dept_avg\nFROM employees;</pre>",
+                difficulty: "hard",
+                icon: "fas fa-window-restore",
+                category: "dql"
+            },
+            // Adding more questions to reach 120+
+            {
+                id: 51,
+                question: "What is ROW_NUMBER()?",
+                answer: "ROW_NUMBER assigns unique sequential integer to rows:<br><br><pre>SELECT name, salary,\n  ROW_NUMBER() OVER (ORDER BY salary DESC) as rank\nFROM employees;</pre>",
+                difficulty: "medium",
+                icon: "fas fa-list-ol",
+                category: "dql"
+            },
+            {
+                id: 52,
+                question: "What is RANK() and DENSE_RANK()?",
+                answer: "RANK() leaves gaps in ranking for ties, DENSE_RANK() doesn't:<br><br><pre>SELECT name, salary,\n  RANK() OVER (ORDER BY salary DESC) as rank,\n  DENSE_RANK() OVER (ORDER BY salary DESC) as dense_rank\nFROM employees;</pre>",
+                difficulty: "hard",
+                icon: "fas fa-trophy",
+                category: "dql"
+            },
+            {
+                id: 53,
+                question: "What is LAG() and LEAD()?",
+                answer: "LAG() accesses previous row, LEAD() accesses next row:<br><br><pre>SELECT name, salary,\n  LAG(salary) OVER (ORDER BY id) as prev_salary,\n  LEAD(salary) OVER (ORDER BY id) as next_salary\nFROM employees;</pre>",
+                difficulty: "hard",
+                icon: "fas fa-arrows-alt-h",
+                category: "dql"
+            },
+            {
+                id: 54,
+                question: "What is a CTE (Common Table Expression)?",
+                answer: "CTE is a temporary result set:<br><br><pre>WITH high_earners AS (\n  SELECT * FROM employees WHERE salary > 70000\n)\nSELECT * FROM high_earners ORDER BY salary DESC;</pre>",
+                difficulty: "medium",
+                icon: "fas fa-table",
+                category: "dql"
+            },
+            {
+                id: 55,
+                question: "What is a Recursive CTE?",
+                answer: "Recursive CTE references itself:<br><br><pre>WITH RECURSIVE emp_hierarchy AS (\n  SELECT id, name, manager_id FROM employees WHERE manager_id IS NULL\n  UNION ALL\n  SELECT e.id, e.name, e.manager_id\n  FROM employees e\n  INNER JOIN emp_hierarchy eh ON e.manager_id = eh.id\n)\nSELECT * FROM emp_hierarchy;</pre>",
+                difficulty: "hard",
+                icon: "fas fa-sitemap",
+                category: "dql"
+            },
+            {
+                id: 56,
+                question: "What is the difference between CHAR and VARCHAR?",
+                answer: "CHAR is fixed length, VARCHAR is variable length. CHAR pads with spaces.",
+                difficulty: "easy",
+                icon: "fas fa-text-width",
+                category: "ddl"
+            },
+            {
+                id: 57,
+                question: "What is DECIMAL data type?",
+                answer: "DECIMAL stores exact numeric values:<br><br><pre>DECIMAL(10, 2) -- Total 10 digits, 2 after decimal</pre>",
+                difficulty: "easy",
+                icon: "fas fa-calculator",
+                category: "ddl"
+            },
+            {
+                id: 58,
+                question: "What is a Composite Primary Key?",
+                answer: "Primary key made of multiple columns:<br><br><pre>CREATE TABLE order_items (\n  order_id INT,\n  product_id INT,\n  quantity INT,\n  PRIMARY KEY (order_id, product_id)\n);</pre>",
+                difficulty: "medium",
+                icon: "fas fa-key",
+                category: "ddl"
+            },
+            {
+                id: 59,
+                question: "What is ON DELETE CASCADE?",
+                answer: "Automatically deletes child records when parent is deleted:<br><br><pre>CREATE TABLE orders (\n  order_id INT PRIMARY KEY,\n  customer_id INT,\n  FOREIGN KEY (customer_id) \n  REFERENCES customers(customer_id)\n  ON DELETE CASCADE\n);</pre>",
+                difficulty: "medium",
+                icon: "fas fa-trash",
+                category: "ddl"
+            },
+            {
+                id: 60,
+                question: "What is ON UPDATE CASCADE?",
+                answer: "Automatically updates child records when parent is updated",
+                difficulty: "medium",
+                icon: "fas fa-sync",
+                category: "ddl"
+            },
+            {
+                id: 61,
+                question: "What is a CHECK constraint?",
+                answer: "CHECK ensures column values meet specific condition:<br><br><pre>CREATE TABLE employees (\n  id INT,\n  salary DECIMAL(10,2),\n  CHECK (salary > 0)\n);</pre>",
+                difficulty: "medium",
+                icon: "fas fa-check",
+                category: "ddl"
+            },
+            {
+                id: 62,
+                question: "What is a UNIQUE constraint?",
+                answer: "UNIQUE ensures all values in column are different:<br><br><pre>CREATE TABLE employees (\n  email VARCHAR(100) UNIQUE,\n  name VARCHAR(50)\n);</pre>",
+                difficulty: "easy",
+                icon: "fas fa-unique",
+                category: "ddl"
+            },
+            {
+                id: 63,
+                question: "What is DEFAULT constraint?",
+                answer: "DEFAULT sets default value for column:<br><br><pre>CREATE TABLE employees (\n  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,\n  is_active BOOLEAN DEFAULT TRUE\n);</pre>",
+                difficulty: "easy",
+                icon: "fas fa-clock",
+                category: "ddl"
+            },
+            {
+                id: 64,
+                question: "What is the difference between DELETE and DROP?",
+                answer: "DELETE removes data, DROP removes table structure",
+                difficulty: "easy",
+                icon: "fas fa-trash",
+                category: "dml"
+            },
+            {
+                id: 65,
+                question: "What is the MERGE statement?",
+                answer: "MERGE performs INSERT, UPDATE, or DELETE based on condition",
+                difficulty: "hard",
+                icon: "fas fa-random",
+                category: "dml"
+            },
+            {
+                id: 66,
+                question: "How to copy data from one table to another?",
+                answer: "<pre>INSERT INTO new_table SELECT * FROM old_table;</pre>",
+                difficulty: "easy",
+                icon: "fas fa-copy",
+                category: "dml"
+            },
+            {
+                id: 67,
+                question: "What is the difference between INNER JOIN and OUTER JOIN?",
+                answer: "INNER JOIN returns only matching rows, OUTER JOIN returns all rows from one/both tables",
+                difficulty: "medium",
+                icon: "fas fa-venn-diagram",
+                category: "joins"
+            },
+            {
+                id: 68,
+                question: "What is a NATURAL JOIN?",
+                answer: "NATURAL JOIN joins tables on columns with same names",
+                difficulty: "medium",
+                icon: "fas fa-handshake",
+                category: "joins"
+            },
+            {
+                id: 69,
+                question: "What is a CARTESIAN JOIN?",
+                answer: "CARTESIAN JOIN returns Cartesian product (same as CROSS JOIN)",
+                difficulty: "medium",
+                icon: "fas fa-times",
+                category: "joins"
+            },
+            {
+                id: 70,
+                question: "What is the difference between EXISTS and IN?",
+                answer: "EXISTS stops when first match found (faster for large subqueries), IN checks all values",
+                difficulty: "hard",
+                icon: "fas fa-search",
+                category: "subquery"
+            },
+            {
+                id: 71,
+                question: "What is ANY and ALL operators?",
+                answer: "ANY compares value to any value in list, ALL compares to all values",
+                difficulty: "hard",
+                icon: "fas fa-filter",
+                category: "subquery"
+            },
+            {
+                id: 72,
+                question: "What is the difference between WHERE and ON in JOINs?",
+                answer: "ON specifies join condition, WHERE filters result set",
+                difficulty: "medium",
+                icon: "fas fa-code",
+                category: "joins"
+            },
+            {
+                id: 73,
+                question: "What is a Derived Table?",
+                answer: "Derived table is subquery in FROM clause:<br><br><pre>SELECT * FROM (\n  SELECT name, salary FROM employees WHERE salary > 50000\n) AS high_earners;</pre>",
+                difficulty: "medium",
+                icon: "fas fa-table",
+                category: "subquery"
+            },
+            {
+                id: 74,
+                question: "What is the difference between HAVING and WHERE with aggregate functions?",
+                answer: "WHERE cannot use aggregate functions, HAVING can",
+                difficulty: "medium",
+                icon: "fas fa-filter",
+                category: "aggregation"
+            },
+            {
+                id: 75,
+                question: "What is GROUPING SETS?",
+                answer: "GROUPING SETS allows multiple GROUP BY in single query",
+                difficulty: "hard",
+                icon: "fas fa-th",
+                category: "aggregation"
+            },
+            {
+                id: 76,
+                question: "What is ROLLUP?",
+                answer: "ROLLUP creates subtotals and grand total",
+                difficulty: "hard",
+                icon: "fas fa-chart-line",
+                category: "aggregation"
+            },
+            {
+                id: 77,
+                question: "What is CUBE?",
+                answer: "CUBE creates all possible grouping combinations",
+                difficulty: "hard",
+                icon: "fas fa-cube",
+                category: "aggregation"
+            },
+            {
+                id: 78,
+                question: "What is the difference between ORDER BY and GROUP BY?",
+                answer: "GROUP BY groups rows, ORDER BY sorts result set",
+                difficulty: "easy",
+                icon: "fas fa-sort",
+                category: "dql"
+            },
+            {
+                id: 79,
+                question: "What is the difference between LIMIT and TOP?",
+                answer: "LIMIT used in MySQL/PostgreSQL, TOP used in SQL Server",
+                difficulty: "easy",
+                icon: "fas fa-compress",
+                category: "dql"
+            },
+            {
+                id: 80,
+                question: "What is FETCH FIRST?",
+                answer: "FETCH FIRST is ANSI SQL equivalent of LIMIT:<br><br><pre>SELECT name FROM employees ORDER BY salary DESC\nFETCH FIRST 5 ROWS ONLY;</pre>",
+                difficulty: "medium",
+                icon: "fas fa-download",
+                category: "dql"
+            },
+            {
+                id: 81,
+                question: "What is the difference between CHARINDEX and INSTR?",
+                answer: "CHARINDEX in SQL Server, INSTR in Oracle, both find substring position",
+                difficulty: "medium",
+                icon: "fas fa-search",
+                category: "dql"
+            },
+            {
+                id: 82,
+                question: "What is SUBSTRING function?",
+                answer: "SUBSTRING extracts part of string:<br><br><pre>SELECT SUBSTRING('Hello World', 1, 5); -- Returns 'Hello'</pre>",
+                difficulty: "easy",
+                icon: "fas fa-cut",
+                category: "dql"
+            },
+            {
+                id: 83,
+                question: "What is CONCAT function?",
+                answer: "CONCAT concatenates strings:<br><br><pre>SELECT CONCAT(first_name, ' ', last_name) as full_name FROM employees;</pre>",
+                difficulty: "easy",
+                icon: "fas fa-link",
+                category: "dql"
+            },
+            {
+                id: 84,
+                question: "What is UPPER and LOWER functions?",
+                answer: "UPPER converts to uppercase, LOWER to lowercase",
+                difficulty: "easy",
+                icon: "fas fa-font",
+                category: "dql"
+            },
+            {
+                id: 85,
+                question: "What is TRIM function?",
+                answer: "TRIM removes leading/trailing spaces:<br><br><pre>SELECT TRIM('  Hello  '); -- Returns 'Hello'</pre>",
+                difficulty: "easy",
+                icon: "fas fa-cut",
+                category: "dql"
+            },
+            {
+                id: 86,
+                question: "What is LENGTH/LEN function?",
+                answer: "LENGTH returns string length:<br><br><pre>SELECT LENGTH('Hello'); -- Returns 5</pre>",
+                difficulty: "easy",
+                icon: "fas fa-ruler",
+                category: "dql"
+            },
+            {
+                id: 87,
+                question: "What is REPLACE function?",
+                answer: "REPLACE replaces substring:<br><br><pre>SELECT REPLACE('Hello World', 'World', 'SQL'); -- Returns 'Hello SQL'</pre>",
+                difficulty: "easy",
+                icon: "fas fa-exchange-alt",
+                category: "dql"
+            },
+            {
+                id: 88,
+                question: "What is DATE functions?",
+                answer: "Common date functions: NOW(), CURDATE(), DATE_ADD(), DATEDIFF()",
+                difficulty: "medium",
+                icon: "fas fa-calendar",
+                category: "dql"
+            },
+            {
+                id: 89,
+                question: "What is the difference between DATETIME and TIMESTAMP?",
+                answer: "TIMESTAMP stores UTC, DATETIME stores literal date-time",
+                difficulty: "medium",
+                icon: "fas fa-clock",
+                category: "ddl"
+            },
+            {
+                id: 90,
+                question: "What is the difference between VARCHAR and TEXT?",
+                answer: "VARCHAR has length limit, TEXT for large text",
+                difficulty: "easy",
+                icon: "fas fa-file-alt",
+                category: "ddl"
+            },
+            {
+                id: 91,
+                question: "What is a Transaction?",
+                answer: "Transaction is sequence of operations performed as single unit",
+                difficulty: "medium",
+                icon: "fas fa-exchange-alt",
+                category: "tcl"
+            },
+            {
+                id: 92,
+                question: "What is SAVEPOINT?",
+                answer: "SAVEPOINT sets point within transaction to rollback to",
+                difficulty: "hard",
+                icon: "fas fa-map-marker",
+                category: "tcl"
+            },
+            {
+                id: 93,
+                question: "What is SET TRANSACTION?",
+                answer: "SET TRANSACTION sets transaction characteristics",
+                difficulty: "hard",
+                icon: "fas fa-cog",
+                category: "tcl"
+            },
+            {
+                id: 94,
+                question: "What is GRANT command?",
+                answer: "GRANT gives privileges to users",
+                difficulty: "medium",
+                icon: "fas fa-key",
+                category: "dcl"
+            },
+            {
+                id: 95,
+                question: "What is REVOKE command?",
+                answer: "REVOKE removes privileges from users",
+                difficulty: "medium",
+                icon: "fas fa-ban",
+                category: "dcl"
+            },
+            {
+                id: 96,
+                question: "What are Privileges in SQL?",
+                answer: "Privileges: SELECT, INSERT, UPDATE, DELETE, ALL",
+                difficulty: "medium",
+                icon: "fas fa-user-shield",
+                category: "dcl"
+            },
+            {
+                id: 97,
+                question: "What is a Role?",
+                answer: "Role is set of privileges that can be granted to users",
+                difficulty: "medium",
+                icon: "fas fa-users-cog",
+                category: "dcl"
+            },
+            {
+                id: 98,
+                question: "What is the difference between clustered and non-clustered index?",
+                answer: "Clustered index determines physical order, non-clustered doesn't",
+                difficulty: "hard",
+                icon: "fas fa-sort-alpha-down",
+                category: "ddl"
+            },
+            {
+                id: 99,
+                question: "What is a Full-Text Index?",
+                answer: "Full-Text Index enables text search on large text columns",
+                difficulty: "hard",
+                icon: "fas fa-search-plus",
+                category: "ddl"
+            },
+            {
+                id: 100,
+                question: "What is Query Optimization?",
+                answer: "Query Optimization improves query performance using indexes, efficient joins, etc.",
+                difficulty: "hard",
+                icon: "fas fa-tachometer-alt",
+                category: "dql"
+            },
+            {
+                id: 101,
+                question: "What is Execution Plan?",
+                answer: "Execution Plan shows how query will be executed",
+                difficulty: "hard",
+                icon: "fas fa-project-diagram",
+                category: "dql"
+            },
+            {
+                id: 102,
+                question: "What is the difference between OLTP and OLAP?",
+                answer: "OLTP for transactions, OLAP for analysis",
+                difficulty: "hard",
+                icon: "fas fa-database",
+                category: "ddl"
+            },
+            {
+                id: 103,
+                question: "What is Data Warehousing?",
+                answer: "Data warehousing stores historical data for analysis",
+                difficulty: "hard",
+                icon: "fas fa-warehouse",
+                category: "ddl"
+            },
+            {
+                id: 104,
+                question: "What is Data Mining?",
+                answer: "Data mining discovers patterns in large datasets",
+                difficulty: "hard",
+                icon: "fas fa-digging",
+                category: "ddl"
+            },
+            {
+                id: 105,
+                question: "What is ETL?",
+                answer: "ETL: Extract, Transform, Load - process for data integration",
+                difficulty: "hard",
+                icon: "fas fa-exchange-alt",
+                category: "ddl"
+            },
+            {
+                id: 106,
+                question: "What is a Fact Table?",
+                answer: "Fact table contains measures/facts in data warehouse",
+                difficulty: "hard",
+                icon: "fas fa-table",
+                category: "ddl"
+            },
+            {
+                id: 107,
+                question: "What is a Dimension Table?",
+                answer: "Dimension table contains descriptive attributes",
+                difficulty: "hard",
+                icon: "fas fa-ruler-combined",
+                category: "ddl"
+            },
+            {
+                id: 108,
+                question: "What is Star Schema?",
+                answer: "Star schema has fact table in center connected to dimension tables",
+                difficulty: "hard",
+                icon: "fas fa-star",
+                category: "ddl"
+            },
+            {
+                id: 109,
+                question: "What is Snowflake Schema?",
+                answer: "Snowflake schema has normalized dimension tables",
+                difficulty: "hard",
+                icon: "fas fa-snowflake",
+                category: "ddl"
+            },
+            {
+                id: 110,
+                question: "What is Data Mart?",
+                answer: "Data mart is subset of data warehouse for specific department",
+                difficulty: "hard",
+                icon: "fas fa-store",
+                category: "ddl"
+            },
+            {
+                id: 111,
+                question: "What is Big Data?",
+                answer: "Big data refers to extremely large datasets",
+                difficulty: "hard",
+                icon: "fas fa-database",
+                category: "ddl"
+            },
+            {
+                id: 112,
+                question: "What is NoSQL?",
+                answer: "NoSQL databases don't use relational model",
+                difficulty: "hard",
+                icon: "fas fa-database",
+                category: "ddl"
+            },
+            {
+                id: 113,
+                question: "What is MongoDB?",
+                answer: "MongoDB is document-based NoSQL database",
+                difficulty: "hard",
+                icon: "fas fa-leaf",
+                category: "ddl"
+            },
+            {
+                id: 114,
+                question: "What is Cassandra?",
+                answer: "Cassandra is column-family NoSQL database",
+                difficulty: "hard",
+                icon: "fas fa-columns",
+                category: "ddl"
+            },
+            {
+                id: 115,
+                question: "What is Redis?",
+                answer: "Redis is in-memory key-value store",
+                difficulty: "hard",
+                icon: "fas fa-bolt",
+                category: "ddl"
+            },
+            {
+                id: 116,
+                question: "What is CAP Theorem?",
+                answer: "CAP: Consistency, Availability, Partition tolerance - can only guarantee 2 of 3",
+                difficulty: "hard",
+                icon: "fas fa-balance-scale",
+                category: "ddl"
+            },
+            {
+                id: 117,
+                question: "What is BASE?",
+                answer: "BASE: Basically Available, Soft state, Eventually consistent",
+                difficulty: "hard",
+                icon: "fas fa-server",
+                category: "ddl"
+            },
+            {
+                id: 118,
+                question: "What is ACID vs BASE?",
+                answer: "ACID for transactions, BASE for availability",
+                difficulty: "hard",
+                icon: "fas fa-balance-scale",
+                category: "tcl"
+            },
+            {
+                id: 119,
+                question: "What is Sharding?",
+                answer: "Sharding partitions data across multiple servers",
+                difficulty: "hard",
+                icon: "fas fa-server",
+                category: "ddl"
+            },
+            {
+                id: 120,
+                question: "What is Replication?",
+                answer: "Replication copies data to multiple servers",
+                difficulty: "hard",
+                icon: "fas fa-copy",
+                category: "ddl"
+            }
+        ];
+        
+        // Load questions into the container with filtering
+        const questionsContainer = document.getElementById('questionsContainer');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        
+        function displayQuestions(filter = 'all') {
+            questionsContainer.innerHTML = '';
+            
+            const filteredQuestions = filter === 'all' 
+                ? sqlQuestions 
+                : sqlQuestions.filter(q => q.category === filter);
+            
+            filteredQuestions.forEach((q, index) => {
+                const questionCard = document.createElement('div');
+                questionCard.className = `question-card ${q.category}`;
+                questionCard.innerHTML = `
+                    <div class="question-header">
+                        <span class="question-number">${q.id}</span>
+                        <h3 class="question">${q.question}</h3>
+                        <i class="${q.icon} tech-icon"></i>
+                    </div>
+                    <span class="difficulty ${q.difficulty}">${q.difficulty.toUpperCase()}</span>
+                    <span class="category">${q.category.toUpperCase()}</span>
+                    <div class="answer" id="answer-${q.id}">
+                        ${q.answer}
+                    </div>
+                    <button class="toggle-answer" data-answer="answer-${q.id}">
+                        <i class="fas fa-chevron-down"></i> Show Answer
+                    </button>
+                `;
+                questionsContainer.appendChild(questionCard);
+            });
+            
+            // Update stats
+            document.querySelector('.stat-number').textContent = `${filteredQuestions.length}+`;
+        }
+        
+        // Initial display
+        displayQuestions();
+        
+        // Filter button click handlers
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                // Get category filter
+                const filter = this.getAttribute('data-category');
+                // Display filtered questions
+                displayQuestions(filter);
+            });
+        });
+        
+        // Toggle answer visibility
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('toggle-answer') || e.target.parentElement.classList.contains('toggle-answer')) {
+                const button = e.target.classList.contains('toggle-answer') ? e.target : e.target.parentElement;
+                const answerId = button.getAttribute('data-answer');
+                const answerElement = document.getElementById(answerId);
+                const isHidden = answerElement.style.display === 'none' || !answerElement.classList.contains('show');
+                
+                if (isHidden) {
+                    answerElement.classList.add('show');
+                    button.innerHTML = '<i class="fas fa-chevron-up"></i> Hide Answer';
+                } else {
+                    answerElement.classList.remove('show');
+                    button.innerHTML = '<i class="fas fa-chevron-down"></i> Show Answer';
+                }
+            }
+        });
+        
+        // Sample reviews data
+        const reviews = [
+            {
+                name: "Priya Sharma",
+                text: "Ram Sir's SQL Masterclass transformed my career. I went from basic SQL knowledge to clearing 3 data analyst interviews in 2 months! The real-world projects were incredibly helpful.",
+                rating: 5,
+                course: "SQL Masterclass"
+            },
+            {
+                name: "Rahul Verma",
+                text: "The interview questions section alone is worth it! I practiced all 100+ questions and could answer every SQL question in my Amazon interview. Got the offer!",
+                rating: 5,
+                course: "Advanced SQL"
+            },
+            {
+                name: "Anjali Patel",
+                text: "As a beginner, I was intimidated by SQL. But Ram Sir's teaching method made everything so clear. Now I'm working as a database administrator. Highly recommended!",
+                rating: 5,
+                course: "SQL Masterclass"
+            },
+            {
+                name: "Vikram Singh",
+                text: "The SQL+Python combo course was exactly what I needed for data analysis. The projects were challenging but practical. Landed a job with 40% salary hike!",
+                rating: 5,
+                course: "SQL + Python"
+            },
+            {
+                name: "Sneha Reddy",
+                text: "I took the offline classes and the personal attention was amazing. Ram Sir cleared all my doubts patiently. The course materials are comprehensive and well-structured.",
+                rating: 5,
+                course: "Advanced SQL"
+            }
+        ];
+        
+        // Load reviews into slider
+        const reviewsSlider = document.getElementById('reviewsSlider');
+        
+        reviews.forEach(review => {
+            const reviewCard = document.createElement('div');
+            reviewCard.className = 'review-card';
+            
+            let stars = '';
+            for (let i = 0; i < review.rating; i++) {
+                stars += '<i class="fas fa-star"></i>';
+            }
+            
+            reviewCard.innerHTML = `
+                <p class="review-text">"${review.text}"</p>
+                <div class="reviewer">
+                    <div class="reviewer-img">${review.name.charAt(0)}</div>
+                    <div class="reviewer-info">
+                        <h4>${review.name}</h4>
+                        <p>${review.course} Student</p>
+                        <div class="review-rating">
+                            ${stars}
+                        </div>
+                    </div>
+                </div>
+            `;
+            reviewsSlider.appendChild(reviewCard);
+        });
+        
+        // Initialize Owl Carousel
+        $(document).ready(function(){
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: true,
+                dots: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    768: {
+                        items: 2
+                    },
+                    992: {
+                        items: 3
+                    }
+                }
+            });
+        });
+        
+        // WhatsApp button functionality
+        document.getElementById('whatsappBtn').addEventListener('click', function() {
+            const name = document.querySelector('input[type="text"]').value || "Interested Student";
+            const phone = document.querySelector('input[type="tel"]').value || "";
+            const message = document.querySelector('textarea').value || "Hi Ram Sir, I'm interested in your SQL courses. Please share more details.";
+            
+            const whatsappUrl = `https://wa.me/919753528324?text=${encodeURIComponent(`Name: ${name}\nPhone: ${phone}\nMessage: ${message}`)}`;
+            window.open(whatsappUrl, '_blank');
+        });
+        
+        // Call button functionality
+        document.getElementById('callBtn').addEventListener('click', function() {
+            window.location.href = 'tel:+919753528324';
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Show total question count
+        document.addEventListener('DOMContentLoaded', function() {
+            const statNumber = document.querySelector('.stat-number');
+            if (statNumber) {
+                statNumber.textContent = `${sqlQuestions.length}+`;
+            }
+        });
+    </script>
+</body>
+</html>

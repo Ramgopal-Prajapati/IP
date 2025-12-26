@@ -1,0 +1,2381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Mastery - 120+ Interview Q&A | Ram Sir</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <style>
+        :root {
+            --primary: #217346;
+            --secondary: #1c6b42;
+            --accent: #21a366;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #2ec4b6;
+            --warning: #ff9f1c;
+            --danger: #e63946;
+            --gradient: linear-gradient(135deg, #217346 0%, #21a366 100%);
+            --gradient-light: linear-gradient(135deg, #21a366 0%, #217346 100%);
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.12);
+            --radius: 10px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--dark);
+            background-color: #f8fafc;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: var(--gradient);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
+            margin-bottom: 2px;
+        }
+        
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+        
+        .nav-menu a:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+        
+        .nav-menu a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            background: var(--gradient-light);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        
+        .btn-primary {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* Filter Section */
+        .filter-section {
+            background: white;
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin: 30px 0;
+        }
+        
+        .filter-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            padding: 8px 16px;
+            background: #f1f5f9;
+            border: none;
+            border-radius: 20px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            color: #555;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--gradient);
+            color: white;
+        }
+        
+        /* Questions Section */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        .questions-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+        
+        .question-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 5px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .question-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .question-card.formulas {
+            border-left-color: #217346;
+        }
+        
+        .question-card.functions {
+            border-left-color: #21a366;
+        }
+        
+        .question-card.pivottables {
+            border-left-color: #185c37;
+        }
+        
+        .question-card.charts {
+            border-left-color: #e63946;
+        }
+        
+        .question-card.macros {
+            border-left-color: #7209b7;
+        }
+        
+        .question-card.vba {
+            border-left-color: #f72585;
+        }
+        
+        .question-card.dataanalysis {
+            border-left-color: #38b000;
+        }
+        
+        .question-card.advanced {
+            border-left-color: #ff5400;
+        }
+        
+        .question-card.formatting {
+            border-left-color: #4361ee;
+        }
+        
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .question-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-right: 10px;
+        }
+        
+        .question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark);
+            line-height: 1.4;
+            flex: 1;
+        }
+        
+        .tech-icon {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .answer {
+            color: #555;
+            line-height: 1.6;
+            padding-top: 15px;
+            border-top: 1px dashed #eee;
+            margin-top: 15px;
+            display: none;
+        }
+        
+        .answer.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .answer pre {
+            background: #f1f5f9;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            border-left: 3px solid var(--primary);
+        }
+        
+        .answer code {
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: var(--danger);
+        }
+        
+        .toggle-answer {
+            background: var(--gradient-light);
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: var(--transition);
+        }
+        
+        .toggle-answer:hover {
+            background: var(--gradient);
+            transform: scale(1.05);
+        }
+        
+        .difficulty {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-top: 15px;
+        }
+        
+        .difficulty.easy {
+            background-color: rgba(46, 196, 182, 0.15);
+            color: var(--success);
+        }
+        
+        .difficulty.medium {
+            background-color: rgba(255, 159, 28, 0.15);
+            color: var(--warning);
+        }
+        
+        .difficulty.hard {
+            background-color: rgba(220, 53, 69, 0.15);
+            color: #dc3545;
+        }
+        
+        .category {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-left: 10px;
+            background-color: #f1f5f9;
+            color: #555;
+        }
+        
+        /* Courses Section */
+        .courses {
+            background-color: #f1f5f9;
+            padding: 60px 0;
+        }
+        
+        .courses-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .course-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .course-header {
+            background: var(--gradient);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+        
+        .course-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .course-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .course-body {
+            padding: 25px;
+        }
+        
+        .course-features {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .course-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .course-features li i {
+            color: var(--success);
+        }
+        
+        .course-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .course-price span {
+            font-size: 1rem;
+            color: #666;
+            font-weight: normal;
+        }
+        
+        .course-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .course-btn {
+            flex: 1;
+            text-align: center;
+            padding: 12px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .course-btn.enroll {
+            background: var(--gradient);
+            color: white;
+        }
+        
+        .course-btn.enroll:hover {
+            background: var(--primary);
+        }
+        
+        .course-btn.details {
+            background: #f1f5f9;
+            color: var(--primary);
+        }
+        
+        .course-btn.details:hover {
+            background: #e2e8f0;
+        }
+        
+        /* Reviews Section */
+        .reviews {
+            padding: 60px 0;
+        }
+        
+        .reviews-slider {
+            margin-top: 40px;
+        }
+        
+        .review-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin: 10px;
+            position: relative;
+        }
+        
+        .review-card::before {
+            content: "\201C";
+            font-size: 4rem;
+            color: var(--accent);
+            opacity: 0.3;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+        
+        .review-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        .reviewer {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .reviewer-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .reviewer-info h4 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .reviewer-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .review-rating {
+            color: #ffc107;
+            margin-top: 5px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: white;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .footer-col p {
+            color: #b0b0b0;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: #b0b0b0;
+        }
+        
+        .contact-info li i {
+            color: var(--accent);
+            width: 20px;
+        }
+        
+        .enquiry-form input,
+        .enquiry-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            background: #2d3748;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .enquiry-form textarea {
+            height: 120px;
+            resize: none;
+        }
+        
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            transition: var(--transition);
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+        }
+        
+        .call-btn {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            margin-top: 10px;
+            transition: var(--transition);
+        }
+        
+        .call-btn:hover {
+            background: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #2d3748;
+            color: #b0b0b0;
+            font-size: 0.9rem;
+        }
+        
+        /* Stats */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            min-width: 150px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .stat-text {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .questions-container {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--gradient);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                gap: 0;
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: var(--transition);
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-menu.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+            
+            .nav-menu li {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-menu a {
+                display: block;
+                padding: 15px;
+                border-radius: 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .stats {
+                gap: 15px;
+            }
+            
+            .stat-item {
+                min-width: 120px;
+                padding: 15px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .questions-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .course-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-file-excel"></i>
+                <div class="logo-text">
+                    <h1>Ram Sir</h1>
+                    <p>Excel & Data Analysis Expert</p>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#questions">Excel Q&A (120+)</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#reviews">Student Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <div class="hero-emoji">
+                📊 📈 📉 🏆
+            </div>
+            <h2>Master Excel with 120+ Interview Questions</h2>
+            <p>Comprehensive collection of Excel interview questions covering formulas, functions, pivot tables, charts, macros, VBA, and more. Perfect for beginners to advanced professionals.</p>
+            <div class="cta-buttons">
+                <a href="#questions" class="btn btn-primary">
+                    <i class="fas fa-list"></i> Explore All Questions
+                </a>
+                <a href="#courses" class="btn btn-secondary">
+                    <i class="fas fa-graduation-cap"></i> Enroll Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="container">
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">120+</div>
+                <div class="stat-text">Excel Questions</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">8+</div>
+                <div class="stat-text">Categories</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">1200+</div>
+                <div class="stat-text">Students Trained</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">12+</div>
+                <div class="stat-text">Years Experience</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Questions Section -->
+    <section id="questions">
+        <div class="container">
+            <div class="section-title">
+                <h2>120+ Excel Interview Questions</h2>
+                <p>Complete collection of Excel questions with detailed answers. Filter by category to focus on specific topics.</p>
+            </div>
+            
+            <!-- Filter Section -->
+            <div class="filter-section">
+                <h3 class="filter-title">Filter by Category:</h3>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-category="all">All Questions</button>
+                    <button class="filter-btn" data-category="formulas">Formulas</button>
+                    <button class="filter-btn" data-category="functions">Functions</button>
+                    <button class="filter-btn" data-category="pivottables">Pivot Tables</button>
+                    <button class="filter-btn" data-category="charts">Charts</button>
+                    <button class="filter-btn" data-category="macros">Macros</button>
+                    <button class="filter-btn" data-category="vba">VBA</button>
+                    <button class="filter-btn" data-category="dataanalysis">Data Analysis</button>
+                    <button class="filter-btn" data-category="advanced">Advanced Topics</button>
+                </div>
+            </div>
+            
+            <div class="questions-container" id="questionsContainer">
+                <!-- Questions will be loaded here via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses" id="courses">
+        <div class="container">
+            <div class="section-title">
+                <h2>Recommended Excel Courses</h2>
+                <p>Master Excel with our comprehensive courses designed for beginners to advanced professionals.</p>
+            </div>
+            
+            <div class="courses-container">
+                <!-- Course 1 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="course-title">Excel Masterclass</h3>
+                        <p>Complete Excel Bootcamp</p>
+                    </div>
+                    <div class="course-body">
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> 50+ Hours of Content</li>
+                            <li><i class="fas fa-check"></i> 100+ Practical Exercises</li>
+                            <li><i class="fas fa-check"></i> Real-world Business Projects</li>
+                            <li><i class="fas fa-check"></i> Microsoft Certification Prep</li>
+                            <li><i class="fas fa-check"></i> Lifetime Access</li>
+                        </ul>
+                        <div class="course-price">
+                            ₹4,999 <span>₹9,999</span>
+                        </div>
+                        <div class="course-buttons">
+                            <a href="tel:9753528324" class="course-btn enroll">
+                                <i class="fas fa-phone-alt"></i> Call to Enroll
+                            </a>
+                            <a href="#contact" class="course-btn details">
+                                <i class="fas fa-info-circle"></i> Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 2 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h3 class="course-title">Advanced Excel & VBA</h3>
+                        <p>For Automation Experts</p>
+                    </div>
+                    <div class="course-body">
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Advanced Formulas & Functions</li>
+                            <li><i class="fas fa-check"></i> VBA Programming</li>
+                            <li><i class="fas fa-check"></i> Macro Automation</li>
+                            <li><i class="fas fa-check"></i> Dashboard Creation</li>
+                            <li><i class="fas fa-check"></i> 1-on-1 Mentoring</li>
+                        </ul>
+                        <div class="course-price">
+                            ₹6,999 <span>₹12,999</span>
+                        </div>
+                        <div class="course-buttons">
+                            <a href="tel:9753528324" class="course-btn enroll">
+                                <i class="fas fa-phone-alt"></i> Call to Enroll
+                            </a>
+                            <a href="#contact" class="course-btn details">
+                                <i class="fas fa-info-circle"></i> Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 3 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3 class="course-title">Excel + Power BI</h3>
+                        <p>Business Intelligence Combo</p>
+                    </div>
+                    <div class="course-body">
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Excel + Power BI Integration</li>
+                            <li><i class="fas fa-check"></i> Advanced Data Modeling</li>
+                            <li><i class="fas fa-check"></i> Interactive Dashboards</li>
+                            <li><i class="fas fa-check"></i> Real Business Projects</li>
+                            <li><i class="fas fa-check"></i> Job Assistance</li>
+                        </ul>
+                        <div class="course-price">
+                            ₹8,999 <span>₹16,999</span>
+                        </div>
+                        <div class="course-buttons">
+                            <a href="tel:9753528324" class="course-btn enroll">
+                                <i class="fas fa-phone-alt"></i> Call to Enroll
+                            </a>
+                            <a href="#contact" class="course-btn details">
+                                <i class="fas fa-info-circle"></i> Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <p><strong>Mode:</strong> Both Online & Offline Classes Available</p>
+                <p><strong>Timing:</strong> Flexible batches (Morning/Evening/Weekend)</p>
+                <p><strong>Call:</strong> <a href="tel:9753528324" style="color: var(--primary); text-decoration: none; font-weight: 600;">+91 97535 28324</a> for details</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <div class="section-title">
+                <h2>Student Reviews</h2>
+                <p>See what our students have to say about our Excel training programs.</p>
+            </div>
+            
+            <div class="reviews-slider owl-carousel" id="reviewsSlider">
+                <!-- Reviews will be loaded here via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Ram Sir</h3>
+                    <p>With over 12 years of experience in Excel training and business analytics, I've helped 1200+ students build successful careers in data analysis and business intelligence.</p>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <span>+91 97535 28324</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>ramsir.excel@example.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Delhi, India</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="contact-info">
+                        <li><a href="#home" style="color: #b0b0b0; text-decoration: none;">Home</a></li>
+                        <li><a href="#questions" style="color: #b0b0b0; text-decoration: none;">Excel Q&A</a></li>
+                        <li><a href="#courses" style="color: #b0b0b0; text-decoration: none;">Courses</a></li>
+                        <li><a href="#reviews" style="color: #b0b0b0; text-decoration: none;">Student Reviews</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Enquiry Form</h3>
+                    <form class="enquiry-form" id="enquiryForm">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <input type="tel" placeholder="Your Phone" required>
+                        <textarea placeholder="Your Message"></textarea>
+                        <button type="button" class="whatsapp-btn" id="whatsappBtn">
+                            <i class="fab fa-whatsapp"></i> Send via WhatsApp
+                        </button>
+                        <button type="button" class="call-btn" id="callBtn">
+                            <i class="fas fa-phone-alt"></i> Call Now: 9753528324
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Ram Sir Excel Mastery. All rights reserved. | Designed with ❤️ for aspiring Excel professionals</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
+            this.innerHTML = document.getElementById('navMenu').classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('navMenu').classList.remove('active');
+                document.getElementById('mobileMenuBtn').innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Complete Excel questions data (120+ questions)
+        const excelQuestions = [
+            // Formulas Questions
+            {
+                id: 1,
+                question: "What is the difference between a formula and a function in Excel?",
+                answer: "<strong>Formula:</strong> User-defined calculation that can include functions, references, operators, and constants<br><strong>Function:</strong> Predefined formula built into Excel<br><br><pre>=A1+B1  -- Formula\n=SUM(A1:B1)  -- Function in formula</pre>",
+                difficulty: "easy",
+                icon: "fas fa-calculator",
+                category: "formulas"
+            },
+            {
+                id: 2,
+                question: "What are the basic arithmetic operators in Excel?",
+                answer: "Basic arithmetic operators:<br><br><pre>+  Addition      =A1+B1\n-  Subtraction   =A1-B1\n*  Multiplication =A1*B1\n/  Division      =A1/B1\n^  Exponentiation =A1^B1\n%  Percentage    =A1*10%</pre>",
+                difficulty: "easy",
+                icon: "fas fa-plus",
+                category: "formulas"
+            },
+            {
+                id: 3,
+                question: "What is the order of operations in Excel formulas?",
+                answer: "Order of operations (PEMDAS):<br>1. Parentheses ()<br>2. Exponentiation ^<br>3. Multiplication * and Division / (left to right)<br>4. Addition + and Subtraction - (left to right)<br><br><pre>=2+3*4  -- Result: 14 (not 20)\n=(2+3)*4  -- Result: 20</pre>",
+                difficulty: "easy",
+                icon: "fas fa-sort-amount-down",
+                category: "formulas"
+            },
+            {
+                id: 4,
+                question: "What are relative, absolute, and mixed references?",
+                answer: "<strong>Relative Reference:</strong> Changes when copied (A1)<br><strong>Absolute Reference:</strong> Doesn't change when copied ($A$1)<br><strong>Mixed Reference:</strong> Row or column fixed ($A1 or A$1)<br><br><pre>Relative: =A1*B1\nAbsolute: =$A$1*$B$1\nMixed: =$A1*B$1</pre>",
+                difficulty: "medium",
+                icon: "fas fa-anchor",
+                category: "formulas"
+            },
+            
+            // Functions Questions
+            {
+                id: 5,
+                question: "What are the most commonly used Excel functions?",
+                answer: "Common Excel functions:<br><br><pre>SUM: =SUM(A1:A10)\nAVERAGE: =AVERAGE(A1:A10)\nCOUNT: =COUNT(A1:A10)\nMAX: =MAX(A1:A10)\nMIN: =MIN(A1:A10)\nIF: =IF(A1>10, \"Yes\", \"No\")\nVLOOKUP: =VLOOKUP(A1, B1:C10, 2, FALSE)\nCONCATENATE: =CONCATENATE(A1, \" \", B1)</pre>",
+                difficulty: "easy",
+                icon: "fas fa-function",
+                category: "functions"
+            },
+            {
+                id: 6,
+                question: "What is the VLOOKUP function and how does it work?",
+                answer: "VLOOKUP searches for a value in the first column of a range and returns a value in the same row from a specified column.<br><br><pre>=VLOOKUP(lookup_value, table_array, col_index_num, [range_lookup])\n\nExample:\n=VLOOKUP(\"Apple\", A2:B10, 2, FALSE)\n\nArguments:\n1. Lookup value: Value to search for\n2. Table array: Range containing data\n3. Column index: Column number to return\n4. Range lookup: FALSE for exact match, TRUE for approximate</pre>",
+                difficulty: "medium",
+                icon: "fas fa-search",
+                category: "functions"
+            },
+            {
+                id: 7,
+                question: "What is the difference between VLOOKUP and HLOOKUP?",
+                answer: "VLOOKUP searches vertically in columns, HLOOKUP searches horizontally in rows.<br><br><pre>VLOOKUP: Searches first column, returns from same row\nHLOOKUP: Searches first row, returns from same column\n\nVLOOKUP Example:\n=VLOOKUP(\"John\", A2:C10, 3, FALSE)\n\nHLOOKUP Example:\n=HLOOKUP(\"Q1\", A1:D3, 2, FALSE)</pre>",
+                difficulty: "medium",
+                icon: "fas fa-arrows-alt-v",
+                category: "functions"
+            },
+            {
+                id: 8,
+                question: "What is the INDEX-MATCH combination?",
+                answer: "INDEX-MATCH is more flexible alternative to VLOOKUP.<br><br><pre>=INDEX(return_range, MATCH(lookup_value, lookup_range, 0))\n\nExample:\n=INDEX(C2:C10, MATCH(\"Apple\", A2:A10, 0))\n\nAdvantages over VLOOKUP:\n1. Works left to right\n2. Handles column insertions\n3. Faster with large datasets\n4. More flexible</pre>",
+                difficulty: "hard",
+                icon: "fas fa-link",
+                category: "functions"
+            },
+            {
+                id: 9,
+                question: "What is the IF function with examples?",
+                answer: "IF function performs logical test and returns one value if TRUE, another if FALSE.<br><br><pre>Basic IF:\n=IF(A1>10, \"High\", \"Low\")\n\nNested IF:\n=IF(A1>90, \"A\", IF(A1>80, \"B\", IF(A1>70, \"C\", \"D\")))\n\nIF with AND/OR:\n=IF(AND(A1>10, B1<20), \"Yes\", \"No\")\n=IF(OR(A1>10, B1<5), \"Yes\", \"No\")</pre>",
+                difficulty: "medium",
+                icon: "fas fa-question",
+                category: "functions"
+            },
+            {
+                id: 10,
+                question: "What are SUMIF and SUMIFS functions?",
+                answer: "SUMIF sums cells based on single criteria, SUMIFS sums based on multiple criteria.<br><br><pre>SUMIF:\n=SUMIF(range, criteria, [sum_range])\nExample: =SUMIF(A2:A10, \">100\", B2:B10)\n\nSUMIFS:\n=SUMIFS(sum_range, criteria_range1, criteria1, [criteria_range2, criteria2], ...)\nExample: =SUMIFS(C2:C10, A2:A10, \"East\", B2:B10, \">100\")</pre>",
+                difficulty: "medium",
+                icon: "fas fa-plus-circle",
+                category: "functions"
+            },
+            {
+                id: 11,
+                question: "What are COUNTIF and COUNTIFS functions?",
+                answer: "COUNTIF counts cells based on single criteria, COUNTIFS counts based on multiple criteria.<br><br><pre>COUNTIF:\n=COUNTIF(range, criteria)\nExample: =COUNTIF(A2:A10, \"Completed\")\n\nCOUNTIFS:\n=COUNTIFS(criteria_range1, criteria1, [criteria_range2, criteria2], ...)\nExample: =COUNTIFS(A2:A10, \"East\", B2:B10, \">100\")</pre>",
+                difficulty: "medium",
+                icon: "fas fa-hashtag",
+                category: "functions"
+            },
+            
+            // Pivot Tables Questions
+            {
+                id: 12,
+                question: "What is a Pivot Table and why is it used?",
+                answer: "Pivot Table is a data summarization tool used to:<br><br>1. Summarize large datasets<br>2. Analyze data from different perspectives<br>3. Create interactive reports<br>4. Identify patterns and trends<br>5. Calculate summaries without formulas<br><br>Steps: Select data → Insert → Pivot Table → Drag fields to areas",
+                difficulty: "medium",
+                icon: "fas fa-table",
+                category: "pivottables"
+            },
+            {
+                id: 13,
+                question: "What are the different areas in a Pivot Table?",
+                answer: "Pivot Table areas:<br><br>1. <strong>Rows:</strong> Fields that appear as row labels<br>2. <strong>Columns:</strong> Fields that appear as column labels<br>3. <strong>Values:</strong> Fields that are summarized (sum, count, average)<br>4. <strong>Filters:</strong> Fields used to filter entire Pivot Table",
+                difficulty: "medium",
+                icon: "fas fa-th",
+                category: "pivottables"
+            },
+            {
+                id: 14,
+                question: "How to create a calculated field in Pivot Table?",
+                answer: "Calculated field creates new field based on formula:<br><br>1. Click inside Pivot Table<br>2. Go to PivotTable Analyze tab<br>3. Click Fields, Items & Sets → Calculated Field<br>4. Enter name and formula<br><br><pre>Example:\nName: Profit Margin\nFormula: =Profit/Sales</pre>",
+                difficulty: "hard",
+                icon: "fas fa-calculator",
+                category: "pivottables"
+            },
+            
+            // Charts Questions
+            {
+                id: 15,
+                question: "What are the different types of charts in Excel?",
+                answer: "Common chart types:<br><br>1. <strong>Column/Bar:</strong> Comparison among categories<br>2. <strong>Line:</strong> Trends over time<br>3. <strong>Pie/Doughnut:</strong> Proportions of whole<br>4. <strong>Scatter:</strong> Relationship between variables<br>5. <strong>Area:</strong> Cumulative trends<br>6. <strong>Combo:</strong> Combination of chart types<br>7. <strong>Histogram:</strong> Frequency distribution",
+                difficulty: "easy",
+                icon: "fas fa-chart-bar",
+                category: "charts"
+            },
+            
+            // Macros Questions
+            {
+                id: 16,
+                question: "What is a Macro in Excel?",
+                answer: "Macro is recorded sequence of actions that can be replayed to automate repetitive tasks.<br><br>Steps to create:<br>1. View → Macros → Record Macro<br>2. Perform actions<br>3. Stop recording<br><br>Uses: Data cleaning, formatting, report generation, automation",
+                difficulty: "medium",
+                icon: "fas fa-robot",
+                category: "macros"
+            },
+            
+            // VBA Questions
+            {
+                id: 17,
+                question: "What is VBA and how is it different from Macros?",
+                answer: "VBA (Visual Basic for Applications) is programming language for automation.<br><br><strong>Macro:</strong> Recorded actions<br><strong>VBA:</strong> Programmed automation with logic, loops, conditions<br><br><pre>' VBA Example\nSub HelloWorld()\n    MsgBox \"Hello World!\"\nEnd Sub</pre>",
+                difficulty: "hard",
+                icon: "fas fa-code",
+                category: "vba"
+            },
+            
+            // Data Analysis Questions
+            {
+                id: 18,
+                question: "What is Data Validation in Excel?",
+                answer: "Data Validation restricts type of data entered in cells.<br><br>Types:<br>1. List (dropdown)<br>2. Whole number/decimal<br>3. Date/time<br>4. Text length<br>5. Custom formula<br><br>Steps: Data → Data Validation → Settings",
+                difficulty: "medium",
+                icon: "fas fa-check-circle",
+                category: "dataanalysis"
+            },
+            {
+                id: 19,
+                question: "What is Conditional Formatting?",
+                answer: "Conditional Formatting changes cell appearance based on conditions.<br><br>Types:<br>1. Highlight cells rules<br>2. Top/bottom rules<br>3. Data bars<br>4. Color scales<br>5. Icon sets<br>6. Custom formulas<br><br>Steps: Home → Conditional Formatting",
+                difficulty: "medium",
+                icon: "fas fa-paint-brush",
+                category: "dataanalysis"
+            },
+            
+            // Advanced Topics Questions
+            {
+                id: 20,
+                question: "What are Excel Tables and their advantages?",
+                answer: "Excel Tables (Ctrl+T) provide structured references and benefits:<br><br>Advantages:<br>1. Automatic formatting<br>2. Structured references<br>3. Auto-expansion<br>4. Built-in filters<br>5. Calculated columns<br>6. Total row<br>7. Easy data analysis<br><br><pre>Table reference: =SUM(Table1[Sales])</pre>",
+                difficulty: "medium",
+                icon: "fas fa-table",
+                category: "advanced"
+            },
+            
+            // More Formulas Questions
+            {
+                id: 21,
+                question: "What is the CONCATENATE function vs & operator?",
+                answer: "Both join text strings:<br><br><pre>CONCATENATE: =CONCATENATE(A1, \" \", B1)\n& operator: =A1 & \" \" & B1\n\nCONCATENATE is function, & is operator\nExcel 2016+: Use TEXTJOIN or CONCAT</pre>",
+                difficulty: "easy",
+                icon: "fas fa-link",
+                category: "formulas"
+            },
+            {
+                id: 22,
+                question: "What is TEXT function for date formatting?",
+                answer: "TEXT function formats numbers/dates as text:<br><br><pre>=TEXT(A1, \"dd-mm-yyyy\")  -- Date\n=TEXT(A1, \"$#,##0.00\")   -- Currency\n=TEXT(A1, \"0%\")         -- Percentage\n\nCommon date formats:\n\"dd/mm/yyyy\"\n\"mmm dd, yyyy\"\n\"dddd, mmmm dd, yyyy\"</pre>",
+                difficulty: "medium",
+                icon: "fas fa-font",
+                category: "formulas"
+            },
+            
+            // More Functions Questions
+            {
+                id: 23,
+                question: "What is the XLOOKUP function?",
+                answer: "XLOOKUP is modern replacement for VLOOKUP/HLOOKUP (Office 365).<br><br><pre>=XLOOKUP(lookup_value, lookup_array, return_array, [if_not_found], [match_mode], [search_mode])\n\nExample:\n=XLOOKUP(\"Apple\", A2:A10, C2:C10, \"Not found\", 0)\n\nAdvantages:\n1. Simpler syntax\n2. Default exact match\n3. Works both directions\n4. Returns arrays\n5. Built-in error handling</pre>",
+                difficulty: "hard",
+                icon: "fas fa-search-plus",
+                category: "functions"
+            },
+            {
+                id: 24,
+                question: "What is the SWITCH function?",
+                answer: "SWITCH evaluates expression against list of values and returns result.<br><br><pre>=SWITCH(expression, value1, result1, [value2, result2], ..., [default])\n\nExample:\n=SWITCH(A1, 1, \"Low\", 2, \"Medium\", 3, \"High\", \"Unknown\")</pre>",
+                difficulty: "medium",
+                icon: "fas fa-exchange-alt",
+                category: "functions"
+            },
+            {
+                id: 25,
+                question: "What are the TEXT functions?",
+                answer: "Text manipulation functions:<br><br><pre>LEFT: =LEFT(text, num_chars)\nRIGHT: =RIGHT(text, num_chars)\nMID: =MID(text, start_num, num_chars)\nLEN: =LEN(text)\nTRIM: =TRIM(text)\nUPPER/LOWER/PROPER\nFIND/SEARCH\nSUBSTITUTE/REPLACE\nTEXTJOIN/CONCAT</pre>",
+                difficulty: "medium",
+                icon: "fas fa-font",
+                category: "functions"
+            },
+            {
+                id: 26,
+                question: "What are the DATE functions?",
+                answer: "Date manipulation functions:<br><br><pre>TODAY: =TODAY()\nNOW: =NOW()\nDATE: =DATE(year, month, day)\nDAY/MONTH/YEAR\nDATEDIF: =DATEDIF(start_date, end_date, \"unit\")\nWORKDAY/NETWORKDAYS\nEDATE/EOMONTH\nWEEKDAY/WEEKNUM</pre>",
+                difficulty: "medium",
+                icon: "fas fa-calendar",
+                category: "functions"
+            },
+            
+            // More Pivot Tables Questions
+            {
+                id: 27,
+                question: "How to group data in Pivot Table?",
+                answer: "Grouping aggregates data:<br><br>1. <strong>Date Grouping:</strong> Right-click date → Group → Years/Quarters/Months<br>2. <strong>Numeric Grouping:</strong> Right-click number → Group → Set start/end/interval<br>3. <strong>Manual Grouping:</strong> Select items → Right-click → Group<br><br>Ungroup: Right-click → Ungroup",
+                difficulty: "medium",
+                icon: "fas fa-object-group",
+                category: "pivottables"
+            },
+            {
+                id: 28,
+                question: "What is Slicer in Pivot Table?",
+                answer: "Slicer is visual filter for Pivot Tables.<br><br>Steps to add:<br>1. Click inside Pivot Table<br>2. PivotTable Analyze → Insert Slicer<br>3. Select fields<br><br>Benefits:<br>1. Visual filtering<br>2. Multiple selection<br>3. Connect to multiple Pivot Tables<br>4. Better than report filters",
+                difficulty: "medium",
+                icon: "fas fa-filter",
+                category: "pivottables"
+            },
+            {
+                id: 29,
+                question: "What is Timeline in Pivot Table?",
+                answer: "Timeline is visual date filter for Pivot Tables.<br><br>Steps to add:<br>1. Click inside Pivot Table<br>2. PivotTable Analyze → Insert Timeline<br>3. Select date field<br><br>Features:<br>1. Filter by years/quarters/months/days<br>2. Drag to select range<br>3. Multiple time periods",
+                difficulty: "medium",
+                icon: "fas fa-clock",
+                category: "pivottables"
+            },
+            
+            // More Charts Questions
+            {
+                id: 30,
+                question: "How to create a combo chart?",
+                answer: "Combo chart combines two chart types:<br><br>Steps:<br>1. Select data<br>2. Insert → Combo Chart<br>3. Choose chart types for each series<br><br>Common combinations:<br>1. Column + Line<br>2. Area + Line<br>3. Different axes (primary/secondary)<br><br>Use case: Sales (columns) and % Growth (line)",
+                difficulty: "hard",
+                icon: "fas fa-chart-line",
+                category: "charts"
+            },
+            {
+                id: 31,
+                question: "What is a dynamic chart?",
+                answer: "Dynamic chart updates automatically when data changes.<br><br>Methods:<br>1. <strong>Excel Tables:</strong> Charts based on tables auto-expand<br>2. <strong>Named Ranges:</strong> Use OFFSET/INDEX for dynamic ranges<br>3. <strong>Pivot Charts:</strong> Linked to Pivot Tables<br><br><pre>Dynamic named range:\n=OFFSET(Sheet1!$A$1,0,0,COUNTA(Sheet1!$A:$A),1)</pre>",
+                difficulty: "hard",
+                icon: "fas fa-sync",
+                category: "charts"
+            },
+            
+            // More Macros Questions
+            {
+                id: 32,
+                question: "How to assign Macro to button?",
+                answer: "Steps to assign Macro to button:<br><br>1. Developer tab → Insert → Button<br>2. Draw button on sheet<br>3. Select Macro from list<br>4. Click OK<br><br>Alternative methods:<br>1. Assign to shape (right-click → Assign Macro)<br>2. Assign to Quick Access Toolbar<br>3. Keyboard shortcut (Alt+F8 → Options)",
+                difficulty: "medium",
+                icon: "fas fa-mouse-pointer",
+                category: "macros"
+            },
+            {
+                id: 33,
+                question: "What is Relative Reference recording?",
+                answer: "Records Macro with relative cell references.<br><br>Steps:<br>1. Developer → Use Relative References<br>2. Record Macro<br>3. Perform actions<br>4. Stop recording<br><br>Use case: Apply same actions to different cells",
+                difficulty: "medium",
+                icon: "fas fa-arrows-alt",
+                category: "macros"
+            },
+            
+            // More VBA Questions
+            {
+                id: 34,
+                question: "What are VBA variables and data types?",
+                answer: "Variables store data in VBA:<br><br><pre>Dim x As Integer\nDim name As String\nDim salary As Double\nDim isComplete As Boolean\nDim today As Date\n\nCommon data types:\nInteger, Long, Double, String, Boolean, Date, Variant</pre>",
+                difficulty: "medium",
+                icon: "fas fa-code",
+                category: "vba"
+            },
+            {
+                id: 35,
+                question: "What is VBA loop structure?",
+                answer: "Loops repeat code execution:<br><br><pre>' For loop\nFor i = 1 To 10\n    Cells(i, 1).Value = i\nNext i\n\n' For Each loop\nFor Each cell In Range(\"A1:A10\")\n    cell.Value = cell.Value * 2\nNext cell\n\n' Do While loop\nDo While Cells(i, 1).Value <> \"\"\n    i = i + 1\nLoop\n\n' Do Until loop\nDo Until i > 10\n    i = i + 1\nLoop</pre>",
+                difficulty: "hard",
+                icon: "fas fa-redo",
+                category: "vba"
+            },
+            
+            // More Data Analysis Questions
+            {
+                id: 36,
+                question: "What is Goal Seek?",
+                answer: "Goal Seek finds input value needed to achieve desired result.<br><br>Steps:<br>1. Data → What-If Analysis → Goal Seek<br>2. Set cell (formula cell)<br>3. To value (desired result)<br>4. By changing cell (input cell)<br><br>Use case: Find required sales to achieve target profit",
+                difficulty: "medium",
+                icon: "fas fa-bullseye",
+                category: "dataanalysis"
+            },
+            {
+                id: 37,
+                question: "What is Scenario Manager?",
+                answer: "Scenario Manager creates and saves different sets of input values.<br><br>Steps:<br>1. Data → What-If Analysis → Scenario Manager<br>2. Add scenarios with different values<br>3. Show scenarios to see results<br>4. Create summary report<br><br>Use case: Best case/worst case/most likely scenarios",
+                difficulty: "hard",
+                icon: "fas fa-clone",
+                category: "dataanalysis"
+            },
+            {
+                id: 38,
+                question: "What is Solver add-in?",
+                answer: "Solver finds optimal solution for problems with constraints.<br><br>Steps:<br>1. Enable Solver: File → Options → Add-ins → Go → Solver<br>2. Data → Solver<br>3. Set objective cell<br>4. Set variables cells<br>5. Add constraints<br>6. Solve<br><br>Use case: Product mix optimization, resource allocation",
+                difficulty: "hard",
+                icon: "fas fa-cogs",
+                category: "dataanalysis"
+            },
+            
+            // More Advanced Topics Questions
+            {
+                id: 39,
+                question: "What are Array Formulas?",
+                answer: "Array formulas perform multiple calculations on arrays.<br><br>Legacy (Ctrl+Shift+Enter):<br><pre>{=SUM(A1:A10*B1:B10)}</pre><br>Dynamic Array (Office 365):<br><pre>=FILTER(A1:A10, B1:B10>100)\n=UNIQUE(A1:A10)\n=SORT(A1:A10)\n=SEQUENCE(10)</pre>",
+                difficulty: "hard",
+                icon: "fas fa-layer-group",
+                category: "advanced"
+            },
+            {
+                id: 40,
+                question: "What is Power Query?",
+                answer: "Power Query (Get & Transform) imports and transforms data.<br><br>Features:<br>1. Connect to multiple data sources<br>2. Clean and transform data<br>3. Merge and append queries<br>4. Create reusable data transformations<br><br>Steps: Data → Get Data → From various sources",
+                difficulty: "hard",
+                icon: "fas fa-database",
+                category: "advanced"
+            },
+            
+            // Adding more questions to reach 120+
+            {
+                id: 41,
+                question: "What is the OFFSET function?",
+                answer: "OFFSET returns reference offset from starting reference.<br><br><pre>=OFFSET(reference, rows, cols, [height], [width])\nExample: =SUM(OFFSET(A1,1,0,5,1))</pre>",
+                difficulty: "hard",
+                icon: "fas fa-arrows-alt",
+                category: "functions"
+            },
+            {
+                id: 42,
+                question: "What is the INDIRECT function?",
+                answer: "INDIRECT returns reference specified by text string.<br><br><pre>=INDIRECT(\"A\"&B1)  -- Returns cell reference from text</pre>",
+                difficulty: "hard",
+                icon: "fas fa-code",
+                category: "functions"
+            },
+            {
+                id: 43,
+                question: "What is the CHOOSE function?",
+                answer: "CHOOSE returns value from list based on index number.<br><br><pre>=CHOOSE(index_num, value1, value2, ...)</pre>",
+                difficulty: "medium",
+                icon: "fas fa-list",
+                category: "functions"
+            },
+            {
+                id: 44,
+                question: "What are the logical functions?",
+                answer: "Logical functions for decision making:<br><br><pre>AND: =AND(condition1, condition2)\nOR: =OR(condition1, condition2)\nNOT: =NOT(condition)\nIFERROR: =IFERROR(formula, value_if_error)\nIFNA: =IFNA(formula, value_if_na)</pre>",
+                difficulty: "easy",
+                icon: "fas fa-brain",
+                category: "functions"
+            },
+            {
+                id: 45,
+                question: "What is the MATCH function?",
+                answer: "MATCH returns position of item in range.<br><br><pre>=MATCH(lookup_value, lookup_array, [match_type])\nMatch types: 0 (exact), 1 (less than), -1 (greater than)</pre>",
+                difficulty: "medium",
+                icon: "fas fa-search",
+                category: "functions"
+            },
+            {
+                id: 46,
+                question: "What is the INDEX function?",
+                answer: "INDEX returns value at intersection of row and column.<br><br><pre>=INDEX(array, row_num, [column_num])</pre>",
+                difficulty: "medium",
+                icon: "fas fa-map-marker-alt",
+                category: "functions"
+            },
+            {
+                id: 47,
+                question: "What is the SUBTOTAL function?",
+                answer: "SUBTOTAL returns aggregate result ignoring filtered rows.<br><br><pre>=SUBTOTAL(function_num, range)\nFunction numbers: 1-11 (ignore hidden rows), 101-111 (ignore all)</pre>",
+                difficulty: "medium",
+                icon: "fas fa-calculator",
+                category: "functions"
+            },
+            {
+                id: 48,
+                question: "What is the ROUND function?",
+                answer: "ROUND rounds number to specified digits.<br><br><pre>ROUND: =ROUND(number, num_digits)\nROUNDUP: =ROUNDUP(number, num_digits)\nROUNDDOWN: =ROUNDDOWN(number, num_digits)\nMROUND: =MROUND(number, multiple)</pre>",
+                difficulty: "easy",
+                icon: "fas fa-circle",
+                category: "functions"
+            },
+            {
+                id: 49,
+                question: "What is the PMT function?",
+                answer: "PMT calculates loan payment.<br><br><pre>=PMT(rate, nper, pv, [fv], [type])</pre>",
+                difficulty: "medium",
+                icon: "fas fa-money-bill-wave",
+                category: "functions"
+            },
+            {
+                id: 50,
+                question: "What is the NETWORKDAYS function?",
+                answer: "NETWORKDAYS calculates working days between dates.<br><br><pre>=NETWORKDAYS(start_date, end_date, [holidays])</pre>",
+                difficulty: "medium",
+                icon: "fas fa-calendar-alt",
+                category: "functions"
+            },
+            {
+                id: 51,
+                question: "What are Pivot Table calculated items?",
+                answer: "Calculated items create new items within field.",
+                difficulty: "hard",
+                icon: "fas fa-calculator",
+                category: "pivottables"
+            },
+            {
+                id: 52,
+                question: "How to refresh Pivot Table?",
+                answer: "Right-click → Refresh or Data → Refresh All.",
+                difficulty: "easy",
+                icon: "fas fa-sync",
+                category: "pivottables"
+            },
+            {
+                id: 53,
+                question: "What is Pivot Table cache?",
+                answer: "Data stored separately for Pivot Table performance.",
+                difficulty: "hard",
+                icon: "fas fa-database",
+                category: "pivottables"
+            },
+            {
+                id: 54,
+                question: "How to create sparklines?",
+                answer: "Insert → Sparklines → Select data and location.",
+                difficulty: "medium",
+                icon: "fas fa-chart-line",
+                category: "charts"
+            },
+            {
+                id: 55,
+                question: "What are chart templates?",
+                answer: "Save chart formatting as template for reuse.",
+                difficulty: "medium",
+                icon: "fas fa-save",
+                category: "charts"
+            },
+            {
+                id: 56,
+                question: "How to record Macro with keyboard shortcut?",
+                answer: "Record Macro dialog → Shortcut key field.",
+                difficulty: "easy",
+                icon: "fas fa-keyboard",
+                category: "macros"
+            },
+            {
+                id: 57,
+                question: "What is Personal Macro Workbook?",
+                answer: "PERSONAL.XLSB stores macros for all workbooks.",
+                difficulty: "medium",
+                icon: "fas fa-user",
+                category: "macros"
+            },
+            {
+                id: 58,
+                question: "What are VBA procedures?",
+                answer: "Sub (no return) and Function (returns value).",
+                difficulty: "medium",
+                icon: "fas fa-code",
+                category: "vba"
+            },
+            {
+                id: 59,
+                question: "What is VBA error handling?",
+                answer: "On Error GoTo, On Error Resume Next.",
+                difficulty: "hard",
+                icon: "fas fa-exclamation-triangle",
+                category: "vba"
+            },
+            {
+                id: 60,
+                question: "What are VBA objects?",
+                answer: "Workbook, Worksheet, Range, Chart, etc.",
+                difficulty: "medium",
+                icon: "fas fa-cube",
+                category: "vba"
+            },
+            {
+                id: 61,
+                question: "What is Remove Duplicates?",
+                answer: "Data → Remove Duplicates → Select columns.",
+                difficulty: "easy",
+                icon: "fas fa-backspace",
+                category: "dataanalysis"
+            },
+            {
+                id: 62,
+                question: "What is Text to Columns?",
+                answer: "Data → Text to Columns → Delimited/Fixed width.",
+                difficulty: "medium",
+                icon: "fas fa-columns",
+                category: "dataanalysis"
+            },
+            {
+                id: 63,
+                question: "What is Flash Fill?",
+                answer: "Ctrl+E to automatically fill patterns.",
+                difficulty: "easy",
+                icon: "fas fa-bolt",
+                category: "dataanalysis"
+            },
+            {
+                id: 64,
+                question: "What is Data Table?",
+                answer: "What-If Analysis → Data Table for sensitivity.",
+                difficulty: "hard",
+                icon: "fas fa-table",
+                category: "dataanalysis"
+            },
+            {
+                id: 65,
+                question: "What is Watch Window?",
+                answer: "Formulas → Watch Window to monitor cells.",
+                difficulty: "medium",
+                icon: "fas fa-eye",
+                category: "advanced"
+            },
+            {
+                id: 66,
+                question: "What is Evaluate Formula?",
+                answer: "Formulas → Evaluate Formula to step through.",
+                difficulty: "medium",
+                icon: "fas fa-search",
+                category: "advanced"
+            },
+            {
+                id: 67,
+                question: "What is Trace Precedents/Dependents?",
+                answer: "Formulas → Trace arrows show relationships.",
+                difficulty: "medium",
+                icon: "fas fa-project-diagram",
+                category: "advanced"
+            },
+            {
+                id: 68,
+                question: "What is Power Pivot?",
+                answer: "Data modeling for large datasets.",
+                difficulty: "hard",
+                icon: "fas fa-cubes",
+                category: "advanced"
+            },
+            {
+                id: 69,
+                question: "What is Power View?",
+                answer: "Interactive data visualization (Excel 2013+).",
+                difficulty: "hard",
+                icon: "fas fa-eye",
+                category: "advanced"
+            },
+            {
+                id: 70,
+                question: "What is 3D Reference?",
+                answer: "Reference same cell across sheets.",
+                difficulty: "medium",
+                icon: "fas fa-layer-group",
+                category: "advanced"
+            },
+            {
+                id: 71,
+                question: "What is Workbook protection?",
+                answer: "File → Protect Workbook → Encrypt with password.",
+                difficulty: "easy",
+                icon: "fas fa-lock",
+                category: "advanced"
+            },
+            {
+                id: 72,
+                question: "What is Worksheet protection?",
+                answer: "Review → Protect Sheet → Set permissions.",
+                difficulty: "easy",
+                icon: "fas fa-lock",
+                category: "advanced"
+            },
+            {
+                id: 73,
+                question: "What are named ranges?",
+                answer: "Formulas → Define Name for cell reference.",
+                difficulty: "medium",
+                icon: "fas fa-tag",
+                category: "advanced"
+            },
+            {
+                id: 74,
+                question: "What is Camera tool?",
+                answer: "Add to QAT → Takes picture of range.",
+                difficulty: "hard",
+                icon: "fas fa-camera",
+                category: "advanced"
+            },
+            {
+                id: 75,
+                question: "What is Quick Analysis tool?",
+                answer: "Ctrl+Q for formatting, charts, totals.",
+                difficulty: "easy",
+                icon: "fas fa-bolt",
+                category: "advanced"
+            },
+            {
+                id: 76,
+                question: "What are cell styles?",
+                answer: "Home → Cell Styles for consistent formatting.",
+                difficulty: "easy",
+                icon: "fas fa-paint-brush",
+                category: "advanced"
+            },
+            {
+                id: 77,
+                question: "What is custom number format?",
+                answer: "Ctrl+1 → Number → Custom → Enter format code.",
+                difficulty: "medium",
+                icon: "fas fa-hashtag",
+                category: "advanced"
+            },
+            {
+                id: 78,
+                question: "What are data bars?",
+                answer: "Conditional Formatting → Data Bars.",
+                difficulty: "medium",
+                icon: "fas fa-chart-bar",
+                category: "dataanalysis"
+            },
+            {
+                id: 79,
+                question: "What are color scales?",
+                answer: "Conditional Formatting → Color Scales.",
+                difficulty: "medium",
+                icon: "fas fa-palette",
+                category: "dataanalysis"
+            },
+            {
+                id: 80,
+                question: "What are icon sets?",
+                answer: "Conditional Formatting → Icon Sets.",
+                difficulty: "medium",
+                icon: "fas fa-icons",
+                category: "dataanalysis"
+            },
+            {
+                id: 81,
+                question: "What is Freeze Panes?",
+                answer: "View → Freeze Panes to lock rows/columns.",
+                difficulty: "easy",
+                icon: "fas fa-thumbtack",
+                category: "advanced"
+            },
+            {
+                id: 82,
+                question: "What is Split window?",
+                answer: "View → Split to divide window into panes.",
+                difficulty: "easy",
+                icon: "fas fa-columns",
+                category: "advanced"
+            },
+            {
+                id: 83,
+                question: "What is New Window?",
+                answer: "View → New Window for same workbook.",
+                difficulty: "medium",
+                icon: "fas fa-window-restore",
+                category: "advanced"
+            },
+            {
+                id: 84,
+                question: "What is Arrange All?",
+                answer: "View → Arrange All to organize windows.",
+                difficulty: "easy",
+                icon: "fas fa-th",
+                category: "advanced"
+            },
+            {
+                id: 85,
+                question: "What is Compare Side by Side?",
+                answer: "View → Compare Side by Side.",
+                difficulty: "easy",
+                icon: "fas fa-columns",
+                category: "advanced"
+            },
+            {
+                id: 86,
+                question: "What is Workbook views?",
+                answer: "Normal, Page Layout, Page Break Preview.",
+                difficulty: "easy",
+                icon: "fas fa-eye",
+                category: "advanced"
+            },
+            {
+                id: 87,
+                question: "What is Custom Views?",
+                answer: "View → Custom Views to save settings.",
+                difficulty: "medium",
+                icon: "fas fa-save",
+                category: "advanced"
+            },
+            {
+                id: 88,
+                question: "What is Full Screen view?",
+                answer: "View → Full Screen (Esc to exit).",
+                difficulty: "easy",
+                icon: "fas fa-expand",
+                category: "advanced"
+            },
+            {
+                id: 89,
+                question: "What is Zoom to Selection?",
+                answer: "View → Zoom to Selection.",
+                difficulty: "easy",
+                icon: "fas fa-search-plus",
+                category: "advanced"
+            },
+            {
+                id: 90,
+                question: "What is 100% zoom?",
+                answer: "View → 100% for actual size.",
+                difficulty: "easy",
+                icon: "fas fa-search",
+                category: "advanced"
+            },
+            {
+                id: 91,
+                question: "What is Macro security settings?",
+                answer: "File → Options → Trust Center → Settings.",
+                difficulty: "medium",
+                icon: "fas fa-shield-alt",
+                category: "macros"
+            },
+            {
+                id: 92,
+                question: "What is Digital Signature for macros?",
+                answer: "Developer → Digital Signature.",
+                difficulty: "hard",
+                icon: "fas fa-signature",
+                category: "macros"
+            },
+            {
+                id: 93,
+                question: "What is Trusted Locations?",
+                answer: "File → Options → Trust Center → Locations.",
+                difficulty: "medium",
+                icon: "fas fa-folder",
+                category: "macros"
+            },
+            {
+                id: 94,
+                question: "What is Trusted Documents?",
+                answer: "File → Options → Trust Center → Documents.",
+                difficulty: "medium",
+                icon: "fas fa-file",
+                category: "macros"
+            },
+            {
+                id: 95,
+                question: "What is Add-ins?",
+                answer: "File → Options → Add-ins → Manage.",
+                difficulty: "medium",
+                icon: "fas fa-puzzle-piece",
+                category: "advanced"
+            },
+            {
+                id: 96,
+                question: "What is COM Add-ins?",
+                answer: "File → Options → Add-ins → COM Add-ins.",
+                difficulty: "hard",
+                icon: "fas fa-plug",
+                category: "advanced"
+            },
+            {
+                id: 97,
+                question: "What is Excel Options dialog?",
+                answer: "File → Options for all settings.",
+                difficulty: "easy",
+                icon: "fas fa-cog",
+                category: "advanced"
+            },
+            {
+                id: 98,
+                question: "What is Quick Access Toolbar?",
+                answer: "Top-left toolbar, customizable.",
+                difficulty: "easy",
+                icon: "fas fa-toolbox",
+                category: "advanced"
+            },
+            {
+                id: 99,
+                question: "What is Ribbon customization?",
+                answer: "File → Options → Customize Ribbon.",
+                difficulty: "medium",
+                icon: "fas fa-sliders-h",
+                category: "advanced"
+            },
+            {
+                id: 100,
+                question: "What is Excel keyboard shortcuts?",
+                answer: "Ctrl+C/V, Ctrl+Z/Y, F2, F4, F9, etc.",
+                difficulty: "easy",
+                icon: "fas fa-keyboard",
+                category: "advanced"
+            },
+            {
+                id: 101,
+                question: "What is Paste Special?",
+                answer: "Ctrl+Alt+V for special paste options.",
+                difficulty: "medium",
+                icon: "fas fa-paste",
+                category: "advanced"
+            },
+            {
+                id: 102,
+                question: "What is Format Painter?",
+                answer: "Home → Format Painter to copy formatting.",
+                difficulty: "easy",
+                icon: "fas fa-paint-brush",
+                category: "advanced"
+            },
+            {
+                id: 103,
+                question: "What is AutoFill?",
+                answer: "Drag fill handle to copy or series.",
+                difficulty: "easy",
+                icon: "fas fa-fill",
+                category: "advanced"
+            },
+            {
+                id: 104,
+                question: "What is AutoSum?",
+                answer: "Home → AutoSum for quick totals.",
+                difficulty: "easy",
+                icon: "fas fa-calculator",
+                category: "advanced"
+            },
+            {
+                id: 105,
+                question: "What is Fill Series?",
+                answer: "Home → Fill → Series for patterns.",
+                difficulty: "medium",
+                icon: "fas fa-list-ol",
+                category: "advanced"
+            },
+            {
+                id: 106,
+                question: "What is Go To Special?",
+                answer: "F5 → Special for selecting specific cells.",
+                difficulty: "medium",
+                icon: "fas fa-bullseye",
+                category: "advanced"
+            },
+            {
+                id: 107,
+                question: "What is Find and Replace?",
+                answer: "Ctrl+F for find, Ctrl+H for replace.",
+                difficulty: "easy",
+                icon: "fas fa-search",
+                category: "advanced"
+            },
+            {
+                id: 108,
+                question: "What is Select Objects?",
+                answer: "Home → Find & Select → Select Objects.",
+                difficulty: "easy",
+                icon: "fas fa-mouse-pointer",
+                category: "advanced"
+            },
+            {
+                id: 109,
+                question: "What is Selection Pane?",
+                answer: "Home → Find & Select → Selection Pane.",
+                difficulty: "medium",
+                icon: "fas fa-layer-group",
+                category: "advanced"
+            },
+            {
+                id: 110,
+                question: "What is Workbook statistics?",
+                answer: "File → Info → Properties → Statistics.",
+                difficulty: "easy",
+                icon: "fas fa-chart-bar",
+                category: "advanced"
+            },
+            {
+                id: 111,
+                question: "What is Document Inspector?",
+                answer: "File → Info → Check for Issues → Inspect.",
+                difficulty: "medium",
+                icon: "fas fa-search",
+                category: "advanced"
+            },
+            {
+                id: 112,
+                question: "What is Check Accessibility?",
+                answer: "File → Info → Check for Issues → Accessibility.",
+                difficulty: "medium",
+                icon: "fas fa-universal-access",
+                category: "advanced"
+            },
+            {
+                id: 113,
+                question: "What is Check Compatibility?",
+                answer: "File → Info → Check for Issues → Compatibility.",
+                difficulty: "medium",
+                icon: "fas fa-exchange-alt",
+                category: "advanced"
+            },
+            {
+                id: 114,
+                question: "What is AutoRecover?",
+                answer: "File → Options → Save → AutoRecover.",
+                difficulty: "easy",
+                icon: "fas fa-save",
+                category: "advanced"
+            },
+            {
+                id: 115,
+                question: "What is AutoSave?",
+                answer: "Top-left for cloud files (Office 365).",
+                difficulty: "easy",
+                icon: "fas fa-cloud",
+                category: "advanced"
+            },
+            {
+                id: 116,
+                question: "What is Version History?",
+                answer: "File → Info → Version History.",
+                difficulty: "medium",
+                icon: "fas fa-history",
+                category: "advanced"
+            },
+            {
+                id: 117,
+                question: "What is Share Workbook?",
+                answer: "Review → Share Workbook.",
+                difficulty: "medium",
+                icon: "fas fa-share-alt",
+                category: "advanced"
+            },
+            {
+                id: 118,
+                question: "What is Track Changes?",
+                answer: "Review → Track Changes.",
+                difficulty: "medium",
+                icon: "fas fa-edit",
+                category: "advanced"
+            },
+            {
+                id: 119,
+                question: "What is Comments?",
+                answer: "Review → New Comment or Ctrl+Shift+M.",
+                difficulty: "easy",
+                icon: "fas fa-comment",
+                category: "advanced"
+            },
+            {
+                id: 120,
+                question: "What is Show All Comments?",
+                answer: "Review → Show All Comments.",
+                difficulty: "easy",
+                icon: "fas fa-comments",
+                category: "advanced"
+            }
+        ];
+        
+        // Load questions into the container with filtering
+        const questionsContainer = document.getElementById('questionsContainer');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        
+        function displayQuestions(filter = 'all') {
+            questionsContainer.innerHTML = '';
+            
+            const filteredQuestions = filter === 'all' 
+                ? excelQuestions 
+                : excelQuestions.filter(q => q.category === filter);
+            
+            filteredQuestions.forEach((q, index) => {
+                const questionCard = document.createElement('div');
+                questionCard.className = `question-card ${q.category}`;
+                questionCard.innerHTML = `
+                    <div class="question-header">
+                        <span class="question-number">${q.id}</span>
+                        <h3 class="question">${q.question}</h3>
+                        <i class="${q.icon} tech-icon"></i>
+                    </div>
+                    <span class="difficulty ${q.difficulty}">${q.difficulty.toUpperCase()}</span>
+                    <span class="category">${q.category.toUpperCase()}</span>
+                    <div class="answer" id="answer-${q.id}">
+                        ${q.answer}
+                    </div>
+                    <button class="toggle-answer" data-answer="answer-${q.id}">
+                        <i class="fas fa-chevron-down"></i> Show Answer
+                    </button>
+                `;
+                questionsContainer.appendChild(questionCard);
+            });
+            
+            // Update stats
+            document.querySelector('.stat-number').textContent = `${filteredQuestions.length}+`;
+        }
+        
+        // Initial display
+        displayQuestions();
+        
+        // Filter button click handlers
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                // Get category filter
+                const filter = this.getAttribute('data-category');
+                // Display filtered questions
+                displayQuestions(filter);
+            });
+        });
+        
+        // Toggle answer visibility
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('toggle-answer') || e.target.parentElement.classList.contains('toggle-answer')) {
+                const button = e.target.classList.contains('toggle-answer') ? e.target : e.target.parentElement;
+                const answerId = button.getAttribute('data-answer');
+                const answerElement = document.getElementById(answerId);
+                const isHidden = answerElement.style.display === 'none' || !answerElement.classList.contains('show');
+                
+                if (isHidden) {
+                    answerElement.classList.add('show');
+                    button.innerHTML = '<i class="fas fa-chevron-up"></i> Hide Answer';
+                } else {
+                    answerElement.classList.remove('show');
+                    button.innerHTML = '<i class="fas fa-chevron-down"></i> Show Answer';
+                }
+            }
+        });
+        
+        // Sample reviews data
+        const reviews = [
+            {
+                name: "Priya Sharma",
+                text: "Ram Sir's Excel Masterclass transformed my career. I went from basic Excel knowledge to becoming a certified Excel expert in 2 months! The formulas and pivot tables explanations were incredibly clear.",
+                rating: 5,
+                course: "Excel Masterclass"
+            },
+            {
+                name: "Rahul Verma",
+                text: "The interview questions section alone is worth it! I practiced all 120+ questions and could answer every Excel question in my consulting interview. Got the offer with 70% salary hike!",
+                rating: 5,
+                course: "Advanced Excel & VBA"
+            },
+            {
+                name: "Anjali Patel",
+                text: "As a finance professional, Excel is crucial. Ram Sir's teaching method made everything so clear. Now I'm working as a Financial Analyst. Highly recommended!",
+                rating: 5,
+                course: "Excel Masterclass"
+            },
+            {
+                name: "Vikram Singh",
+                text: "The Excel + Power BI combo course was exactly what I needed for business analytics. The real-world projects were challenging but practical. Landed a job as Business Intelligence Analyst!",
+                rating: 5,
+                course: "Excel + Power BI"
+            },
+            {
+                name: "Sneha Reddy",
+                text: "I took the offline classes and the personal attention was amazing. Ram Sir cleared all my doubts patiently. The course materials are comprehensive and well-structured.",
+                rating: 5,
+                course: "Advanced Excel & VBA"
+            }
+        ];
+        
+        // Load reviews into slider
+        const reviewsSlider = document.getElementById('reviewsSlider');
+        
+        reviews.forEach(review => {
+            const reviewCard = document.createElement('div');
+            reviewCard.className = 'review-card';
+            
+            let stars = '';
+            for (let i = 0; i < review.rating; i++) {
+                stars += '<i class="fas fa-star"></i>';
+            }
+            
+            reviewCard.innerHTML = `
+                <p class="review-text">"${review.text}"</p>
+                <div class="reviewer">
+                    <div class="reviewer-img">${review.name.charAt(0)}</div>
+                    <div class="reviewer-info">
+                        <h4>${review.name}</h4>
+                        <p>${review.course} Student</p>
+                        <div class="review-rating">
+                            ${stars}
+                        </div>
+                    </div>
+                </div>
+            `;
+            reviewsSlider.appendChild(reviewCard);
+        });
+        
+        // Initialize Owl Carousel
+        $(document).ready(function(){
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: true,
+                dots: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    768: {
+                        items: 2
+                    },
+                    992: {
+                        items: 3
+                    }
+                }
+            });
+        });
+        
+        // WhatsApp button functionality
+        document.getElementById('whatsappBtn').addEventListener('click', function() {
+            const name = document.querySelector('input[type="text"]').value || "Interested Student";
+            const phone = document.querySelector('input[type="tel"]').value || "";
+            const message = document.querySelector('textarea').value || "Hi Ram Sir, I'm interested in your Excel courses. Please share more details.";
+            
+            const whatsappUrl = `https://wa.me/919753528324?text=${encodeURIComponent(`Name: ${name}\nPhone: ${phone}\nMessage: ${message}`)}`;
+            window.open(whatsappUrl, '_blank');
+        });
+        
+        // Call button functionality
+        document.getElementById('callBtn').addEventListener('click', function() {
+            window.location.href = 'tel:+919753528324';
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Show total question count
+        document.addEventListener('DOMContentLoaded', function() {
+            const statNumber = document.querySelector('.stat-number');
+            if (statNumber) {
+                statNumber.textContent = `${excelQuestions.length}+`;
+            }
+        });
+    </script>
+</body>
+</html>
